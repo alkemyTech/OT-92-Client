@@ -3,7 +3,7 @@ import React from 'react'
 export default function ScreenDashboard() {
     return (
         <div>
-            Bienvenido al backoffice
+            <p>Bienvenido al backoffice</p>
         </div>
     )
 }
