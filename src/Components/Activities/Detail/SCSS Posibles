@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap');
+$title:  'Neucha', cursive;
+$body: 'Archivo Narrow', sans-serif;
+$button-text: 'Shadows Into Light', cursive;
+$first-color: #9AC9FB;
+$second-color: #FAFA88;
+$third-color: #DB5752;
 
-// $title:  'Neucha', cursive;
-// $body: 'Archivo Narrow', sans-serif;
-// $button-text: 'Shadows Into Light', cursive;
-// $first-color: #9AC9FB;
-// $second-color: #FAFA88;
-// $third-color: #DB5752;
