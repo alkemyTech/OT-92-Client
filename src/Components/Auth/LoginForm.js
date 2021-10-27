@@ -14,6 +14,7 @@ const LoginForm = () => {
       password: Yup.string()
         .required('Requerida')
         .min(6, 'La contraseña debe tener al menos 6 caracteres')
+        //Regex que valida que la contraseña tenga al menos una letra, un caracter especial y un numero
         .matches(
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
           'La contraseña debe tener una letra, un número y un caracter especial'
@@ -28,7 +29,7 @@ const LoginForm = () => {
     <div className='form-group'>
       <h1 className='h1 text-center mt-5'> Login </h1>
       <form
-        className='form-container needs-validation'
+        className='form-container'
         onSubmit={formik.handleSubmit}
         noValidate
       >
@@ -42,7 +43,7 @@ const LoginForm = () => {
                 ? 'w-100 form-control is-invalid'
                 : 'w-100 form-control'
             }
-            type='text'
+            type='email'
             id='email'
             name='email'
             value={formik.values.email}
@@ -75,7 +76,7 @@ const LoginForm = () => {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            placeholder='Ingrese password'
+            placeholder='Ingrese contraseña'
           ></input>
           {formik.touched.password && formik.errors.password ? (
             <div className='text-danger position-absolute w-75'>
