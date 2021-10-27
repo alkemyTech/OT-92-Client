@@ -2,7 +2,8 @@
 
 .Activities-title{
     font-family: 'Neucha' , cursive;
-    color: #9AC9FB;
+    color: black;
+    background-color:  #9AC9FB;
 }
 .Activities-body{
     font-family: 'Archivo Narrow', sans-serif;
