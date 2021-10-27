@@ -3,8 +3,11 @@ import '../FormStyles.css';
 
 const RegisterForm = () => {
     const [initialValues, setInitialValues] = useState({
-        name: '',
-        lastName: ''
+    name: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
     })
     
     const handleChange = (e) => {
