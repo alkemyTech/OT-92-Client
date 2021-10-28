@@ -1,29 +1,50 @@
-.form-container{
+.form-container {
     width: 60%;
     margin: 15px auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    color: rgb(158, 117, 255);
 }
 
-.input-field{
-    padding: 15px 30px;
+.input-field {
+    padding: 12px 30px;
     border: 1px solid #c1c1c1;
+    outline: none;
+    width: 93%;
 }
 
-.select-field{
+.label-Img-new-News {
+    text-align: left;
+}
+
+.select-field {
     padding: 10px;
     border: 1px solid #c1c1c1;
 }
 
-.submit-btn{
+.select-field:focus {
+    outline: none;
+}
+
+.submit-btn {
     background-color: #2E86C1;
     padding: 10px 15px;
     border: none;
     color: #fff;
 }
 
-.submit-btn:hover{
+.submit-btn:hover {
     cursor: pointer;
     background-color: #3498DB;
+}
+
+.img-Render {
+    width: 100%;
+    height: 500 px;
+    padding-top: 2%;
+}
+
+.hidden {
+    display: none;
 }
