@@ -6,7 +6,7 @@ const NewsForm = () => {
         title: '',
         content: '',
         category: ''
-    });ssss
+    });
 
     const handleChange = (e) => {
         if(e.target.name === 'title'){
