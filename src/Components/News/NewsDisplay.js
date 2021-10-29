@@ -11,7 +11,7 @@ const NewsDisplay = () => {
     },
     {
         title: 'viaje fin de curso a formosa ',
-        image: 'https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudiantil.jpg'
+        image: 'https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudianti.jpg'
         }
         ];
 
