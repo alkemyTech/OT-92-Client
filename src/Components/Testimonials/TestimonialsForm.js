@@ -11,8 +11,8 @@ export default function TestimonialsForm () {
     } 
 
     const { id } = useParams()
-    const editTestimonial = `http://ongapi.alkemy.org/public/api/testimonials/${id}`
-    const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'
+    const editTestimonial = `http://ongapi.alkemy.org/public/api/testimonials/${id}` // aquí establecemos los endpoints
+    const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'            // de la API
     const [initialValues, setInitialValues] = useState(testimonialData);
 
     const handleChange = (e) => { 
@@ -23,7 +23,7 @@ export default function TestimonialsForm () {
   
     const handleSubmit = (e) => { 
       
-      if (!id) {
+      if (!id) {                        // si no hay id, se crea un testimonio
         axios.post(createTestimonial, {
             name: initialValues.title,
             image: initialValues.image,
@@ -40,7 +40,7 @@ export default function TestimonialsForm () {
       }
     
       if (id) {
-          axios.put(editTestimonial, {
+          axios.put(editTestimonial, {         //si hay id, se edita el testimonio en cuestión
               name: initialValues.title,
               image: initialValues.image,
               content: initialValues.content
@@ -73,4 +73,28 @@ export default function TestimonialsForm () {
   
       EditData()
     }, [])
+
+    return (
+      <>
+          <form className="form-container" onSubmit={handleSubmit}>
+              <label htmlFor="title" className='label-Title-New-News'>
+                  <h2 className="titulo-Titulo-New-News">Título</h2>
+                  <input
+                      required
+                      className="input-field"
+                      type="text"
+                      name="title"
+                      value={initialValues.title || ''}
+                      onChange={handleChange}
+                  ></input>
+              </label>
+              <h2 className="titulo-Content-New-News">Descripción</h2>
+              <EditField />     {/*acá importamos el componente del editor de CKEditor */}
+
+              <input type="file" />
+
+              <button className="submit-btn" type="submit">Enviar</button>
+          </form>
+     </>
+    );
 }
