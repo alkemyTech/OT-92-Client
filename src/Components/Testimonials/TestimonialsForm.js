@@ -1,32 +1,17 @@
-import React, { useState } from 'react';
-import '../FormStyles.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
+import { useParams } from 'react-router'
+import '../../Components/FormStyles.css'
 
-const TestimonialForm = () => {
-    const [initialValues, setInitialValues] = useState({
-       name: '',
-       description: '' 
-    });
+export default function TestimonialsForm () {
+    const testimonialData = {
+      title: '',
+      content: '',
+      image: ''
+    } 
 
-    const handleChange = (e) => {
-        if(e.target.name === 'name'){
-            setInitialValues({...initialValues, name: e.target.value})
-        } if(e.target.name === 'description'){
-            setInitialValues({...initialValues, description: e.target.value})
-        }
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(initialValues);
-    }
-
-    return (
-        <form className="form-container" onSubmit={handleSubmit}>
-            <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Testimonial Title"></input>
-            <input className="input-field" type="text" name="description" value={initialValues.description} onChange={handleChange} placeholder="Testimonial description"></input>
-            <button className="submit-btn" type="submit">Send</button>
-        </form>
-    );
+    const { id } = useParams()
+    const editTestimonial = `http://ongapi.alkemy.org/public/api/testimonials/${id}`
+    const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'
+    const [initialValues, setInitialValues] = useState(testimonialData);
 }
- 
-export default TestimonialForm;
