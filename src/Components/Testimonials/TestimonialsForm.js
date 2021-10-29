@@ -56,4 +56,21 @@ export default function TestimonialsForm () {
       e.preventDefault();
       console.log(initialValues);
     }
+
+    useEffect(() => {
+
+      const EditData = async () => {
+          
+          if (id) {
+              const initialData = await axios.get(editTestimonial),  // acá si existe un id, se hace un GET al enpoint
+                  EditNewData = initialData.data.data,               // para editar la info. del testimonio
+                  { name, content } = await EditNewData
+              if (name) setInitialValues({ ...initialValues, title: name })
+              if (content) setInitialValues({ ...initialValues, content: content })
+          }
+  
+      }
+  
+      EditData()
+    }, [])
 }
