@@ -4,7 +4,12 @@ import * as Yup from 'yup';
 import TextInput from './TextInput';
 
 export const NewsletterForm = () => {
+    const suscribed = localStorage.getItem('newsletter_suscribed')
+
     return (
+        <>
+            {
+                !suscribed &&
                     <>
                         <Formik
                             initialValues={{
@@ -25,6 +30,8 @@ export const NewsletterForm = () => {
                             onSubmit={(values, { setSubmitting }) => {
                                 setTimeout(() => {
                                     console.log(JSON.stringify(values, null, 2));
+                                    localStorage.setItem('newsletter_suscribed', true)
+                                    window.location.reload()
                                     setSubmitting(false)
                                 }, 400)
                             }}
@@ -53,6 +60,8 @@ export const NewsletterForm = () => {
                             </Form>
                         </Formik>
                     </>
+            }
+        </>
     )
 }
 
