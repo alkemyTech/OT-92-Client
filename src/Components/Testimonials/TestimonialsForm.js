@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useParams } from 'react-router'
 import '../../Components/FormStyles.css'
+import EditField from './EditField'
+
 
 export default function TestimonialsForm () {
     const testimonialData = {
@@ -11,7 +13,7 @@ export default function TestimonialsForm () {
     } 
 
     const { id } = useParams()
-    const editTestimonial = `http://ongapi.alkemy.org/public/api/testimonials/${id}` // aquí establecemos los endpoints
+    const editTestimonial = `http://ongapi.alkemy.org/api/testimonials/${id}` // aquí establecemos los endpoints
     const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'            // de la API
     const [initialValues, setInitialValues] = useState(testimonialData);
 
@@ -22,7 +24,8 @@ export default function TestimonialsForm () {
     }
   
     const handleSubmit = (e) => { 
-      
+      e.preventDefault();
+
       if (!id) {                        // si no hay id, se crea un testimonio
         axios.post(createTestimonial, {
             name: initialValues.title,
@@ -53,7 +56,7 @@ export default function TestimonialsForm () {
               alert(err)
           })
       }
-      e.preventDefault();
+      
       console.log(initialValues);
     }
 
@@ -64,8 +67,8 @@ export default function TestimonialsForm () {
           if (id) {
               const initialData = await axios.get(editTestimonial),  // acá si existe un id, se hace un GET al enpoint
                   EditNewData = initialData.data.data,               // para editar la info. del testimonio
-                  { name, content } = await EditNewData
-              if (name) setInitialValues({ ...initialValues, title: name })
+                  { title, content } = await EditNewData
+              if (title) setInitialValues({ ...initialValues, title: title })
               if (content) setInitialValues({ ...initialValues, content: content })
           }
   
@@ -76,6 +79,8 @@ export default function TestimonialsForm () {
 
     return (
       <>
+
+      
           <form className="form-container" onSubmit={handleSubmit}>
               <label htmlFor="title" className='label-Title-New-News'>
                   <h2 className="titulo-Titulo-New-News">Título</h2>
@@ -88,13 +93,15 @@ export default function TestimonialsForm () {
                       onChange={handleChange}
                   ></input>
               </label>
+              
               <h2 className="titulo-Content-New-News">Descripción</h2>
-              <EditField />     {/*acá importamos el componente del editor de CKEditor */}
+              <EditField />     {/*acá importamos el componente de editor de CKEditor */}
 
-              <input type="file" />
+              <input type="file" required />
 
               <button className="submit-btn" type="submit">Enviar</button>
           </form>
+        
      </>
     );
 }
