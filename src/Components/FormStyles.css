@@ -27,3 +27,12 @@
     cursor: pointer;
     background-color: #3498DB;
 }
+
+.error_message_input{
+    color: red;
+}
+
+#titleNewsletter{
+    font-size: large;
+    font-weight: 600;
+}
