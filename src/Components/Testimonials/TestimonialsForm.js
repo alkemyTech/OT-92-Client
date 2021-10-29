@@ -4,6 +4,10 @@ import { useParams } from 'react-router'
 import '../../Components/FormStyles.css'
 import EditField from './EditField'
 
+import { Formik, Form, ErrorMessage } from "formik"
+import * as Yup from "yup";
+
+
 
 export default function TestimonialsForm () {
     const testimonialData = {
@@ -76,32 +80,77 @@ export default function TestimonialsForm () {
   
       EditData()
     }, [])
+    
+    const validationSchema = Yup.object({
+        title: Yup.string()
+           .required("Se requiere un título")
+           .min(4, "El título debe tener al menos cuatro caracteres"),
+         content: Yup.string().required(
+           "Se requiere una descripción"
+         ),
+         image: Yup.mixed().required("El testimonio requiere una imagen")
+    });
 
     return (
       <>
+       <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(val) => {
+          const {
+            title,
+            content,
+            image
+          } = val;
+          setInitialValues({
+            title,
+            content,
+            image
+          });
+          console.log(initialValues);
+        }}
+      >
+        {(formik) => (
+          <Form className="form-container" onSubmit={handleSubmit}>
+          <label htmlFor="title" className='label-Title-New-News'>
+              <h2 className="titulo-Titulo-New-News">Título</h2>
+              <input
+                  className="input-field"
+                  type="text"
+                  name="title"
+                  onChange={formik.handleChange}
+                  value={formik.values.welcomeTitle}
+                  onBlur={formik.handleBlur}
+              ></input>
+          </label>
+          <ErrorMessage
+            name="title"
+            render={(msg) => (
+                <div style={{color:'red'}}> {msg} </div>
+            )}
+          />
+          
+          <h2 className="titulo-Content-New-News">Descripción</h2>
+          <EditField />     {/*acá importamos el componente de editor de CKEditor */}
 
-      
-          <form className="form-container" onSubmit={handleSubmit}>
-              <label htmlFor="title" className='label-Title-New-News'>
-                  <h2 className="titulo-Titulo-New-News">Título</h2>
-                  <input
-                      required
-                      className="input-field"
-                      type="text"
-                      name="title"
-                      value={initialValues.title || ''}
-                      onChange={handleChange}
-                  ></input>
-              </label>
-              
-              <h2 className="titulo-Content-New-News">Descripción</h2>
-              <EditField />     {/*acá importamos el componente de editor de CKEditor */}
+          <input 
+          type="file"
+          name="welcomeTitle"
+          onChange={formik.handleChange}
+          value={formik.values.welcomeTitle}
+          onBlur={formik.handleBlur}
+          />
+          <ErrorMessage
+            name="image"
+            render={(msg) => (
+              <div style={{color:'red'}}> {msg} </div>
+            )}
+            />
 
-              <input type="file" required />
-
-              <button className="submit-btn" type="submit">Enviar</button>
-          </form>
-        
+          <button className="submit-btn" type="submit">Enviar</button>
+          </Form>
+        )}
+      </Formik>
      </>
     );
 }
