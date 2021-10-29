@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import '../FormStyles.css';
 
-const UserForm = () => {
+const UserForm = user => {
   const [initialValues, setInitialValues] = useState({
-    name: '',
-    email: '',
-    roleId: '',
-    profilePhoto: '',
+    id: user.id || '',
+    name: user.name || '',
+    email: user.email || '',
+    roleId: user.role_id || '',
+    profilePhoto: user.profile_image || '',
   });
 
   const handleChange = e => {
@@ -31,47 +32,87 @@ const UserForm = () => {
   };
 
   return (
-    <Formik>
-      <Form className="form-container" onSubmit={handleSubmit}>
-        <Field
-          className="input-field"
-          type="text"
-          name="name"
-          value={initialValues.name || ''}
-          onChange={handleChange}
-          placeholder="Name"
-        ></Field>
-        <Field
-          className="input-field"
-          type="text"
-          name="email"
-          value={initialValues.email || ''}
-          onChange={handleChange}
-          placeholder="Email"
-        ></Field>
-        <Field
-          name="roleId"
-          as="select"
-          value={initialValues.roleId || ''}
-          onChange={handleChange}
-          className="input-field"
-        >
-          <option value="" disabled>
-            Selecciona el rol
-          </option>
-          <option value="admin">Administrador</option>
-          <option value="regular">Regular</option>
-        </Field>
-        <Field
-          type="file"
-          name="profilePhoto"
-          onChange={handleChange}
-          className="input-field"
-        ></Field>
-        <button className="submit-btn" type="submit">
-          Enviar
-        </button>
-      </Form>
+    <Formik
+      validate={() => {
+        const errors = {};
+        if (initialValues.name.length <= 4) {
+          errors.name = 'El nombre debe contener mínimo cuatro caracteres';
+        }
+        if (!initialValues.email) {
+          errors.email = 'Email obligatorio';
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(initialValues.email)
+        ) {
+          errors.email = 'Por favor, ingrese una dirección de email válida';
+        }
+
+        if (!initialValues.roleId) {
+          errors.roleId = 'Por favor, asigne un rol al usuario';
+        }
+
+        if (!initialValues.profilePhoto) {
+          errors.profilePhoto = 'Foto de perfil obligatoria';
+        } else if (!/\.(jpe?g|png)$/i.test(initialValues.profilePhoto)) {
+          errors.profilePhoto =
+            'Por favor, seleccione una imagen con entensión .jpg o .png';
+        }
+        console.log(errors);
+        return errors;
+      }}
+    >
+      {({ errors, isValid, touched }) => (
+        <Form className="form-container" onSubmit={handleSubmit}>
+          <Field
+            className="input-field"
+            type="text"
+            name="name"
+            value={initialValues.name}
+            onChange={handleChange}
+            placeholder="Nombre"
+          ></Field>
+          {errors.name && touched.name ? (
+            <div className="text-danger">{errors.name}</div>
+          ) : null}
+          <Field
+            className="input-field"
+            type="text"
+            name="email"
+            value={initialValues.email}
+            onChange={handleChange}
+            placeholder="Email"
+          ></Field>
+          {errors.email && touched.email ? (
+            <div className="text-danger">{errors.email}</div>
+          ) : null}
+          <Field
+            name="roleId"
+            as="select"
+            value={initialValues.roleId}
+            onChange={handleChange}
+            className="input-field"
+          >
+            <option value="" disabled>
+              Selecciona el rol
+            </option>
+            <option value="1">Administrador</option>
+            <option value="2">Regular</option>
+          </Field>
+          {errors.roleId && touched.roleId ? <div>{errors.roleId}</div> : null}
+          <Field
+            type="file"
+            name="profilePhoto"
+            onChange={handleChange}
+            className="input-field"
+            accept={'.jpg, .jpeg, .png'}
+          ></Field>
+          {errors.profilePhoto && touched.profilePhoto ? (
+            <div className="text-danger">{errors.profilePhoto}</div>
+          ) : null}
+          <button className="submit-btn" type="submit" disabled={!isValid}>
+            Enviar
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
