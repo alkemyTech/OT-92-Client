@@ -130,12 +130,19 @@ export default function TestimonialsForm () {
             )}
           />
           
-          <h2 className="titulo-Content-New-News">Descripción</h2>
+          <h2 >Descripción</h2>
           <EditField />     {/*acá importamos el componente de editor de CKEditor */}
+          
+          <ErrorMessage
+            name="content"
+            render={(msg) => (
+              <div style={{color:'red'}}> {msg} </div>
+            )}
+          />
 
           <input 
           type="file"
-          name="welcomeTitle"
+          name="image"
           onChange={formik.handleChange}
           value={formik.values.welcomeTitle}
           onBlur={formik.handleBlur}
