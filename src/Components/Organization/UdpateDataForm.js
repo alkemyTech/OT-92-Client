@@ -5,25 +5,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import '../FormStyles.css';
 
-/*
-Criterios de aceptacion: Al ingresar a la ruta /backoffice/organization/edit se mostará el formulario para editar los campos name, logo, shortDescription, longDescription y links de redes sociales. El campo shortDescription debe poder editarse con CKEditor. Todos los campos son obligatorios, y deben validarse al hacer submit. En el caso de que todos estén completados, dejar el método vacío, ya que posteriormente se realizará una petición a la API
-
-Validaciones:
-
-Los campos name, logo, shortDescription y longDescription son obligatorios
-
-Logo deberá tener un formato .png o .jpg
-
-Los links de redes sociales deberán tener un formato de URL válido
-
-*/
-
 const UpdateDataForm = (props) => {
-  //const fileInputRef = useRef()
   const [image, setImage] = useState();
   const [imagePreview, setImagePreview] = useState();
-  const [shortDescription, setShortDescription] = useState();
 
+  //image preview
   useEffect(() => {
     if (image) {
       const reader = new FileReader();
@@ -38,11 +24,20 @@ const UpdateDataForm = (props) => {
 
   const onEditorChange = (event, editor) => {
     const data = editor.getData();
-    //setShortDescription(data);
-    formik.values.shortDescription = data;
+    formik.values.shortDescription = data.replace(/<[^>]*>?/gm, '');
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       name: props.organization ? props.organization.name : '',
       logo: props.organization ? props.organization.logo : '',
@@ -64,10 +59,16 @@ const UpdateDataForm = (props) => {
       longDescription: Yup.string().required(
         'La descripción larga es obligatoria'
       ),
-      linkInstagram: Yup.string().url('El link debe ser una URL válida'),
-      linkFacebook: Yup.string().url('El link debe ser una URL válida'),
+      linkInstagram: Yup.string()
+        .url('El link debe ser una URL válida')
+        .required('El link de Instagram es obligatorio'),
+      linkFacebook: Yup.string()
+        .url('El link debe ser una URL válida')
+        .required('El link de Facebook es obligatorio'),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      values.shortDescription.replace(/<[^>]*>/g, '');
+      await convertToBase64(values.logo);
       console.log(values);
     },
   });
@@ -89,21 +90,27 @@ const UpdateDataForm = (props) => {
           className='form-control mt-2'
           value={formik.values.name}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {formik.errors.name && formik.touched.name ? (
+          <div className='text-danger'>{formik.errors.name}</div>
+        ) : null}
         <label htmlFor='logo'>Logo</label>
         <div className='d-flex justify-content-between'>
           <input
+            required
             style={image && { height: '2.4rem', width: '55rem' }}
             type='file'
             accept='image/png, image/jpeg'
             name='logo'
             id='logo'
             className='form-control'
+            onBlur={formik.handleBlur}
             onChange={(event) => {
               const file = event.target.files[0];
-              if (file && file.type.substring(0, 5) === 'image') {
+              if (file) {
                 setImage(file);
-                formik.values.logo = file;
+                formik.setFieldValue('logo', file);
               } else {
                 setImage(null);
               }
@@ -117,14 +124,20 @@ const UpdateDataForm = (props) => {
             />
           )}
         </div>
+        {formik.errors.logo && formik.touched.logo ? (
+          <div className='text-danger'>{formik.errors.logo}</div>
+        ) : null}
         <label>Short Description</label>
         <CKEditor
           name='shortDescription'
           id='shortDescription'
           editor={ClassicEditor}
-          data={shortDescription}
+          data={formik.values.shortDescription}
           onChange={onEditorChange}
         />
+        {formik.errors.shortDescription && formik.touched.shortDescription ? (
+          <div className='text-danger'>{formik.errors.shortDescription}</div>
+        ) : null}
 
         <label htmlFor='longDescription'>Long Description</label>
         <input
@@ -134,7 +147,11 @@ const UpdateDataForm = (props) => {
           className='form-control'
           value={formik.values.longDescription}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {formik.errors.longDescription && formik.touched.longDescription ? (
+          <div className='text-danger'>{formik.errors.longDescription}</div>
+        ) : null}
         <label htmlFor='linkInstragram'>Link de Instagram</label>
         <input
           type='text'
@@ -143,7 +160,12 @@ const UpdateDataForm = (props) => {
           className='form-control'
           value={formik.values.linkInstagram}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {formik.errors.linkInstagram && formik.touched.linkInstagram ? (
+          <div className='text-danger'>{formik.errors.linkInstagram}</div>
+        ) : null}
+
         <label htmlFor='linkFacebook'>Link de Facebook</label>
         <input
           type='text'
@@ -151,10 +173,12 @@ const UpdateDataForm = (props) => {
           id='linkFacebook'
           className='form-control'
           value={formik.values.linkFacebook}
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
         />
-
-        {shortDescription && <h1> {shortDescription} </h1>}
+        {formik.errors.linkFacebook && formik.touched.linkFacebook ? (
+          <div className='text-danger'>{formik.errors.linkFacebook}</div>
+        ) : null}
         <button type='submit' className='btn btn-primary'>
           Submit
         </button>
