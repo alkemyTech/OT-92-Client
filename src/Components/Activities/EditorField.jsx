@@ -17,6 +17,7 @@ const editorConfiguration = {
     ],
   },
   language: "es",
+  format_p: { element: "p", attributes: { class: "text-center" } },
 };
 const EditorField = ({ formik }) => {
   const inputHandler = (event, editor) => {

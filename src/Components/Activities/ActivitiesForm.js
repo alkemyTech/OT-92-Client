@@ -6,35 +6,112 @@ import * as Yup from "yup";
 import axios from 'axios';
 
 const ActivitiesForm = () => {
-    const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false });
-    const [initialValues, setInitialValues] = useState({ name: "", image: null, description: "", complete: false })
+    const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined });
+    const [isBase64, setBase64] = useState(false)
+    const [triggerCreate, setCTrigger] = useState(false)
+    const [activityIsReady, setActivityReady] = useState(false)
+    const [editTrigger, setEditTrigger] = useState(false)
+    const initialValues = { name: "", image: null, description: "", complete: false, id: undefined }
+
 
     /* en este useEffect se van a filtrar las actividades, ya sea para
     recibir una nueva como post, como para buscar una por su ID, solo dejo un ejemplo
     para entender como va funcionar. */
-    // useEffect(() => {
-    // const activityID = new URLSearchParams(window.location.search); 
-    //  const getActivity = ()={ setInitialValues + activityID}
-    //     const postActivity = async () => {
-    //         const url;
-    //         let res = await axios.post(url, values);
-    //         try {
-    //             let data = res.data;
-    //             // sweet alert
-    //         } catch (error) {
-    //             // sweetalert
-    //         }
-    //     }
-    //  const putActivity = ()=> {formValues + activityID }
-    // tener en cuenta que esta seccion tambien debe incluir DELETE
-    // }, [input])
+
+    useEffect(() => {
+        // parse file to base64 and return it to formState
+        const setbase64 = (file) => {
+            const metaData = `data:${formValues.image.type}; base64, `
+            const reader = new FileReader();
+            reader.readAsBinaryString(file)
+            reader.onload = () => { setValues({ ...formValues, image: btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)) }    //
+            setBase64(true)
+
+
+        }
+        if (formValues.image != null && isBase64 === false && formValues.id === undefined) {
+            setbase64(formValues.image)
+        } else if (formValues.image === null) {
+            setBase64(false)
+        } else if (formValues.image != null && isBase64 === false && formValues.id !== undefined) {
+            const imageUrl = formValues.image;
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", imageUrl, true);
+            xhr.responseType = "blob"
+            xhr.send();
+            xhr.onload = () => { setbase64(xhr.response) }
+        }
+
+        // create activity
+        if (triggerCreate) {
+            const createActivity = async () => {
+                const queryObject = { name: formValues.name, description: formValues.description, image: formValues.image }
+                const url = "http://ongapi.alkemy.org/api/activities"
+                const data = await axios.post(url, queryObject)
+                try {
+
+                    console.log(data)
+                    console.log(queryObject)
+                    setCTrigger(false)
+                }
+                catch (error) {
+                    console.log(error)
+                    setCTrigger(false)
+                }
+            }
+            createActivity();
+        }
+
+        //edit activity
+        if (editTrigger) {
+            const putActivity = async () => {
+                const queryObject = { name: formValues.name, description: formValues.description, image: formValues.image, id: formValues.id }
+                const url = "http://ongapi.alkemy.org/api/activities"
+                const data = await axios.put(url, queryObject)
+                try {
+
+                    console.log(data)
+                    console.log(queryObject)
+                    setEditTrigger(false)
+                }
+                catch (error) {
+                    console.log(error)
+                    setEditTrigger(false)
+                }
+            }
+            putActivity();
+        }
+
+
+        // get activity by id
+        const paramString = new URLSearchParams(window.location.search);
+        const activityID = paramString.get("id")
+        if (activityIsReady === false && activityID != null) {
+            const getActivity = async () => {
+                const url = "http://ongapi.alkemy.org/api/activities/" + activityID;
+                let res = await axios.get(url);
+                try {
+                    let data = res.data;
+                    setValues(data.data)
+                    setActivityReady(true)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getActivity()
+        }
+
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isBase64, formValues, triggerCreate])
 
 
     // dummy preview
     const [imagenPreview, setImagenPreview] = useState(null)
+
+
     /*handler Change de inputs  pd: El componente EditorField
      necesita llevarse el setState/state para realizar cambios */
-    // console.log(formValues)
 
     // validacion de YUP para formik
     const validate = Yup.object({
@@ -47,7 +124,8 @@ const ActivitiesForm = () => {
 
     return (
 
-        // Dar estilos al dummy como una card preview de la actividad
+        // Dar estilos al dummy como una card preview de la actividad pd: El ver actividades debe tener los mismos estilos tanto
+        //en mobile como desktop para que la vista previa no difiera en estilos.
         <div className="container">
             <div className="row">
                 <div className="">
@@ -56,12 +134,19 @@ const ActivitiesForm = () => {
                     <h3> {formValues.name} </h3>
                     <div dangerouslySetInnerHTML={{ __html: formValues.description }}>
                     </div>
-                    {/* 
-                    // !!!!!!!!!!!!acá se tiene que agregar otro ternario que evalue si la actividad en evaluacion
-                     de ser una actividad existente o una nueva para habilitar botones: Crear/deshacer || borrar/editar!!!!!!!!!!!!! 
-                    {formValues.complete ?  <button className="submit-btn" onClick={() => { postActivity }}>Crear actividad?</button>  
-                    <button className="submit-btn" onClick={() => { DeleteActivity }}>Eliminar Actividad</button>
-                     : null} */}
+
+                    {formValues.complete ?
+                        <>
+                            <button className="submit-btn" onClick={() => { setCTrigger(true) }}>Crear</button>
+                            <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null) }}>Deshacer Cambios</button>
+                        </> : activityIsReady ?
+                            <>
+                                <button className="submit-btn" onClick={() => { setEditTrigger(true) }}>Editar</button>
+                                <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null); setActivityReady(false) }}>Deshacer Cambios</button>
+                            </> :
+                            null // boton "Deshacer Cambios" de "Editar" debe redirecciónar la ruta para su buen funcionamiento.
+
+                    }
                 </div>
             </div>
             <Formik initialValues={initialValues}
