@@ -11,20 +11,24 @@ import * as Yup from "yup";
 
 export default function TestimonialsForm () {
     const testimonialData = {
-      title: '',
+      name: '',
       content: '',
       image: ''
     } 
 
     const { id } = useParams()
     const editTestimonial = `http://ongapi.alkemy.org/api/testimonials/${id}` // aquí establecemos los endpoints
-    const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'            // de la API
+    const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'    // de la API
     const [initialValues, setInitialValues] = useState(testimonialData);
 
     const handleChange = (e) => { 
-      if (e.target.name === 'title') {
-          setInitialValues({ ...initialValues, title: e.target.value })
-      } 
+      if (e.target.name === 'name') {
+          setInitialValues({ ...initialValues, name: e.target.value })
+      } if (e.target.content === 'content') {
+        setInitialValues({ ...initialValues, content: e.target.value })
+    } if (e.target.image === 'image') {
+      setInitialValues({ ...initialValues, image: e.target.value })
+  } 
     }
   
     const handleSubmit = (e) => { 
@@ -32,7 +36,7 @@ export default function TestimonialsForm () {
 
       if (!id) {                        // si no hay id, se crea un testimonio
         axios.post(createTestimonial, {
-            name: initialValues.title,
+            name: initialValues.name,
             image: initialValues.image,
             content: initialValues.content
             
@@ -48,7 +52,7 @@ export default function TestimonialsForm () {
     
       if (id) {
           axios.put(editTestimonial, {         //si hay id, se edita el testimonio en cuestión
-              name: initialValues.title,
+              name: initialValues.name,
               image: initialValues.image,
               content: initialValues.content
           }).then(res => {
@@ -71,8 +75,8 @@ export default function TestimonialsForm () {
           if (id) {
               const initialData = await axios.get(editTestimonial),  // acá si existe un id, se hace un GET al enpoint
                   EditNewData = initialData.data.data,               // para editar la info. del testimonio
-                  { title, content } = await EditNewData
-              if (title) setInitialValues({ ...initialValues, title: title })
+                  { name, content } = await EditNewData
+              if (name) setInitialValues({ ...initialValues, name: name })
               if (content) setInitialValues({ ...initialValues, content: content })
           }
   
@@ -82,7 +86,7 @@ export default function TestimonialsForm () {
     }, [])
     
     const validationSchema = Yup.object({
-        title: Yup.string()
+         name: Yup.string()
            .required("Se requiere un título")
            .min(4, "El título debe tener al menos cuatro caracteres"),
          content: Yup.string().required(
@@ -98,12 +102,12 @@ export default function TestimonialsForm () {
         validationSchema={validationSchema}
         onSubmit={(val) => {
           const {
-            title,
+            name,
             content,
             image
           } = val;
           setInitialValues({
-            title,
+            name,
             content,
             image
           });
@@ -111,20 +115,20 @@ export default function TestimonialsForm () {
         }}
       >
         {(formik) => (
-          <Form className="form-container" onSubmit={handleSubmit}>
+          <Form className="form-container" onSubmit={handleSubmit} onChange={handleChange}>
           <label htmlFor="title" className='label-Title-New-News'>
               <h2 className="titulo-Titulo-New-News">Título</h2>
               <input
                   className="input-field"
                   type="text"
-                  name="title"
+                  name="name"
                   onChange={formik.handleChange}
-                  value={formik.values.welcomeTitle}
+                  value={formik.values.name}
                   onBlur={formik.handleBlur}
               ></input>
           </label>
           <ErrorMessage
-            name="title"
+            name="name"
             render={(msg) => (
                 <div style={{color:'red'}}> {msg} </div>
             )}
@@ -144,7 +148,7 @@ export default function TestimonialsForm () {
           type="file"
           name="image"
           onChange={formik.handleChange}
-          value={formik.values.welcomeTitle}
+          value={formik.values.image}
           onBlur={formik.handleBlur}
           />
           <ErrorMessage
