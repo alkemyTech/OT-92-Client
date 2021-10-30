@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import '../FormStyles.css';
-// import axios from 'axios';
+import axios from 'axios';
 
 const UserForm = user => {
+  const [serverError, setServerError] = useState(null);
   const [initialValues, setInitialValues] = useState({
     id: user.id || '',
     name: user.name || '',
@@ -15,7 +16,7 @@ const UserForm = user => {
 
   const handleChange = e => {
     if (e.target.name === 'name') {
-      setInitialValues({ ...initialValues, name: e.target.value });
+      setInitialValues({ ...initialValues, name: e.target.value })
     }
     if (e.target.name === 'email') {
       setInitialValues({ ...initialValues, email: e.target.value });
@@ -24,20 +25,47 @@ const UserForm = user => {
       setInitialValues({ ...initialValues, password: e.target.value });
     }
     if (e.target.name === 'roleId') {
-      setInitialValues({ ...initialValues, roleId: e.target.value });
+      setInitialValues({ ...initialValues, roleId: parseInt(e.target.value) });
     }
-    // if (e.target.name === 'profilePhoto') {
-    //   //   setInitialValues({ ...initialValues, profilePhoto: e.target.value });
-    //   setInitialValues({
-    //     ...initialValues,
-    //     profilePhoto: e.currentTarget.files[0],
-    //   });
-    // }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     console.log(initialValues);
+
+    if (user.id) {
+      try {
+        await axios({
+          method: 'PUT',
+          url: `http://ongapi.alkemy.org/public/api/users/${initialValues.id}`,
+          data: {
+            name: initialValues.name,
+            email: initialValues.email,
+            password: initialValues.password,
+            role_id: initialValues.roleId,
+            profile_image: initialValues.profilePhoto,
+          },
+        });
+      } catch {
+        setServerError('Algo salió mal, por favor intente de nuevo');
+      }
+    } else {
+      try {
+        await axios({
+          method: 'POST',
+          url: `http://ongapi.alkemy.org/public/api/users`,
+          data: {
+            name: initialValues.name,
+            email: initialValues.email,
+            password: initialValues.password,
+            role_id: initialValues.roleId,
+            profile_image: initialValues.profilePhoto,
+          },
+        });
+      } catch {
+        setServerError('Algo salió mal, por favor intente de nuevo');
+      }
+    }
   };
 
   return (
@@ -64,17 +92,13 @@ const UserForm = user => {
           errors.roleId = 'Por favor, asigne un rol al usuario';
         }
 
-        // if (!initialValues.profilePhoto) {
-        //   errors.profilePhoto = 'Foto de perfil obligatoria';
-        // } else if (!/\.(jpe?g|png)$/i.test(initialValues.profilePhoto.name)) {
-        //   errors.profilePhoto =
-        //     'Por favor, seleccione una imagen con entensión .jpg o .png';
-        // }
-        // console.log(errors);
+        if (!initialValues.profilePhoto) {
+          errors.profilePhoto = 'Foto de perfil obligatoria';
+        }
         return errors;
       }}
     >
-      {({ errors, isValid, touched, setFieldValue }) => (
+      {({ errors, isValid, touched }) => (
         <Form className="form-container" onSubmit={handleSubmit}>
           <Field
             className="input-field"
@@ -125,19 +149,14 @@ const UserForm = user => {
             <option value="2">Regular</option>
           </Field>
           {errors.roleId && touched.roleId ? <div>{errors.roleId}</div> : null}
-          {/* <Field
-            type="file"
-            name="profilePhoto"
-            onChange={handleChange}
-            className="input-field"
-            accept={'.jpg, .jpeg, .png'}
-          ></Field> */}
 
           <Field
             name="profilePhoto"
+            className="input-field"
             type="file"
             accept={'.jpg, .jpeg, .png'}
             onChange={
+              //The next callback is crucial in order to convert the file into a base64 string, more info in https://stackoverflow.com/questions/6978156/get-base64-encode-file-data-from-input-form/42647105#42647105
               event => {
                 let file = event.currentTarget.files[0];
                 let reader = new FileReader();
@@ -174,6 +193,7 @@ const UserForm = user => {
               src={`data:image/jpeg;base64, ${initialValues.profilePhoto}`}
             />
           ) : null}
+          {serverError ? <div>{serverError}</div> : null}
         </Form>
       )}
     </Formik>
