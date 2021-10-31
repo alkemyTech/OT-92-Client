@@ -1,9 +1,13 @@
+import Titles from './Titles'
 import Content from './Content';
 import './index.css'
 
 const NewsDetail = () => {
   return (
-     <Content />
+    <div>
+      <Titles />
+      <Content />
+    </div>
   )
 };
 
