@@ -21,12 +21,27 @@ const Organization = () => {
     getData();
   }, []);
 
-//   console.log(data);
   return (
-    <div>
-      <h1>Organization</h1>
+    <div className='d-flex m-3 flex-column align-items-center'>
+      <h1>Organización</h1>
+      <br />
       {serverError ? <p>{serverError}</p> : null}
-      {data ? <p>{data.name}</p> : <p>Cargando...</p>}
+      {!data ? (
+        <p>Cargando...</p>
+      ) : (
+        <div>
+          <h3>Nombre de la organización: </h3>
+          <p>{data.name}</p>
+          <hr />
+          <h3>Descripción: </h3>
+          <p>{data.short_description}</p>
+          <hr />
+          <h3>Logo:</h3>
+          <img src={data.logo} alt={data.name} />
+          <hr />
+
+        </div>
+      )}
     </div>
   );
 };
