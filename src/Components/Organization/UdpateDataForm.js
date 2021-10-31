@@ -27,6 +27,7 @@ const UpdateDataForm = (props) => {
     formik.values.shortDescription = data.replace(/<[^>]*>?/gm, '');
   };
 
+  //function that converts image to base64
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -40,7 +41,7 @@ const UpdateDataForm = (props) => {
     enableReinitialize: true,
     initialValues: {
       name: props.organization ? props.organization.name : '',
-      logo: props.organization ? props.organization.logo : '',
+      logo: props.organization ? props.organization.logo : null,
       shortDescription: props.organization
         ? props.organization.shortDescription
         : '',
@@ -66,22 +67,20 @@ const UpdateDataForm = (props) => {
         .url('El link debe ser una URL válida')
         .required('El link de Facebook es obligatorio'),
     }),
-    onSubmit: async (values) => {
-      values.shortDescription.replace(/<[^>]*>/g, '');
-      await convertToBase64(values.logo);
+    onSubmit: (values) => {
       console.log(values);
     },
   });
 
   return (
     <div className='mt-5'>
-      <h1 className='text-center'>Update Data Form</h1>
+      <h1 className='text-center'>Editar datos de la organizacion</h1>
       <form
         onSubmit={formik.handleSubmit}
-        className='form-container form-group'
+        className='form-container form-group mt-5'
       >
         <label htmlFor='name' className=''>
-          Name
+          Nombre
         </label>
         <input
           type='text'
@@ -106,11 +105,12 @@ const UpdateDataForm = (props) => {
             id='logo'
             className='form-control'
             onBlur={formik.handleBlur}
-            onChange={(event) => {
+            onChange={async (event) => {
               const file = event.target.files[0];
               if (file) {
                 setImage(file);
-                formik.setFieldValue('logo', file);
+                const logo = await convertToBase64(file);
+                formik.setFieldValue('logo', logo);
               } else {
                 setImage(null);
               }
@@ -127,7 +127,7 @@ const UpdateDataForm = (props) => {
         {formik.errors.logo && formik.touched.logo ? (
           <div className='text-danger'>{formik.errors.logo}</div>
         ) : null}
-        <label>Short Description</label>
+        <label>Descripcion corta</label>
         <CKEditor
           name='shortDescription'
           id='shortDescription'
@@ -139,7 +139,7 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.shortDescription}</div>
         ) : null}
 
-        <label htmlFor='longDescription'>Long Description</label>
+        <label htmlFor='longDescription'> Descripcion larga</label>
         <input
           type='text'
           name='longDescription'
@@ -179,8 +179,12 @@ const UpdateDataForm = (props) => {
         {formik.errors.linkFacebook && formik.touched.linkFacebook ? (
           <div className='text-danger'>{formik.errors.linkFacebook}</div>
         ) : null}
-        <button type='submit' className='btn btn-primary'>
-          Submit
+        <button
+          type='submit'
+          style={{ width: '10rem' }}
+          className='btn btn-primary m-auto'
+        >
+          Cargar
         </button>
       </form>
     </div>
