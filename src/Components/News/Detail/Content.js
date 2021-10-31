@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import './index.css'
+
 
 const Content = () => {
   let { id: paramsId } = useParams(); // utilizamos useParams para acceder a los parámetros de una ruta determinada
