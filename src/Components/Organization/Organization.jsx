@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 const Organization = () => {
   const [serverError, setServerError] = useState(null);
@@ -22,7 +23,7 @@ const Organization = () => {
   }, []);
 
   return (
-    <div className='d-flex m-3 flex-column align-items-center'>
+    <div className="d-flex m-3 flex-column align-items-center">
       <h1>Organización</h1>
       <br />
       {serverError ? <p>{serverError}</p> : null}
@@ -39,7 +40,9 @@ const Organization = () => {
           <h3>Logo:</h3>
           <img src={data.logo} alt={data.name} />
           <hr />
-
+          <Link to="/backoffice/organization/edit" className="btn btn-primary">
+            Editar
+          </Link>
         </div>
       )}
     </div>
