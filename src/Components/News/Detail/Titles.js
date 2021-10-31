@@ -14,7 +14,7 @@ const Titles = () => {
         },
         {
             id: '3',
-            title: 'viaje fin de curso a formosa'
+            title: 'Viaje fin de curso a formosa'
         }
     ];
 

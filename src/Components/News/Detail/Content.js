@@ -6,18 +6,18 @@ const Content = () => {
   const news = [                     // creamos un array de objetos con los datos que queremos mostrar
     {
       id: "1",
-      content: "Se realizó una nueva edición del show del chiste en La Cava, voluntarios de la comunidad se animaron a compartir chistes y realizar trucos de magia para los más chicos.",
-      image: "http://ongapi.alkemy.org/storage/m7c2U9zdM6.png"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempor urna magna, ac sagittis purus tempor quis. Mauris placerat ultricies tellus ut eleifend. Vestibulum lacus magna, dignissim nec massa gravida, molestie placerat leo.",
+      image: "https://www.gob.mx/cms/uploads/article/main_image/26106/A16Z2709.JPG"
     },
     {
       id: "2",
-      content: "La organización cuenta con profesionales de educación física que realizan actividades recreativas con chicos de todas las edades.",
-      image: "http://ongapi.alkemy.org/storage/ZVyW7MoXH3.jpeg"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempor urna magna, ac sagittis purus tempor quis. Mauris placerat ultricies tellus ut eleifend. Vestibulum lacus magna, dignissim nec massa gravida, molestie placerat leo.",
+      image: "https://www.eldiariodecarlospaz.com.ar/u/fotografias/fotosnoticias/2016/4/28/30077.jpg"
     },
     {
       id: "3",
-      content: "Se realizó la VI jornada recreativa de invierno, jóvenes de todas las edades participaron en juegos y los más chicos presentaron una coreografía espectacular!",
-      image: "http://ongapi.alkemy.org/storage/PCGszwl482.png"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempor urna magna, ac sagittis purus tempor quis. Mauris placerat ultricies tellus ut eleifend. Vestibulum lacus magna, dignissim nec massa gravida, molestie placerat leo. ",
+      image: "https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudiantil.jpg"
     }
   ]
   
