@@ -72,7 +72,7 @@ const UserForm = user => {
     <Formik
       validate={() => {
         const errors = {};
-        if (initialValues.name.length <= 4) {
+        if (initialValues.name.length < 4) {
           errors.name = 'El nombre debe contener mínimo cuatro caracteres';
         }
         if (!initialValues.email) {
