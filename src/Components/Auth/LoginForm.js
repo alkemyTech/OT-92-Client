@@ -14,7 +14,7 @@ const LoginForm = () => {
       password: Yup.string()
         .required('Requerida')
         .min(6, 'La contraseña debe tener al menos 6 caracteres')
-        //Regex que valida que la contraseña tenga al menos una letra, un caracter especial y un numero
+        //Regex that validates the password has at least one lowercase letter, one uppercase letter, one number, and one special character
         .matches(
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
           'La contraseña debe tener una letra, un número y un caracter especial'
@@ -27,7 +27,7 @@ const LoginForm = () => {
 
   return (
     <div className='form-group'>
-      <h1 className='h1 text-center mt-5'> Login </h1>
+      <h1 className='h1 text-center mt-5'> Ingresar </h1>
       <form
         className='form-container'
         onSubmit={formik.handleSubmit}
@@ -84,8 +84,12 @@ const LoginForm = () => {
             </div>
           ) : null}
         </div>
-        <button className='btn btn-primary mt-5' type='submit'>
-          Log In
+        <button
+          className='btn btn-primary mt-5 m-auto'
+          type='submit'
+          style={{ width: '10rem' }}
+        >
+          Ingresar
         </button>
       </form>
     </div>
