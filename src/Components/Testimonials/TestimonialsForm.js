@@ -26,9 +26,9 @@ export default function TestimonialsForm () {
           setInitialValues({ ...initialValues, name: e.target.value })
       } if (e.target.content === 'content') {
         setInitialValues({ ...initialValues, content: e.target.value })
-    } if (e.target.image === 'image') {
+      } if (e.target.image === 'image') {
       setInitialValues({ ...initialValues, image: e.target.value })
-  } 
+      } 
     }
   
     const handleSubmit = (e) => { 
@@ -89,10 +89,10 @@ export default function TestimonialsForm () {
          name: Yup.string()
            .required("Se requiere un título")
            .min(4, "El título debe tener al menos cuatro caracteres"),
-         content: Yup.string().required(
-           "Se requiere una descripción"
-         ),
-         image: Yup.mixed().required("El testimonio requiere una imagen")
+         content: Yup.string()
+           .required("Se requiere una descripción"),
+         image: Yup.mixed()
+           .required("El testimonio requiere una imagen")
     });
 
     return (
@@ -109,7 +109,7 @@ export default function TestimonialsForm () {
           setInitialValues({
             name,
             content,
-            image
+            image: testimonialData.image.toString('base64')
           });
           console.log(initialValues);
         }}
@@ -135,7 +135,7 @@ export default function TestimonialsForm () {
           />
           
           <h2 >Descripción</h2>
-          <EditField />     {/*acá importamos el componente de editor de CKEditor */}
+          <EditField name="content"/>     {/*acá importamos el componente de editor de CKEditor */}
           
           <ErrorMessage
             name="content"
