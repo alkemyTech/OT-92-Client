@@ -1,26 +1,39 @@
-.card-img-top {
+.card-image-top {
+   height: 225px;
     width: 100%;
-    height: 15vw;
-    object-fit: cover;
+    height: 12rem;
+     display: block;
 }
-
+.card-display{
+    gap: 5px;
+        display: inline-flex;
+        flex-wrap: wrap;
+}
 .customize-card{
     border-radius: 30px;
     border-bottom: solid;
     border-color: #DB5752;
     border-width: 5px;
     box-shadow: 1px 12px 3px -7px rgba(0,0,0,0.75);
-    height: 25vw;
+    height: 25rem;
+    width: 18rem;
     position: relative;
     z-index: 1;
     transition: all 0.2s ease-out;
+ 
 }
 .customize-card:hover{
     box-shadow: 1px 15px 16px 0px rgba(0,0,0,0.75);
     transform: translateY(-0.5rem);
 }
+
 .card-title{
     font-family:  'Neucha', cursive;
+}
+.noNews{
+    font-family: 'Neucha' , cursive;
+    color: black;
+    background-color:  #9AC9FB;
 }
 .customize-image-border{
     border-bottom: #455980 solid 6px;
@@ -64,5 +77,10 @@
 
 .bottom-text:hover{
     background-color: #2462c7;
+
+}
+
+@media (max-width: 600px) {
+
 
 }
