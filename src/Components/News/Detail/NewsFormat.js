@@ -10,6 +10,7 @@ const NewsFormat = ({ content }) => {
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = "/error image somos mas.jpg";
+            // ()
           }}
           alt="no image"
         />
