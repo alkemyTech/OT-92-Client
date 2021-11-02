@@ -1,7 +1,6 @@
 import React from 'react';
-
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './App.css'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
@@ -12,6 +11,7 @@ import SchoolCampaign from './Campaigns/School/SchoolCampaign';
 import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
+import ScreenDashboard from './Components/Backoffice/ScreenDashboard';
 import NewsDetail from './Components/News/Detail/Index';
 import Organization from './Components/Organization/Organization';
 import MembersCreateEdit from './Components/Members/MembersCreateEdit';
@@ -34,11 +34,14 @@ function App() {
           <Route path="/backoffice/members/edit" component={MembersCreateEdit} />
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news/" component={NewsForm} />
+          <Route path="/backoffice/organization" component={Organization} />
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
           <Route path="/create-news" component={NewsForm} />
+          <Route path="/backoffice" component={ScreenDashboard} />
+          <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
           <Route path="/create-user" component={UserForm} />
@@ -47,7 +50,6 @@ function App() {
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
-          <Route path="/backoffice/organization" component={Organization} />
         </Switch>
       </BrowserRouter>
     </>
