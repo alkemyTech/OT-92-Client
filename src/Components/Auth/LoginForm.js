@@ -1,33 +1,95 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import '../FormStyles.css';
 
 const LoginForm = () => {
-    const [initialValues, setInitialValues] = useState({
-        email: '',
-        password: ''
-    });
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('Email Invalido').required('Requerido'),
+      password: Yup.string()
+        .required('Requerida')
+        .min(6, 'La contraseña debe tener al menos 6 caracteres')
+        //Regex que valida que la contraseña tenga al menos una letra, un caracter especial y un numero
+        .matches(
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+          'La contraseña debe tener una letra, un número y un caracter especial'
+        ),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
-    const handleChange = (e) => {
-        if(e.target.name === 'email'){
-            setInitialValues({...initialValues, email: e.target.value})
-        } if(e.target.name === 'password'){
-            setInitialValues({...initialValues, password: e.target.value})
-        }
-    }
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(initialValues);
-        localStorage.setItem('token', 'tokenValueExample')
-    }
+  return (
+    <div className='form-group'>
+      <h1 className='h1 text-center mt-5'> Login </h1>
+      <form
+        className='form-container'
+        onSubmit={formik.handleSubmit}
+        noValidate
+      >
+        <div>
+          <label htmlFor='email ' className='form-label'>
+            Email
+          </label>
+          <input
+            className={
+              formik.touched.email && formik.errors.email
+                ? 'w-100 form-control is-invalid'
+                : 'w-100 form-control'
+            }
+            type='email'
+            id='email'
+            name='email'
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder='Ingrese email'
+            required
+          ></input>
+          {formik.touched.email && formik.errors.email ? (
+            <div className='text-danger position-absolute mt-1'>
+              {formik.errors.email}
+            </div>
+          ) : null}
+        </div>
 
-    return (
-        <form className="form-container" onSubmit={handleSubmit}>
-            <input className="input-field" type="text" name="email" value={initialValues.name} onChange={handleChange} placeholder="Enter email"></input>
-            <input className="input-field" type="text" name="password" value={initialValues.password} onChange={handleChange} placeholder="Enter password"></input>
-            <button className="submit-btn" type="submit">Log In</button>
-        </form>
-    );
-}
- 
+        <div className='mt-4'>
+          <label htmlFor='password' className='form-label'>
+            Contraseña
+          </label>
+          <input
+            required
+            className={
+              formik.touched.password && formik.errors.password
+                ? 'w-100 form-control is-invalid'
+                : 'w-100 form-control'
+            }
+            type='password'
+            id='password'
+            name='password'
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder='Ingrese contraseña'
+          ></input>
+          {formik.touched.password && formik.errors.password ? (
+            <div className='text-danger position-absolute w-75'>
+              {formik.errors.password}
+            </div>
+          ) : null}
+        </div>
+        <button className='btn btn-primary mt-5' type='submit'>
+          Log In
+        </button>
+      </form>
+    </div>
+  );
+};
+
 export default LoginForm;
