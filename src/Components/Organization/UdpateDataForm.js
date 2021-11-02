@@ -86,7 +86,11 @@ const UpdateDataForm = (props) => {
           type='text'
           name='name'
           id='name'
-          className='form-control mt-2'
+          className={
+            formik.touched.name && formik.errors.name
+              ? 'mt-2 form-control is-invalid'
+              : 'mt-2 form-control'
+          }
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -98,12 +102,16 @@ const UpdateDataForm = (props) => {
         <div className='d-flex justify-content-between'>
           <input
             required
-            style={image && { height: '2.4rem', width: '55rem' }}
+            style={image && { height: '2.4rem', width: '45rem' }}
             type='file'
             accept='image/png, image/jpeg'
             name='logo'
             id='logo'
-            className='form-control'
+            className={
+              formik.touched.logo && formik.errors.logo
+                ? 'form-control is-invalid'
+                : 'form-control'
+            }
             onBlur={formik.handleBlur}
             onChange={async (event) => {
               const file = event.target.files[0];
@@ -144,7 +152,11 @@ const UpdateDataForm = (props) => {
           type='text'
           name='longDescription'
           id='longDescription'
-          className='form-control'
+          className={
+            formik.touched.longDescription && formik.errors.longDescription
+              ? 'form-control is-invalid'
+              : 'form-control'
+          }
           value={formik.values.longDescription}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -157,7 +169,11 @@ const UpdateDataForm = (props) => {
           type='text'
           name='linkInstagram'
           id='linkInstagram'
-          className='form-control'
+          className={
+            formik.touched.linkInstagram && formik.errors.linkInstagram
+              ? 'form-control is-invalid'
+              : 'form-control'
+          }
           value={formik.values.linkInstagram}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -171,7 +187,11 @@ const UpdateDataForm = (props) => {
           type='text'
           name='linkFacebook'
           id='linkFacebook'
-          className='form-control'
+          className={
+            formik.touched.linkFacebook && formik.errors.linkFacebook
+              ? 'form-control is-invalid'
+              : 'form-control'
+          }
           value={formik.values.linkFacebook}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
