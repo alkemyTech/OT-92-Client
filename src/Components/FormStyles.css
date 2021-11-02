@@ -4,16 +4,27 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    color: rgb(158, 117, 255);
 }
 
 .input-field {
-    padding: 15px 30px;
+    padding: 12px 30px;
     border: 1px solid #c1c1c1;
+    outline: none;
+    width: 93%;
+}
+
+.label-Img-new-News {
+    text-align: left;
 }
 
 .select-field {
     padding: 10px;
     border: 1px solid #c1c1c1;
+}
+
+.select-field:focus {
+    outline: none;
 }
 
 .submit-btn {
@@ -28,6 +39,15 @@
     background-color: #3498DB;
 }
 
+.error_message_input{
+    color: red;
+}
+
+#titleNewsletter{
+    font-size: large;
+    font-weight: 600;
+}
+
 .img-Render {
     width: 100%;
     height: 500 px;
@@ -37,8 +57,6 @@
 .hidden {
     display: none;
 }
-
-/*Inicio de los estilos del componente MembersCreateEdit de la ruta "/backoffice/members/edit"*/
 
 .Padre-Creacion-Edicion-Nuevos-Miembros {
     display: flex;
@@ -96,5 +114,3 @@
     margin-top: 3%;
     cursor: pointer;
 }
-
-/*Fin de los estilos del componente MembersCreateEdit de la ruta "/backoffice/members/edit"*/

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap');
+
+.Activities-title{
+    font-family: 'Neucha' , cursive;
+    color: black;
+    background-color:  #9AC9FB;
+}
+.Activities-body{
+    font-family: 'Archivo Narrow', sans-serif;
+    color: black;
+    background-color: #FAFA88;
+}
