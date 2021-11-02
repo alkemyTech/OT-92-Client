@@ -20,13 +20,14 @@ import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
 import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
+import MembersList from './Components/About/MembersList';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={} />
+          <Route path="/" exact  />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/backoffice/home" component={HomeForm} />
@@ -50,6 +51,7 @@ function App() {
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/nosotros" component={MembersList} />
         </Switch>
       </BrowserRouter>
     </>
