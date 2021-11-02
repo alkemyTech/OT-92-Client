@@ -40,7 +40,23 @@ export default function MembersList() {
     ]
 
     return (
-        
+        <div>
+            {members.map(member => {
+                return (
+                    <div className="container">
+                        <div className="card" style={{width:'16rem'}}>
+                            <img src={member.image} className="card-img-top" alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{member.name}</h5>
+                                <p className="card-text">{member.description}</p>
+                                <li><a href="#" className="card-link">{member.linkedinUrl}</a></li>
+                                <li><a href="#" className="card-link">{member.facebookUrl}</a></li>
+                            </div>
+                       </div>
+                   </div>    
+                )
+            })}
+        </div>
     )
 
 }    
