@@ -15,6 +15,7 @@ import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
 import HomeForm from './Components/Home/HomeForm';
+import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/activities/:id" component={ActivitiesDetail} />
+          <Route path="/news" component={NewsDisplay}/>
         </Switch>
       </BrowserRouter>
     </>
