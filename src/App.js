@@ -14,24 +14,28 @@ import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import LoginForm from './Components/Auth/LoginForm';
+import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail'
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
-          <Route path='/login' component={LoginForm} />
-          <Route path='/create-activity' component={ActivitiesForm} />
-          <Route path='/create-category' component={CategoriesForm} />
-          <Route path='/create-news' component={NewsForm} />
-          <Route path='/backoffice/create-slide' component={SlidesForm} />
-          <Route path='/create-testimonials' component={TestimonialForm} />
-          <Route path='/create-user' component={UserForm} />
-          <Route path='/create-member' component={MembersForm} />
-          <Route path='/create-project' component={ProjectsForm} />
-          <Route path='/school-campaign' component={SchoolCampaign} />
-          <Route path='/toys-campaign' component={ToysCampaign} />
+          <Route path="/" exact component={} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/create-news" component={NewsForm} />
+          <Route path="/create-activity" component={ActivitiesForm} />
+          <Route path="/create-category" component={CategoriesForm} />
+          <Route path="/backoffice/news/:id" component={NewsForm} />
+          <Route path="/backoffice/news/" component={NewsForm} />
+          <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/create-testimonials" component={TestimonialForm} />
+          <Route path="/create-user" component={UserForm} />
+          <Route path="/create-member" component={MembersForm} />
+          <Route path="/create-project" component={ProjectsForm} />
+          <Route path="/school-campaign" component={SchoolCampaign} />
+          <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/activities/:id" component={ActivitiesDetail} />
         </Switch>
       </BrowserRouter>
     </>
