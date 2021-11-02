@@ -13,8 +13,9 @@ import SchoolCampaign from './Campaigns/School/SchoolCampaign';
 import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
+import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
+import HomeForm from './Components/Home/HomeForm';
 import LoginForm from './Components/Auth/LoginForm';
-import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news/" component={NewsForm} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/backoffice/home" component={HomeForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
           <Route path="/create-user" component={UserForm} />
           <Route path="/create-member" component={MembersForm} />
