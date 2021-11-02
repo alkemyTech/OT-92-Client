@@ -12,6 +12,7 @@ import SchoolCampaign from './Campaigns/School/SchoolCampaign';
 import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
+import Organization from './Components/Organization/Organization';
 import MembersCreateEdit from './Components/Members/MembersCreateEdit';
 import UpdateDataForm from './Components/Organization/UdpateDataForm';
 import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
@@ -46,6 +47,7 @@ function App() {
           <Route path="/news" component={NewsDisplay}/>
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/backoffice/organization" component={Organization} />
         </Switch>
       </BrowserRouter>
     </>
