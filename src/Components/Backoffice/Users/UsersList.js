@@ -1,4 +1,5 @@
 import React from 'react'
+import { IoTrashSharp, IoPencilSharp } from "react-icons/io5";
 
 const UsersList = ({ usersData }) => {
 
@@ -21,7 +22,14 @@ const UsersList = ({ usersData }) => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <p>Botones</p>
+                                    <div className="actions_container">
+                                        <button type="button" className="btn btn-info btn-sm edit_button">
+                                            <IoPencilSharp />
+                                        </button>{' '}
+                                        <button type="button" className="btn btn-danger btn-sm delete_button">
+                                            <IoTrashSharp />
+                                        </button>
+                                    </div>
                                     {/* service PUT con user.id como parametro */}
                                     {/* service DELETE con user.id como parametro */}
                                 </td>

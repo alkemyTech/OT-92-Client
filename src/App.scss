@@ -18,7 +18,7 @@ p {
 
 #usersListContainer{
     height: auto;
-    margin: 15px 0;
+    margin: 15px 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -28,8 +28,21 @@ p {
         font-family: $title;
     }
     #tableResponsive{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        .actions_container{
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        @media all and (max-width: 576px) {
+            font-size: 0.7rem;
+        }
+    }
+    @media all and (max-width: 400px) {
+        margin: 15px -8px;
     }
 }
+
+
 
 

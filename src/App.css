@@ -14,7 +14,7 @@ p {
 
 #usersListContainer {
   height: auto;
-  margin: 15px 0;
+  margin: 15px 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,6 +36,29 @@ p {
 }
 
 #usersListContainer #tableResponsive {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+}
+
+#usersListContainer #tableResponsive .actions_container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+
+@media all and (max-width: 576px) {
+  #usersListContainer #tableResponsive {
+    font-size: 0.7rem;
+  }
+}
+
+@media all and (max-width: 400px) {
+  #usersListContainer {
+    margin: 15px -8px;
+  }
 }
 /*# sourceMappingURL=App.css.map */
