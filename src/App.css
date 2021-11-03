@@ -11,4 +11,27 @@ p {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+#usersListContainer {
+  height: auto;
+  margin: 15px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.headers {
+  font-size: 1.7rem;
+  font-family: "Neucha", cursive;
+}
 /*# sourceMappingURL=App.css.map */
