@@ -1,6 +1,7 @@
+import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
-import React, { useState } from "react";
+import {ErrorMessage} from 'formik'
 
 const editorConfiguration = {
   toolbar: {
@@ -37,10 +38,10 @@ const editorConfiguration = {
   },
   licenseKey: "",
 };
-const EditField = () => {
-  const [dataX, setData] = useState("");
-
-  console.log(dataX);
+const EditField = ({ formik }) => {
+  const inputHandler = (event, editor) => {
+    formik.setFieldValue("description", editor.getData());
+  };
   return (
     <>
       <CKEditor
@@ -49,10 +50,11 @@ const EditField = () => {
         onReady={(editor) => {
           console.log("ck is ready to use");
         }}
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          setData(data);
-        }}
+        onChange={inputHandler}
+      />
+      <ErrorMessage
+        name="description"
+        render={(msg) => <span style={{color:'red'}}> {msg} </span>}
       />
     </>
   );
