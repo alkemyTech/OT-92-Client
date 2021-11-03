@@ -20,31 +20,23 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import PHomeBody from "./Components/Home/PaginaPrincipal/PHomeBody";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact />
+          <Route path="/" component={PHomeBody} />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/backoffice/home" component={HomeForm} />
-          <Route
-            path="/backoffice/members/edit/:id"
-            component={MembersCreateEdit}
-          />
-          <Route
-            path="/backoffice/members/edit"
-            component={MembersCreateEdit}
-          />
+          <Route path="/backoffice/members/edit/:id" component={MembersCreateEdit} />
+          <Route path="/backoffice/members/edit" component={MembersCreateEdit} />
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news/" component={NewsForm} />
           <Route path="/backoffice/organization" component={Organization} />
-          <Route
-            path="/backoffice/organization/edit"
-            component={UpdateDataForm}
-          />
+          <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
