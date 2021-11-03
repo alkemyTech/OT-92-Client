@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import NewsFormat from '../News/Detail/NewsFormat';
+import Title from './Title';
 
 const About = () => {
   const [text, setText] = useState('');
 
-  useEffect(() => {
-    fetch('/api/about')
-      .then((res) => res.json())
-      .then((data) => setText(data.text));
-  }, []);
-
   return (
     <div className='p-5'>
-      <NewsFormat content={{ title: 'Nosotros' }} />
+      <Title content={{ title: 'Nosotros' }} />
       <h2 className='text-center mt-5'> Sobre nosotros</h2>
+      <p>{text}</p>
       {!text ? (
         <div class='d-flex justify-content-center mt-5'>
           <div class='spinner-border'>
