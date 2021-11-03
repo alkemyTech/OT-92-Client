@@ -48,8 +48,6 @@ const UsersList = ({ usersData }) => {
                                             <IoTrashSharp />
                                         </button>
                                     </div>
-                                    {/* service PUT con user.id como parametro */}
-                                    {/* service DELETE con user.id como parametro */}
                                 </td>
                             </tr>
                         ))
