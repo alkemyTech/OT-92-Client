@@ -130,8 +130,6 @@ const ProjectsForm = () => {
     date: Yup.mixed().required("Debes ingresar una fecha")
   });
 
-  const [onDate, setDate] = useState(new Date())
-
   return (
 
     // Dar estilos al dummy como una card preview de la actividad pd: El ver actividades debe tener los mismos estilos tanto
