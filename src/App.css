@@ -30,12 +30,12 @@ p {
           align-items: center;
 }
 
-#usersListContainer #tableResponsive {
-  font-size: 0.8rem;
-}
-
-.headers {
+#usersListContainer .headers {
   font-size: 1.7rem;
   font-family: "Neucha", cursive;
+}
+
+#usersListContainer #tableResponsive {
+  font-size: 0.8rem;
 }
 /*# sourceMappingURL=App.css.map */

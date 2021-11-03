@@ -23,12 +23,13 @@ p {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    .headers{
+        font-size: 1.7rem;
+        font-family: $title;
+    }
     #tableResponsive{
         font-size: 0.8rem;
     }
 }
 
-.headers{
-    font-size: 1.7rem;
-    font-family: $title;
-}
+
