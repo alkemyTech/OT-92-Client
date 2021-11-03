@@ -7,9 +7,6 @@ $second-color: #FAFA88;
 $third-color: #DB5752;
 
 
-a{
-    background-color: $first-color
-}
 
 p {
     display: flex;
@@ -40,6 +37,9 @@ p {
     }
     @media all and (max-width: 400px) {
         margin: 15px -8px;
+    }
+    #newUserButton{
+        margin: 25px 0;
     }
 }
 

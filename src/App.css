@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27");
-a {
-  background-color: #9AC9FB;
-}
-
 p {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -60,5 +56,9 @@ p {
   #usersListContainer {
     margin: 15px -8px;
   }
+}
+
+#usersListContainer #newUserButton {
+  margin: 25px 0;
 }
 /*# sourceMappingURL=App.css.map */

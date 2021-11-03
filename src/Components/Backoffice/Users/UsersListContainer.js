@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import UsersList from './UsersList'
 /* Importar los services para peticiones GET(obtener usuarios), PUT(editar usuario) y DELETE(eliminar usuario) */
 
@@ -14,6 +15,15 @@ const UsersListContainer = () => {
         <div className="container">
             <div id="usersListContainer">
                 <h3 className="headers">Lista de usuarios:</h3>
+                <Link to='/'>
+                    <button 
+                        type="button" 
+                        className="btn btn-primary" 
+                        id="newUserButton"
+                    >
+                        Crear nuevo usuario
+                    </button>
+                </Link>
                 <UsersList 
                     usersData={ usersData } /* Cambiar el nombre de "mockData" una vez integrado el service */
                 />
