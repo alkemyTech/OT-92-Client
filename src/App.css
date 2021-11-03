@@ -30,6 +30,10 @@ p {
           align-items: center;
 }
 
+#usersListContainer #tableResponsive {
+  font-size: 0.8rem;
+}
+
 .headers {
   font-size: 1.7rem;
   font-family: "Neucha", cursive;
