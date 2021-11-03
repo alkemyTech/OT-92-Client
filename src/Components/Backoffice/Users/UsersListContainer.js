@@ -15,7 +15,7 @@ const UsersListContainer = () => {
         <div className="container">
             <div id="usersListContainer">
                 <h3 className="headers">Lista de usuarios:</h3>
-                <Link to='/'>
+                <Link to='/backoffice/users/create'>
                     <button 
                         type="button" 
                         className="btn btn-primary" 
