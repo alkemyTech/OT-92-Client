@@ -20,6 +20,7 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             path="/backoffice/organization/edit"
             component={UpdateDataForm}
           />
+          <Route path="/backoffice/users" component={UsersListContainer} />
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
