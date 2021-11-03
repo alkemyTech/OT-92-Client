@@ -7,10 +7,11 @@ import axios from 'axios';
 
 const ActivitiesForm = () => {
     const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined });
-    const [isBase64, setBase64] = useState(false)
+    const [isBase64, setIsBase64] = useState(false)
     const [triggerCreate, setCTrigger] = useState(false)
     const [activityIsReady, setActivityReady] = useState(false)
     const [editTrigger, setEditTrigger] = useState(false)
+    const [imagenPreview, setImagenPreview] = useState(null)
     const initialValues = { name: "", image: null, description: "", complete: false, id: undefined }
 
 
@@ -24,15 +25,17 @@ const ActivitiesForm = () => {
             const metaData = `data:${formValues.image.type}; base64, `
             const reader = new FileReader();
             reader.readAsBinaryString(file)
-            reader.onload = () => { setValues({ ...formValues, image: btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)) }    //
-            setBase64(true)
+            reader.onload = () => { setValues({ ...formValues, image: metaData + btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)) }    //
+            setIsBase64(true)
 
 
         }
+
+        // condiciones para transformar la imagen y setearlas en el formulario
         if (formValues.image != null && isBase64 === false && formValues.id === undefined) {
             setbase64(formValues.image)
         } else if (formValues.image === null) {
-            setBase64(false)
+            setIsBase64(false)
         } else if (formValues.image != null && isBase64 === false && formValues.id !== undefined) {
             const imageUrl = formValues.image;
             const xhr = new XMLHttpRequest();
@@ -49,7 +52,6 @@ const ActivitiesForm = () => {
                 const url = "http://ongapi.alkemy.org/api/activities"
                 const data = await axios.post(url, queryObject)
                 try {
-
                     console.log(data)
                     console.log(queryObject)
                     setCTrigger(false)
@@ -102,16 +104,14 @@ const ActivitiesForm = () => {
         }
 
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isBase64, formValues, triggerCreate])
 
 
     // dummy preview
-    const [imagenPreview, setImagenPreview] = useState(null)
+ 
 
 
-    /*handler Change de inputs  pd: El componente EditorField
-     necesita llevarse el setState/state para realizar cambios */
 
     // validacion de YUP para formik
     const validate = Yup.object({
