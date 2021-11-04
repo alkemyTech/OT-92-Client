@@ -12,7 +12,8 @@ const Get = () => {
     .catch(err => console.log(err))
 }
 
-const publicPost = async (url, body) => {
+const publicPost = async (url, body) => {    //creamos un método POST para que pueda ser utilizado
+                                            //en toda la app
      try{
        const response = await axios({
            method: 'POST',
