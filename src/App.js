@@ -2,10 +2,6 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
-<<<<<<< HEAD
-import ActivitiesList from './Components/Activities/ActivitiesList';
-=======
->>>>>>> main
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
 import SlidesForm from './Components/Slides/SlidesForm';
@@ -31,10 +27,6 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path='/' exact />
-<<<<<<< HEAD
-=======
-
->>>>>>> main
           <Route path='/activities/:id' component={ActivitiesDetail} />
           <Route path='/backoffice/create-slide' component={SlidesForm} />
           <Route path='/backoffice/home' component={HomeForm} />
@@ -53,10 +45,6 @@ function App() {
             path='/backoffice/organization/edit'
             component={UpdateDataForm}
           />
-<<<<<<< HEAD
-          <Route path='/activities' component={ActivitiesList} />
-=======
->>>>>>> main
           <Route path='/create-activity' component={ActivitiesForm} />
           <Route path='/create-category' component={CategoriesForm} />
           <Route path='/create-member' component={MembersForm} />
