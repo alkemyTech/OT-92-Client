@@ -29,46 +29,27 @@ function App() {
         <Switch>
 
           <Route path="/" exact component={} />
-          <Route path="/activities/:id" />
+          
           <Route path="/backoffice/create-slide" component={SlidesForm} />
-          <Route path="/backoffice/home"/>
-          <Route path="/backoffice/members/edit/:id"/>
-          <Route path="/backoffice/members/edit" />
+          
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news/" component={NewsForm} />
-          <Route path="/backoffice/organization" />
-          <Route path="/backoffice/organization/edit"/>
-
-
-          <Route path="/" exact  />
-
-          <Route path="/" exact />
-
+          
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/backoffice/home" component={HomeForm} />
-          <Route
-            path="/backoffice/members/edit/:id"
-            component={MembersCreateEdit}
-          />
-          <Route
-            path="/backoffice/members/edit"
-            component={MembersCreateEdit}
-          />
-          <Route path="/backoffice/news/:id" component={NewsForm} />
-          <Route path="/backoffice/news/" component={NewsForm} />
+          <Route path="/backoffice/members/edit/:id" component={MembersCreateEdit} />
+          <Route path="/backoffice/members/edit" component={MembersCreateEdit} />
+         
           <Route path="/backoffice/organization" component={Organization} />
-          <Route
-            path="/backoffice/organization/edit"
-            component={UpdateDataForm}
-          />
+          <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
 
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
           <Route path="/create-news" component={NewsForm} />
 
-          <Route path="/backoffice" />
+          
 
           <Route path="/backoffice" component={ScreenDashboard} />
 
@@ -78,8 +59,7 @@ function App() {
           <Route path="/create-user" component={UserForm} />
           <Route path="/login" component={LoginForm} />
 
-          <Route path="/news" />
-          <Route path="/novedades/:id" />
+          
 
           <Route path="/news" component={NewsDisplay} />
           <Route path="/novedades/:id" component={NewsDetail} />
