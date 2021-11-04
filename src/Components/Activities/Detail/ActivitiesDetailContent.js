@@ -1,13 +1,11 @@
 import React from 'react'
 
-const ActivitiesDetailContent = ({ body, paramsId }) => {
-    
-
+const ActivitiesDetailContent = ({ body }) => {
 
     return (
-        <>
-            
-        </>
+        <div
+            dangerouslySetInnerHTML={{__html: body}}
+        />
     )
 }
 
