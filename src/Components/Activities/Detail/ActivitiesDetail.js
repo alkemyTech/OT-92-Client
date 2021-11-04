@@ -17,7 +17,7 @@ const ActivitiesDetail = () => {
     },
     {
       id: "3",
-      title: "torneo de futbol 5 ",
+      title: "Torneo de futbol 5 ",
       body: "<p>Los chicos que cursan el nivel secundario organizaron un torneo de futbol 5 el dia domingo.</p>",
     },
   ];
