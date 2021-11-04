@@ -1,0 +1,12 @@
+body {
+    background-color: aliceblue;
+}
+
+h6 {
+    text-decoration:solid
+}
+
+p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+}
