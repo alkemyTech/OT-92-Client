@@ -2,14 +2,18 @@ import axios from 'axios';
 
 const config = {
     headers: {
-        Group: 01                //Aqui va el ID del equipo!!
+        Group: 92             //Aqui va el ID del equipo!!
     }
 }
 
-const Get = () => {
-    axios.get('https://jsonplaceholder.typicode.com/users', config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+const queryPutData = (queryObject) => {
+    const url = "http://ongapi.alkemy.org/api/"
+    const axiosPut = axios.put(url, queryObject, config)
+    try {
+        console.log(axiosPut.data)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-export default Get
+export { queryPutData }
