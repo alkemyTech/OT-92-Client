@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Title from './Title';
 
 const About = () => {
@@ -7,8 +7,6 @@ const About = () => {
   return (
     <div className='p-5'>
       <Title content={{ title: 'Nosotros' }} />
-      <h2 className='text-center mt-5'> Sobre nosotros</h2>
-      <p>{text}</p>
       {!text ? (
         <div class='d-flex justify-content-center mt-5'>
           <div class='spinner-border'>
@@ -16,7 +14,7 @@ const About = () => {
           </div>
         </div>
       ) : (
-        <p>{text}</p>
+        <p className='mt-5'>{text}</p>
       )}
     </div>
   );
