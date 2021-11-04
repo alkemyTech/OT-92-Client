@@ -12,7 +12,7 @@ import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import ScreenDashboard from './Components/Backoffice/ScreenDashboard';
-import NewsDetail from './Components/News/Detail/Index';
+import NewsDetail from './Components/News/Detail';
 import Organization from './Components/Organization/Organization';
 import MembersCreateEdit from './Components/Members/MembersCreateEdit';
 import UpdateDataForm from './Components/Organization/UdpateDataForm';
@@ -26,7 +26,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={} />
+          <Route path="/" exact  />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/backoffice/home" component={HomeForm} />
