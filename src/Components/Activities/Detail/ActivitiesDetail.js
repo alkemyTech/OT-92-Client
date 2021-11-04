@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import './ActivitiesDetail.css';
+import ActivitiesDetailContent from "./ActivitiesDetailContent";
+
 const ActivitiesDetail = () => {
   let { id: paramsId } = useParams();
   const activities = [
@@ -28,7 +30,8 @@ const ActivitiesDetail = () => {
         {paramsActivity[0] ? (
           <div className="container d-flex flex-column justify-items-center mt-5">
             <h1 className=" h1 w-100 text-center Activities-title">{paramsActivity[0].title}</h1>
-            <h1 className="h3 Activities-body text-justify">{paramsActivity[0].body}</h1>
+           {/* Anterior contenido sin mi componente  <h1 className="h3 Activities-body text-justify">{paramsActivity[0].body}</h1> */}
+            <ActivitiesDetailContent />
           </div>
         ) : (
           <div className="mt-5 container">
