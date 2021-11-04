@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27");
-a {
-  background-color: #9AC9FB;
-}
-
 p {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10,5 +6,38 @@ p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#activitiesDetailContent {
+  background-color: #FAFA88;
+}
+
+#activitiesDetailContent p {
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: large;
+  padding: 10px;
+}
+
+#activitiesDetailContent img {
+  width: 400px;
+  height: 200px;
+  margin: 10px auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media all and (max-width: 450px) {
+  #activitiesDetailContent p {
+    font-size: medium;
+  }
+  #activitiesDetailContent img {
+    width: 80vw;
+    height: 20vh;
+    margin: 5px auto;
+  }
+}
+
+#activitiesDetailContent h1, #activitiesDetailContent h2, #activitiesDetailContent h3, #activitiesDetailContent h4, #activitiesDetailContent h5, #activitiesDetailContent h6 {
+  font-family: "Neucha", cursive;
 }
 /*# sourceMappingURL=App.css.map */
