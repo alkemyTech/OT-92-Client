@@ -10,9 +10,11 @@ import UserForm from './Components/Users/UsersForm';
 import SchoolCampaign from './Campaigns/School/SchoolCampaign';
 import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
+import MembersList from './Components/Backoffice/Members/MembersList';
+import CreateMember from './Components/Backoffice/Members/CreateMember';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import ScreenDashboard from './Components/Backoffice/ScreenDashboard';
-import NewsDetail from './Components/News/Detail/Index';
+import NewsDetail from './Components/News/Detail/index';
 import Organization from './Components/Organization/Organization';
 import MembersCreateEdit from './Components/Members/MembersCreateEdit';
 import UpdateDataForm from './Components/Organization/UdpateDataForm';
@@ -20,16 +22,19 @@ import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
 import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
-
+import Donations from './Components/Donations/Donations.js';
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={} />
+          {/* <Route path="/" exact component={} /> */}
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
+           <Route exact path="/backoffice" component={ScreenDashboard} />
           <Route path="/backoffice/home" component={HomeForm} />
+          <Route exact path="/backoffice/members" component={MembersList} />
+          <Route path="/backoffice/members/create" component={CreateMember} />
           <Route path="/backoffice/members/edit/:id" component={MembersCreateEdit} />
           <Route path="/backoffice/members/edit" component={MembersCreateEdit} />
           <Route path="/backoffice/news/:id" component={NewsForm} />
@@ -40,8 +45,7 @@ function App() {
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
           <Route path="/create-news" component={NewsForm} />
-          <Route path="/backoffice" component={ScreenDashboard} />
-          <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/donaciones" component={Donations} />
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
           <Route path="/create-user" component={UserForm} />
