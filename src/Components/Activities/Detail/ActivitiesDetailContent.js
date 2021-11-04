@@ -1,12 +1,13 @@
 import React from 'react'
 
-const ActivitiesDetailContent = () => {
+const ActivitiesDetailContent = ({ body, paramsId }) => {
+    
 
 
     return (
-        <div>
+        <>
             
-        </div>
+        </>
     )
 }
 
