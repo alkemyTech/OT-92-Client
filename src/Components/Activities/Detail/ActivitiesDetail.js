@@ -8,17 +8,17 @@ const ActivitiesDetail = () => {
     {
       id: "1",
       title: "Recorrido por el comedor",
-      body: "se recorre el comedor del area central, se le pregunta a la gente que es lo que mas le gusta comer y comimos de postre unos alfajores donados por Havanna.",
+      body: "<p>Se recorre el comedor del area central, se le pregunta a la gente que es lo que mas le gusta comer y comimos de postre unos alfajores donados por Havanna.</p>",
     },
     {
       id: "2",
       title: "Visitas clases de ingles",
-      body: "se visita a los alumnos de primaria en sus clases de ingles. ",
+      body: "<p>Se visita a los alumnos de primaria en sus clases de ingles.</p>",
     },
     {
       id: "3",
       title: "torneo de futbol 5 ",
-      body: "los chicos que cursan el nivel secundario organizaron un torneo de futbol 5 el dia domingo.",
+      body: "<p>Los chicos que cursan el nivel secundario organizaron un torneo de futbol 5 el dia domingo.</p>",
     },
   ];
   const paramsActivity = activities.filter(
