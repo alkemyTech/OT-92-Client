@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
+import ActivitiesList from './Components/Activities/ActivitiesList';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
 import SlidesForm from './Components/Slides/SlidesForm';
@@ -45,6 +46,7 @@ function App() {
             path='/backoffice/organization/edit'
             component={UpdateDataForm}
           />
+          <Route path='/activities' component={ActivitiesList} />
           <Route path='/create-activity' component={ActivitiesForm} />
           <Route path='/create-category' component={CategoriesForm} />
           <Route path='/create-member' component={MembersForm} />
