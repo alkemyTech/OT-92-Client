@@ -8,8 +8,8 @@ const config = {
 }
 
 
-const queryGetData = async (section) => {
-    const url = `http://ongapi.alkemy.org/api/${section}`
+const queryGetData = async (section, id) => {
+    const url = `http://ongapi.alkemy.org/api/${section}/${id}`
     let res = await axios.get(url, config);
     try {
         return res.data
@@ -17,4 +17,40 @@ const queryGetData = async (section) => {
         console.log(error)
     }
 }
-export { queryGetData };
+
+
+const queryPostCreateData = async (section, queryObject) => {
+    const url = `http://ongapi.alkemy.org/api/${section}`
+    const data = await axios.post(url, queryObject, config)
+    try {
+
+        console.log(data)
+        console.log(queryObject)
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+const queryPostEditData = async (section, queryObject) => {
+    const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`
+    const data = await axios.post(url, queryObject, config)
+    try {
+
+        console.log(data)
+        console.log(queryObject)
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+const queryGetObjectData = async (section, ID) => {
+
+    const url = `http://ongapi.alkemy.org/api/${section}/${ID}`
+    let res = await axios.get(url, config);
+    try {
+        return res.data
+    } catch (error) {
+        console.log(error)
+    }
+}
