@@ -20,6 +20,7 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/activities" component={ActivitiesDisplay} />
         </Switch>
       </BrowserRouter>
     </>
