@@ -35,10 +35,9 @@ const NewsListBackOffice = () => {
     <>
       <div className='d-flex align-items-center flex-column justify-content-around flex-lg-row'>
         <h1 className='mt-5'>Listado de novedades</h1>
-
         <div className='mt-5 m-auto'>
           <Link to='/backoffice/news/create' className='btn btn-success'>
-            Crear noticia
+            Crear novedad
           </Link>
         </div>
       </div>
@@ -57,7 +56,6 @@ const NewsListBackOffice = () => {
                   style={{ width: '5rem' }}
                 />
                 <h4 className='ml-3'>{news.name}</h4>
-
                 <p className='ml-3 mt-2'>{news.createdAt}</p>
               </div>
             </div>
