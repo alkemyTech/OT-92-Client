@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import About from './Components/About/About';
+import './App.css'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
@@ -14,7 +13,6 @@ import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import ScreenDashboard from './Components/Backoffice/ScreenDashboard';
 import NewsDetail from './Components/News/Detail';
-import NewsList from './Components/News/NewsList';
 import Organization from './Components/Organization/Organization';
 import MembersCreateEdit from './Components/Members/MembersCreateEdit';
 import UpdateDataForm from './Components/Organization/UdpateDataForm';
@@ -23,15 +21,17 @@ import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
 
+
+
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path='/' exact />
-          <Route path='/activities/:id' component={ActivitiesDetail} />
-          <Route path='/backoffice/create-slide' component={SlidesForm} />
-          <Route path='/backoffice/home' component={HomeForm} />
+          <Route path="/" exact />
+          <Route path="/activities/:id" component={ActivitiesDetail} />
+          <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/backoffice/home" component={HomeForm} />
           <Route
             path='/backoffice/members/edit/:id'
             component={MembersCreateEdit}
@@ -40,7 +40,7 @@ function App() {
             path='/backoffice/members/edit'
             component={MembersCreateEdit}
           />
-          <Route path='/backoffice/news' component={NewsList} />
+          
           <Route path='/backoffice/news/:id' component={NewsForm} />
           <Route path='/backoffice/news/create' component={NewsForm} />
           <Route path='/backoffice/organization' component={Organization} />
