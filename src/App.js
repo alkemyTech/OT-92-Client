@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './App.css'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
@@ -22,15 +22,16 @@ import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
 
+
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path='/' exact />
-          <Route path='/activities/:id' component={ActivitiesDetail} />
-          <Route path='/backoffice/create-slide' component={SlidesForm} />
-          <Route path='/backoffice/home' component={HomeForm} />
+          <Route path="/" exact />
+          <Route path="/activities/:id" component={ActivitiesDetail} />
+          <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/backoffice/home" component={HomeForm} />
           <Route
             path='/backoffice/members/edit/:id'
             component={MembersCreateEdit}
