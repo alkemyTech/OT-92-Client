@@ -45,7 +45,7 @@ function App() {
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
           <Route path="/create-news" component={NewsForm} />
-          <Route path="/donaciones" component={Donations} />
+          <Route path="/donations" component={Donations} />
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
           <Route path="/create-user" component={UserForm} />
