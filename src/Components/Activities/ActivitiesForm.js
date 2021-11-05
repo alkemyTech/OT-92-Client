@@ -4,6 +4,7 @@ import EditorField from "./EditorField"
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import axios from 'axios';
+import queryPutData from '../../Services/privateApiService';
 
 const ActivitiesForm = () => {
     const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined });
@@ -12,7 +13,7 @@ const ActivitiesForm = () => {
     const [activityIsReady, setActivityReady] = useState(false)
     const [editTrigger, setEditTrigger] = useState(false)
     const [imagenPreview, setImagenPreview] = useState(null)
-    const initialValues = { name: "", image: null, description: "", complete: false, id: undefined }
+    const [initialValues, setInitialValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined })
 
 
     /* en este useEffect se van a filtrar las actividades, ya sea para
@@ -65,23 +66,13 @@ const ActivitiesForm = () => {
         }
 
         //edit activity
-        if (editTrigger) {
-            const putActivity = async () => {
-                const queryObject = { name: formValues.name, description: formValues.description, image: formValues.image, id: formValues.id }
-                const url = "http://ongapi.alkemy.org/api/activities"
-                const data = await axios.put(url, queryObject)
-                try {
-
-                    console.log(data)
-                    console.log(queryObject)
-                    setEditTrigger(false)
-                }
-                catch (error) {
-                    console.log(error)
-                    setEditTrigger(false)
-                }
+        if (editTrigger === true) {
+            const queryObject = {
+                name: formValues.name, description: formValues.description, image: formValues.image, id: formValues.id
             }
-            putActivity();
+            queryPutData("activities", queryObject)
+            console.log("se puede editar(?")
+
         }
 
 
@@ -96,6 +87,8 @@ const ActivitiesForm = () => {
                     let data = res.data;
                     setValues(data.data)
                     setActivityReady(true)
+                    setImagenPreview(formValues.image)
+                    setInitialValues(data.data)
                 } catch (error) {
                     console.log(error)
                 }
@@ -105,11 +98,11 @@ const ActivitiesForm = () => {
 
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isBase64, formValues, triggerCreate])
+    }, [isBase64, formValues, triggerCreate, editTrigger])
 
 
     // dummy preview
- 
+
 
 
 
@@ -121,6 +114,26 @@ const ActivitiesForm = () => {
         image: Yup.mixed().required('Necesitas subir una foto'),
     });
 
+
+
+    // funcion devolver botones 
+
+    const Botonera = () => {
+        if (formValues.complete === true) {
+            if (formValues.id === undefined) {
+                return (<> <button className="submit-btn" onClick={() => { setCTrigger(true) }}>Crear</button>
+                    <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null) }}>Deshacer Cambios</button>  </>)
+            }
+            else if (formValues.id !== undefined) {
+                return (<>
+                    <button className="submit-btn" onClick={() => { setEditTrigger(true) }}>Editar</button>
+                    <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null); setActivityReady(false) }}>Deshacer Cambios</button>
+                </>)
+            }
+        }
+
+
+    }
 
     return (
 
@@ -135,22 +148,13 @@ const ActivitiesForm = () => {
                     <div dangerouslySetInnerHTML={{ __html: formValues.description }}>
                     </div>
 
-                    {formValues.complete ?
-                        <>
-                            <button className="submit-btn" onClick={() => { setCTrigger(true) }}>Crear</button>
-                            <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null) }}>Deshacer Cambios</button>
-                        </> : activityIsReady ?
-                            <>
-                                <button className="submit-btn" onClick={() => { setEditTrigger(true) }}>Editar</button>
-                                <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null); setActivityReady(false) }}>Deshacer Cambios</button>
-                            </> :
-                            null // boton "Deshacer Cambios" de "Editar" debe redirecciónar la ruta para su buen funcionamiento.
+                    {Botonera()}
 
-                    }
                 </div>
             </div>
             <Formik initialValues={initialValues}
                 validationSchema={validate}
+                enableReinitialize={true}
                 onSubmit={(values) => { setValues({ ...values, complete: true }); setImagenPreview(URL.createObjectURL(values.image)) }}
             >
                 {formik => (
