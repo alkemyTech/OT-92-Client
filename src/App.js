@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
+import CategoriesListBackoffice from './Components/Backoffice/CategoriesListBackoffice';
 import NewsForm from './Components/News/NewsForm';
 import SlidesForm from './Components/Slides/SlidesForm';
 import TestimonialForm from './Components/Testimonials/TestimonialsForm';
@@ -29,6 +30,10 @@ function App() {
           <Route path='/' exact />
 
           <Route path='/activities/:id' component={ActivitiesDetail} />
+          <Route
+            path='/backoffice/categories'
+            component={CategoriesListBackoffice}
+          />
           <Route path='/backoffice/create-slide' component={SlidesForm} />
           <Route path='/backoffice/home' component={HomeForm} />
           <Route
