@@ -1,20 +1,33 @@
 
 
 
-const ActivitiesDisplay = () => {
+const ActivitiesDisplay = ({actividades}) => {
    
    
-   
+   const DisplayActivitiesOnScreen = (actividades) =>{
+
+    actividades.map(actividad => {
+      return( <div className="col-2">
+      <div className="col-12 card">
+        <img src={actividad.image} className="card-img-top img-responsive" alt="..."/>
+        <div className="card-body">
+          <h5 className="card-title"> {actividad.name} </h5>
+          <p className="card-text"> {actividad.description} </p>
+        </div>
+        </div>
+      </div>)
+    })
+   }
    
    
    
     return ( 
         <>
+        
     <nav className="navbar bg-primary"> dummy nav</nav>
     <div className="container">
 <h1 className="h1 mt-5 mb-4">Titulo</h1>
-<p className="h3 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ipsam debitis magnam modi,
-     aliquam animi aliquid vitae consequuntur beatae laudantium</p>
+<p className="h3 mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis, nisi neque </p>
         <div className="row mt-5 mb-5">
             <div className="col-2">
                 <div className="col-12 card">
