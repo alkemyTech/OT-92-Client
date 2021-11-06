@@ -1,6 +1,6 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { ErrorMessage } from "formik";
-import Editor from "ckeditor5-custom-build/build/ckeditor";
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const editorConfiguration = {
   toolbar: {
     items: [
@@ -26,7 +26,7 @@ const EditorField = ({ formik,initialValue }) => {
   return (
     <>
       <CKEditor
-        editor={Editor}
+        editor={ClassicEditor}
         config={editorConfiguration}
         onReady={(editor) => {
           editor.setData(initialValue)
