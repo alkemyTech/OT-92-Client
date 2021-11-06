@@ -47,12 +47,12 @@ const ProjectsForm = (project) => {
   const validate = Yup.object({
     name: Yup.string()
       .required("necesitas ingresar un titulo"),
-    description: Yup.string().min(20, "El minimo es de 20 caracteres").max(500, "el maximo es de 500 caracteres").required("Este campo es obligatorio"),
+    description: Yup.string().min(20, "El minimo es de 20 caracteres").required("Este campo es obligatorio"),
     image: Yup.mixed().required('Necesitas subir una foto'),
     date: Yup.mixed().required("Debes ingresar una fecha")
   });
 
-
+  console.log(formValues)
 
   // funcion devolver botones 
 
@@ -79,7 +79,8 @@ const ProjectsForm = (project) => {
       <div className="row">
         <div className="">
           <h1 className="">Card Preview</h1>
-          {imagenPreview === null ? null : <img src={imagenPreview} alt="imagen" accept="image/jpg, image/png" height="200" width="300" />}
+          {imagenPreview === null ? null : <> <img src={imagenPreview} alt="imagen" accept="image/jpg, image/png" height="200" width="300" />
+            <h4> Fecha: </h4><span> {formValues.due_date} </span> </>}
           <h3> {formValues.name} </h3>
           <div dangerouslySetInnerHTML={{ __html: formValues.description }}>
           </div>
