@@ -17,7 +17,7 @@ const ProjectsForm = (project) => {
   const [imagenPreview, setImagenPreview] = useState(null)
   const initialValues = {
     name: project.name || "",
-    image: project.image || null,
+    image: project.image || "",
     description: project.description || "",
     id: project.id || undefined,
     due_date: project.due_date || ""
@@ -25,7 +25,7 @@ const ProjectsForm = (project) => {
 
   // parse file to base64 and return it to formState
   const setbase64 = async (file) => {
-    if (typeof file === 'object') {
+    if (typeof file === 'object' && !!file) {
       const metaData = `data:${formValues.image.type}; base64, `
       const reader = new FileReader();
       reader.readAsBinaryString(file)
