@@ -1,7 +1,6 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { ErrorMessage } from "formik";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
-import { useState } from "react";
 const editorConfiguration = {
   toolbar: {
     items: [
@@ -30,11 +29,12 @@ const EditorField = ({ formik,initialValue }) => {
         editor={Editor}
         config={editorConfiguration}
         onReady={(editor) => {
-          console.log("ck editor is ready: " + initialValue );
           editor.setData(initialValue)
         }}
         onChange={inputHandler}
+
       />
+      
       <ErrorMessage
         name="description"
         render={(msg) => <span className="error"> {msg} </span>}
