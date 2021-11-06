@@ -8,19 +8,19 @@ import axios from 'axios';
 
 const ProjectsForm = (project) => {
   const [formValues, setValues] = useState({
-    name: "" || project.name,
-    image: "" || project.image,
-    description: " " || project.description,
-    due_date: "" || project.due_date,
-    id: undefined || project.id
+    name: project.name || "",
+    image: project.image || null,
+    description: project.description || "",
+    id: project.id || undefined,
+    due_date: project.due_date || ""
   });
   const [imagenPreview, setImagenPreview] = useState(null)
   const initialValues = {
-    name: "" || project.name,
-    image: null || project.image,
-    description: " " || project.description,
-    due_date: "" || project.due_date,
-    id: undefined || project.id
+    name: project.name || "",
+    image: project.image || null,
+    description: project.description || "",
+    id: project.id || undefined,
+    due_date: project.due_date || ""
   }
 
   // parse file to base64 and return it to formState
