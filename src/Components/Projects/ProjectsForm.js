@@ -1,125 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../FormStyles.css';
-import EditorField from "../Activities/EditorField"
+import DatePicker from 'react-date-picker';
+import EditorField from "../Activities/EditorField";
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import axios from 'axios';
-import DatePicker from 'react-date-picker';
 
+const ProjectsForm = (project) => {
+  const [formValues, setValues] = useState({
+    name: "" || project.name,
+    image: "" || project.image,
+    description: " " || project.description,
+    due_date: "" || project.due_date,
+    id: undefined || project.id
+  });
+  const [imagenPreview, setImagenPreview] = useState(null)
+  const initialValues = {
+    name: "" || project.name,
+    image: null || project.image,
+    description: " " || project.description,
+    due_date: "" || project.due_date,
+    id: undefined || project.id
+  }
 
-const ProjectsForm = () => {
-  const [formValues, setValues] = useState({ date: "", name: "", image: null, description: "", complete: false, id: undefined });
-  const [isBase64, setBase64] = useState(false)
-  const [triggerCreate, setCTrigger] = useState(false)
-  const [projectIsReady, setProjectIsReady] = useState(false)
-  const [editTrigger, setEditTrigger] = useState(false)
-  const initialValues = { date: "", name: "", image: null, description: "", complete: false, id: undefined }
-
-
-
-  /* en este useEffect se van a filtrar las actividades, ya sea para
-  recibir una nueva como post, como para buscar una por su ID, solo dejo un ejemplo
-  para entender como va funcionar. */
-
-  useEffect(() => {
-    // parse file to base64 and return it to formState
-    const setbase64 = (file) => {
+  // parse file to base64 and return it to formState
+  const setbase64 = async (file) => {
+    if (typeof file === 'object') {
       const metaData = `data:${formValues.image.type}; base64, `
       const reader = new FileReader();
       reader.readAsBinaryString(file)
-      reader.onload = () => { setValues({ ...formValues, image: btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)) }    //
-      setBase64(true)
-
-
+      reader.onload = () => { setValues({ ...formValues, image: metaData + btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)) }    //
     }
-    if (formValues.image != null && isBase64 === false && formValues.id === undefined) {
-      setbase64(formValues.image)
-    } else if (formValues.image === null) {
-      setBase64(false)
-    } else if (formValues.image != null && isBase64 === false && formValues.id !== undefined) {
-      const imageUrl = formValues.image;
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", imageUrl, true);
-      xhr.responseType = "blob"
-      xhr.send();
-      xhr.onload = () => { setbase64(xhr.response) }
-    }
-
-    // create activity
-    if (triggerCreate) {
-      const createActivity = async () => {
-        const queryObject = { name: formValues.name, description: formValues.description, image: formValues.image }
-        const url = "http://ongapi.alkemy.org/api/projects"
-        const data = await axios.post(url, queryObject)
-        try {
-
-          console.log(data)
-          console.log(queryObject)
-          setCTrigger(false)
-        }
-        catch (error) {
-          console.log(error)
-          setCTrigger(false)
-        }
+    else if (typeof file === "string" && file.length < 150) {
+      const res = await axios.get(file, { responseType: 'blob' })
+      try {
+        setbase64(res.data)
+      } catch (error) {
+        console.log(error)
       }
-      createActivity();
     }
 
-    //edit activity
-    if (editTrigger) {
-      const putActivity = async () => {
-        const queryObject = { name: formValues.name, description: formValues.description, image: formValues.image, id: formValues.id }
-        const url = "http://ongapi.alkemy.org/api/projects"
-        const data = await axios.put(url, queryObject)
-        try {
-
-          console.log(data)
-          console.log(queryObject)
-          setEditTrigger(false)
-        }
-        catch (error) {
-          console.log(error)
-          setEditTrigger(false)
-        }
-      }
-      putActivity();
-    }
-
-
-    // get activity by id
-    const paramString = new URLSearchParams(window.location.search);
-    const activityID = paramString.get("id")
-    if (projectIsReady === false && activityID != null) {
-      const getActivity = async () => {
-        const url = "http://ongapi.alkemy.org/api/projects/" + activityID;
-        let res = await axios.get(url);
-        try {
-          let data = res.data;
-          setValues(data.data)
-          setProjectIsReady(true)
-        } catch (error) {
-          console.log(error)
-        }
-      }
-      getActivity()
-    }
-
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isBase64, formValues, triggerCreate])
-
-
-  // dummy preview
-  const [imagenPreview, setImagenPreview] = useState(null)
-
-
-  // today variables
-
-
-
-
-  /*handler Change de inputs  pd: El componente EditorField
-   necesita llevarse el setState/state para realizar cambios */
+  }
+  setbase64(formValues.image)
 
   // validacion de YUP para formik
   const validate = Yup.object({
@@ -130,44 +52,53 @@ const ProjectsForm = () => {
     date: Yup.mixed().required("Debes ingresar una fecha")
   });
 
+
+
+  // funcion devolver botones 
+
+  const Botonera = () => {
+    if (imagenPreview) {
+      if (formValues.id === undefined) {
+        return (<> <button className="submit-btn" onClick={() => { console.log(formValues) }}>Crear</button>
+          <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null) }}>Deshacer Cambios</button>  </>)
+      }
+      else if (formValues.id !== undefined) {
+        return (<>
+          <button className="submit-btn" onClick={() => { console.log("PUTproject " + formValues) }}>Editar</button>
+          <button className="submit-btn" onClick={() => { setValues(initialValues) }}>Deshacer Cambios</button>
+        </>)
+      }
+    }
+
+
+  }
+
   return (
 
-    // Dar estilos al dummy como una card preview de la actividad pd: El ver actividades debe tener los mismos estilos tanto
-    //en mobile como desktop para que la vista previa no difiera en estilos.
     <div className="container">
       <div className="row">
         <div className="">
-          <h1 className="">Dummy</h1>
+          <h1 className="">Card Preview</h1>
           {imagenPreview === null ? null : <img src={imagenPreview} alt="imagen" accept="image/jpg, image/png" height="200" width="300" />}
           <h3> {formValues.name} </h3>
-          <span> {formValues.complete ? "Fecha: " + formValues.date : null} </span>
           <div dangerouslySetInnerHTML={{ __html: formValues.description }}>
           </div>
 
-          {formValues.complete ?
-            <>
-              <button className="submit-btn" onClick={() => { setCTrigger(true) }}>Crear</button>
-              <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null) }}>Deshacer Cambios</button>
-            </> : projectIsReady ?
-              <>
-                <button className="submit-btn" onClick={() => { setEditTrigger(true) }}>Editar</button>
-                <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null); setProjectIsReady(false) }}>Deshacer Cambios</button>
-              </> :
-              null // boton "Deshacer Cambios" de "Editar" debe redirecciónar la ruta para su buen funcionamiento.
+          {Botonera()}
 
-          }
         </div>
       </div>
       <Formik initialValues={initialValues}
         validationSchema={validate}
-        onSubmit={(values) => { setValues({ ...values, complete: true, date: values.date.toLocaleDateString() }); setImagenPreview(URL.createObjectURL(values.image)) }}
+        enableReinitialize={true}
+        onSubmit={(values) => { setValues({ ...values, due_date: values.date.toLocaleDateString() }); setImagenPreview(URL.createObjectURL(values.image)) }}
       >
         {formik => (
           <Form className="form-container" >
             <input className="input-field" autoComplete="off"
               type="text" name="name" onChange={formik.handleChange} value={formik.values.name}
               onBlur={formik.handleBlur}
-              placeholder="Activity Title"></input>
+              placeholder="project Title"></input>
             <ErrorMessage name="name"
               render={(msg) => <span className="error"> {msg} </span>}
             />
@@ -185,16 +116,15 @@ const ProjectsForm = () => {
               render={(msg) => <span className="error"> {msg} </span>}
             />
 
-            <EditorField formik={formik} />
+            <EditorField formik={formik} initialValue={initialValues.description} />
+
 
             <button className="submit-btn" type="submit" >Send</button>
           </Form>
         )}
-
       </Formik>
     </div >
 
   );
 }
-
 export default ProjectsForm;

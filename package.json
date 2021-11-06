@@ -25,11 +25,7 @@
     "json-server": "^0.17.0",
     "leaflet": "^1.7.1",
     "react-bootstrap": "^2.0.0-rc.0",
-<<<<<<< Updated upstream
-=======
     "react-date-picker": "^8.3.4",
-    "react-dom": "^16.13.1",
->>>>>>> Stashed changes
     "react-geocode": "^0.2.3",
     "react-icons": "^4.2.0",
     "react-lazy-load": "^3.1.13",
