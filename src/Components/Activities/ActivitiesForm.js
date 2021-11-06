@@ -22,7 +22,7 @@ const ActivitiesForm = (activity) => {
 
     // parse file to base64 and return it to formState
     const setbase64 = async (file) => {
-        if (typeof file === 'object') {
+        if (typeof file === 'object' && !!file) {
             const metaData = `data:${formValues.image.type}; base64, `
             const reader = new FileReader();
             reader.readAsBinaryString(file)
