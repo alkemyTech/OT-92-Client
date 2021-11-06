@@ -27,9 +27,6 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-
-          <Route path="/" exact  />
-
           <Route path="/" exact />
 
           <Route path="/activities/:id" component={ActivitiesDetail} />
