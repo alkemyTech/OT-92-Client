@@ -7,17 +7,17 @@ import axios from 'axios';
 
 const ActivitiesForm = (activity) => {
     const [formValues, setValues] = useState({
-        name: "" || activity.name,
-        image: "" || activity.image,
-        description: " " || activity.description,
-        id: undefined || activity.id
+        name: activity.name || "",
+        image: activity.image || null,
+        description: activity.description || "",
+        id: activity.id || undefined
     });
     const [imagenPreview, setImagenPreview] = useState(null)
     const initialValues = {
-        name: "" || activity.name,
-        image: null || activity.image,
-        description: " " || activity.description,
-        id: undefined || activity.id
+        name: activity.name || "",
+        image: activity.image || null,
+        description: activity.description || "",
+        id: activity.id || undefined
     }
 
     // parse file to base64 and return it to formState
