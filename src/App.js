@@ -1,7 +1,12 @@
 
 import React from 'react';
+<<<<<<< HEAD
 import './App.css'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+=======
+import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+>>>>>>> 7f3bc0072470029179aae502e49c1753b1481993
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';

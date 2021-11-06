@@ -8,7 +8,11 @@ import axios from 'axios';
 const ActivitiesForm = (activity) => {
     const [formValues, setValues] = useState({
         name: "" || activity.name,
+<<<<<<< HEAD
         image: "" || activity.image,
+=======
+        image: "https://image.shutterstock.com/image-illustration/asf-original-monogram-logo-design-260nw-1667806693.jpg" || activity.image,
+>>>>>>> 7f3bc0072470029179aae502e49c1753b1481993
         description: " " || activity.description,
         id: undefined || activity.id
     });
