@@ -20,6 +20,7 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import SlidesListBo from "./Components/Backoffice/Slides/SlidesListBO"
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" exact />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/backoffice/slides" component={SlidesListBo} />
           <Route path="/backoffice/home" component={HomeForm} />
           <Route
             path="/backoffice/members/edit/:id"
