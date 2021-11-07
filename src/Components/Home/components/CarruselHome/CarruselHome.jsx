@@ -2,15 +2,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
-import './PHomeBody.css'
+import './CarruselHome.css'
 
 let contador = 0
 let interval
 let timeOut
 
 
-const PHomeBody = () => {
-
+const CarruselHome = () => {
     let urlSlides = 'http://ongapi.alkemy.org/public/api/slides'
     const [descripcion, setDescripcion] = useState()
     const [imgActual, setimgActual] = useState()
@@ -163,7 +162,7 @@ const PHomeBody = () => {
 
 
     return (
-        <div>
+        <div className="container-carrusel">
             {
                 imagenes
                     ? <div className="contenedor-Img-Carrusel-Home">
@@ -191,4 +190,4 @@ const PHomeBody = () => {
     )
 }
 
-export default PHomeBody
+export default CarruselHome
