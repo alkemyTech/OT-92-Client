@@ -7,7 +7,34 @@ const ContactForm = () => {
     return (
         <div className="form-container">
             <h3>Contactanos</h3>
-
+            <Formik>
+                <Form>
+                    <TextInput 
+                        label=""
+                        name=""
+                        type=""
+                        placeholder=""
+                    />
+                    <TextInput 
+                        label=""
+                        name=""
+                        type=""
+                        placeholder=""
+                    />
+                    <TextInput 
+                        label=""
+                        name=""
+                        type=""
+                        placeholder=""
+                    />
+                    <TextInput 
+                        label=""
+                        name=""
+                        type=""
+                        placeholder=""
+                    />
+                </Form>
+            </Formik>
         </div>
     )
 }
