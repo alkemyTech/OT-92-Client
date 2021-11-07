@@ -5,37 +5,37 @@ import TextInput from '../Newsletter/TextInput';
 
 const ContactForm = () => {
     return (
-        <div className="form-container">
-            <h3>Contactanos</h3>
+        <>
             <Formik>
-                <Form>
+                <Form className="form-container">
+                    <h3>Contactanos</h3>
                     <TextInput 
-                        label=""
-                        name=""
-                        type=""
-                        placeholder=""
+                        label="Nombre y Apellido"
+                        name="name"
+                        type="text"
+                        placeholder="Juan Perez"
                     />
                     <TextInput 
-                        label=""
-                        name=""
-                        type=""
-                        placeholder=""
+                        label="Email"
+                        name="email"
+                        type="email"
+                        placeholder="juanperez@gmail.com"
                     />
                     <TextInput 
-                        label=""
-                        name=""
-                        type=""
-                        placeholder=""
+                        label="Telefono"
+                        name="phone"
+                        type="number"
+                        placeholder="12345678"
                     />
                     <TextInput 
-                        label=""
-                        name=""
-                        type=""
-                        placeholder=""
+                        label="Mensaje"
+                        name="message"
+                        type="text"
+                        placeholder="Envíanos tu consulta o mensaje."
                     />
                 </Form>
             </Formik>
-        </div>
+        </>
     )
 }
 
