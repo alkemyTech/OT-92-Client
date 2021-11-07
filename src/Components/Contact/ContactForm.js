@@ -18,9 +18,10 @@ const ContactForm = () => {
                         .required('Requerido'),
                     email: Yup.string().email('Correo inválido')
                         .required('Requerido'),
-                    phone: Yup.number()
+                    phone: Yup.string()
+                        .matches(/^[0-9]+$/, "Solo se pueden ingresar números")
                         .min(8, "Debe tener como mínimo 8 caracteres")
-                        .required('Requerido'),
+                        .required('Requerido - Ingresar solo números'),
                     message: Yup.string()
                         .required('Requerido')
                 })}
