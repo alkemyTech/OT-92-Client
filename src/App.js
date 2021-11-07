@@ -45,7 +45,6 @@ function App() {
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-member" component={MembersForm} />
           <Route path="/create-news" component={NewsForm} />
-          <Route path="/backoffice" component={ScreenDashboard} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
@@ -73,12 +72,12 @@ function App() {
             path='/backoffice/organization/edit'
             component={UpdateDataForm}
           />
-          <Route path="/backoffice/users" component={UsersListContainer} />
+          <Route path='/backoffice/users' component={UsersListContainer} />
           <Route path='/create-activity' component={ActivitiesForm} />
           <Route path='/create-category' component={CategoriesForm} />
           <Route path='/create-member' component={MembersForm} />
           <Route path='/create-news' component={NewsForm} />
-          <Route path='/backoffice' component={ScreenDashboard} />
+          <Route path='/backoffice' exact component={ScreenDashboard} />
           <Route path='/backoffice/create-slide' component={SlidesForm} />
           <Route path='/create-project' component={ProjectsForm} />
           <Route path='/create-testimonials' component={TestimonialForm} />
