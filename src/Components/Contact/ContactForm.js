@@ -57,6 +57,7 @@ const ContactForm = () => {
                         type="text"
                         placeholder="Envíanos tu consulta o mensaje."
                     />
+                    <button className="btn-submit-Crear-Editar-Members btn btn-success" type="submit">Enviar</button>
                 </Form>
             </Formik>
         </>

@@ -114,3 +114,9 @@
     margin-top: 3%;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 740px) {
+    .btn-submit-Crear-Editar-Members{
+        width: 25vw;
+    }
+}
