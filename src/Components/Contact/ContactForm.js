@@ -6,7 +6,31 @@ import TextInput from '../Newsletter/TextInput';
 const ContactForm = () => {
     return (
         <>
-            <Formik>
+            <Formik
+                initialValues={{
+                    name: '',
+                    email: '',
+                    phone: '',
+                    message: '',
+                }}
+                validationSchema={Yup.object({
+                    name: Yup.string()
+                        .required('Requerido'),
+                    email: Yup.string().email('Correo inválido')
+                        .required('Requerido'),
+                    phone: Yup.number()
+                        .min(8, "Debe tener como mínimo 8 caracteres")
+                        .required('Requerido'),
+                    message: Yup.string()
+                        .required('Requerido')
+                })}
+                onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                        console.log(JSON.stringify(values, null, 2));
+                        setSubmitting(false)
+                    }, 400)
+                }}
+            >
                 <Form className="form-container">
                     <h3>Contactanos</h3>
                     <TextInput 
