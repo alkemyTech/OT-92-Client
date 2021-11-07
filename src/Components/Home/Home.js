@@ -1,4 +1,7 @@
 import React from 'react';
+
+import CarruselHome from './components/CarruselHome'
+
 const Home = () => {
   return (
     <div className="d-flex flex-column">
@@ -7,7 +10,7 @@ const Home = () => {
         className="d-flex bg-primary align-items-center"
         style={{ height: '50vh' }}
       >
-        <h1>Slider</h1>
+        <CarruselHome/>
       </div>
 
       <h1 className="m-5">Texto de bienvenida</h1>
