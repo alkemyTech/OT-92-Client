@@ -21,7 +21,6 @@ import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
 import About from './Components/About'
-import ContactForm from './Components/Contact/ContactForm';
 
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={ContactForm}/>
+          <Route path="/" exact />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/backoffice/home" component={HomeForm} />
