@@ -52,7 +52,7 @@ p {
   }
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 450px) {
   #usersListContainer {
     margin: 15px -8px;
   }
@@ -60,5 +60,39 @@ p {
 
 #usersListContainer #newUserButton {
   margin: 25px 0;
+}
+
+#activitiesDetailContent {
+  background-color: #FAFA88;
+}
+
+#activitiesDetailContent p {
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: large;
+  padding: 10px;
+  color: black;
+}
+
+#activitiesDetailContent img {
+  width: 400px;
+  height: 200px;
+  margin: 10px auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media all and (max-width: 450px) {
+  #activitiesDetailContent p {
+    font-size: medium;
+  }
+  #activitiesDetailContent img {
+    width: 80vw;
+    height: 20vh;
+    margin: 5px auto;
+  }
+}
+
+#activitiesDetailContent h1, #activitiesDetailContent h2, #activitiesDetailContent h3, #activitiesDetailContent h4, #activitiesDetailContent h5, #activitiesDetailContent h6 {
+  font-family: "Neucha", cursive;
 }
 /*# sourceMappingURL=App.css.map */
