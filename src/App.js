@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import About from './Components/About'
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import CategoriesListBackoffice from './Components/Backoffice/CategoriesListBackoffice';
@@ -22,13 +23,14 @@ import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
 
+
+
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
           <Route path='/' exact />
-
           <Route path='/activities/:id' component={ActivitiesDetail} />
           <Route
             path='/backoffice/categories'
@@ -45,7 +47,7 @@ function App() {
             component={MembersCreateEdit}
           />
           <Route path='/backoffice/news/:id' component={NewsForm} />
-          <Route path='/backoffice/news/' component={NewsForm} />
+          <Route path='/backoffice/news/create' component={NewsForm} />
           <Route path='/backoffice/organization' component={Organization} />
           <Route
             path='/backoffice/organization/edit'
@@ -62,6 +64,7 @@ function App() {
           <Route path='/create-user' component={UserForm} />
           <Route path='/login' component={LoginForm} />
           <Route path='/news' component={NewsDisplay} />
+          <Route path='/nosotros' component={About} />
           <Route path='/novedades/:id' component={NewsDetail} />
           <Route path='/school-campaign' component={SchoolCampaign} />
           <Route path='/toys-campaign' component={ToysCampaign} />
