@@ -24,6 +24,7 @@ import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
 import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
+import Home from './Components/Home/Home';
 
 import MembersList from './Components/About/MembersList';
 
@@ -36,7 +37,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact />
+          <Route path="/" exact component={Home} />
 
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
