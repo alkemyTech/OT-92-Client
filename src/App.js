@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
@@ -21,6 +22,7 @@ import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
 import HomeForm from './Components/Home/HomeForm';
 import NewsDisplay from './Components/News/NewsDisplay';
 import LoginForm from './Components/Auth/LoginForm';
+
 
 
 function App() {
@@ -58,6 +60,7 @@ function App() {
           <Route path='/create-user' component={UserForm} />
           <Route path='/login' component={LoginForm} />
           <Route path='/news' component={NewsDisplay} />
+          <Route path='/nosotros' component={About} />
           <Route path='/novedades/:id' component={NewsDetail} />
           <Route path='/school-campaign' component={SchoolCampaign} />
           <Route path='/toys-campaign' component={ToysCampaign} />
