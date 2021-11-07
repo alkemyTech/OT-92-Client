@@ -4,18 +4,11 @@ const config = {
     headers: {
         Group: 92,
         Authorization: null,
-    }
-}
+    },
+};
 
-const Get = () => {
-    axios.get('https://jsonplaceholder.typicode.com/users', config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-}
-
-export default Get
-
-const queryDeleteById = async (section, id) => {
+//Función que elimina un item mediante su sección y su Id
+export const queryDeleteById = async (section, id) => {
     const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
     const configuration = getAuthorization();
     /* Este metodo getAuthorization() fue desarrollado en el ticket 69
@@ -28,4 +21,12 @@ const queryDeleteById = async (section, id) => {
         console.log("Something went wrong: " + error)
     }
 }
-export { queryDeleteById };
+
+//function that gets the token from local storage and returns a headers with authorization object
+export const getAuthorization = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+};
