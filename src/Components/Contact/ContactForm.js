@@ -28,6 +28,7 @@ const ContactForm = () => {
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                         console.log(JSON.stringify(values, null, 2));
+                        //Aquí irá la función para enviar la información submiteada
                         setSubmitting(false)
                     }, 400)
                 }}
