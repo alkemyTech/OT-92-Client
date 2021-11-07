@@ -1,6 +1,6 @@
 import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import Editor from "ckeditor5-custom-build/build/ckeditor";
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {ErrorMessage} from 'formik'
 
 const editorConfiguration = {
@@ -45,7 +45,7 @@ const EditField = ({ formik }) => {
   return (
     <>
       <CKEditor
-        editor={Editor}
+        editor={ClassicEditor}
         config={editorConfiguration}
         onReady={(editor) => {
           console.log("ck is ready to use");
