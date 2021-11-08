@@ -67,10 +67,18 @@ export const Get = () => {
     .catch(err => console.log(err))
 }
 
-export const getHomeData = async () => {                           //creamos un método GET para llevar a cabo las
-    await axios.get('http://ongapi.alkemy.org/public/api/slides') //peticiones del componente "Slider" del Home
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+export const getHomeData = async (url) => {        //creamos un método GET para llevar a cabo
+    try {                                         //las peticiones de los componenentes del Home
+      const response = await axios({
+          method: 'GET',
+          url: url,
+          
+      })
+      console.log(response)
+      return response
+    } catch (err) {
+         console.log(err)
+    }
 }
 
 const publicPost = async (url, body) => {    //creamos un método POST para que pueda ser utilizado

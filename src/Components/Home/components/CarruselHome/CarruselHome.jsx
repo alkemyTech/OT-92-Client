@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
+import { getHomeData } from '../../../../Services/publicApiService'
 import './CarruselHome.css'
 
 let contador = 0
@@ -134,23 +135,23 @@ const CarruselHome = () => {
 
     useEffect(() => {
         const obtenerDatos = async () => {
-            const dataImg = await axios.get(urlSlides),
-                resDataImg = await dataImg.data.data;
-
+            const dataImg = getHomeData(urlSlides),
+                resDataImg = await dataImg.data;
+    
             if (resDataImg) {
-
+    
                 arrDeImg.push(resDataImg)
                 setImagenes(arrDeImg)
                 setimgActual(arrDeImg[0][contador].image)
                 setTitulo(arrDeImg[0][contador].name)
                 setDescripcion(arrDeImg[0][contador].description)
-
+    
                 if (arrDeImg[0][contador].description != null) {
                     let datosSinParsear = arrDeImg[0][contador].description, //Obtiene la descripcion original
                         datosParseados = datosSinParsear.replace(/(<([^>]+)>)/g, "") //Convierte la descripcion De HTMl a String
                     setDescripcion(datosParseados)
                 }
-
+    
                 intervalFunction(arrDeImg)
             }
         }
@@ -159,7 +160,6 @@ const CarruselHome = () => {
             clearInterval(interval)
         }
     }, [urlSlides])
-
 
     return (
         <div className="container-carrusel">
