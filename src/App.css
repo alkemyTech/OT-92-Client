@@ -1,39 +1,98 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27");
+p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+#usersListContainer {
+  height: auto;
+  margin: 15px 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
+#usersListContainer .headers {
+  font-size: 1.7rem;
+  font-family: "Neucha", cursive;
+}
+
+#usersListContainer #tableResponsive {
+  font-size: 0.9rem;
+}
+
+#usersListContainer #tableResponsive .actions_container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+
+@media all and (max-width: 576px) {
+  #usersListContainer #tableResponsive {
+    font-size: 0.7rem;
   }
 }
+
+@media all and (max-width: 450px) {
+  #usersListContainer {
+    margin: 15px -8px;
+  }
+}
+
+#usersListContainer #newUserButton {
+  margin: 25px 0;
+}
+
+#activitiesDetailContent {
+  background-color: #FAFA88;
+}
+
+#activitiesDetailContent p {
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: large;
+  padding: 10px;
+  color: black;
+}
+
+#activitiesDetailContent img {
+  width: 400px;
+  height: 200px;
+  margin: 10px auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media all and (max-width: 450px) {
+  #activitiesDetailContent p {
+    font-size: medium;
+  }
+  #activitiesDetailContent img {
+    width: 80vw;
+    height: 20vh;
+    margin: 5px auto;
+  }
+}
+
+#activitiesDetailContent h1, #activitiesDetailContent h2, #activitiesDetailContent h3, #activitiesDetailContent h4, #activitiesDetailContent h5, #activitiesDetailContent h6 {
+  font-family: "Neucha", cursive;
+}
+/*# sourceMappingURL=App.css.map */
