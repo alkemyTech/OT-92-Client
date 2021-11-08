@@ -67,8 +67,8 @@ export const Get = () => {
     .catch(err => console.log(err))
 }
 
-export const getHomeData = () => {                           //creamos un método GET para llevar a cabo las
-    axios.get('http://ongapi.alkemy.org/public/api/slides') //peticiones del componente "Slider" del Home
+export const getHomeData = async () => {                           //creamos un método GET para llevar a cabo las
+    await axios.get('http://ongapi.alkemy.org/public/api/slides') //peticiones del componente "Slider" del Home
     .then(res => console.log(res))
     .catch(err => console.log(err))
 }

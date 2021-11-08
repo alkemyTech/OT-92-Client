@@ -81,8 +81,8 @@ export const activitiesService = {
   },
 
     Authorization: null,
-  },
-};
+  }
+
 
 export const queryPutData = async (section, queryObject) => {
     const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`
