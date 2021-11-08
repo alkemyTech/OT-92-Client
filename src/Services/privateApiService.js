@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const config = {
   headers: {
     Group: 92,
@@ -13,3 +15,22 @@ export const getAuthorization = () => {
   }
   return config;
 };
+
+
+// function that makes a post request to the api obtaining an authentication from the getAuthorization function
+
+const ServicePostPrivate = async (section, id) => {
+  const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
+  const configuration = getAuthorization();
+  /* This getAuthorization () method was developed in ticket 69
+  by Facundo Delavalle */
+  let res = await axios.post(url, configuration);
+  try {
+    console.log(`The request was successful`);
+    console.log(res.status);
+  } catch (error) {
+    console.log("Something went wrong: " + error)
+  }
+}
+
+export { ServicePostPrivate }
