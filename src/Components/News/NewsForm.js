@@ -8,7 +8,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {
   newsCreate,
   newsUpdate,
-  newsDelete,
   newsGet,
 } from '../../Services/publicApiService';
 
@@ -31,8 +30,8 @@ const NewsForm = () => {
   const { id } = useParams(); //Esto valida si se esta editando o creando un post mediante paso de parametros
   const refP = useRef(); //cambia la visibilidad del <p> "insertar imagen"
   const urlCategoria = 'http://ongapi.alkemy.org/public/api/categories';
-  const urlEditarNovedad = `http://ongapi.alkemy.org/public/api/news/${id}`;
-  const urlCrearNovedad = 'http://ongapi.alkemy.org/public/api/news';
+//   const urlEditarNovedad = `http://ongapi.alkemy.org/public/api/news/${id}`;
+//   const urlCrearNovedad = 'http://ongapi.alkemy.org/public/api/news';
   const [categorias, setcategorias] = useState([]); //obtiene las categorias del endpoint
 
   const datosForm = {
@@ -41,6 +40,8 @@ const NewsForm = () => {
     content: '',
     img: '',
     id: id || '',
+    //La api necesita que le mande name sí o si, de lo contrario no anda.
+    name: '',
   };
 
   const [initialValues, setInitialValues] = useState(datosForm);
@@ -48,7 +49,7 @@ const NewsForm = () => {
   const handleChange = e => {
     //actualiza el estado de title y category
     if (e.target.name === 'title') {
-      setInitialValues({ ...initialValues, title: e.target.value });
+      setInitialValues({ ...initialValues, name: e.target.value });
     }
     if (e.target.name === 'category') {
       setInitialValues({ ...initialValues, category: e.target.value });
@@ -70,13 +71,14 @@ const NewsForm = () => {
     const datosSinEtiquetas = datosConEtiquetas.replace(/<[^>]+>/g, ''); //convierte a texto plano el content
     console.log(initialValues);
     if (!id) {
-      axios
-        .post(urlCrearNovedad, {
-          name: initialValues.title,
-          image: initialValues.img,
-          content: datosSinEtiquetas,
-          category_id: initialValues.category,
-        })
+      //   axios
+      //     .post(urlCrearNovedad, {
+      //       name: initialValues.title,
+      //       image: initialValues.img,
+      //       content: datosSinEtiquetas,
+      //       category_id: initialValues.category,
+      //     })
+      newsCreate(initialValues)
         .then(res => {
           if (res.status === 200) {
             alert('El post se creó correctamente');
@@ -88,13 +90,14 @@ const NewsForm = () => {
         });
     }
     if (id) {
-      axios
-        .put(urlEditarNovedad, {
-          name: initialValues.title,
-          image: initialValues.img,
-          content: datosSinEtiquetas,
-          category_id: initialValues.category,
-        })
+      //   axios
+      //     .put(urlEditarNovedad, {
+      //       name: initialValues.title,
+      //       image: initialValues.img,
+      //       content: datosSinEtiquetas,
+      //       category_id: initialValues.category,
+      //     })
+      newsUpdate(initialValues)
         .then(res => {
           if (res.status === 200) {
             alert('El post se actualizó correctamente');
@@ -126,7 +129,7 @@ const NewsForm = () => {
       setcategorias(categoriaData);
 
       if (id) {
-        const datosIniciales = await axios.get(urlEditarNovedad),
+        const datosIniciales = await newsGet(initialValues),
           EditNewData = datosIniciales.data.data,
           { name, content } = await EditNewData;
         if (name) setInitialValues({ ...initialValues, title: name });
@@ -147,7 +150,7 @@ const NewsForm = () => {
             className="input-field"
             type="text"
             name="title"
-            value={initialValues.title || ''}
+            value={initialValues.name || ''}
             onChange={handleChange}
           ></input>
         </label>
