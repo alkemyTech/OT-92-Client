@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
 import NewsForm from "./Components/News/NewsForm";
@@ -25,6 +25,7 @@ import MembersList from './Components/About/MembersList';
 import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
 import Donations from './Components/Donations/Donations.js';
+import NewsListBackOffice from './Components/Backoffice/NewsListBackOffice';
 
 function App() {
   return (
@@ -48,9 +49,8 @@ function App() {
             path='/backoffice/members/edit'
             component={MembersCreateEdit}
           />
-          <Route path='/backoffice/news/' component={NewsForm} />
           <Route path='/backoffice/news/:id' component={NewsForm} />
-          <Route path='/backoffice/news/' component={NewsForm} />
+          <Route path='/backoffice/news/' component={NewsListBackOffice} />
           <Route path='/backoffice/organization' component={Organization} />
           <Route
             path='/backoffice/organization/edit'
