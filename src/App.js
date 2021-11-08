@@ -50,7 +50,7 @@ function App() {
           />
           <Route path='/backoffice/news/' component={NewsForm} />
           <Route path='/backoffice/news/:id' component={NewsForm} />
-          <Route path='/backoffice/news/create' component={NewsForm} />
+          <Route path='/backoffice/news/' component={NewsForm} />
           <Route path='/backoffice/organization' component={Organization} />
           <Route
             path='/backoffice/organization/edit'
