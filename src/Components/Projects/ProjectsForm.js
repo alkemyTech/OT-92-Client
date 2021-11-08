@@ -17,11 +17,7 @@ const ProjectsForm = (project) => {
   const [imagenPreview, setImagenPreview] = useState(null)
   const initialValues = {
     name: project.name || "",
-<<<<<<< HEAD
-    image: project.image || "",
-=======
     image: project.image || null,
->>>>>>> d3946610ce717718315b74a04d7c3c6e82f590c9
     description: project.description || "",
     id: project.id || undefined,
     due_date: project.due_date || ""
