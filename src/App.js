@@ -21,6 +21,7 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import SlidesListBo from "./Components/Backoffice/Slides/SlidesListBO"
 import ActivitesList from "./Components/Activities/ActivitesList";
 import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 import Home from "./Components/Home/Home";
@@ -39,12 +40,12 @@ function App() {
           <Route path="/" exact component={Home} />
 
           <Route path="/activities/:id" component={ActivitiesDetail} />
-
           <Route path="/backoffice" exact component={ScreenDashboard} />
           <Route exact path="/backoffice/activities" component={ActivitesList}/>
           <Route path="/backoffice/organization" component={Organization} />
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/backoffice/home" component={HomeForm} />
+          <Route path="/backoffice/slides" component={SlidesListBo} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route
             path='/backoffice/categories'
