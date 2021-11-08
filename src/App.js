@@ -24,6 +24,7 @@ import Home from "./Components/Home/Home";
 import MembersList from './Components/About/MembersList';
 import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
+import Donations from './Components/Donations/Donations.js';
 
 function App() {
   return (
@@ -65,6 +66,9 @@ function App() {
           <Route path='/create-testimonials' component={TestimonialForm} />
           <Route path='/create-user' component={UserForm} />
           
+          <Route path="/donaciones" component={Donations} />
+
+
           <Route path="/login" component={LoginForm} />
         
           <Route path="/news" component={NewsDisplay} />
