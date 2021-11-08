@@ -20,6 +20,7 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import ActivitesList from "./Components/Activities/ActivitesList";
 import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 import Home from "./Components/Home/Home";
 import MembersList from './Components/About/MembersList';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/activities/:id" component={ActivitiesDetail} />
 
           <Route path="/backoffice" exact component={ScreenDashboard} />
+          <Route exact path="/backoffice/activities" component={ActivitesList}/>
           <Route path="/backoffice/organization" component={Organization} />
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/backoffice/home" component={HomeForm} />
@@ -79,7 +81,6 @@ function App() {
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/activities" component={ActivitiesDisplay} />
-
         </Switch>
       </BrowserRouter>
     </>
