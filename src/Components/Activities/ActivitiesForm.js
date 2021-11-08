@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import '../FormStyles.css';
-import EditorField from "./EditorField"
-import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from "yup";
-import axios from 'axios';
+import { activitiesService } from '../../Services/privateApiService';
 
 const ActivitiesForm = (activity) => {
     const [formValues, setValues] = useState({
@@ -112,7 +109,7 @@ const ActivitiesForm = (activity) => {
                 )}
 
             </Formik>
-        </div >
+        </div>
 
     );
 }
