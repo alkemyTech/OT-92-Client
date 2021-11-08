@@ -41,7 +41,7 @@ const newsGet = body => {
 };
 
 
-export default {
+export {
     newsCreate,
     newsUpdate,
     newsDelete,
