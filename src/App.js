@@ -20,6 +20,7 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 import Home from "./Components/Home/Home";
 import MembersList from './Components/About/MembersList';
 import About from './Components/About'
@@ -77,6 +78,7 @@ function App() {
 
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/activities" component={ActivitiesDisplay} />
 
         </Switch>
       </BrowserRouter>

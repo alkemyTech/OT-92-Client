@@ -1,7 +1,6 @@
 const config = {
   headers: {
     Group: 92,
-
   },
 };
 
@@ -67,6 +66,17 @@ export const activitiesService = {
   },
 };
 
+export const queryPutData = async (section, queryObject) => {
+    const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`
+    const axiosPut = await axios.put(url, queryObject, config)
+    console.log("asdss")
+    try {
+        console.log(axiosPut.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 //function that gets the token from local storage and returns a headers with authorization object
 export const getAuthorization = () => {
   const token = localStorage.getItem("token");
@@ -74,5 +84,4 @@ export const getAuthorization = () => {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
-
 };
