@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { setLocale } from "yup";
 import "./HomeForm.css";
 import { Formik, Form, ErrorMessage } from "formik";
 
