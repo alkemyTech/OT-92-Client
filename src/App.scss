@@ -7,11 +7,71 @@ $second-color: #FAFA88;
 $third-color: #DB5752;
 
 
-a{
-    background-color: $first-color
-}
 
 p {
     display: flex;
     justify-content: center;
+}
+
+#usersListContainer{
+    height: auto;
+    margin: 15px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    .headers{
+        font-size: 1.7rem;
+        font-family: $title;
+    }
+    #tableResponsive{
+        font-size: 0.9rem;
+        .actions_container{
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        @media all and (max-width: 576px) {
+            font-size: 0.7rem;
+        }
+    }
+    @media all and (max-width: 450px) {
+        margin: 15px -8px;
+    }
+    #newUserButton{
+        margin: 25px 0;
+    }
+}
+
+
+
+
+#activitiesDetailContent{
+    background-color: $second-color;
+    p{
+        font-family: $body;
+        font-size: large;
+        padding: 10px;
+        color: black;
+    }
+    img{
+        width: 400px;
+        height: 200px;
+        margin: 10px auto;
+        object-fit: cover;
+    }
+    @media all and (max-width: 450px) {
+        p{
+            font-size: medium;
+        }
+        img{
+            width: 80vw;
+            height: 20vh;
+            margin: 5px auto;
+        }
+    }
+    h1, h2, h3, h4, h5, h6{
+        font-family: $title;
+    }
+
 }
