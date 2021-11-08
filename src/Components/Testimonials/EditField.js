@@ -1,25 +1,44 @@
+import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { ErrorMessage } from "formik";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {ErrorMessage} from 'formik'
+
 const editorConfiguration = {
   toolbar: {
     items: [
       "|",
+      "heading",
       "bold",
       "italic",
       "link",
       "bulletedList",
       "numberedList",
+      "|",                                // acá vemos la configuración de las herramientas que tendremos en el editor
+      "outdent",
+      "indent",
       "|",
       "blockQuote",
+      "insertTable",
+      "mediaEmbed",
       "undo",
       "redo",
     ],
   },
   language: "es",
-  format_p: { element: "p", attributes: { class: "text-center" } },
+  image: {
+    toolbar: [
+      "imageTextAlternative",
+      "imageStyle:inline",
+      "imageStyle:block",
+      "imageStyle:side",
+    ],
+  },
+  table: {
+    contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
+  },
+  licenseKey: "",
 };
-const EditorField = ({ formik,initialValue }) => {
+const EditField = ({ formik }) => {
   const inputHandler = (event, editor) => {
     formik.setFieldValue("description", editor.getData());
   };
@@ -29,18 +48,16 @@ const EditorField = ({ formik,initialValue }) => {
         editor={ClassicEditor}
         config={editorConfiguration}
         onReady={(editor) => {
-          editor.setData(initialValue)
+          console.log("ck is ready to use");
         }}
         onChange={inputHandler}
-
       />
-      
       <ErrorMessage
         name="description"
-        render={(msg) => <span className="error"> {msg} </span>}
+        render={(msg) => <span style={{color:'red'}}> {msg} </span>}
       />
     </>
   );
 };
 
-export default EditorField;
+export default EditField;
