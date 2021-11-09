@@ -13,7 +13,7 @@ import ToysCampaign from "./Campaigns/Toys/ToysCampaign";
 import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import ScreenDashboard from "./Components/Backoffice/ScreenDashboard";
-import NewsDetail from "./Components/News/Detail";
+import Content from "./Components/News/Detail/Content";
 import Organization from "./Components/Organization/Organization";
 import MembersCreateEdit from "./Components/Members/MembersCreateEdit";
 import UpdateDataForm from "./Components/Organization/UdpateDataForm";
@@ -77,12 +77,9 @@ function App() {
           <Route path='/create-user' component={UserForm} />
           
           <Route path="/donaciones" component={Donations} />
-
-
           <Route path="/login" component={LoginForm} />
-        
-          <Route path="/novedades" component={NewsDisplay} />
-          <Route path="/novedades/:id" component={NewsDetail} />
+          <Route path="/novedades" exact component={NewsDisplay} />
+          <Route path="/novedades/:id" exact component={Content} />
           <Route path="/nosotros" component={About} />
 
           <Route path="/school-campaign" component={SchoolCampaign} />
