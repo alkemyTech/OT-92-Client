@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Title from "../Title/Title";
-import NewsFormat from "./Detail/NewsFormat";
 import "./Detail/NewsFormat.css";
-import NewsItem from "./NewsItem";
 import NewsList from "./NewsList";
 
 const NewsDisplay = () => {
@@ -42,7 +40,7 @@ const NewsDisplay = () => {
               image: null,
             }}
           />
-          <NewsList data={mockedData}/>
+          <NewsList newsData={news}/>
         </div>
       </div>
     </>
