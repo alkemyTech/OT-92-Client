@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Title from "../Title/Title";
 import NewsFormat from "./Detail/NewsFormat";
 import "./Detail/NewsFormat.css";
 
@@ -30,6 +31,12 @@ const NewsDisplay = () => {
     <>
       <div className="container-fluid card-display">
         <div className="row container-fluid  mt-5 d-flex flex-row justify-content-center">
+          <Title 
+            content={{
+              title: "Novedades",
+              image: null,
+            }}
+          />
           {news ? (
             news.map((news) => {
               return <NewsFormat content={news} />;
