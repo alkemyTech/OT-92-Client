@@ -1,16 +1,26 @@
 import React from 'react';
 import '../CardListStyles.css';
 
-const NewsList = () => {
-    const newsMock = [
-        {id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
-        {id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
-        {id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba'}
-    ];
+const NewsList = ({ newsData }) => {
 
     return (
         <div>
             <h1>Listado de Novedades</h1>
+            {newsData.length > 0 ? (
+            newsData.map((article) => {
+                return (
+                    <NewsItem
+                        key={article.id}
+                        content={article}
+                    />
+                );
+            })
+            ) : (
+                <div className="h1 noNews ml-5">
+                {" "}
+                No hay novedades por el momento{" "}
+                </div>
+            )}
             <ul className="list-container">
                 {newsMock.length > 0 ? 
                     newsMock.map((element) => {
