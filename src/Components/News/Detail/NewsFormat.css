@@ -20,7 +20,7 @@
     position: relative;
     z-index: 1;
     transition: all 0.2s ease-out;
- 
+    color: black;
 }
 .customize-card:hover{
     box-shadow: 1px 15px 16px 0px rgba(0,0,0,0.75);
@@ -81,7 +81,10 @@
 
 }
 
-@media (max-width: 600px) {
+.link{
+    text-decoration: none;
+}
 
-
+.link:hover{
+    text-decoration: none;
 }
