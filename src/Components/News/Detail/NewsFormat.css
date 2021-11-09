@@ -15,8 +15,8 @@
     border-color: #DB5752;
     border-width: 5px;
     box-shadow: 1px 12px 3px -7px rgba(0,0,0,0.75);
-    height: 25rem;
-    width: 18rem;
+    /* height: 25rem; */
+    /* width: 18rem; */
     position: relative;
     z-index: 1;
     transition: all 0.2s ease-out;
@@ -29,6 +29,7 @@
 
 .card-title{
     font-family:  'Neucha', cursive;
+    font-size: 1.7rem;
 }
 .noNews{
     font-family: 'Neucha' , cursive;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const NewsItem = ({ content }) => {
 
     return (
-        <div className="card mx-auto my-2" style={{width: "18rem"}}>
+        <div className="card mx-auto my-3 customize-card" style={{width: "18rem"}}>
             <img 
                 src={content.image} 
                 className="card-img-top" 
@@ -17,7 +17,7 @@ const NewsItem = ({ content }) => {
             <div className="card-body">
                 <h5 className="card-title">{content.title}</h5>
                 <Link to={`/novedades/${content.id}`}>
-                    <button type="button" className="btn btn-primary">
+                    <button type="button" className="btn btn-dark float-right">
                         Ver más
                     </button>
                 </Link>
