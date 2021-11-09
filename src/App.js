@@ -81,7 +81,7 @@ function App() {
 
           <Route path="/login" component={LoginForm} />
         
-          <Route path="/news" component={NewsDisplay} />
+          <Route path="/novedades" component={NewsDisplay} />
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/nosotros" component={About} />
 
