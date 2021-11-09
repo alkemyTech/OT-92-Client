@@ -32,17 +32,17 @@ const NewsDisplay = () => {
 
   return (
     <>
-      <div className="container-fluid card-display">
-        <div className="row container-fluid  mt-5 d-flex flex-row justify-content-center">
+          <div className="my-3" />
           <Title 
             content={{
               title: "Novedades",
               image: null,
             }}
           />
-          <NewsList newsData={news}/>
-        </div>
-      </div>
+          <div class="container">
+            <NewsList newsData={news}/>
+          </div>
+          
     </>
   );
 };

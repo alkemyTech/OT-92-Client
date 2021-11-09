@@ -8,12 +8,16 @@ const NewsList = ({ newsData }) => {
         <>
             {newsData.length > 0 ? (
                 <>
-                    {newsData.map((article) => (
-                        <NewsItem
-                            key={article.id}
-                            content={article}
-                        />
-                    ))}
+                    <div className="row my-3">
+                        {newsData.map((article) => (
+                            <div className="col-sm-12 col-md-6 col-lg-4 justify-content-center">
+                                <NewsItem
+                                    key={article.id}
+                                    content={article}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </>
             ) : (
                 <div className="h2 p-3 noNews m-5">

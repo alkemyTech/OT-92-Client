@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const NewsItem = ({ content }) => {
 
     return (
-        <div className="card" style={{width: "18rem"}}>
+        <div className="card mx-auto my-2" style={{width: "18rem"}}>
             <img 
                 src={content.image} 
                 className="card-img-top" 
