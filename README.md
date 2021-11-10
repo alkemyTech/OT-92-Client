@@ -28,3 +28,33 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+# Skeleton
+Display a placeholder preview of your content before the data gets loaded to reduce load-time frustration.
+## Usage
+The component is designed to be used directly in your components. For instance:
+```react
+{
+  item ? (
+    <img
+      style={{
+        width: 210,
+        height: 118,
+      }}
+      alt={item.title}
+      src={item.src}
+    />
+  ) : (
+    <Skeleton type="text" width={210} height={118} />
+  );
+}
+```
+## Types
+The component supports 4 shape variants.
+ - Text
+ - Title
+ - Rectangular
+ - Circular
+## Props
+It receives type, width, height.
+
