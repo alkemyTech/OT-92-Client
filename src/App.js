@@ -30,6 +30,7 @@ import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
 import Donations from './Components/Donations/Donations.js';
 import NewsListBackOffice from './Components/Backoffice/NewsListBackOffice';
+import Contact from './Components/Contact';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
 
           <Route path="/" exact component={Home} />
 
+          <Route path="/activities" component={ActivitiesDisplay} />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice" exact component={ScreenDashboard} />
           <Route exact path="/backoffice/activities" component={ActivitesList}/>
@@ -68,6 +70,7 @@ function App() {
           />
           <Route path='/backoffice/users' component={UsersListContainer} />
 
+          <Route path="/contacto" component={Contact} />  
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-project" component={ProjectsForm} />
           <Route path='/create-category' component={CategoriesForm} />
@@ -75,9 +78,8 @@ function App() {
           <Route path='/create-news' component={NewsForm} />
           <Route path='/create-testimonials' component={TestimonialForm} />
           <Route path='/create-user' component={UserForm} />
-          
+         
           <Route path="/donaciones" component={Donations} />
-
 
           <Route path="/login" component={LoginForm} />
         
@@ -87,7 +89,6 @@ function App() {
 
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
-          <Route path="/activities" component={ActivitiesDisplay} />
         </Switch>
       </BrowserRouter>
     </>
