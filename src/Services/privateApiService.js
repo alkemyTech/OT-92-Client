@@ -78,7 +78,7 @@ export const activitiesService = {
     } catch (error) {
       console.log(error);
     }
-  },
+  }
 };
 
 export const queryPutData = async (section, queryObject) => {
