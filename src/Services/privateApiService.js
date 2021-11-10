@@ -81,8 +81,67 @@ export const activitiesService = {
   },
 
     Authorization: null,
+  };
+// service for members
+export const membersService = {
+  //fetch all members
+  getMembers: async () => {
+    const data = await axios.get('http://ongapi.alkemy.org/api/members');
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   },
-};
+  //fetch one member
+  getMember: async (id) => {
+    const data = await axios.get(
+      `http://ongapi.alkemy.org/api/members/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //create member
+  createMember: async (member) => {
+    const data = await axios.post(
+      `http://ongapi.alkemy.org/api/members/create`,
+      member
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //update member
+  updateMember: async (member) => {
+    const data = await axios.put(
+      `http://ongapi.alkemy.org/api/members/${member.id}`,
+      member
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //delete member
+  deleteMember: async (id) => {
+    const data = await axios.delete(
+      `http://ongapi.alkemy.org/api/members/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  };
+
+
 
 export const queryPutData = async (section, queryObject) => {
     const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`
