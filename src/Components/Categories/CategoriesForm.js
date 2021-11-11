@@ -58,14 +58,21 @@ const CategoriesForm = () => {
         {formik => (
           <Form className="form-container" onSubmit={handleSubmit}>
             <input className="input-field" autoComplete="off"
-              type="text" name="name" onChange={formik.handleChange} value={formik.values.name}
+              type="text" name="name" onChange={handleChange} value={initialValues.namename}
               onBlur={formik.handleBlur}
               placeholder="Nombre"></input>
             <ErrorMessage name="name"
               render={(msg) => <span className="error"> {msg} </span>}
             />
 
-            <EditorField formik={formik} initialValue={initialValues.description} />
+            <EditorField 
+              formik={formik} 
+              initialValues={initialValues.description}
+              setInitialValues={setInitialValues} 
+              name="description"
+              value={initialValues.description} 
+              onChange={handleChange} 
+            />
 
             <input 
             type="file" 
@@ -80,7 +87,7 @@ const CategoriesForm = () => {
                   let codedImg = window.btoa(reader.result);
                   setInitialValues({
                     ...initialValues,
-                    profilePhoto: codedImg,
+                    image: codedImg,
                   });
                 };
                 reader.onerror = function () {
