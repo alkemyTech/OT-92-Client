@@ -29,6 +29,13 @@ const CategoriesForm = () => {
       }
   }
 
+  const handleChange = () => {
+     if(e.target.name === 'name') {
+       setInitialValues({... initialValues, name: e.target.value});
+       console.log(e.target.value)
+     }
+  }
+
   // validaciones de YUP para el form
   const validate = Yup.object({
     name: Yup.string()
