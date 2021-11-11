@@ -21,10 +21,10 @@ const CategoriesForm = () => {
   const handleSubmit = (e) => {
       e.preventDefault()
       
-      if(!id) {
+      if(!id) {  //if there's no ID, we make a POST request to create a category
           axios.post('http://ongapi.alkemy.org/api/categories', initialValues)
       }
-      if(id) {
+      if(id) {  //if there is an ID, we make a PUT request to edit a category
         axios.put(`http://ongapi.alkemy.org/api/categories/${id}`, initialValues)
       }
   }
@@ -67,7 +67,7 @@ const CategoriesForm = () => {
               render={(msg) => <span className="error"> {msg} </span>}
             />
 
-            <EditorField 
+            <EditorField                              //imported the CKEditor's editor component
               formik={formik} 
               initialValues={initialValues.description}
               setInitialValues={setInitialValues} 
@@ -80,7 +80,7 @@ const CategoriesForm = () => {
               type="file" 
               name="image" 
               accept="image/png, image/jpeg" 
-              onChange= {event => {
+              onChange= {event => {                       //here we transform the file to base64
                   let file = event.currentTarget.files[0];
                   let reader = new FileReader();
                   reader.readAsBinaryString(file);
