@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router';
 import '../FormStyles.css';
 
+
 const CategoriesForm = () => {
+
+    const { id } = useParams()
+    const urlEnvironmentCategoryPutDelete = process.env.REACT_APP_URL_CATEGORY + "/" + id
+    const urlEnvironmentCategoryGetPost = process.env.REACT_APP_URL_CATEGORY
+
     const [initialValues, setInitialValues] = useState({
         name: '',
         description: ''
     })
 
     const handleChange = (e) => {
-        if(e.target.name === 'name'){
-            setInitialValues({...initialValues, name: e.target.value})
-        } if(e.target.name === 'description'){
-            setInitialValues({...initialValues, description: e.target.value})
+        if (e.target.name === 'name') {
+            setInitialValues({ ...initialValues, name: e.target.value })
+        } if (e.target.name === 'description') {
+            setInitialValues({ ...initialValues, description: e.target.value })
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(initialValues);
+        console.log(urlEnvironmentCategoryPutDelete);
+        console.log(urlEnvironmentCategoryGetPost);
     }
 
     return (
@@ -28,5 +37,5 @@ const CategoriesForm = () => {
         </form>
     );
 }
- 
+
 export default CategoriesForm;
