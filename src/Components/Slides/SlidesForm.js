@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../FormStyles.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { useParams } from 'react-router-dom'
 
 const SlidesForm = () => {
+
+    const {option} = useParams();
+    const [formType, setformType] = useState('create')
+    useEffect(() => {
+        setformType(option)
+    }, [option])
 
     const [initialValues, setInitialValues] = useState({
         name: '',
