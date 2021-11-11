@@ -58,9 +58,11 @@ const CategoriesForm = () => {
         {formik => (
           <Form className="form-container" onSubmit={handleSubmit}>
             <input className="input-field" autoComplete="off"
-              type="text" name="name" onChange={handleChange} value={initialValues.namename}
+              type="text" name="name" onChange={handleChange} value={initialValues.name}
               onBlur={formik.handleBlur}
-              placeholder="Nombre"></input>
+              placeholder="Nombre" 
+            />
+            
             <ErrorMessage name="name"
               render={(msg) => <span className="error"> {msg} </span>}
             />
@@ -75,26 +77,27 @@ const CategoriesForm = () => {
             />
 
             <input 
-            type="file" 
-            name="image" 
-            accept="image/png, image/jpeg" 
-            onChange= {event => {
-                let file = event.currentTarget.files[0];
-                let reader = new FileReader();
-                reader.readAsBinaryString(file);
+              type="file" 
+              name="image" 
+              accept="image/png, image/jpeg" 
+              onChange= {event => {
+                  let file = event.currentTarget.files[0];
+                  let reader = new FileReader();
+                  reader.readAsBinaryString(file);
 
-                reader.onload = function () {
-                  let codedImg = window.btoa(reader.result);
-                  setInitialValues({
-                    ...initialValues,
-                    image: codedImg,
-                  });
-                };
-                reader.onerror = function () {
-                  console.log('Falló la carga de la imagen');
-                };
+                  reader.onload = function () {
+                    let codedImg = window.btoa(reader.result);
+                    setInitialValues({
+                      ...initialValues,
+                      image: codedImg,
+                    });
+                  };
+                  reader.onerror = function () {
+                    console.log('Falló la carga de la imagen');
+                  };
               }}
-            onBlur={formik.handleBlur} />
+            />
+            
             <ErrorMessage name="image"
               render={(msg) => <span className="error"> {msg} </span>}
             />
@@ -107,4 +110,5 @@ const CategoriesForm = () => {
 
   );
 }
+
 export default CategoriesForm;
