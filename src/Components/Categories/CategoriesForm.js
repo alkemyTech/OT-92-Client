@@ -11,8 +11,8 @@ import * as Yup from "yup";
 const CategoriesForm = () => {
   const {id} = useParams
   const [initialValues, setInitialValues] = useState({
-    name: '',
-    id: "",  
+    name: "",
+    id: id || "",  
     image: "",
     description: ""
   });
@@ -22,7 +22,10 @@ const CategoriesForm = () => {
       e.preventDefault()
       
       if(!id) {
-          axios.post('http://ongapi.alkemy.org/api/categories')
+          axios.post('http://ongapi.alkemy.org/api/categories', initialValues)
+      }
+      if(id) {
+        axios.put(`http://ongapi.alkemy.org/api/categories/${id}`, initialValues)
       }
   }
 
