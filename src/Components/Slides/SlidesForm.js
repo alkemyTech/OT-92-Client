@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import '../FormStyles.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 const SlidesForm = () => {
+    let history = useHistory();
 
     const {option} = useParams();
-    const [formType, setformType] = useState('create')
+    const [formType, setFormType] = useState('create')
+
     useEffect(() => {
-        setformType(option)
+        if(option !== 'edit'){
+            history.push('/backoffice/slides-form/create')
+        }
+        setFormType(option)
+        console.log(formType)
     }, [option])
 
     const [initialValues, setInitialValues] = useState({
