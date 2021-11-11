@@ -29,7 +29,7 @@ const CategoriesForm = () => {
       }
   }
 
-  const handleChange = () => {
+  const handleChange = (e) => {
      if(e.target.name === 'name') {
        setInitialValues({... initialValues, name: e.target.value});
        console.log(e.target.value)
