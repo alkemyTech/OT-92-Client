@@ -8,7 +8,7 @@ import "../MembersList.css";
 const EditMember = () => {
   const { id } = useParams();
   const history = useHistory();
-
+  const [message, setMessage] = useState('');
   useEffect(() => {
     membersService
       .getMember(id)
@@ -23,20 +23,25 @@ const EditMember = () => {
       "Es necesario agregar el nombre del nuevo miembro"
     ),
     image: Yup.string().required("La foto del nuevo miembro es esencial"),
-    description: Yup.string().required("El usuario debe tener una descripción"),
+    description: Yup.string(),
     facebookURL: Yup.string()
-      .required("El usuario debe adjuntar su perfil de facebook")
       .matches(
         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
         "Por favor ingresa un link valido!"
       ),
     linkedinURL: Yup.string()
-      .required("El usuario debe adjuntar su perfil de linkedin")
       .matches(
         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
         "Por favor ingresa un link valido!"
       ),
   });
+    const showMessage = () => {
+    return (
+      <div className="bg-dark text-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
+        <p>{message}</p>
+      </div>
+    );
+  };
   console.log(values);
   if (values === "") return "Loading...";
   return (
@@ -44,6 +49,7 @@ const EditMember = () => {
       <div>
         {" "}
         <p className="h1 my-3 customize-title"> Edita al miembro </p>
+        {message && showMessage()}
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
@@ -57,12 +63,15 @@ const EditMember = () => {
               facebookURL,
               linkedinURL,
               updated_at,
+              ...values.created_at, ...values.deleted_at
             });
             membersService
               .updateMember(values)
               .then((res) => console.log(res))
               .then(history.push("/backoffice/members"))
-              .catch((err) => console.log(err));
+              .catch((err) => {setMessage(err); console.log(err);  setTimeout(() => {
+                setMessage(null);
+              }, 2000); });
           }}
         >
           {(formik) => (
