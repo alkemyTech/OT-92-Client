@@ -3,7 +3,9 @@ import '../FormStyles.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useParams, useHistory } from 'react-router-dom'
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
+import EditorField from '../Activities/EditorField';
 
 const SlidesForm = () => {
     let history = useHistory();
@@ -66,16 +68,39 @@ const SlidesForm = () => {
 
     return (
         <>
-            <form className="form-container" onSubmit={handleSubmit}>
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validation}
+                onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                        console.log(JSON.stringify(values, null, 2));
+                        setSubmitting(false)
+                    }, 400)
+                }}
+            >
+                { formik => (
+                    <Form>
+                        <input />
+                        <ErrorMessage />
+                        <input />
+                        <ErrorMessage />
+                        <input />
+                        <ErrorMessage />
+                        <EditorField />
+                        <button type="submit"></button>
+                    </Form>
+                )}
+            </Formik>
+            {/* <form className="form-container" onSubmit={handleSubmit}>
                 <h2>{title}</h2>
                 <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Slide Title"></input>
                 <CKEditor 
                     editor={ClassicEditor}
                     onChange={handleEditorChange}
                 />
-                {/* <input className="input-field" type="text" name="description" value={initialValues.description} onChange={handleChange} placeholder="Write the description"></input> */}
+                <input className="input-field" type="text" name="description" value={initialValues.description} onChange={handleChange} placeholder="Write the description"></input>
                 <button className="submit-btn" type="submit">Send</button>
-            </form>
+            </form> */}
         </>
     );
 }
