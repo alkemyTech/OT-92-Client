@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
-import React, { useEffect, useRef, useState, Suspense, lazy } from 'react'
+import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import './CarruselHome.css';
 import '../../../LazyLoadImages/LazyLoad.css';
 const LazyLoad = lazy(() => import('../../../LazyLoadImages/LazyLoad.js'));
