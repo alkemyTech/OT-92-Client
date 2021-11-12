@@ -46,6 +46,8 @@ const SlidesForm = () => {
             .required("Descripción requerida"),
         image: Yup.mixed()
             .required('Es necesario subir una imagen'),
+        order: Yup.number()
+            .required("El numero de orden es obligatorio")
     });
 
     const handleChange = (e) => {
@@ -79,20 +81,57 @@ const SlidesForm = () => {
                 }}
             >
                 { formik => (
-                    <Form>
-                        <input />
-                        <ErrorMessage />
-                        <input />
-                        <ErrorMessage />
-                        <input />
-                        <ErrorMessage />
-                        <EditorField />
-                        <button type="submit"></button>
+                    <Form className="form-container">
+                        <h2>{title}</h2>
+                        <input 
+                            className="input-field"
+                            type="text"
+                            name="name"
+                            onChange={formik.handleChange}
+                            value={formik.values.name}
+                            onBlur={formik.handleBlur}
+                            placeholder="Titulo de Slide"
+                        />
+                        <ErrorMessage 
+                            name="name"
+                            render={msg => <span className="error_message_input"> {msg} </span>}
+                        />
+                        <input 
+                            className="input-field"
+                            type="file"
+                            name="image"
+                            accept="image/png, image/jpeg"
+                            onChange={event => {
+                                formik.setFieldValue("image", event.target.files[0]);
+                            }}
+                            onBlur={formik.handleBlur}
+                        />
+                        <ErrorMessage 
+                            name="image"
+                            render={msg => <span className="error_message_input"> {msg} </span>}
+                        />
+                        <input 
+                            className="input-field"
+                            type="number"
+                            name="order"
+                            onChange={formik.handleChange}
+                            value={formik.values.order}
+                            onBlur={formik.handleBlur}
+                            placeholder="Orden de Slide"
+                        />
+                        <ErrorMessage
+                            name="order"
+                            render={msg => <span className="error_message_input"> {msg} </span>}
+                        />
+                        <EditorField 
+                            formik={formik}
+                            initialValue={initialValues.description}
+                        />
+                        <button className="submit-btn" type="submit" >Enviar</button>
                     </Form>
                 )}
             </Formik>
             {/* <form className="form-container" onSubmit={handleSubmit}>
-                <h2>{title}</h2>
                 <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Slide Title"></input>
                 <CKEditor 
                     editor={ClassicEditor}
