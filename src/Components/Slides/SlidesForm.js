@@ -3,6 +3,7 @@ import '../FormStyles.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useParams, useHistory } from 'react-router-dom'
+import * as Yup from 'yup'
 
 const SlidesForm = () => {
     let history = useHistory();
@@ -15,17 +16,34 @@ const SlidesForm = () => {
             history.push('/backoffice/slides-form/create')
         }
         setFormType(option)
+
         if(option === 'create'){
             setTitle("Crear Slide")
         } else{
             setTitle("Editar Slide")
         }
+        
         console.log(formType)
     }, [option])
 
     const [initialValues, setInitialValues] = useState({
+        id: null,
         name: '',
-        description: ''
+        order: null,
+        image: '',
+        description: '',
+    });
+
+    const validation = Yup.object({
+        name: Yup.string()
+            .min(4, 'Debe tener por lo menos 4 caracteres')
+            .required("Titulo requerido"),
+        description: Yup.string()
+            .min(25, "Es necesario ingresar por lo menos 25 caracteres")
+            .max(300, "Solo se puede introducir hasta 300 caracteres")
+            .required("Descripción requerida"),
+        image: Yup.mixed()
+            .required('Es necesario subir una imagen'),
     });
 
     const handleChange = (e) => {
@@ -47,9 +65,9 @@ const SlidesForm = () => {
     }
 
     return (
-        <> 
-            <h2>{title}</h2>
+        <>
             <form className="form-container" onSubmit={handleSubmit}>
+                <h2>{title}</h2>
                 <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Slide Title"></input>
                 <CKEditor 
                     editor={ClassicEditor}
