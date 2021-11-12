@@ -20,9 +20,11 @@ export const getCategories = createAsyncThunk(
                 image: ''
             }
         },
-        reducers: {
-            categoriesList: (state, action) => {
-                
+        extraReducers: {
+            [getCategories]: (state, action) => {
+               return state.categories + action.payload.data
             }
         }
     })
+
+export default categorySlice.reducer
