@@ -24,6 +24,7 @@ import Home from "./Components/Home/Home";
 import MembersList from './Components/About/MembersList';
 import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
+import RegisterForm from "./Components/Auth/RegisterForm";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
           <Route path="/news" component={NewsDisplay} />
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/nosotros" component={About} />
+          <Route path="/register" component={RegisterForm} />
 
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
