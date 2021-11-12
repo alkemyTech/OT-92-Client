@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
-import React, { useEffect, useRef, useState } from 'react'
-import './CarruselHome.css'
-
+import React, { useEffect, useRef, useState, Suspense, lazy } from 'react'
+import './CarruselHome.css';
+import '../../../LazyLoadImages/LazyLoad.css';
+const LazyLoad = lazy(() => import('../../../LazyLoadImages/LazyLoad.js'));
 let contador = 0
 let interval
 let timeOut
@@ -163,11 +164,16 @@ const CarruselHome = () => {
 
     return (
         <div className="container-carrusel">
-            {
+            {/* {
                 imagenes
-                    ? <div className="contenedor-Img-Carrusel-Home">
+                    ?  */}
+                    <div className="contenedor-Img-Carrusel-Home">
                         <section className='img-Home-Actual' ref={imgRefCarrusel}>
-                            <img src={imgActual} width='100%' height="450px" alt={titulo} />
+                            {/* <img src={imgActual} width='100%' height="450px" alt={titulo} /> */}
+                           
+                            <Suspense fallback={<div class="lds-dual-ring w-100 d-flex justify-content-center"></div>}>
+                            <LazyLoad image={imgActual}/>
+                            </Suspense>
                         </section>
                         <section
                             className="datos-Title-Descripcion-Carrusel-Home"
@@ -184,8 +190,8 @@ const CarruselHome = () => {
                             <p>{">"}</p>
                         </button>
                     </div>
-                    : <h1>cargando</h1>
-            }
+                    {/* : <h1>cargando</h1>
+            } */}
         </div>
     )
 }
