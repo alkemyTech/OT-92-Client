@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -37,7 +38,6 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-
           <Route path="/" exact component={Home} />
 
           <Route path="/activities" component={ActivitiesDisplay} />
@@ -49,6 +49,7 @@ function App() {
           <Route path="/backoffice/home" component={HomeForm} />
           <Route path="/backoffice/slides" component={SlidesListBo} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
+
           <Route
             path='/backoffice/categories'
             component={CategoriesListBackoffice}
@@ -64,13 +65,11 @@ function App() {
           <Route path='/backoffice/news/:id' component={NewsForm} />
           <Route path='/backoffice/news/' component={NewsListBackOffice} />
           <Route path='/backoffice/organization' component={Organization} />
-          <Route
-            path='/backoffice/organization/edit'
-            component={UpdateDataForm}
-          />
+          <Route path='/backoffice/organization/edit' component={UpdateDataForm}/>
           <Route path='/backoffice/users' component={UsersListContainer} />
 
           <Route path="/contacto" component={Contact} />  
+
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-project" component={ProjectsForm} />
           <Route path='/create-category' component={CategoriesForm} />
@@ -78,15 +77,13 @@ function App() {
           <Route path='/create-news' component={NewsForm} />
           <Route path='/create-testimonials' component={TestimonialForm} />
           <Route path='/create-user' component={UserForm} />
-         
+
           <Route path="/donaciones" component={Donations} />
 
           <Route path="/login" component={LoginForm} />
-        
           <Route path="/news" component={NewsDisplay} />
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/nosotros" component={About} />
-
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
         </Switch>

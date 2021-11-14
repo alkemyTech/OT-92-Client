@@ -24,7 +24,7 @@ const CarruselHome = () => {
         clearInterval(interval)
         if (contador === 0) { //mientras sea la ultima imagen este if se ejecutará
 
-            contador = imagenes[0].length - 2 //actualiza el contador
+            contador = imagenes[0].length - 1 //actualiza el contador
             if (imagenes[0][contador].description != null) {
                 let datosSinParsear = imagenes[0][contador].description, //Obtiene la descripcion original
                     datosParseados = datosSinParsear.replace(/(<([^>]+)>)/g, "") //Convierte la descripcion De HTMl a String
@@ -40,8 +40,8 @@ const CarruselHome = () => {
             return intervalFunction(imagenes)
         }
 
-        if (contador > 0 && contador <= imagenes[0].length - 2) { //sino este if se ejecutará
-            
+        if (contador > 0 && contador <= imagenes[0].length - 1) { //sino este if se ejecutará
+
             contador--
             if (imagenes[0][contador].description != null) {
                 let datosSinParsear = imagenes[0][contador].description, //Obtiene la descripcion original
@@ -62,7 +62,7 @@ const CarruselHome = () => {
     const nextBtn = () => { // tiene 2 if, dependiendo de en que lugar se encuentre la img hace una u otra cosa
 
         clearInterval(interval)
-        if (contador < imagenes[0].length - 2) {//mientras sea la ultima imagen este if se ejecutará
+        if (contador < imagenes[0].length - 1) {//mientras sea la ultima imagen este if se ejecutará
 
             contador++
 
@@ -81,7 +81,7 @@ const CarruselHome = () => {
             return intervalFunction(imagenes)
         }
 
-        if (contador === imagenes[0].length - 2) {//sino este if se ejecutará
+        if (contador === imagenes[0].length - 1) {//sino este if se ejecutará
 
             contador = 0
 
@@ -104,8 +104,6 @@ const CarruselHome = () => {
     const intervalFunction = (prop) => {//interval inicial y base, prevBtn y nextBtn ejecutan esta función
         interval = setInterval(() => {
 
-            contador++
-
             if (prop[0][contador].description != null) {
                 let datosSinParsear = prop[0][contador].description, //Obtiene la descripcion original
                     datosParseados = datosSinParsear.replace(/(<([^>]+)>)/g, "") //Convierte la descripcion De HTMl a String
@@ -113,18 +111,24 @@ const CarruselHome = () => {
             }
 
 
-            if (contador >= prop[0].length - 2) {
+            if (contador >= prop[0].length - 1) {
+
+                contador++
+
                 contador = 0
                 imgRefCarrusel.current.className = 'img-Home-Actual animacionImg' //cambia la opacidad de 1 a 0
-                timeOut = setTimeout(() => {
+                return timeOut = setTimeout(() => {
                     imgRefCarrusel.current.className = 'img-Home-Actual' //cambia la opacidad de 0 a 1
                     setimgActual(prop[0][contador].image)
                     setTitulo(prop[0][contador].name)
-                }, 1000);
+                }, 500);
             }
-            if (contador < prop[0].length - 2) {
+            if (contador < prop[0].length - 1) {
+
+                contador++
+
                 imgRefCarrusel.current.className = 'img-Home-Actual animacionImg' //cambia la opacidad de 1 a 0
-                timeOut = setTimeout(() => {
+                return timeOut = setTimeout(() => {
                     imgRefCarrusel.current.className = 'img-Home-Actual' //cambia la opacidad de 0 a 1
                     setimgActual(prop[0][contador].image)
                     setTitulo(prop[0][contador].name)

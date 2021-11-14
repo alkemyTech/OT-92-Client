@@ -79,12 +79,6 @@ export const activitiesService = {
       console.log(error);
     }
 
-  },
-
-    Authorization: null,
-  }
-
-
   }
 };
 
@@ -102,9 +96,36 @@ export const queryPutData = async (section, queryObject) => {
 
 //function that gets the token from local storage and returns a headers with authorization object
 export const getAuthorization = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 };
+
+export const privateGet = async (url, id) => {
+  try {
+    const endPointId = id ? `/${id}` : '';
+    const resp = await axios.get(url + endPointId, getAuthorization());
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+// function that makes a post request to the api obtaining an authentication from the getAuthorization function
+
+export const ServicePostPrivate = async (section, id) => {
+  const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
+  const configuration = getAuthorization();
+  /* This getAuthorization () method was developed in ticket 69
+  by Facundo Delavalle */
+  let res = await axios.post(url, configuration);
+  try {
+    console.log(`The request was successful`);
+    console.log(res.status);
+  } catch (error) {
+    console.log("Something went wrong: " + error)
+  }
+}
