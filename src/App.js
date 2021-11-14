@@ -25,7 +25,6 @@ import SlidesListBo from "./Components/Backoffice/Slides/SlidesListBO"
 import ActivitesList from "./Components/Activities/ActivitesList";
 import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 import Home from "./Components/Home/Home";
-import MembersList from './Components/About/MembersList';
 import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
 import Donations from './Components/Donations/Donations.js';
