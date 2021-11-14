@@ -1,9 +1,12 @@
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import './ActivitiesDetail.css';
+import { activitiesService } from '../../../Services/privateApiService';
 import ActivitiesDetailContent from "./ActivitiesDetailContent";
 
 const ActivitiesDetail = () => {
   let { id: paramsId } = useParams();
+
   const activities = [
     {
       id: "1",
@@ -37,8 +40,10 @@ const ActivitiesDetail = () => {
             />
           </div>
         ) : (
-          <div className="mt-5 container">
-            <h1 className="Activities-title ">Oh Oh! hemos tenido problemas con esa actividad :( </h1>
+          <div className='mt-5 container'>
+            <h1 className='Activities-title '>
+              Oh Oh! hemos tenido problemas con esa actividad :({' '}
+            </h1>
           </div>
         )}
       </div>

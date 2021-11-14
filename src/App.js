@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
+import CategoriesListBackoffice from './Components/Backoffice/CategoriesListBackoffice';
 import NewsForm from "./Components/News/NewsForm";
 import SlidesForm from "./Components/Slides/SlidesForm";
 import TestimonialForm from "./Components/Testimonials/TestimonialsForm";
@@ -20,10 +22,16 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
+import SlidesListBo from "./Components/Backoffice/Slides/SlidesListBO"
+import ActivitesList from "./Components/Activities/ActivitesList";
+import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 import Home from "./Components/Home/Home";
 import MembersList from './Components/About/MembersList';
 import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
+import Donations from './Components/Donations/Donations.js';
+import NewsListBackOffice from './Components/Backoffice/NewsListBackOffice';
+import Contact from './Components/Contact';
 
 function App() {
   return (
@@ -32,13 +40,20 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
 
+          <Route path="/activities" component={ActivitiesDisplay} />
           <Route path="/activities/:id" component={ActivitiesDetail} />
-
           <Route path="/backoffice" exact component={ScreenDashboard} />
+          <Route exact path="/backoffice/activities" component={ActivitesList}/>
           <Route path="/backoffice/organization" component={Organization} />
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/backoffice/home" component={HomeForm} />
+          <Route path="/backoffice/slides" component={SlidesListBo} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
+
+          <Route
+            path='/backoffice/categories'
+            component={CategoriesListBackoffice}
+          />
           <Route
             path='/backoffice/members/edit/:id'
             component={MembersCreateEdit}
@@ -47,15 +62,13 @@ function App() {
             path='/backoffice/members/edit'
             component={MembersCreateEdit}
           />
-          <Route path='/backoffice/news/' component={NewsForm} />
           <Route path='/backoffice/news/:id' component={NewsForm} />
-          <Route path='/backoffice/news/create' component={NewsForm} />
+          <Route path='/backoffice/news/' component={NewsListBackOffice} />
           <Route path='/backoffice/organization' component={Organization} />
-          <Route
-            path='/backoffice/organization/edit'
-            component={UpdateDataForm}
-          />
+          <Route path='/backoffice/organization/edit' component={UpdateDataForm}/>
           <Route path='/backoffice/users' component={UsersListContainer} />
+
+          <Route path="/contacto" component={Contact} />  
 
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-project" component={ProjectsForm} />
@@ -64,16 +77,15 @@ function App() {
           <Route path='/create-news' component={NewsForm} />
           <Route path='/create-testimonials' component={TestimonialForm} />
           <Route path='/create-user' component={UserForm} />
-          
+
+          <Route path="/donaciones" component={Donations} />
+
           <Route path="/login" component={LoginForm} />
-        
           <Route path="/news" component={NewsDisplay} />
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/nosotros" component={About} />
-
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
-
         </Switch>
       </BrowserRouter>
     </>
