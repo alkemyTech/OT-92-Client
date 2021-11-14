@@ -1,0 +1,65 @@
+.btn-Crear-Actividad {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+    display: flex;
+    padding-right: 5%;
+    justify-content: flex-end;
+}
+
+.section-Crear-Actividad {
+    background-color: rgb(154, 201, 251);
+    width: 15%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.nav-Crear-Novedad {
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 'Shadows Into Light', cursive;
+}
+
+.nav-Crear-Novedad:hover {
+    text-decoration: none;
+}
+.btn-Crear-Tarea{
+    color: white;
+}
+@media(max-width:1024px){
+    .btn-Crear-Tarea{
+        font-size: 1.5rem;
+    }
+}
+@media(max-width:768px){
+    .section-Crear-Actividad{
+        width: 20%;
+    }
+}
+@media(max-width:425px){
+    .th-Activities-Date{
+        display: none;
+    }
+    .td-Activities-Date{
+        display: none;
+    }
+    .section-Crear-Actividad{
+        width: 35%;
+    }
+}
+@media(max-width:320px){
+    .th-Activities-Img{
+        display: none;
+    }
+    .td-Activities-Img{
+        display: none;
+    }
+    .btn-Crear-Tarea{
+        font-size: 1.2rem;
+    }
+}

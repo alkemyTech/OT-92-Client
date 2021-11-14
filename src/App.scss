@@ -13,6 +13,39 @@ p {
     justify-content: center;
 }
 
+#usersListContainer{
+    height: auto;
+    margin: 15px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    .headers{
+        font-size: 1.7rem;
+        font-family: $title;
+    }
+    #tableResponsive{
+        font-size: 0.9rem;
+        .actions_container{
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        @media all and (max-width: 576px) {
+            font-size: 0.7rem;
+        }
+    }
+    @media all and (max-width: 450px) {
+        margin: 15px -8px;
+    }
+    #newUserButton{
+        margin: 25px 0;
+    }
+}
+
+
+
+
 #activitiesDetailContent{
     background-color: $second-color;
     p{
