@@ -1,5 +1,5 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 export const getCategories = createAsyncThunk(
     'category/getCategories',
@@ -9,19 +9,20 @@ export const getCategories = createAsyncThunk(
     }
 );
 
+    const initialState = {
+        categories: [],
+        category: {
+            name: '',
+            description: '',
+            image: ''
+        }
+    }    
 
     const categorySlice = createSlice({
         name: 'category',
-        initialState: {
-            categories: [],
-            category: {
-                name: '',
-                description: '',
-                image: ''
-            }
-        },
+        initialState,
         extraReducers: {
-            [getCategories]: (state, action) => {
+            [getCategories.succeeded]: (state, action) => {
                return state.categories + action.payload.data
             }
         }
