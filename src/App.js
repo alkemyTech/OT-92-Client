@@ -45,7 +45,7 @@ function App() {
           <Route path="/activities" component={ActivitiesDisplay} />
           <Route path="/activities/:id" component={ActivitiesDetail} />
           <Route path="/backoffice" exact component={ScreenDashboard} />
-          <Route exact path="/backoffice/activities" component={ActivitesList}/>
+          <Route exact path="/backoffice/activities" component={ActivitesList} />
           <Route path="/backoffice/organization" component={Organization} />
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/backoffice/home" component={HomeForm} />
@@ -84,9 +84,7 @@ function App() {
           <Route path='/create-news' component={NewsForm} />
           <Route path='/create-testimonials' component={TestimonialForm} />
           <Route path='/create-user' component={UserForm} />
-
           <Route path="/donaciones" component={Donations} />
-
           <Route path="/login" component={LoginForm} />
           <Route path="/news" component={NewsDisplay} />
           <Route path="/novedades/:id" exact component={Content} />
