@@ -19,9 +19,11 @@ const editorConfiguration = {
   language: "es",
   format_p: { element: "p", attributes: { class: "text-center" } },
 };
-const EditorField = ({ formik,initialValue }) => {
+const EditorField = ({ formik, initialValues, setInitialValues }) => {
   const inputHandler = (event, editor) => {
-    formik.setFieldValue("description", editor.getData());
+    //formik.setFieldValue("description", editor.getData());
+    setInitialValues({... initialValues, description: editor.getData()});
+    
   };
   return (
     <>
@@ -29,10 +31,10 @@ const EditorField = ({ formik,initialValue }) => {
         editor={ClassicEditor}
         config={editorConfiguration}
         onReady={(editor) => {
-          editor.setData(initialValue)
+          editor.setData(initialValues)
         }}
         onChange={inputHandler}
-
+        
       />
       
       <ErrorMessage
