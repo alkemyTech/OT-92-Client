@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import '../FormStyles.css';
-import axios from 'axios';
+import { UserHttp } from '../../Services/UserHttp';
 
 const UserForm = user => {
+
+  const ExtendHttpPetitions = UserHttp() //import CustomHook UserHttp
   const [serverError, setServerError] = useState(null);
   const [initialValues, setInitialValues] = useState({
     id: user.id || '',
@@ -31,37 +33,33 @@ const UserForm = user => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(initialValues);
-
     if (user.id) {
       try {
-        await axios({
-          method: 'PUT',
+        await ExtendHttpPetitions.put({
           url: `http://ongapi.alkemy.org/public/api/users/${initialValues.id}`,
-          data: {
+          body: {
             name: initialValues.name,
             email: initialValues.email,
             password: initialValues.password,
             role_id: initialValues.roleId,
             profile_image: initialValues.profilePhoto,
-          },
-        });
+          }
+        })
       } catch {
         setServerError('Algo salió mal, por favor intente de nuevo');
       }
     } else {
       try {
-        await axios({
-          method: 'POST',
+        await ExtendHttpPetitions.post({
           url: `http://ongapi.alkemy.org/public/api/users`,
-          data: {
+          body: {
             name: initialValues.name,
             email: initialValues.email,
             password: initialValues.password,
             role_id: initialValues.roleId,
-            profile_image: initialValues.profilePhoto,
-          },
-        });
+            profile_image: initialValues.profilePhoto
+          }
+        })
       } catch {
         setServerError('Algo salió mal, por favor intente de nuevo');
       }
