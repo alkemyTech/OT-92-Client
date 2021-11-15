@@ -4,8 +4,8 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import './CarruselHome.css';
 import '../../../LazyLoadImages/LazyLoad.css';
-const LazyLoad = lazy(() => import('../../../LazyLoadImages/LazyLoad.js'));
 import { getHomeData } from '../../../../Services/publicApiService'
+const LazyLoad = lazy(() => import('../../../LazyLoadImages/LazyLoad.js'));
 
 let contador = 0
 let interval
