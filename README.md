@@ -1,5 +1,3 @@
-# Ong Client
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
@@ -28,3 +26,40 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+# Component Progress
+ Se encuentra en la carpeta de 'Assets/SpinnerComponent'
+ Para implementarlo es tan solo con importarlo como si fuera un componente común.
+ Es un componente de Bootstrap, dejo el link a la documentación
+
+# https://getbootstrap.com/docs/5.1/components/spinners/
+
+# Skeleton
+Display a placeholder preview of your content before the data gets loaded to reduce load-time frustration.
+## Usage
+The component is designed to be used directly in your components. For instance:
+```react
+{
+  item ? (
+    <img
+      style={{
+        width: 210,
+        height: 118,
+      }}
+      alt={item.title}
+      src={item.src}
+    />
+  ) : (
+    <Skeleton type="text" width={210} height={118} />
+  );
+}
+```
+## Types
+The component supports 4 shape variants.
+ - Text
+ - Title
+ - Rectangular
+ - Circular
+## Props
+It receives type, width, height.
+
