@@ -94,6 +94,20 @@ const newsGet = body => {
 };
 
 
+export const getHomeData = async (url) => {        //creamos un método GET para llevar a cabo
+    try {                                         //las peticiones de los componenentes del Home
+      const response = await axios({
+          method: 'GET',
+          url: url,
+          
+      })
+      console.log(response)
+      return response
+    } catch (err) {
+         console.log(err)
+    }
+}
+
 export {
     newsCreate,
     newsUpdate,
