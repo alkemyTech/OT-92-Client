@@ -108,20 +108,6 @@ export const getHomeData = async (url) => {        //creamos un método GET para
     }
 }
 
-const publicPost = async (url, body) => {
-     try{
-       const response = await axios({
-           method: 'POST',
-           url: url,
-           data: body
-       })
-       console.log(response)
-       return response
-     }catch (err){
-         console.log(err)
-     }
-}
-
 export {
     newsCreate,
     newsUpdate,
