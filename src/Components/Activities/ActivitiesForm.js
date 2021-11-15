@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
 import EditorField from './EditorField';
 import '../FormStyles.css';
-import { activitiesService } from '../../Services/privateApiService';
 
 const ActivitiesForm = (activity) => {
     const [formValues, setValues] = useState({
