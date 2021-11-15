@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import '../FormStyles.css';
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import EditorField from '../Activities/EditorField';
 import axios from 'axios'
 
 const SlidesForm = () => {
-    let history = useHistory();
-    const {option} = useParams();
-    const [formType, setFormType] = useState('create')
-    const [title, setTitle] = useState('Crear Slide')
-
-    useEffect(() => {
-        if(option !== 'edit'){
-            history.push('/backoffice/slides-form/create')
-        }
-        setFormType(option)
-
-        if(option === 'create'){
-            setTitle("Crear Slide")
-        } else{
-            setTitle("Editar Slide")
-        }
-        
-        console.log(formType)
-    }, [option])
-
+    const {id} = useParams();
+    const [title, setTitle] = useState('Crear')
     const [initialValues, setInitialValues] = useState({
-        id: null,
+        id: id || undefined,
         name: '',
         order: '',
         image: null,
         description: '',
     });
+    
+    // Funciones para submitear:
+    const edit = () => {
+        axios.put(`http://ongapi.alkemy.org/api/slides/${id}`, initialValues)
+        console.log("Editado")
+    }
+
+    const create = () => {
+        axios.post('http://ongapi.alkemy.org/api/slides/create', initialValues)
+        console.log("Creado")
+    }
+
+    const [submitFunction, setSubmitFunction] = useState(undefined)
+
+    useEffect(() => {
+        if(id){
+            setTitle("Editar")
+        } if(!id){
+            setTitle("Crear")
+        }
+    }, [id])
 
     const validation = Yup.object({
         name: Yup.string()
@@ -67,17 +70,28 @@ const SlidesForm = () => {
     }
     setbase64(initialValues.image)
 
+    const handleSubmit = (e) => {
+        if(id){
+            setTitle("Editar");
+            setSubmitFunction(edit);
+        } if(!id){
+            setTitle("Crear")
+            setSubmitFunction(create)
+        }
+        submitFunction();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validation}
-                onSubmit={(values) => { setInitialValues(values); console.log(values); }}
+                onSubmit={(values) => { setInitialValues(values); console.log(values); handleSubmit(); }}
                 enableReinitialize={true}
             >
                 { formik => (
                     <Form className="form-container">
-                        <h2>{title}</h2>
+                        <h2>{title} Slide {id}</h2>
                         <input 
                             className="input-field"
                             type="text"
