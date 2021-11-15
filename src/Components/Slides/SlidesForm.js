@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../FormStyles.css';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useParams, useHistory } from 'react-router-dom'
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import EditorField from '../Activities/EditorField';
+import axios from 'axios'
 
 const SlidesForm = () => {
     let history = useHistory();
@@ -31,8 +30,8 @@ const SlidesForm = () => {
     const [initialValues, setInitialValues] = useState({
         id: null,
         name: '',
-        order: null,
-        image: '',
+        order: '',
+        image: null,
         description: '',
     });
 
@@ -50,35 +49,31 @@ const SlidesForm = () => {
             .required("El numero de orden es obligatorio")
     });
 
-    const handleChange = (e) => {
-        if(e.target.name === 'name'){
-            setInitialValues({...initialValues, name: e.target.value})
-        } /* if(e.target.name === 'description'){
-            setInitialValues({...initialValues, description: e.target.value})
-        } */
+    const setbase64 = async (file) => {
+        if (typeof file === 'object' && !!file) {
+            const metaData = `data:${initialValues.image.type}; base64, `
+            const reader = new FileReader();
+            reader.readAsBinaryString(file)
+            reader.onload = () => { setInitialValues({ ...initialValues, image: metaData + btoa(reader.result) }) }
+        }
+        else if (typeof file === "string" && file.length < 150) {
+            const res = await axios.get(file, { responseType: 'blob' })
+            try {
+                setbase64(res.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
-
-    const handleEditorChange = (e, editor) => {
-        const data = editor.getData();
-        setInitialValues({...initialValues, description: data})
-    }
-
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        console.log(initialValues);
-    }
+    setbase64(initialValues.image)
 
     return (
         <>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validation}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        console.log(JSON.stringify(values, null, 2));
-                        setSubmitting(false)
-                    }, 400)
-                }}
+                onSubmit={(values) => { setInitialValues(values); console.log(values); }}
+                enableReinitialize={true}
             >
                 { formik => (
                     <Form className="form-container">
@@ -101,7 +96,7 @@ const SlidesForm = () => {
                             type="file"
                             name="image"
                             accept="image/png, image/jpeg"
-                            onChange={event => {
+                            onChange={(event) => {
                                 formik.setFieldValue("image", event.target.files[0]);
                             }}
                             onBlur={formik.handleBlur}
@@ -131,15 +126,6 @@ const SlidesForm = () => {
                     </Form>
                 )}
             </Formik>
-            {/* <form className="form-container" onSubmit={handleSubmit}>
-                <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Slide Title"></input>
-                <CKEditor 
-                    editor={ClassicEditor}
-                    onChange={handleEditorChange}
-                />
-                <input className="input-field" type="text" name="description" value={initialValues.description} onChange={handleChange} placeholder="Write the description"></input>
-                <button className="submit-btn" type="submit">Send</button>
-            </form> */}
         </>
     );
 }
