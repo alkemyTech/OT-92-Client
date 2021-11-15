@@ -1,54 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
+import { useParams, useHistory } from "react-router-dom";
+import { membersService } from "../../../../Services/privateApiService";
 import * as Yup from "yup";
-import "./MembersList.css";
-const CreateMember = () => {
-  const [values, setValues] = useState({
-    name: "",
-    image: "",
-    description: "",
-    facebookURL: "",
-    linkedinURL: "",
-  });
+import "../MembersList.css";
+
+const EditMember = () => {
+  const { id } = useParams();
+  const history = useHistory();
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+    membersService
+      .getMember(id)
+      .then((res) => setValues({ updated_at: "", ...res.data.data }))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const [values, setValues] = useState("");
+
   const validationSchema = Yup.object({
     name: Yup.string().required(
       "Es necesario agregar el nombre del nuevo miembro"
     ),
     image: Yup.string().required("La foto del nuevo miembro es esencial"),
-    description: Yup.string().required("El usuario debe tener una descripción"),
+    description: Yup.string(),
     facebookURL: Yup.string()
-      .required("El usuario debe adjuntar su perfil de facebook")
       .matches(
         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
         "Por favor ingresa un link valido!"
       ),
     linkedinURL: Yup.string()
-      .required("El usuario debe adjuntar su perfil de linkedin")
       .matches(
         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
         "Por favor ingresa un link valido!"
       ),
   });
+    const showMessage = () => {
+    return (
+      <div className="bg-dark text-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
+        <p>{message}</p>
+      </div>
+    );
+  };
   console.log(values);
+  if (values === "") return "Loading...";
   return (
     <>
       <div>
         {" "}
-        <p className="h1 my-3 customize-title"> Agrega al nuevo miembro </p>
+        <p className="h1 my-3 customize-title"> Edita al miembro </p>
+        {message && showMessage()}
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
           onSubmit={(val) => {
             const { name, image, description, facebookURL, linkedinURL } = val;
-            const created_at = new Date();
+            const updated_at = new Date();
             setValues({
               name,
               image,
               description,
               facebookURL,
               linkedinURL,
-              created_at,
+              updated_at,
+              ...values.created_at, ...values.deleted_at
             });
+            membersService
+              .updateMember(values)
+              .then((res) => console.log(res))
+              .then(history.push("/backoffice/members"))
+              .catch((err) => {setMessage(err); console.log(err);  setTimeout(() => {
+                setMessage(null);
+              }, 2000); });
           }}
         >
           {(formik) => (
@@ -99,6 +122,7 @@ const CreateMember = () => {
                   <div className="bg-danger text-white form-text"> {msg} </div>
                 )}
               />
+
               <label
                 className="text-black font-weight-bold form-text"
                 htmlFor="description"
@@ -146,6 +170,7 @@ const CreateMember = () => {
                   <div className="bg-danger text-white form-text"> {msg} </div>
                 )}
               />
+
               <label
                 className="text-black font-weight-bold form-text"
                 htmlFor="linkedinURL"
@@ -169,11 +194,12 @@ const CreateMember = () => {
                   <div className="bg-danger text-white form-text"> {msg} </div>
                 )}
               />
+
               <button
                 className="submit-btn align-self-center h3 rounded button-type-letter mt-3"
                 type="submit"
               >
-                Agregar nuevo Miembro
+                Editar Miembro
               </button>
             </Form>
           )}
@@ -183,4 +209,4 @@ const CreateMember = () => {
   );
 };
 
-export default CreateMember;
+export default EditMember;
