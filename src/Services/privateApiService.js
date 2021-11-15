@@ -78,8 +78,7 @@ export const activitiesService = {
     } catch (error) {
       console.log(error);
     }
-
-  }
+  },
 };
 
 
