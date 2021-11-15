@@ -5,7 +5,6 @@ import '../FormStyles.css';
 import axios from 'axios';
 import EditorField from "../Activities/EditorField";
 import { Formik, Form, ErrorMessage } from 'formik';
-import {useParams} from 'react-router'
 import * as Yup from "yup";
 
 
