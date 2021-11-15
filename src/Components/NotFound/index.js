@@ -1,14 +1,15 @@
 import React from 'react';
+import './index.css'
 
 const NotFound = () => (
- <div class="page-wrap d-flex flex-row align-items-center">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-                <span class="display-1 d-block">404</span>
-                <div class="display-5 d-block">¡Oopsss!</div>
-                <div class="mb-4 lead">La página que buscas no existe.</div>
-                <a href="https://www.totoprayogo.com/#" class="btn btn-link">Volver al Inicio</a>
+ <div className="page-wrap d-flex flex-row align-items-center">
+    <div className="container">
+        <div className="row justify-content-center">
+            <div className="col-md-12 text-center">
+                <span className="display-1 d-block">404</span>
+                <div className="display-5 d-block">¡Oopsss!</div>
+                <div className="mb-4 lead">La página que buscas no existe.</div>
+                <a href="https://www.totoprayogo.com/#" className="btn btn-link">Volver al Inicio</a>
             </div>
         </div>
     </div>
