@@ -18,7 +18,7 @@ const SlidesForm = () => {
     });
     
     // Funciones para submitear:
-    const edit = () => {
+    const edit = (id) => {
         axios.put(`http://ongapi.alkemy.org/api/slides/${id}`, initialValues)
         console.log("Editado")
     }
@@ -73,12 +73,11 @@ const SlidesForm = () => {
     const handleSubmit = (e) => {
         if(id){
             setTitle("Editar");
-            setSubmitFunction(edit);
+            edit(id);
         } if(!id){
             setTitle("Crear")
-            setSubmitFunction(create)
+            create();
         }
-        submitFunction();
     }
 
     return (
