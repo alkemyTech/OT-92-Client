@@ -39,7 +39,6 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-
           <Route path="/" exact component={Home} />
 
 
@@ -85,8 +84,6 @@ function App() {
           <Route path='/create-news' component={NewsForm} />
           <Route path='/create-testimonials' component={TestimonialForm} />
           <Route path='/create-user' component={UserForm} />
-
-
 
           <Route path="/donaciones" component={Donations} />
 
