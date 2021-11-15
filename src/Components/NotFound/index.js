@@ -9,7 +9,7 @@ const NotFound = () => (
                 <span className="display-1 d-block">404</span>
                 <div className="display-5 d-block">¡Oopsss!</div>
                 <div className="mb-4 lead">La página que buscas no existe.</div>
-                <a href="https://www.totoprayogo.com/#" className="btn btn-link">Volver al Inicio</a>
+                <a href="/" className="btn btn-link">Volver al Inicio</a>
             </div>
         </div>
     </div>
