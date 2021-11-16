@@ -8,7 +8,7 @@ import ActivitiesListsComponents from './ActivitiesListsComponents'
 const ActivitesList = () => {
 
     const [actividades, setActividades] = useState()
-    const urlActivities = 'http://ongapi.alkemy.org/public/api/activities'
+    const urlActivities = process.env.REACT_APP_ACTIVITY;
 
     useEffect(() => {
         const obtenerActividades = async () => {
