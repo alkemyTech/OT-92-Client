@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../FormStyles.css';
+import { successAlert } from '../../Assets/Alerts/alerts';
 
 const SlidesForm = () => {
     const [initialValues, setInitialValues] = useState({
@@ -25,6 +26,7 @@ const SlidesForm = () => {
             <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Slide Title"></input>
             <input className="input-field" type="text" name="description" value={initialValues.description} onChange={handleChange} placeholder="Write the description"></input>
             <button className="submit-btn" type="submit">Send</button>
+            <button className="submit-btn" type="button" onClick={() => successAlert({title:"Hola", time: "2000"})}>Click</button>
         </form>
     );
 }
