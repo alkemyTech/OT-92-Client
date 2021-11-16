@@ -11,8 +11,13 @@ export const successAlert = (props) => {
     })
 }
 
-export const errorAlert = () => {
-    
+export const errorAlert = (props) => {
+    Swal.fire({
+        icon: 'error',
+        title: props.title,
+        text: props.text,
+        confirmButtonColor: '#d33',
+    })
 }
 
 export const infoAlert = (props) => {
