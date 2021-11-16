@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-export const success = () => {
+export const successAlert = (props) => {
     Swal.fire({
         position: 'center',
         icon: 'success',
@@ -10,14 +10,14 @@ export const success = () => {
       })
 }
 
-export const error = () => {
+export const errorAlert = () => {
     
 }
 
-export const info = () => {
+export const infoAlert = () => {
     
 }
 
-export const confirm = () => {
+export const confirmAlert = () => {
     
 }
