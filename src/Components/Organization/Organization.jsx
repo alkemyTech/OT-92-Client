@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 const Organization = () => {
   const [serverError, setServerError] = useState(null);
   const [data, setData] = useState();
-  const getOrganizationData = process.env.REACT_APP_GET_ORGANIZATION_DATA
+  const getOrganizationData = process.env.REACT_APP_GET_ORGANIZATION_DATA;
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios({
-          method: 'GET',
+          method: "GET",
           url: getOrganizationData
         });
         setData(response.data.data);
       } catch {
         setServerError(
-          'Algo salió mal. Por favor, actualice la página e intente de nuevo.'
+          "Algo salió mal. Por favor, actualice la página e intente de nuevo."
         );
       }
     };

@@ -32,16 +32,16 @@ const NewsDisplay = () => {
 
   return (
     <>
-          <div className="my-3" />
-          <Title 
-            content={{
-              title: "Novedades",
-              image: null,
-            }}
-          />
-          <div class="container">
-            <NewsList newsData={news}/>
-          </div>
+      <div className="my-3" />
+      <Title 
+        content={{
+          title: "Novedades",
+          image: null,
+        }}
+      />
+      <div class="container">
+        <NewsList newsData={news}/>
+      </div>
           
     </>
   );
