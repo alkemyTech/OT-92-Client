@@ -26,6 +26,24 @@ export const infoAlert = (props) => {
     })
 }
 
-export const confirmAlert = () => {
-    
+export const confirmAlert = (props) => {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: props.warning,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, Eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            props.action();
+            Swal.fire(
+                'Eliminado!',
+                props.confirmation,
+                'success'
+            )
+        }
+    })
 }
