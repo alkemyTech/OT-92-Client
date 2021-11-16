@@ -50,7 +50,18 @@
     "lint": "eslint --fix src"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "plugins": [
+      "react"
+    ],
+    "indent": ["error", 2],
+    "eslint semi": ["error", "never"],
+    "eslint quotes": ["error", "double"],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
   },
   "browserslist": {
     "production": [
