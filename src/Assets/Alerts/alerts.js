@@ -4,10 +4,10 @@ export const successAlert = (props) => {
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'La acción ha sido exitosa',
+        title: props.title,
         showConfirmButton: false,
-        timer: 2000
-      })
+        timer: props.time
+    })
 }
 
 export const errorAlert = () => {
