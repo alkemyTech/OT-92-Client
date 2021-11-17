@@ -18,8 +18,8 @@ export default function TestimonialsForm () {
     const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined }); 
     
     const { id } = useParams()
-    const editTestimonial = `http://ongapi.alkemy.org/api/testimonials/${id}` // aquí establecemos los endpoints
-    const createTestimonial = 'http://ongapi.alkemy.org/api/testimonials'    // de la API
+    const editTestimonial = `${process.env.REACT_APP_TESTIMONIALS}/${id}` // aquí establecemos los endpoints
+    const createTestimonial = `${process.env.REACT_APP_TESTIMONIALS}`   // de la API
     
     const handleSubmit = () => {
       if (!id) {
