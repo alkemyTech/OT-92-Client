@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Container, Table } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
+import { errorAlert } from '../../Assets/Alerts/alerts'
 import './Activities.css'
 import ActivitiesListsComponents from './ActivitiesListsComponents'
 
@@ -12,10 +13,15 @@ const ActivitesList = () => {
 
     useEffect(() => {
         const obtenerActividades = async () => {
-            const datosPrincipal = await axios.get(urlActivities),
-                actividadesData = await datosPrincipal.data.data
-            setActividades(actividadesData)
-        }
+        try {
+            
+                const datosPrincipal = await axios.get(urlActivities),
+                    actividadesData = await datosPrincipal.data.data
+                setActividades(actividadesData)
+            
+        }  catch (err) {
+            errorAlert({title:"error", text:"Ocurrió un error en las actividades"})
+        }}
         obtenerActividades()
     }, [])
 
