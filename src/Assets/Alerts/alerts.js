@@ -33,7 +33,7 @@ export const infoAlert = (props) => {
 
 export const confirmAlert = (props) => {
     Swal.fire({
-        title: '¿Estás seguro?',
+        title: props.title,
         text: props.warning,
         icon: 'warning',
         showCancelButton: true,
