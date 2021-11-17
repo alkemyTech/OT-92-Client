@@ -39,7 +39,6 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-
           <Route path="/" exact component={Home} />
 
 
@@ -52,7 +51,6 @@ function App() {
           <Route path="/backoffice/home" component={HomeForm} />
           <Route path="/backoffice/slides" component={SlidesListBo} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
-
 
           <Route
             path='/backoffice/categories'
