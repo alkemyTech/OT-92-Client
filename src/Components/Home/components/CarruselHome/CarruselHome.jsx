@@ -141,8 +141,8 @@ const CarruselHome = () => {
 
     useEffect(() => {
         const obtenerDatos = async () => {
-            const dataImg = getHomeData(urlSlides),
-                resDataImg = await dataImg.data;
+            const dataImg = await getHomeData(urlSlides),
+                resDataImg = await dataImg.data.data;
     
             if (resDataImg) {
     

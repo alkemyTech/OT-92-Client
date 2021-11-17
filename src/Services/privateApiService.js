@@ -180,3 +180,15 @@ export const ServicePostPrivate = async (section, id) => {
     console.log("Something went wrong: " + error)
   }
 }
+
+// Post request to the api passed by parameter and the body also by parameter
+
+export const ServicePutPrivate = async (url, data) => {
+  const putData = await axios.patch(url, data, config)
+  try {
+    console.log("simon krnal");
+    console.log(putData.status);
+  } catch (error) {
+    console.log("no");
+  }
+}
