@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
-import membersReducer from '../features/Members/membersSlice';
-
+import membersSlice from './members/membersSlice';
 export default configureStore({
   reducer: {
     counter: counterReducer,
-    members: membersReducer
+    members: membersSlice
   },
 });

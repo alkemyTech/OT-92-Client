@@ -1,11 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import {membersService} from '../../Services/privateApiService';
 export const getMembers = createAsyncThunk(
   "members/getMembers",
   async (dispatch, getState) => {
-    return await axios
-      .get("http://ongapi.alkemy.org/api/members")
+    return await membersService.getMembers()
       .then((res) => res.data.data);
   }
 );
