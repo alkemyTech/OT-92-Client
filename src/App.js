@@ -42,8 +42,8 @@ function App() {
           <Route path="/" exact component={Home} />
 
 
-          <Route path="/activities" component={ActivitiesDisplay} />
-          <Route path="/activities/:id" component={ActivitiesDetail} />
+          <Route path="/activities" exact component={ActivitiesDisplay} />
+          <Route path="/activities/:id" exact component={ActivitiesDetail} />
           <Route path="/backoffice" exact component={ScreenDashboard} />
           <Route exact path="/backoffice/activities" component={ActivitesList} />
           <Route path="/backoffice/organization" component={Organization} />
