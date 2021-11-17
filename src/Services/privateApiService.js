@@ -141,6 +141,64 @@ export const membersService = {
   }
   };
 
+// service for categories
+export const categoriesService = {
+  //fetch all categories
+  getCategories: async () => {
+    const data = await axios.get('http://ongapi.alkemy.org/api/categories');
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //fetch one category
+  getCategory: async (id) => {
+    const data = await axios.get(
+      `http://ongapi.alkemy.org/api/categories/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //create category
+  createCategory: async (category) => {
+    const data = await axios.post(
+      `http://ongapi.alkemy.org/api/categories`,
+      category
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //update category
+  updateCategory: async (category) => {
+    const data = await axios.put(
+      `http://ongapi.alkemy.org/api/categories/${category.id}`,
+      category
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //delete category
+  deleteCategory: async (id) => {
+    const data = await axios.delete(
+      `http://ongapi.alkemy.org/api/categories/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  };
 
 
 export const queryPutData = async (section, queryObject) => {
