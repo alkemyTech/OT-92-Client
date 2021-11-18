@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./Navbar.css";
 import { Button } from 'react-bootstrap'
 import { MdMenu } from 'react-icons/md'
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 
 const Navbar = () => {
     const [show, setShow] = useState(false);

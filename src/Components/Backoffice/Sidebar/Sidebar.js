@@ -1,9 +1,13 @@
 import React from 'react'
 import { Offcanvas } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { sidebarData } from './sidebarData'
 
 
 
 const Sidebar = (props) => {
+    const data = sidebarData;
+    console.log(data)
 
     return (
         <Offcanvas show={props.show} onHide={props.handleShow}>
