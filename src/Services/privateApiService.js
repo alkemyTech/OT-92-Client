@@ -85,7 +85,8 @@ export const activitiesService = {
 export const membersService = {
   //fetch all members
   getMembers: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/members');
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS;
+    const data = await axios.get(url);
     try {
       return data;
     } catch (error) {
@@ -94,9 +95,8 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const data = await axios.get(
-      `http://ongapi.alkemy.org/api/members/${id}`
-    );
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + '/' + id;
+    const data = await axios.get(url);
     try {
       return data;
     } catch (error) {
@@ -137,11 +137,8 @@ export const membersService = {
     } catch (error) {
       console.log(error);
     }
-  }
+  },
 };
-
-
-
 
 export const queryPutData = async (section, queryObject) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`;
@@ -171,8 +168,7 @@ export const privateGet = async (url, id) => {
   } catch (error) {
     console.log(error);
   }
-}
-
+};
 
 // function that makes a post request to the api obtaining an authentication from the getAuthorization function
 
@@ -186,6 +182,6 @@ export const ServicePostPrivate = async (section, id) => {
     console.log(`The request was successful`);
     console.log(res.status);
   } catch (error) {
-    console.log("Something went wrong: " + error)
+    console.log('Something went wrong: ' + error);
   }
-}
+};
