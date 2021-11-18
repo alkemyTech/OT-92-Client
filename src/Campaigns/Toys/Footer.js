@@ -27,7 +27,9 @@ const Footer = () => {
               Novedades
             </p>        
             
+            <a href="/">
             <img src={"http://ongapi.alkemy.org/storage/4ZR8wsUwr9.png"} alt=""/>
+            </a>
 
             <p className="col text-dark">
               Testimonios
