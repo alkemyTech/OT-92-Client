@@ -12,8 +12,8 @@ const NewsDisplay = () => {
 
   return (
     <>
-      <div className=" container-fluid card-display">
-        <div className=" container-fluid  mt-5 d-flex flex-row flex-wrap justify-content-center">
+      <div className="card-display">
+        <div className="  mt-5 d-flex flex-row flex-wrap justify-content-center">
           {news ? (
             news.map((news) => {
               return <NewsFormat content={news} />;

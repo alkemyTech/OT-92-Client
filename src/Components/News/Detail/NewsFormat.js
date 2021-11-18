@@ -3,7 +3,7 @@ const NewsFormat = ({ content }) => {
   const { name, image } = content;
   return (
     <>
-      <div className="customize-card col-3 my-3 card-display d-block mx-4 mb-3 ">
+      <div className="customize-card col-11 col-sm-5 col-lg-3 my-3 card-display d-block mx-4 mb-3 ">
         <img
           className="customize-image-border card-image-top  w-100"
           src={image || "nourl"}
