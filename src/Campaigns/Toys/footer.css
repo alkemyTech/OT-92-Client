@@ -1,0 +1,9 @@
+.sections {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+p {
+    padding-top: 30px;
+}
