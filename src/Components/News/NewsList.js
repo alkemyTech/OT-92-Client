@@ -20,8 +20,10 @@ const NewsList = ({ newsData }) => {
                     </div>
                 </>
             ) : (
-                <div className="h2 p-3 noNews m-5">
-                    <p>No hay novedades por el momento</p>
+                <div class='d-flex justify-content-center mt-5'>
+                    <div class='spinner-border'>
+                        <span class='visually-hidden'>Loading...</span>
+                    </div>
                 </div>
             )}
         </>

@@ -40,12 +40,14 @@ const Content = () => {
             </div>
             )
             
-            : {/* no mostramos los datos si no se encuentra el id, y mostramos en su lugar un mensaje de error*/}
+            : {/* no mostramos los datos hasta que carguen, y en su lugar se muestra un spinner*/}
             
             (
-            <div>
-                <h1>No hemos podido encontrar lo que estas buscando</h1> 
-            </div>
+              <div class='d-flex justify-content-center mt-5'>
+                <div class='spinner-border'>
+                    <span class='visually-hidden'>Loading...</span>
+                </div>
+              </div>  
             )
         }
       </div>
