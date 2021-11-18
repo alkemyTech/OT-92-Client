@@ -1,8 +1,8 @@
-import React from 'react';
-
-import CarruselHome from './components/CarruselHome'
+import React,{useEffect} from 'react';
+import CarruselHome from './components/CarruselHome';
 
 const Home = () => {
+
   return (
     <div className="d-flex flex-column">
       {/* The upcoming div element is just a slider placeholder and will be replaced with the real one in the future */}
