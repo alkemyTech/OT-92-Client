@@ -7,3 +7,42 @@
 p {
     padding-top: 30px;
 }
+
+@media only screen and (max-width: 575px) {
+    img {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+    
+    p {
+        display: none;
+    }
+  }
+
+@media only screen and (min-width: 768px) {
+   
+    p {
+        display: none;
+    }
+
+    img {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .sections, p {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+    }
+
+    img {
+        margin: auto;
+        width: 20vw;
+        padding: 10px;
+    }
+}
