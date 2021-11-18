@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from "react";
 import NewsFormat from "./Detail/NewsFormat";
+import {useSelector, useDispatch} from 'react-redux';
 import "./Detail/NewsFormat.css";
+import {getNews}  from '../../store/news/newsSlice'
 const NewsDisplay = () => {
-  const [news, setNews] = useState("");
+  // const [news, setNews] = useState("");
+    const dispatch = useDispatch();
+    const {news} = useSelector(state => state.news)
   useEffect(() => {
-    setNews([
-      {
-        title: "Recorrido por comedor",
-        image:
-          "https://www.gob.mx/cms/uploads/article/main_image/26106/A16Z2709.JPG",
-      },
-      {
-        title: "Vueltas por la escuela san martin",
-        image:
-          "https://www.eldiariodecarlospaz.com.ar/u/fotografias/fotosnoticias/2016/4/28/30077.jpg",
-      },
-      {
-        title: "viaje fin de curso a formosa ",
-        image:
-          "https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudianti.jpg",
-      },
-    ]);
+ dispatch(getNews())
   }, []);
 
   return (
