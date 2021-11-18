@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "./Navbar.css";
 import { Button } from 'react-bootstrap'
 import { MdMenu } from 'react-icons/md'
+import Sidebar from './Sidebar';
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
@@ -13,6 +14,8 @@ const Navbar = () => {
         <Button variant="primary" onClick={handleShow}>
             <MdMenu />
         </Button>
+
+        <Sidebar show={show} handleShow={handleShow}/>
         </>
     );
 }
