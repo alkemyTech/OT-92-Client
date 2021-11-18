@@ -4,7 +4,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import "./Detail/NewsFormat.css";
 import {getNews}  from '../../store/news/newsSlice'
 const NewsDisplay = () => {
-  // const [news, setNews] = useState("");
     const dispatch = useDispatch();
     const {news} = useSelector(state => state.news)
   useEffect(() => {
@@ -13,8 +12,8 @@ const NewsDisplay = () => {
 
   return (
     <>
-      <div className="container-fluid card-display">
-        <div className="row container-fluid  mt-5 d-flex flex-row justify-content-center">
+      <div className=" container-fluid card-display">
+        <div className=" container-fluid  mt-5 d-flex flex-row flex-wrap justify-content-center">
           {news ? (
             news.map((news) => {
               return <NewsFormat content={news} />;
