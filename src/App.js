@@ -50,8 +50,8 @@ function App() {
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />
           <Route path="/backoffice/home" component={HomeForm} />
           <Route path="/backoffice/slides" component={SlidesListBo} />
-          <Route path="/backoffice/create-slide" component={SlidesForm} />
-
+          <Route path="/backoffice/slides-form/:id" exact component={SlidesForm} />
+          <Route path="/backoffice/slides-form/" exact component={SlidesForm} />
           <Route
             path='/backoffice/categories'
             component={CategoriesListBackoffice}
