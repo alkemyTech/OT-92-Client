@@ -26,8 +26,8 @@ const ActivitiesListsComponents = ({ el, actividades, setActividades }) => {
 
                 })}
                 catch(err) {
-                    errorAlert({title:"Error", text:`${err}`})
-                }
+                    errorAlert({title:"Error", text:`${err}`}) //here we implement the "errorAlert" function
+                }                                             //to display an error If the request fails
         }
 
     }
@@ -38,7 +38,16 @@ const ActivitiesListsComponents = ({ el, actividades, setActividades }) => {
                 <td className='td-Activities-Img'><img width="100px" style={{ float: "left" }} src={el.image} alt={el.name} /></td>
                 <td className='td-Activities-Date'>{el.created_at}</td>
                 <td><Button variant="primary" style={{ marginTop: "6%" }}>Editar</Button></td>
-                <td><Button onClick={() => confirmAlert({ title:"¿Estás seguro?", text:"¿Estas seguro que deseas eliminar esta actividad?", time: "2000", })}>Eliminar</Button></td>
+                <td>
+                    <Button 
+                        onClick={() => 
+                        confirmAlert({               //here we implement the "confirmAlert" function to display
+                            title:"¿Estás seguro?", //an alert to confirm If the user is sure 
+                            text:"¿Estas seguro que deseas eliminar esta actividad?", 
+                            time: "2000", })}>
+                        Eliminar
+                        </Button>
+                </td>
             </tr>
         </>
     )

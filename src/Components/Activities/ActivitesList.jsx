@@ -20,8 +20,9 @@ const ActivitesList = () => {
                 setActividades(actividadesData)
             
         }  catch (err) {
-            errorAlert({title:"error", text:"Ocurrió un error en las actividades"})
-        }}
+            errorAlert({title:"error", text:"Ocurrió un error en las actividades"}) //here we implement the "errorAlert"
+        }}                                                                         //function to display an error If
+                                                                                  //the request fails
         obtenerActividades()
     }, [])
 
