@@ -15,7 +15,15 @@ const Sidebar = (props) => {
             <Offcanvas.Title>Sidebar Title</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                List of routes
+                <ul>
+                    {data.map((item, index) => {
+                        return(
+                            <li key={index}>
+                                <Link to={item.path}>{item.section}</Link>
+                            </li>
+                        );
+                    })}
+                </ul>
             </Offcanvas.Body>
         </Offcanvas>
     )
