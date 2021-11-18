@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Title from "../Title/Title";
 import "./Detail/NewsFormat.css";
+import NewsLastVideo from "./NewsLastVideo";
 import NewsList from "./NewsList";
 
 const NewsDisplay = () => {
@@ -27,22 +29,28 @@ const NewsDisplay = () => {
   ]; //Reemplazar por servicio http que traiga la data de la API
 
   useEffect(() => {
-    setNews( mockedData );
+    setNews(mockedData);
   }, []);
 
   return (
     <>
-          <div className="my-3" />
-          <Title 
-            content={{
-              title: "Novedades",
-              image: null,
-            }}
-          />
-          <div class="container">
-            <NewsList newsData={news}/>
+      <div className="my-3" />
+      <Title
+        content={{
+          title: "Novedades",
+          image: null,
+        }}
+      />
+      <div class="container">
+        <NewsList newsData={news} />
+      </div>
+      {
+        news
+          ? <div className="video">
+            <NewsLastVideo />
           </div>
-          
+          : <p>Cargando...</p>
+      }
     </>
   );
 };

@@ -1,32 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27');
-$title:  'Neucha', cursive;
-$body: 'Archivo Narrow', sans-serif;
-$button-text: 'Shadows Into Light', cursive;
-$first-color: #9AC9FB;
-$second-color: #FAFA88;
-$third-color: #DB5752;
-
-
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27");
+$title: "Neucha", cursive;
+$body: "Archivo Narrow", sans-serif;
+$button-text: "Shadows Into Light", cursive;
+$first-color: #9ac9fb;
+$second-color: #fafa88;
+$third-color: #db5752;
 
 p {
     display: flex;
     justify-content: center;
 }
 
-#usersListContainer{
+#usersListContainer {
     height: auto;
     margin: 15px 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    .headers{
+    .headers {
         font-size: 1.7rem;
         font-family: $title;
     }
-    #tableResponsive{
+    #tableResponsive {
         font-size: 0.9rem;
-        .actions_container{
+        .actions_container {
             width: 100%;
             display: flex;
             flex-flow: row nowrap;
@@ -38,40 +36,63 @@ p {
     @media all and (max-width: 450px) {
         margin: 15px -8px;
     }
-    #newUserButton{
+    #newUserButton {
         margin: 25px 0;
     }
 }
 
-
-
-
-#activitiesDetailContent{
+#activitiesDetailContent {
     background-color: $second-color;
-    p{
+    p {
         font-family: $body;
         font-size: large;
         padding: 10px;
         color: black;
     }
-    img{
+    img {
         width: 400px;
         height: 200px;
         margin: 10px auto;
         object-fit: cover;
     }
     @media all and (max-width: 450px) {
-        p{
+        p {
             font-size: medium;
         }
-        img{
+        img {
             width: 80vw;
             height: 20vh;
             margin: 5px auto;
         }
     }
-    h1, h2, h3, h4, h5, h6{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: $title;
     }
+}
 
+.video-Novedades {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    h2 {
+        font-size: $title;
+        color: white;
+        padding-bottom: 5%;
+    }
+    h3 {
+        font-family: 'Neucha', cursive;
+        color: white;
+    }
+    p{
+        border-top: white 2px solid;
+        padding-top: 5%;
+    }
+    section {
+        width: 40%;
+    }
 }
