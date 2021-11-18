@@ -12,13 +12,13 @@ const Sidebar = (props) => {
     return (
         <Offcanvas show={props.show} onHide={props.handleShow}>
             <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Sidebar Title</Offcanvas.Title>
+                <Offcanvas.Title>Backoffice Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <ul>
                     {data.map((item, index) => {
                         return(
-                            <li key={index}>
+                            <li key={index} className="nav_text">
                                 <Link to={item.path}>{item.section}</Link>
                             </li>
                         );
