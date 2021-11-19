@@ -1,3 +1,4 @@
+
 import React from 'react';
 import "./footer.css"
 
@@ -5,6 +6,9 @@ import {TiSocialFacebook} from 'react-icons/ti'
 import {TiSocialInstagram} from 'react-icons/ti'
 import {TiSocialTwitter} from 'react-icons/ti'
 import {TiSocialLinkedin} from 'react-icons/ti'
+
+import React from "react";
+
 
 const Footer = () => {
   return (
@@ -103,6 +107,6 @@ const Footer = () => {
       </div>
   
   );
-}
+};
  
 export default Footer;
