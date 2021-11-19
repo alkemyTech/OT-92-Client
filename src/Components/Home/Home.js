@@ -1,17 +1,13 @@
-import React,{useEffect} from "react";
-import CarruselHome from "./components/CarruselHome";
+import React, { useEffect } from "react";
 
 const Home = () => {
-
   return (
     <div className="d-flex flex-column">
       {/* The upcoming div element is just a slider placeholder and will be replaced with the real one in the future */}
       <div
         className="d-flex bg-primary align-items-center"
         style={{ height: "50vh" }}
-      >
-        <CarruselHome/>
-      </div>
+      ></div>
 
       <h1 className="m-5">Texto de bienvenida</h1>
 

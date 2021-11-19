@@ -26,7 +26,7 @@ export const queryDeleteById = async (section, id) => {
 export const activitiesService = {
   //fetch all activities
   getActivities: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/activities');
+    const data = await axios.get("http://ongapi.alkemy.org/api/activities");
     try {
       return data;
     } catch (error) {
@@ -94,9 +94,7 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const data = await axios.get(
-      `http://ongapi.alkemy.org/api/members/${id}`
-    );
+    const data = await axios.get(`http://ongapi.alkemy.org/api/members/${id}`);
     try {
       return data;
     } catch (error) {
@@ -137,11 +135,8 @@ export const membersService = {
     } catch (error) {
       console.log(error);
     }
-  }
+  },
 };
-
-
-
 
 export const queryPutData = async (section, queryObject) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`;
@@ -172,7 +167,6 @@ export const privateGet = async (url, id) => {
     console.log(error);
   }
 };
-
 
 // function that makes a post request to the api obtaining an authentication from the getAuthorization function
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Title from '../Title/Title';
-import './Detail/NewsFormat.css';
-import NewsList from './NewsList';
-import { getNews } from '../../Services/publicApiService';
+import React, { useEffect, useState } from "react";
+import Title from "../Title/Title";
+import "./Detail/NewsFormat.css";
+import NewsList from "./NewsList";
+import { getNews } from "../../Services/publicApiService";
 
 const NewsDisplay = () => {
   const [news, setNews] = useState([]);
@@ -18,16 +18,15 @@ const NewsDisplay = () => {
   return (
     <>
       <div className="my-3" />
-      <Title 
+      <Title
         content={{
           title: "Novedades",
           image: null,
         }}
       />
       <div class="container">
-        <NewsList newsData={news}/>
+        <NewsList newsData={news} />
       </div>
-          
     </>
   );
 };
