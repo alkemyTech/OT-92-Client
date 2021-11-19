@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import '../FormStyles.css';
+import React, { useState, useEffect } from "react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import "../FormStyles.css";
 
 const UpdateDataForm = (props) => {
   const [image, setImage] = useState();
@@ -24,7 +24,7 @@ const UpdateDataForm = (props) => {
 
   const onEditorChange = (event, editor) => {
     const data = editor.getData();
-    formik.values.shortDescription = data.replace(/<[^>]*>?/gm, '');
+    formik.values.shortDescription = data.replace(/<[^>]*>?/gm, "");
   };
 
   //function that converts image to base64
@@ -40,32 +40,32 @@ const UpdateDataForm = (props) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: props.organization ? props.organization.name : '',
+      name: props.organization ? props.organization.name : "",
       logo: props.organization ? props.organization.logo : null,
       shortDescription: props.organization
         ? props.organization.shortDescription
-        : '',
+        : "",
       longDescription: props.organization
         ? props.organization.longDescription
-        : '',
-      linkInstagram: props.organization ? props.organization.linkInstagram : '',
-      linkFacebook: props.organization ? props.organization.linkFacebook : '',
+        : "",
+      linkInstagram: props.organization ? props.organization.linkInstagram : "",
+      linkFacebook: props.organization ? props.organization.linkFacebook : "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required('El nombre es obligatorio'),
-      logo: Yup.string().required('El logo es obligatorio'),
+      name: Yup.string().required("El nombre es obligatorio"),
+      logo: Yup.string().required("El logo es obligatorio"),
       shortDescription: Yup.string().required(
-        'La descripción corta es obligatoria'
+        "La descripción corta es obligatoria"
       ),
       longDescription: Yup.string().required(
-        'La descripción larga es obligatoria'
+        "La descripción larga es obligatoria"
       ),
       linkInstagram: Yup.string()
-        .url('El link debe ser una URL válida')
-        .required('El link de Instagram es obligatorio'),
+        .url("El link debe ser una URL válida")
+        .required("El link de Instagram es obligatorio"),
       linkFacebook: Yup.string()
-        .url('El link debe ser una URL válida')
-        .required('El link de Facebook es obligatorio'),
+        .url("El link debe ser una URL válida")
+        .required("El link de Facebook es obligatorio"),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -88,8 +88,8 @@ const UpdateDataForm = (props) => {
           id='name'
           className={
             formik.touched.name && formik.errors.name
-              ? 'mt-2 form-control is-invalid'
-              : 'mt-2 form-control'
+              ? "mt-2 form-control is-invalid"
+              : "mt-2 form-control"
           }
           value={formik.values.name}
           onChange={formik.handleChange}
@@ -102,15 +102,15 @@ const UpdateDataForm = (props) => {
         <div className='d-flex justify-content-between'>
           <input
             required
-            style={image && { height: '2.4rem', width: '45rem' }}
+            style={image && { height: "2.4rem", width: "45rem" }}
             type='file'
             accept='image/png, image/jpeg'
             name='logo'
             id='logo'
             className={
               formik.touched.logo && formik.errors.logo
-                ? 'form-control is-invalid'
-                : 'form-control'
+                ? "form-control is-invalid"
+                : "form-control"
             }
             onBlur={formik.handleBlur}
             onChange={async (event) => {
@@ -118,7 +118,7 @@ const UpdateDataForm = (props) => {
               if (file) {
                 setImage(file);
                 const logo = await convertToBase64(file);
-                formik.setFieldValue('logo', logo);
+                formik.setFieldValue("logo", logo);
               } else {
                 setImage(null);
               }
@@ -128,7 +128,7 @@ const UpdateDataForm = (props) => {
             <img
               src={imagePreview}
               alt='organization logo'
-              style={{ width: '200px', height: '100px' }}
+              style={{ width: "200px", height: "100px" }}
             />
           )}
         </div>
@@ -154,8 +154,8 @@ const UpdateDataForm = (props) => {
           id='longDescription'
           className={
             formik.touched.longDescription && formik.errors.longDescription
-              ? 'form-control is-invalid'
-              : 'form-control'
+              ? "form-control is-invalid"
+              : "form-control"
           }
           value={formik.values.longDescription}
           onChange={formik.handleChange}
@@ -171,8 +171,8 @@ const UpdateDataForm = (props) => {
           id='linkInstagram'
           className={
             formik.touched.linkInstagram && formik.errors.linkInstagram
-              ? 'form-control is-invalid'
-              : 'form-control'
+              ? "form-control is-invalid"
+              : "form-control"
           }
           value={formik.values.linkInstagram}
           onChange={formik.handleChange}
@@ -189,8 +189,8 @@ const UpdateDataForm = (props) => {
           id='linkFacebook'
           className={
             formik.touched.linkFacebook && formik.errors.linkFacebook
-              ? 'form-control is-invalid'
-              : 'form-control'
+              ? "form-control is-invalid"
+              : "form-control"
           }
           value={formik.values.linkFacebook}
           onBlur={formik.handleBlur}
@@ -201,7 +201,7 @@ const UpdateDataForm = (props) => {
         ) : null}
         <button
           type='submit'
-          style={{ width: '10rem' }}
+          style={{ width: "10rem" }}
           className='btn btn-primary m-auto'
         >
           Cargar
