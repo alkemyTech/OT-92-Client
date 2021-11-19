@@ -1,4 +1,4 @@
-import React,{Suspense} from "react";
+import React from "react";
 import "./LazyLoad.css";
 
 const LazyLoad = ({image}) => {
