@@ -59,6 +59,7 @@ function App() {
             component={CategoriesListBackoffice}
           />
           <Route exact path='/backoffice/members' component={Members}/>
+          <Route exact path='/backoffice/memberslist' component={MembersList}/>
           <Route path='/backoffice/members/create' component={CreateMember} />
           <Route path='/backoffice/editmember/:id' component={EditMember} />
           <Route
