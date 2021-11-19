@@ -1,7 +1,6 @@
 import axios from "axios";
 import httpClient from "./httpClient";
 
-
 const config = {
   headers: {
     Group: 92, //Aqui va el ID del equipo!!
@@ -18,16 +17,13 @@ export const queryGetData = async (section, id) => {
   }
 };
 
-
 export const queryPostCreateData = async (section, queryObject) => {
   const url = `http://ongapi.alkemy.org/api/${section}`;
   const data = await axios.post(url, queryObject, config);
   try {
-
     console.log(data);
     console.log(queryObject);
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -35,17 +31,14 @@ export const queryPostEditData = async (section, queryObject) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`;
   const data = await axios.post(url, queryObject, config);
   try {
-
     console.log(data);
     console.log(queryObject);
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
 
 export const queryGetObjectData = async (section, ID) => {
-
   const url = `http://ongapi.alkemy.org/api/${section}/${ID}`;
   let res = await axios.get(url, config);
   try {
@@ -55,17 +48,19 @@ export const queryGetObjectData = async (section, ID) => {
   }
 };
 
-export const GetWithId = async (link, id) => {
-  const pageId = id ? id : "";
-  await axios.get(`${link}/${pageId}`).then(res => console.log(res))
-    .catch(err => console.log(err));
+export const GetWithId = (link, id) => {
+  const pageId = id ? id : '';
+  return axios
+    .get(`${link}/${pageId}`)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
-
 export const Get = () => {
-  axios.get("https://jsonplaceholder.typicode.com/users", config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+  return axios
+    .get('https://jsonplaceholder.typicode.com/users', config)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 const publicPost = async (url, body) => {
@@ -84,15 +79,15 @@ const publicPost = async (url, body) => {
   }
 };
 
-const newsCreate = body => httpClient.post("/news", body);
-const newsUpdate = body => httpClient.put(`/news/${body.id}`, body);
-const newsDelete = body => httpClient.delete(`/news/${body.id}`, body);
-const newsGet = body => {
-  const newsId = body.id ? `/${body.id}` : "";
-  const resp = axios.get("/news" + newsId);
+const getNews = () => httpClient.get('/news');
+const newsCreate = (body) => httpClient.post('/news', body);
+const newsUpdate = (body) => httpClient.put(`/news/${body.id}`, body);
+const newsDelete = (body) => httpClient.delete(`/news/${body.id}`, body);
+const newsGet = (body) => {
+  const newsId = body.id ? `/${body.id}` : '';
+  const resp = axios.get('/news' + newsId);
   return resp;
 };
-
 
 export const getHomeData = async (url) => {        //creamos un método GET para llevar a cabo
   try {                                         //las peticiones de los componenentes del Home
@@ -109,6 +104,7 @@ export const getHomeData = async (url) => {        //creamos un método GET para
 };
 
 export {
+  getNews,
   newsCreate,
   newsUpdate,
   newsDelete,
