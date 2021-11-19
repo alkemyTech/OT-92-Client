@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import NewsFormat from "./Detail/NewsFormat";
 import {useSelector, useDispatch} from 'react-redux';
 import "./Detail/NewsFormat.css";

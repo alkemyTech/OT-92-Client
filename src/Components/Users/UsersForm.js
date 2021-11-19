@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import '../FormStyles.css';
 import axios from 'axios';
-
+import { Document, Page,  pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const UserForm = user => {
   const [serverError, setServerError] = useState(null);
   const [initialValues, setInitialValues] = useState({
@@ -13,7 +14,12 @@ const UserForm = user => {
     roleId: user.role_id || '',
     profilePhoto: user.profile_image || '',
   });
+ const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
   const handleChange = e => {
     if (e.target.name === 'name') {
       setInitialValues({ ...initialValues, name: e.target.value })
@@ -28,10 +34,11 @@ const UserForm = user => {
       setInitialValues({ ...initialValues, roleId: parseInt(e.target.value) });
     }
   };
-
+  const handleUser = () => {
+  console.log(initialValues)};
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(initialValues);
+    setInitialValues(initialValues);
 
     if (user.id) {
       try {
@@ -69,6 +76,7 @@ const UserForm = user => {
   };
 
   return (
+    <>
     <Formik
       validate={() => {
         const errors = {};
@@ -184,9 +192,62 @@ const UserForm = user => {
           {errors.profilePhoto && touched.profilePhoto ? (
             <div className="text-danger">{errors.profilePhoto}</div>
           ) : null}
-          <button className="submit-btn" type="submit" disabled={!isValid}>
-            Enviar
+         
+          <button type="button" className="btn btn-primary"  disabled={!isValid} type="submit" data-toggle="modal" data-target="#registrationModal">
+            Registrarse
           </button>
+
+
+
+{/* Modal  */}
+<div className="modal fade" id="registrationModal" tabIndex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+  <div className="modal-dialog modal-lg" role="document">
+    <div className="modal-content ">
+      <div className="modal-header">
+        <h5 className="modal-title" id="registrationModalLabel">Terminos y Condiciones</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div className="modal-body p-0">
+      
+          <Document
+        file="/Somos Mas Terminos y Condiciones.pdf"
+        onLoadSuccess={onDocumentLoadSuccess}
+        onLoadError={console.error}
+      >
+        <Page pageNumber={pageNumber} />
+        <div className="d-flex flex-row justify-content-center ">
+         {(pageNumber === 1) ? ('') : (<button onClick={() => setPageNumber(pageNumber - 1)}>
+      Anterior
+        </button>)}
+        
+        {(pageNumber >= numPages) ? ('') : ( <button onClick={() => setPageNumber(pageNumber + 1 )}>
+      Siguiente
+        </button>)}
+      </div>
+         <p>Page {pageNumber} of {numPages}</p>
+      </Document>
+     
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO ACEPTO</button>       
+           <button className="btn btn-primary submit-btn" data-dismiss="modal" onClick={() => handleUser()} >
+            ACEPTO
+          </button> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+          {/* <button className="submit-btn" type="submit" disabled={!isValid}>
+            Enviar
+          </button> */}
           {initialValues.profilePhoto ? (
             <img
               alt={`${initialValues.name}`}
@@ -197,6 +258,20 @@ const UserForm = user => {
         </Form>
       )}
     </Formik>
+<div>
+
+
+
+
+
+
+  
+    </div>
+
+</>
+
+
+
   );
 };
 
