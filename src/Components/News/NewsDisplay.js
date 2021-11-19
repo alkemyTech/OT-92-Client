@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Title from '../Title/Title';
-import './Detail/NewsFormat.css';
-import NewsList from './NewsList';
-import { getNews } from '../../Services/publicApiService';
+import React, { useEffect } from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {getNews}  from "../../store/news/newsSlice";
+import Title from "../Title/Title";
+import NewsList from "./NewsList";
+import "./Detail/NewsFormat.css";
 
 const NewsDisplay = () => {
-  const [news, setNews] = useState([]);
-
+  const dispatch = useDispatch();
+  const {news} = useSelector(state => state.news);
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await getNews();
-      setNews(res.data.data);
-    };
-    fetchData();
+    dispatch(getNews());
   }, []);
 
   return (
