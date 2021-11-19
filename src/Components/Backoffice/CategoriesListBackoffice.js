@@ -1,29 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../FormStyles.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../FormStyles.css";
 
 const CategoriesListBackoffice = () => {
   //mock data
   const categoriesMock = [
     {
       id: 2,
-      name: 'Categoria 1',
-      createdAt: '2020-01-01',
+      name: "Categoria 1",
+      createdAt: "2020-01-01",
     },
     {
       id: 1,
-      name: 'Categoria 2',
-      createdAt: '2020-01-02',
+      name: "Categoria 2",
+      createdAt: "2020-01-02",
     },
     {
       id: 3,
-      name: 'Categoria 3',
-      createdAt: '2020-01-03',
+      name: "Categoria 3",
+      createdAt: "2020-01-03",
     },
     {
       id: 4,
-      name: 'Categoria 4',
-      createdAt: '2020-01-03',
+      name: "Categoria 4",
+      createdAt: "2020-01-03",
     },
   ];
 

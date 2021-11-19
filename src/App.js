@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
-import CategoriesListBackoffice from './Components/Backoffice/CategoriesListBackoffice';
+import CategoriesListBackoffice from "./Components/Backoffice/CategoriesListBackoffice";
 import NewsForm from "./Components/News/NewsForm";
 import SlidesForm from "./Components/Slides/SlidesForm";
 import TestimonialForm from "./Components/Testimonials/TestimonialsForm";
@@ -21,14 +21,14 @@ import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
 import LoginForm from "./Components/Auth/LoginForm";
-import SlidesListBo from "./Components/Backoffice/Slides/SlidesListBO"
+import SlidesListBo from "./Components/Backoffice/Slides/SlidesListBO";
 import ActivitesList from "./Components/Activities/ActivitesList";
 import ActivitiesDisplay from "./Components/Activities/ActivitiesDisplay";
 import Home from "./Components/Home/Home";
-import Members from './Components/Backoffice/Members/Members';
-import CreateMember from './Components/Backoffice/Members/CreateMember';
-import EditMember from './Components/Backoffice/Members/editMember/EditMember';
-import About from './Components/About'
+import Members from "./Components/Backoffice/Members/Members";
+import CreateMember from "./Components/Backoffice/Members/CreateMember";
+import EditMember from "./Components/Backoffice/Members/editMember/EditMember";
+import About from "./Components/About";
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
 import RegisterForm from "./Components/Auth/RegisterForm";
 import Donations from './Components/Donations/Donations.js';
@@ -60,7 +60,7 @@ function App() {
           />
           <Route exact path='/backoffice/members' component={Members}/>
           <Route path='/backoffice/members/create' component={CreateMember} />
-         <Route path='/backoffice/editmember/:id' component={EditMember} />
+          <Route path='/backoffice/editmember/:id' component={EditMember} />
           <Route
             path='/backoffice/members/edit/:id'
             component={MembersCreateEdit}

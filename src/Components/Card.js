@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Card = props => {
-  const imgPlaceholder = 'https://via.placeholder.com/150.png?text=Sin+imagen';
+  const imgPlaceholder = "https://via.placeholder.com/150.png?text=Sin+imagen";
 
   return (
-    <div className="card m-3" style={{ width: '18rem' }}>
+    <div className="card m-3" style={{ width: "18rem" }}>
       <img
         src={props.img || imgPlaceholder}
         className="card-img-top"

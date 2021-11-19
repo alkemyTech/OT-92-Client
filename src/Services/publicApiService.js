@@ -1,5 +1,5 @@
-import axios from 'axios';
-import httpClient from './httpClient';
+import axios from "axios";
+import httpClient from "./httpClient";
 
 const config = {
   headers: {
@@ -48,16 +48,16 @@ export const queryGetObjectData = async (section, ID) => {
   }
 };
 
-export const GetWithId = async (link, id) => {
+export const GetWithId = (link, id) => {
   const pageId = id ? id : '';
-  await axios
+  return axios
     .get(`${link}/${pageId}`)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
 
 export const Get = () => {
-  axios
+  return axios
     .get('https://jsonplaceholder.typicode.com/users', config)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
@@ -68,7 +68,7 @@ const publicPost = async (url, body) => {
   //en toda la app
   try {
     const response = await axios({
-      method: 'POST',
+      method: "POST",
       url: url,
       data: body,
     });
@@ -89,13 +89,12 @@ const newsGet = (body) => {
   return resp;
 };
 
-export const getHomeData = async (url) => {
-  //creamos un método GET para llevar a cabo
-  try {
-    //las peticiones de los componenentes del Home
+export const getHomeData = async (url) => {        //creamos un método GET para llevar a cabo
+  try {                                         //las peticiones de los componenentes del Home
     const response = await axios({
-      method: 'GET',
+      method: "GET",
       url: url,
+          
     });
     console.log(response);
     return response;
@@ -104,6 +103,12 @@ export const getHomeData = async (url) => {
   }
 };
 
-export { newsCreate, newsUpdate, newsDelete, newsGet, getNews };
+export {
+  getNews,
+  newsCreate,
+  newsUpdate,
+  newsDelete,
+  newsGet
+};
 
 export default publicPost;
