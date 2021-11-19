@@ -1,33 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../FormStyles.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../FormStyles.css";
 
 const NewsListBackOffice = () => {
   //mock data
   const newsMock = [
     {
       id: 2,
-      name: 'Titulo de prueba1',
-      image: 'https://picsum.photos/id/1/100',
-      createdAt: '2020-01-01',
+      name: "Titulo de prueba1",
+      image: "https://picsum.photos/id/1/100",
+      createdAt: "2020-01-01",
     },
     {
       id: 1,
-      name: 'Titulo de prueba2',
-      image: 'https://picsum.photos/id/7/100',
-      createdAt: '2020-01-02',
+      name: "Titulo de prueba2",
+      image: "https://picsum.photos/id/7/100",
+      createdAt: "2020-01-02",
     },
     {
       id: 3,
-      name: 'Titulo de prueba3',
-      image: 'https://picsum.photos/id/20/100',
-      createdAt: '2020-01-03',
+      name: "Titulo de prueba3",
+      image: "https://picsum.photos/id/20/100",
+      createdAt: "2020-01-03",
     },
     {
       id: 4,
-      name: 'Titulo de prueba3',
-      image: 'https://picsum.photos/id/26/100',
-      createdAt: '2020-01-03',
+      name: "Titulo de prueba3",
+      image: "https://picsum.photos/id/26/100",
+      createdAt: "2020-01-03",
     },
   ];
 
@@ -53,7 +53,7 @@ const NewsListBackOffice = () => {
                   src={news.image}
                   className='rounded'
                   alt={news.name}
-                  style={{ width: '5rem' }}
+                  style={{ width: "5rem" }}
                 />
                 <h4 className='ml-3'>{news.name}</h4>
                 <p className='ml-3 mt-2'>{news.createdAt}</p>
