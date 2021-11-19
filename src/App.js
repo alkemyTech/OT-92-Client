@@ -34,6 +34,7 @@ import RegisterForm from "./Components/Auth/RegisterForm";
 import Donations from './Components/Donations/Donations.js';
 import NewsListBackOffice from './Components/Backoffice/NewsListBackOffice';
 import Contact from './Components/Contact';
+import NotFound from './Components/NotFound'
 
 function App() {
   return (
@@ -94,6 +95,11 @@ function App() {
 
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+
+          
+          <Route component={NotFound} />
+
+
 
         </Switch>
       </BrowserRouter>
