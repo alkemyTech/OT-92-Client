@@ -134,3 +134,23 @@ axios.put(REACT_APP_SLIDES/{ID}, {
 // DELETE A SLIDE
 axios.delete(process.env.REACT_APP_SLIDES/${ID}).then(res => console.log(res))
 
+
+
+# About the spinner:
+You can use the spinner wherever you need like this:
+
+`<Spinner />`
+
+
+This will result in a default spinner. If you need more customization, you should know that this component receives the following props:
+
+Prop (data type) / Options
+
+type (string) / Audio, Bars, Circle, Grid, Hearts, Oval, Puff, Rings, TailSpin, ThreeDots
+color (string) / Any, hex system.
+height (number) / Any (pixels)
+width (number) / Any (pixels)
+
+## Example
+
+`<Spinner type='TailSpin' color='#9AC9FB' height={150} width={150} />`
