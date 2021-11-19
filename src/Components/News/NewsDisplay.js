@@ -17,16 +17,17 @@ const NewsDisplay = () => {
 
   return (
     <>
-      <div className='my-3' />
-      <Title
+      <div className="my-3" />
+      <Title 
         content={{
-          title: 'Novedades',
+          title: "Novedades",
           image: null,
         }}
       />
-      <div className='container'>
-        <NewsList newsData={news} />
+      <div class="container">
+        <NewsList newsData={news}/>
       </div>
+          
     </>
   );
 };

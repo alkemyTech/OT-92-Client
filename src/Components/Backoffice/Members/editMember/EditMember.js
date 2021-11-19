@@ -8,7 +8,7 @@ import "../MembersList.css";
 const EditMember = () => {
   const { id } = useParams();
   const history = useHistory();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   useEffect(() => {
     membersService
       .getMember(id)
@@ -35,7 +35,7 @@ const EditMember = () => {
         "Por favor ingresa un link valido!"
       ),
   });
-    const showMessage = () => {
+  const showMessage = () => {
     return (
       <div className="bg-dark text-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
         <p>{message}</p>
