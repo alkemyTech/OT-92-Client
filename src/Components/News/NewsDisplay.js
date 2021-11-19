@@ -24,6 +24,7 @@ const NewsDisplay = () => {
 
   return (
     <>
+
       {error
         ? errorAlert({
             title: 'Hubo un problema',
@@ -49,7 +50,9 @@ const NewsDisplay = () => {
 
       <div className='container'>
         <NewsList newsData={news} />
+
       </div>
+          
     </>
   );
 };

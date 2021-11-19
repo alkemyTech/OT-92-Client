@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import '../FormStyles.css';
-import DatePicker from 'react-date-picker';
+import React, { useState } from "react";
+import "../FormStyles.css";
+import DatePicker from "react-date-picker";
 import EditorField from "../Activities/EditorField";
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from 'axios';
+import axios from "axios";
 
 const ProjectsForm = (project) => {
   const [formValues, setValues] = useState({
@@ -14,64 +14,64 @@ const ProjectsForm = (project) => {
     id: project.id || undefined,
     due_date: project.due_date || ""
   });
-  const [imagenPreview, setImagenPreview] = useState(null)
+  const [imagenPreview, setImagenPreview] = useState(null);
   const initialValues = {
     name: project.name || "",
     image: project.image || null,
     description: project.description || "",
     id: project.id || undefined,
     due_date: project.due_date || ""
-  }
+  };
 
   // parse file to base64 and return it to formState
   const setbase64 = async (file) => {
-    if (typeof file === 'object' && !!file) {
-      const metaData = `data:${formValues.image.type}; base64, `
+    if (typeof file === "object" && !!file) {
+      const metaData = `data:${formValues.image.type}; base64, `;
       const reader = new FileReader();
-      reader.readAsBinaryString(file)
-      reader.onload = () => { setValues({ ...formValues, image: metaData + btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)) }    //
+      reader.readAsBinaryString(file);
+      reader.onload = () => { setValues({ ...formValues, image: metaData + btoa(reader.result) }); setImagenPreview(metaData + btoa(reader.result)); };    //
     }
     else if (typeof file === "string" && file.length < 150) {
-      const res = await axios.get(file, { responseType: 'blob' })
+      const res = await axios.get(file, { responseType: "blob" });
       try {
-        setbase64(res.data)
+        setbase64(res.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
 
-  }
-  setbase64(formValues.image)
+  };
+  setbase64(formValues.image);
 
   // validacion de YUP para formik
   const validate = Yup.object({
     name: Yup.string()
       .required("necesitas ingresar un titulo"),
     description: Yup.string().min(20, "El minimo es de 20 caracteres").required("Este campo es obligatorio"),
-    image: Yup.mixed().required('Necesitas subir una foto'),
+    image: Yup.mixed().required("Necesitas subir una foto"),
     date: Yup.mixed().required("Debes ingresar una fecha")
   });
 
-  console.log(formValues)
+  console.log(formValues);
 
   // funcion devolver botones 
 
   const Botonera = () => {
     if (imagenPreview) {
       if (formValues.id === undefined) {
-        return (<> <button className="submit-btn" onClick={() => { console.log(formValues) }}>Crear</button>
-          <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null) }}>Deshacer Cambios</button>  </>)
+        return (<> <button className="submit-btn" onClick={() => { console.log(formValues); }}>Crear</button>
+          <button className="submit-btn" onClick={() => { setValues(initialValues); setImagenPreview(null); }}>Deshacer Cambios</button>  </>);
       }
       else if (formValues.id !== undefined) {
         return (<>
-          <button className="submit-btn" onClick={() => { console.log("PUTproject " + formValues) }}>Editar</button>
-          <button className="submit-btn" onClick={() => { setValues(initialValues) }}>Deshacer Cambios</button>
-        </>)
+          <button className="submit-btn" onClick={() => { console.log("PUTproject " + formValues); }}>Editar</button>
+          <button className="submit-btn" onClick={() => { setValues(initialValues); }}>Deshacer Cambios</button>
+        </>);
       }
     }
 
 
-  }
+  };
 
   return (
 
@@ -92,7 +92,7 @@ const ProjectsForm = (project) => {
       <Formik initialValues={initialValues}
         validationSchema={validate}
         enableReinitialize={true}
-        onSubmit={(values) => { setValues({ ...values, due_date: values.date.toLocaleDateString() }); setImagenPreview(URL.createObjectURL(values.image)) }}
+        onSubmit={(values) => { setValues({ ...values, due_date: values.date.toLocaleDateString() }); setImagenPreview(URL.createObjectURL(values.image)); }}
       >
         {formik => (
           <Form className="form-container" >
@@ -104,7 +104,7 @@ const ProjectsForm = (project) => {
               render={(msg) => <span className="error"> {msg} </span>}
             />
 
-            <DatePicker lang="es-AR" locale={"es-AR"} minDate={new Date} name="date" onChange={e => { formik.setFieldValue("date", e) }} value={formik.values.date} dayPlaceholder="Día" monthPlaceholder="Mes" yearPlaceholder="Año" returnValue="start" dayAriaLabel="Day" />
+            <DatePicker lang="es-AR" locale={"es-AR"} minDate={new Date()} name="date" onChange={e => { formik.setFieldValue("date", e); }} value={formik.values.date} dayPlaceholder="Día" monthPlaceholder="Mes" yearPlaceholder="Año" returnValue="start" dayAriaLabel="Day" />
             <ErrorMessage name="date"
               render={(msg) => <span className="error"> {msg} </span>}
             />
@@ -127,5 +127,5 @@ const ProjectsForm = (project) => {
     </div >
 
   );
-}
+};
 export default ProjectsForm;
