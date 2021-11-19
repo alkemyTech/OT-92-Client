@@ -3,7 +3,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./MembersList.css";
 import {useDispatch} from 'react-redux';
-import {addMember, addMemberAsync} from '../../../features/Members/membersSlice';
+import {addMember, addMemberAsync} from '../../../store/members/membersSlice';
 import { formatRelative, subDays } from 'date-fns'
 const CreateMember = () => {
   const dispatch = useDispatch()

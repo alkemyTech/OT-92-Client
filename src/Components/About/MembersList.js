@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getMembers, fetchMembers} from '../../features/Members/membersSlice';
+import {getMembers, fetchMembers} from '../../store/members/membersSlice';
 import axios from 'axios';
 
 export default function MembersList() {
