@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import { Formik, Field, Form } from 'formik';
-import '../FormStyles.css';
-import { UserHttp } from '../../Services/UserHttp';
+import React, { useState } from "react";
+import { Formik, Field, Form } from "formik";
+import "../FormStyles.css";
+import { UserHttp } from "../../Services/UserHttp";
 
 const UserForm = user => {
 
-  const ExtendHttpPetitions = UserHttp() //import CustomHook UserHttp
+  const ExtendHttpPetitions = UserHttp(); //import CustomHook UserHttp
   const [serverError, setServerError] = useState(null);
   const [initialValues, setInitialValues] = useState({
-    id: user.id || '',
-    name: user.name || '',
-    email: user.email || '',
-    password: user.password || '',
-    roleId: user.role_id || '',
-    profilePhoto: user.profile_image || '',
+    id: user.id || "",
+    name: user.name || "",
+    email: user.email || "",
+    password: user.password || "",
+    roleId: user.role_id || "",
+    profilePhoto: user.profile_image || "",
   });
 
   const handleChange = e => {
-    if (e.target.name === 'name') {
-      setInitialValues({ ...initialValues, name: e.target.value })
+    if (e.target.name === "name") {
+      setInitialValues({ ...initialValues, name: e.target.value });
     }
-    if (e.target.name === 'email') {
+    if (e.target.name === "email") {
       setInitialValues({ ...initialValues, email: e.target.value });
     }
-    if (e.target.name === 'password') {
+    if (e.target.name === "password") {
       setInitialValues({ ...initialValues, password: e.target.value });
     }
-    if (e.target.name === 'roleId') {
+    if (e.target.name === "roleId") {
       setInitialValues({ ...initialValues, roleId: parseInt(e.target.value) });
     }
   };
@@ -44,14 +44,14 @@ const UserForm = user => {
             role_id: initialValues.roleId,
             profile_image: initialValues.profilePhoto,
           }
-        })
+        });
       } catch {
-        setServerError('Algo salió mal, por favor intente de nuevo');
+        setServerError("Algo salió mal, por favor intente de nuevo");
       }
     } else {
       try {
         await ExtendHttpPetitions.post({
-          url: `http://ongapi.alkemy.org/public/api/users`,
+          url: "http://ongapi.alkemy.org/public/api/users",
           body: {
             name: initialValues.name,
             email: initialValues.email,
@@ -59,9 +59,9 @@ const UserForm = user => {
             role_id: initialValues.roleId,
             profile_image: initialValues.profilePhoto
           }
-        })
+        });
       } catch {
-        setServerError('Algo salió mal, por favor intente de nuevo');
+        setServerError("Algo salió mal, por favor intente de nuevo");
       }
     }
   };
@@ -71,27 +71,27 @@ const UserForm = user => {
       validate={() => {
         const errors = {};
         if (initialValues.name.length < 4) {
-          errors.name = 'El nombre debe contener mínimo cuatro caracteres';
+          errors.name = "El nombre debe contener mínimo cuatro caracteres";
         }
         if (!initialValues.email) {
-          errors.email = 'Email obligatorio';
+          errors.email = "Email obligatorio";
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(initialValues.email)
         ) {
-          errors.email = 'Por favor, ingrese una dirección de email válida';
+          errors.email = "Por favor, ingrese una dirección de email válida";
         }
 
         if (initialValues.password.length <= 8) {
           errors.password =
-            'La contraseña debe contener mínimo ocho caracteres';
+            "La contraseña debe contener mínimo ocho caracteres";
         }
 
         if (!initialValues.roleId) {
-          errors.roleId = 'Por favor, asigne un rol al usuario';
+          errors.roleId = "Por favor, asigne un rol al usuario";
         }
 
         if (!initialValues.profilePhoto) {
-          errors.profilePhoto = 'Foto de perfil obligatoria';
+          errors.profilePhoto = "Foto de perfil obligatoria";
         }
         return errors;
       }}
@@ -152,7 +152,7 @@ const UserForm = user => {
             name="profilePhoto"
             className="input-field"
             type="file"
-            accept={'.jpg, .jpeg, .png'}
+            accept={".jpg, .jpeg, .png"}
             onChange={
               //The next callback is crucial in order to convert the file into a base64 string, more info in https://stackoverflow.com/questions/6978156/get-base64-encode-file-data-from-input-form/42647105#42647105
               event => {
@@ -168,7 +168,7 @@ const UserForm = user => {
                   });
                 };
                 reader.onerror = function () {
-                  console.log('Falló la carga de la imagen');
+                  console.log("Falló la carga de la imagen");
                 };
               }
               // handleChange
