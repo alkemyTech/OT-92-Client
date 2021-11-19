@@ -1,0 +1,33 @@
+
+.customize-title{
+    font-family: 'Neucha' , cursive;
+    color: black;
+    background-color:  #9AC9FB;
+}
+.text-form{
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+.customize-image {
+    float: right;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+}
+.customize-icons{
+    float: right;
+    width:  50px;
+    height: 50px;
+    object-fit: cover;
+}
+.pointer{
+    cursor: pointer;
+}
+.button-text{
+    font-family:  'Shadows Into Light', cursive;
+    background-color: #9AC9FB;
+}
+.button-text:hover{
+    background-color: #6AC9FB;
+}

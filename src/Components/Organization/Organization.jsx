@@ -4,12 +4,13 @@ import axios from 'axios';
 const Organization = () => {
   const [serverError, setServerError] = useState(null);
   const [data, setData] = useState();
+  const getOrganizationData = process.env.REACT_APP_GET_ORGANIZATION_DATA
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios({
           method: 'GET',
-          url: 'http://ongapi.alkemy.org/public/api/organization',
+          url: getOrganizationData
         });
         setData(response.data.data);
       } catch {
