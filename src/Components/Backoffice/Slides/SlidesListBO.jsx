@@ -8,12 +8,12 @@ import SlideComponent from './SlideComponent';
 
 const SlideListBackOffice = () => {
 
-  const dispatch = useDispatch()
-  const apiPostStatus = useSelector(state => state.listSlice.list[0]) // Estado de la store listSlice
+  const dispatch = useDispatch();
+  const apiPostStatus = useSelector(state => state.listSlice.list[0]); // Estado de la store listSlice
 
   useEffect(() => {
-    dispatch(getSlicesApi()) // Esta funcion es async y obtiene los datos de una api
-  }, [])
+    dispatch(getSlicesApi()); // Esta funcion es async y obtiene los datos de una api
+  }, []);
 
   return (
     <>
