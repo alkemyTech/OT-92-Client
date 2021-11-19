@@ -1,4 +1,5 @@
 import React from 'react';
+import './slider.css'
 import {Carousel} from 'react-bootstrap'
 
 const Slider = () => {
@@ -11,7 +12,7 @@ const Slider = () => {
               src="https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudiantil.jpg"
               alt="First slide"
             />
-            <Carousel.Caption className="badge bg-secondary text-wrap text-light">
+            <Carousel.Caption className="badge bg-secondary text-wrap text-light" id="text">
               <h3>Viaje estudiantil</h3>
               <p>Desde SomosMas ayudamos a que todos puedan viajar.</p>
             </Carousel.Caption>
