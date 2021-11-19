@@ -4,7 +4,7 @@ import "./LazyLoad.css";
 const LazyLoad = ({image}) => {
 
   return ( 
-    <img src={image}  />
+    <img style={{width:"100%", height:"380px"}} src={image} alt="" />
   );
 };
  

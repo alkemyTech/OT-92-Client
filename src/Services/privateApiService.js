@@ -24,15 +24,6 @@ export const queryDeleteById = async (section, id) => {
 
 // service for activities
 export const activitiesService = {
-  //fetch all activities
-  getActivities: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/activities');
-    try {
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
   //fetch one activity
   getActivity: async (id) => {
     const data = await axios.get(
