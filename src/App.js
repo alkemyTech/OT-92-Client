@@ -30,6 +30,7 @@ import CreateMember from './Components/Backoffice/Members/CreateMember';
 import EditMember from './Components/Backoffice/Members/editMember/EditMember';
 import About from './Components/About'
 import UsersListContainer from "./Components/Backoffice/Users/UsersListContainer";
+import RegisterForm from "./Components/Auth/RegisterForm";
 import Donations from './Components/Donations/Donations.js';
 import NewsListBackOffice from './Components/Backoffice/NewsListBackOffice';
 import Contact from './Components/Contact';
@@ -89,6 +90,8 @@ function App() {
           <Route path="/news" component={NewsDisplay} />
           <Route path="/novedades/:id" exact component={Content} />
           <Route path="/nosotros" component={About} />
+          <Route path="/register" component={RegisterForm} />
+
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
 
