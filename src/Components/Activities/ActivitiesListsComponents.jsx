@@ -8,9 +8,11 @@ const ActivitiesListsComponents = ({ el, actividades, setActividades }) => {
   const eliminarTarea = (prop) => {
 
     const isDelete = window.confirm(`Estas seguro de querer eliminar la tarea "${prop.name}"`);
+    const url = process.env.REACT_APP_ACTIVITY + `/${prop.id}`;
+
 
     if (isDelete) {
-      axios.delete(`http://ongapi.alkemy.org/public/api/activities/${prop.id}`)
+      axios.delete(url)
         .then(res => {
 
           if (res.status === 200) {
