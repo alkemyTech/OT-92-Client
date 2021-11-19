@@ -1,7 +1,16 @@
-import React from 'react'
+import React,{useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {getMembers, fetchMembers} from '../../store/members/membersSlice';
+import axios from 'axios';
 
 export default function MembersList() {
-    const members = [
+    const dispatch = useDispatch();
+    const {members} = useSelector(state => state.members)
+
+useEffect(() => {
+   dispatch(getMembers())
+}, [dispatch])
+    const membersMocked = [
         {
             name: 'Juan',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus sapien, tempus lacinia scelerisque a, ultricies eu dui. Donec quis iaculis arcu.',
@@ -46,9 +55,9 @@ export default function MembersList() {
              marginBottom:'20px', 
              gap:'10px'
         }}>
-            {members.map(member => {
+            {members && members.map((member, i) => {
                 return (
-                    <main>
+                    <main key={i}>
                         <section className="card" style={{width:'16rem', backgroundColor:'lightblue'}}>
                             <img src={member.image} className="card-img-top" alt="..." />
                             <div className="card-body">

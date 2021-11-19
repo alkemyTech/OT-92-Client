@@ -1,5 +1,5 @@
-import React from 'react';
-import './Skeleton.css';
+import React from "react";
+import "./Skeleton.css";
 
 const Skeleton = ({ type, width, height }) => {
   //if width is defined, use it, otherwise use default width
