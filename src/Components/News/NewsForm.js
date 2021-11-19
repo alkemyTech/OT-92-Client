@@ -1,57 +1,57 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios from 'axios';
-import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router';
-import '../../Components/FormStyles.css';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import axios from "axios";
+import React, { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router";
+import "../../Components/FormStyles.css";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {
   newsCreate,
   newsUpdate,
   newsGet,
-} from '../../Services/publicApiService';
+} from "../../Services/publicApiService";
 
 const editorConfiguration = {
   toolbar: [
-    'heading',
-    '|',
-    'bold',
-    'italic',
-    'link',
-    'bulletedList',
-    'numberedList',
-    'blockQuote',
-    'undo',
-    'redo',
+    "heading",
+    "|",
+    "bold",
+    "italic",
+    "link",
+    "bulletedList",
+    "numberedList",
+    "blockQuote",
+    "undo",
+    "redo",
   ],
 };
 
 const NewsForm = () => {
   const { id } = useParams(); //Esto valida si se esta editando o creando un post mediante paso de parametros
   const refP = useRef(); //cambia la visibilidad del <p> "insertar imagen"
-  const urlCategoria = 'http://ongapi.alkemy.org/public/api/categories';
-//   const urlEditarNovedad = `http://ongapi.alkemy.org/public/api/news/${id}`;
-//   const urlCrearNovedad = 'http://ongapi.alkemy.org/public/api/news';
+  const urlCategoria = "http://ongapi.alkemy.org/public/api/categories";
+  //   const urlEditarNovedad = `http://ongapi.alkemy.org/public/api/news/${id}`;
+  //   const urlCrearNovedad = 'http://ongapi.alkemy.org/public/api/news';
   const [categorias, setcategorias] = useState([]); //obtiene las categorias del endpoint
 
   const datosForm = {
-    category: '',
-    title: '',
-    content: '',
-    img: '',
-    id: id || '',
+    category: "",
+    title: "",
+    content: "",
+    img: "",
+    id: id || "",
     //La api necesita que le mande name sí o si, de lo contrario no anda.
-    name: '',
+    name: "",
   };
 
   const [initialValues, setInitialValues] = useState(datosForm);
 
   const handleChange = e => {
     //actualiza el estado de title y category
-    if (e.target.name === 'title') {
+    if (e.target.name === "title") {
       setInitialValues({ ...initialValues, name: e.target.value });
     }
-    if (e.target.name === 'category') {
+    if (e.target.name === "category") {
       setInitialValues({ ...initialValues, category: e.target.value });
     }
   };
@@ -68,7 +68,7 @@ const NewsForm = () => {
   const handleSubmit = e => {
     //envia los datos dependiendo del id hace una peticion post o put
     const datosConEtiquetas = initialValues.content;
-    const datosSinEtiquetas = datosConEtiquetas.replace(/<[^>]+>/g, ''); //convierte a texto plano el content
+    const datosSinEtiquetas = datosConEtiquetas.replace(/<[^>]+>/g, ""); //convierte a texto plano el content
     console.log(initialValues);
     if (!id) {
       //   axios
@@ -81,7 +81,7 @@ const NewsForm = () => {
       newsCreate(initialValues)
         .then(res => {
           if (res.status === 200) {
-            alert('El post se creó correctamente');
+            alert("El post se creó correctamente");
             return setInitialValues(datosForm);
           }
         })
@@ -100,7 +100,7 @@ const NewsForm = () => {
       newsUpdate(initialValues)
         .then(res => {
           if (res.status === 200) {
-            alert('El post se actualizó correctamente');
+            alert("El post se actualizó correctamente");
             return setInitialValues(datosForm);
           }
         })
@@ -119,7 +119,7 @@ const NewsForm = () => {
       ...initialValues,
       img: imageUrl,
     });
-    refP.current.className = 'hidden';
+    refP.current.className = "hidden";
   };
 
   useEffect(() => {
@@ -150,7 +150,7 @@ const NewsForm = () => {
             className="input-field"
             type="text"
             name="title"
-            value={initialValues.name || ''}
+            value={initialValues.name || ""}
             onChange={handleChange}
           ></input>
         </label>
@@ -166,18 +166,18 @@ const NewsForm = () => {
           required
           className="select-field"
           name="category"
-          value={initialValues.category || ''}
+          value={initialValues.category || ""}
           onChange={handleChange}
         >
           <option value="">Select category</option>
           {categorias
             ? categorias.map(el => {
-                return (
-                  <option key={el.id} value={el.name}>
-                    {el.name}
-                  </option>
-                );
-              })
+              return (
+                <option key={el.id} value={el.name}>
+                  {el.name}
+                </option>
+              );
+            })
             : false}
         </select>
         <label className="label-Img-new-News">

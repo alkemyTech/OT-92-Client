@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router';
-import '../FormStyles.css';
+import React, { useState } from "react";
+import { useParams } from "react-router";
+import "../FormStyles.css";
 
-import axios from 'axios';
+import axios from "axios";
 import EditorField from "../Activities/EditorField";
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 
 const CategoriesForm = () => {
-  const {id} = useParams
+  const {id} = useParams;
   const [initialValues, setInitialValues] = useState({
     name: "",
     id: id || "",  
@@ -19,22 +19,22 @@ const CategoriesForm = () => {
   
 
   const handleSubmit = (e) => {
-      e.preventDefault()
+    e.preventDefault();
       
-      if(!id) {  //if there's no ID, we make a POST request to create a category
-          axios.post('http://ongapi.alkemy.org/api/categories', initialValues)
-      }
-      if(id) {  //if there is an ID, we make a PUT request to edit a category
-        axios.put(`http://ongapi.alkemy.org/api/categories/${id}`, initialValues)
-      }
-  }
+    if(!id) {  //if there's no ID, we make a POST request to create a category
+      axios.post("http://ongapi.alkemy.org/api/categories", initialValues);
+    }
+    if(id) {  //if there is an ID, we make a PUT request to edit a category
+      axios.put(`http://ongapi.alkemy.org/api/categories/${id}`, initialValues);
+    }
+  };
 
   const handleChange = (e) => {
-     if(e.target.name === 'name') {
-       setInitialValues({... initialValues, name: e.target.value});
-       console.log(e.target.value)
-     }
-  }
+    if(e.target.name === "name") {
+      setInitialValues({...initialValues, name: e.target.value});
+      console.log(e.target.value);
+    }
+  };
 
   // validaciones de YUP para el form
   const validate = Yup.object({
@@ -43,7 +43,7 @@ const CategoriesForm = () => {
       .min(4, "Se requieren al menos cuatro caracteres"),
     description: Yup.string()
       .required("Este campo es obligatorio"),
-    image: Yup.mixed().required('Es necesario subir una foto'),
+    image: Yup.mixed().required("Es necesario subir una foto"),
   });
 
   return (
@@ -53,7 +53,7 @@ const CategoriesForm = () => {
       <Formik initialValues={initialValues}
         validationSchema={validate}
         enableReinitialize={true}
-        onSubmit={(values) => { setInitialValues({ ...values }) }}
+        onSubmit={(values) => { setInitialValues({ ...values }); }}
       >
         {formik => (
           <Form className="form-container" onSubmit={handleSubmit}>
@@ -81,20 +81,20 @@ const CategoriesForm = () => {
               name="image" 
               accept="image/png, image/jpeg" 
               onChange= {event => {                       //here we transform the file to base64
-                  let file = event.currentTarget.files[0];
-                  let reader = new FileReader();
-                  reader.readAsBinaryString(file);
+                let file = event.currentTarget.files[0];
+                let reader = new FileReader();
+                reader.readAsBinaryString(file);
 
-                  reader.onload = function () {
-                    let codedImg = window.btoa(reader.result);
-                    setInitialValues({
-                      ...initialValues,
-                      image: codedImg,
-                    });
-                  };
-                  reader.onerror = function () {
-                    console.log('Falló la carga de la imagen');
-                  };
+                reader.onload = function () {
+                  let codedImg = window.btoa(reader.result);
+                  setInitialValues({
+                    ...initialValues,
+                    image: codedImg,
+                  });
+                };
+                reader.onerror = function () {
+                  console.log("Falló la carga de la imagen");
+                };
               }}
             />
             
@@ -109,6 +109,6 @@ const CategoriesForm = () => {
     </div >
 
   );
-}
+};
 
 export default CategoriesForm;

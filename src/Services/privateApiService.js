@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const config = {
   headers: {
@@ -15,15 +15,24 @@ export const queryDeleteById = async (section, id) => {
     por Facundo Delavalle */
   let res = await axios.delete(url, configuration);
   try {
-    console.log(`Deleted succesfully`);
+    console.log("Deleted succesfully");
     console.log(res.status);
   } catch (error) {
-    console.log('Something went wrong: ' + error);
+    console.log("Something went wrong: " + error);
   }
 };
 
 // service for activities
 export const activitiesService = {
+  //fetch all activities
+  getActivities: async () => {
+    const data = await axios.get('http://ongapi.alkemy.org/api/activities');
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
   //fetch one activity
   getActivity: async (id) => {
     const data = await axios.get(
@@ -38,7 +47,7 @@ export const activitiesService = {
   //create activity
   createActivity: async (activity) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/activities/create`,
+      "http://ongapi.alkemy.org/api/activities/create",
       activity
     );
     try {
@@ -76,7 +85,7 @@ export const activitiesService = {
 export const membersService = {
   //fetch all members
   getMembers: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/members');
+    const data = await axios.get("http://ongapi.alkemy.org/api/members");
     try {
       return data;
     } catch (error) {
@@ -97,7 +106,7 @@ export const membersService = {
   //create member
   createMember: async (member) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/members/create`,
+      "http://ongapi.alkemy.org/api/members/create",
       member
     );
     try {
@@ -137,7 +146,7 @@ export const membersService = {
 export const queryPutData = async (section, queryObject) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`;
   const axiosPut = await axios.put(url, queryObject, config);
-  console.log('asdss');
+  console.log("asdss");
   try {
     console.log(axiosPut.data);
   } catch (error) {
@@ -147,7 +156,7 @@ export const queryPutData = async (section, queryObject) => {
 
 //function that gets the token from local storage and returns a headers with authorization object
 export const getAuthorization = () => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -156,13 +165,13 @@ export const getAuthorization = () => {
 
 export const privateGet = async (url, id) => {
   try {
-    const endPointId = id ? `/${id}` : '';
+    const endPointId = id ? `/${id}` : "";
     const resp = await axios.get(url + endPointId, getAuthorization());
     return resp;
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 
 // function that makes a post request to the api obtaining an authentication from the getAuthorization function
@@ -174,9 +183,9 @@ export const ServicePostPrivate = async (section, id) => {
   by Facundo Delavalle */
   let res = await axios.post(url, configuration);
   try {
-    console.log(`The request was successful`);
+    console.log("The request was successful");
     console.log(res.status);
   } catch (error) {
-    console.log("Something went wrong: " + error)
+    console.log("Something went wrong: " + error);
   }
-}
+};

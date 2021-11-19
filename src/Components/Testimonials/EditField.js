@@ -1,7 +1,7 @@
 import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import {ErrorMessage} from 'formik'
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import {ErrorMessage} from "formik";
 
 const editorConfiguration = {
   toolbar: {
@@ -54,7 +54,7 @@ const EditField = ({ formik }) => {
       />
       <ErrorMessage
         name="description"
-        render={(msg) => <span style={{color:'red'}}> {msg} </span>}
+        render={(msg) => <span style={{color:"red"}}> {msg} </span>}
       />
     </>
   );
