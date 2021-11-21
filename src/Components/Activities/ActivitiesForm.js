@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import EditorField from './EditorField';
-import axios from 'axios';
-import '../FormStyles.css';
+import React, { useState } from "react";
+import { Formik, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import EditorField from "./EditorField";
+import axios from "axios";
+import "../FormStyles.css";
 
 const ActivitiesForm = (activity) => {
   const [formValues, setValues] = useState({

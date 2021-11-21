@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./MembersList.css";
-import {useDispatch} from 'react-redux';
-import {addMember, addMemberAsync} from '../../../store/members/membersSlice';
-import { formatRelative, subDays } from 'date-fns'
+import {useDispatch} from "react-redux";
+import {addMember, addMemberAsync} from "../../../store/members/membersSlice";
+import { formatRelative, subDays } from "date-fns";
 const CreateMember = () => {
-  const dispatch = useDispatch()
-  const [message, setMessage] = useState('');
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState("");;
   const [values, setValues] = useState({
     name: "",
     image: "",
@@ -35,7 +35,7 @@ const CreateMember = () => {
       ),
   });
 
- const showMessage = () => {
+  const showMessage = () => {
     return (
       <div className="bg-dark text-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
         <p>{message}</p>
@@ -54,7 +54,7 @@ const CreateMember = () => {
           onSubmit={ async val => {
             const { name, image, description, facebookURL, linkedinURL } = val;
             const created_at = formatRelative(subDays(new Date(), 3), new Date());
-           await setValues({
+            await setValues({
               name,
               image,
               description,
@@ -67,16 +67,16 @@ const CreateMember = () => {
               description,
               facebookURL,
               linkedinURL
-              })));
-              let newMember = {...val, created_at};
+            })));
+            let newMember = {...val, created_at};
             try {
-              await dispatch(addMemberAsync(newMember))
+              await dispatch(addMemberAsync(newMember));
             } catch (error) {
-               setMessage(error);
-        setTimeout(() => {
-          setMessage(null);
-        }, 2000);
-          }}}
+              setMessage(error);
+              setTimeout(() => {
+                setMessage(null);
+              }, 2000);
+            }}}
         >
           {(formik) => (
             <Form className="form-container d-flex flex-column ">
