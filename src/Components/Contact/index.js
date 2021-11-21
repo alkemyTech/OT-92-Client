@@ -9,7 +9,7 @@ export default function Contact() {
     <div>
       <Title content={{title: "Contacto"}} />
       <br/>
-      <img src={"http://ongapi.alkemy.org/storage/4ZR8wsUwr9.png"} />
+      <img src={"http://ongapi.alkemy.org/storage/4ZR8wsUwr9.png"} alt=" no dejes una img sin 'alt' " />
       <br/>
       <ContactData />
     </div>
