@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { queryGetAll } from "../../Services/publicApiService";
 //import axios from "axios";
 
 const menuInitial = {
@@ -9,7 +10,7 @@ const menuInitial = {
 };
 
 export const getSlicesApi = createAsyncThunk("slices/getSlicesApi", async () => {
-  const response = await axios.get("http://ongapi.alkemy.org/api/categories");
+  const response = await queryGetAll("slides");
   return response.data;
 });
 

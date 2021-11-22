@@ -7,11 +7,21 @@ const config = {
   },
 };
 
+export const queryGetAll = async (section) => {
+  const url = `http://ongapi.alkemy.org/api/${section}`;
+  let res = await axios.get(url, config);
+  try {
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const queryGetData = async (section, id) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
   let res = await axios.get(url, config);
   try {
-    console.log(url);
     return res.data;
   } catch (error) {
     console.log(error);
