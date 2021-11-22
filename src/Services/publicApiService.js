@@ -11,6 +11,7 @@ export const queryGetData = async (section, id) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
   let res = await axios.get(url, config);
   try {
+    console.log(url)
     return res.data;
   } catch (error) {
     console.log(error);
@@ -102,6 +103,23 @@ export const getHomeData = async (url) => {        //creamos un método GET para
     console.log(err);
   }
 };
+
+export const slidesService = (type, queryObject) => {
+  switch (type) {
+    case getAll:
+      queryGetData("slides", null);
+      break;
+    case create:
+      queryPostCreateData("slides", queryObject);
+      break;
+    case edit:
+      httpClient.put(`/slides/${queryObject.id}`, queryObject)
+      break;
+    default:
+      queryGetData("slides", null);
+      break;
+  }
+}
 
 export {
   getNews,
