@@ -125,6 +125,9 @@ export const slidesService = async (type, queryObject) => {
   case "edit":
     httpClient.put(`/slides/${queryObject.id}`, queryObject);
     break;
+  case "delete":
+    httpClient.delete(`/slides/${queryObject.id}`);
+    break;
   default:
     queryGetData("slides", null);
     break;
