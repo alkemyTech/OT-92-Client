@@ -14,7 +14,7 @@ const SlidesForm = () => {
     id: id || undefined,
     name: "",
     order: "",
-    image: null,
+    image: "",
     description: "",
   });
     
@@ -134,7 +134,8 @@ const SlidesForm = () => {
             />
             <EditorField 
               formik={formik}
-              initialValue={initialValues.description}
+              initialValues={initialValues.description}
+              setInitialValues={setInitialValues}
             />
             <button className="submit-btn" type="submit" >Enviar</button>
           </Form>
