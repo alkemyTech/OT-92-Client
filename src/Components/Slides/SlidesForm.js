@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import EditorField from "../Activities/EditorField";
-import axios from "axios";
+import { slidesService } from "../../Services/publicApiService";
 
 const SlidesForm = () => {
   const {id} = useParams();
@@ -19,12 +19,12 @@ const SlidesForm = () => {
     
   // Funciones para submitear:
   const edit = (id) => {
-    axios.put(`http://ongapi.alkemy.org/api/slides/${id}`, initialValues);
+    slidesService("edit", initialValues);
     console.log("Editado");
   };
 
   const create = () => {
-    axios.post("http://ongapi.alkemy.org/api/slides/create", initialValues);
+    slidesService("create", initialValues);
     console.log("Creado");
   };
 
