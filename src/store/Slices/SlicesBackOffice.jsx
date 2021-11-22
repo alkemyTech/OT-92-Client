@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { queryGetAll } from "../../Services/publicApiService";
+import { slidesService } from "../../Services/publicApiService";
 //import axios from "axios";
 
 const menuInitial = {
@@ -10,7 +10,7 @@ const menuInitial = {
 };
 
 export const getSlicesApi = createAsyncThunk("slices/getSlicesApi", async () => {
-  const response = await queryGetAll("slides");
+  const response = await slidesService("getAll");
   return response.data;
 });
 
@@ -31,7 +31,7 @@ export const sliceBackOffice = createSlice({
       .addCase(getSlicesApi.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-        alert(state.error);
+        console.log(state.error);
       });
   }
 });

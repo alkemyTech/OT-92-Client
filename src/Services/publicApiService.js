@@ -114,10 +114,10 @@ export const getHomeData = async (url) => {        //creamos un método GET para
   }
 };
 
-export const slidesService = (type, queryObject) => {
+export const slidesService = async (type, queryObject) => {
   switch (type) {
   case "getAll":
-    queryGetData("slides", null);
+    queryGetAll("slides");
     break;
   case "create":
     queryPostCreateData("slides", queryObject);
