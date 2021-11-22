@@ -11,7 +11,7 @@ export const queryGetData = async (section, id) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
   let res = await axios.get(url, config);
   try {
-    console.log(url)
+    console.log(url);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -50,7 +50,7 @@ export const queryGetObjectData = async (section, ID) => {
 };
 
 export const GetWithId = (link, id) => {
-  const pageId = id ? id : '';
+  const pageId = id ? id : "";
   return axios
     .get(`${link}/${pageId}`)
     .then((res) => console.log(res))
@@ -59,7 +59,7 @@ export const GetWithId = (link, id) => {
 
 export const Get = () => {
   return axios
-    .get('https://jsonplaceholder.typicode.com/users', config)
+    .get("https://jsonplaceholder.typicode.com/users", config)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
@@ -80,13 +80,13 @@ const publicPost = async (url, body) => {
   }
 };
 
-const getNews = () => httpClient.get('/news');
-const newsCreate = (body) => httpClient.post('/news', body);
+const getNews = () => httpClient.get("/news");
+const newsCreate = (body) => httpClient.post("/news", body);
 const newsUpdate = (body) => httpClient.put(`/news/${body.id}`, body);
 const newsDelete = (body) => httpClient.delete(`/news/${body.id}`, body);
 const newsGet = (body) => {
-  const newsId = body.id ? `/${body.id}` : '';
-  const resp = axios.get('/news' + newsId);
+  const newsId = body.id ? `/${body.id}` : "";
+  const resp = axios.get("/news" + newsId);
   return resp;
 };
 
@@ -106,20 +106,20 @@ export const getHomeData = async (url) => {        //creamos un método GET para
 
 export const slidesService = (type, queryObject) => {
   switch (type) {
-    case "getAll":
-      queryGetData("slides", null);
-      break;
-    case "create":
-      queryPostCreateData("slides", queryObject);
-      break;
-    case "edit":
-      httpClient.put(`/slides/${queryObject.id}`, queryObject)
-      break;
-    default:
-      queryGetData("slides", null);
-      break;
+  case "getAll":
+    queryGetData("slides", null);
+    break;
+  case "create":
+    queryPostCreateData("slides", queryObject);
+    break;
+  case "edit":
+    httpClient.put(`/slides/${queryObject.id}`, queryObject);
+    break;
+  default:
+    queryGetData("slides", null);
+    break;
   }
-}
+};
 
 export {
   getNews,

@@ -5,6 +5,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import EditorField from "../Activities/EditorField";
 import { slidesService } from "../../Services/publicApiService";
+import axios from "axios";
 
 const SlidesForm = () => {
   const {id} = useParams();
