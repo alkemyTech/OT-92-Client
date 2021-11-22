@@ -106,13 +106,13 @@ export const getHomeData = async (url) => {        //creamos un método GET para
 
 export const slidesService = (type, queryObject) => {
   switch (type) {
-    case getAll:
+    case "getAll":
       queryGetData("slides", null);
       break;
-    case create:
+    case "create":
       queryPostCreateData("slides", queryObject);
       break;
-    case edit:
+    case "edit":
       httpClient.put(`/slides/${queryObject.id}`, queryObject)
       break;
     default:
