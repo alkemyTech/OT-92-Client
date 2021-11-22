@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { slidesService } from "../../Services/publicApiService";
 //import axios from "axios";
 
 const menuInitial = {
@@ -10,7 +9,9 @@ const menuInitial = {
 };
 
 export const getSlicesApi = createAsyncThunk("slices/getSlicesApi", async () => {
-  const response = await slidesService("getAll");
+  const response = await axios.get("http://ongapi.alkemy.org/api/slides"); 
+  /* Este metodo axios.get será reemplazado por el servicio de slides slidesService("getAll") cuando se solucione el token de autorización 
+  para crear las slides de nuestro grupo. Sino devuelve un array vacío y hay error porque no se pueden leer las props de un undefined. */
   return response.data;
 });
 
