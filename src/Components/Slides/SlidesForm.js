@@ -11,7 +11,7 @@ const SlidesForm = () => {
   const {id} = useParams();
   const [title, setTitle] = useState("Crear");
   const [initialValues, setInitialValues] = useState({
-    id: id || undefined,
+    id: id || null,
     name: "",
     order: "",
     image: "",
@@ -19,13 +19,13 @@ const SlidesForm = () => {
   });
     
   // Funciones para submitear:
-  const edit = (id) => {
-    slidesService("edit", initialValues);
+  const edit = async (data) => {
+    await slidesService("edit", data);
     console.log("Editado");
   };
 
-  const create = () => {
-    slidesService("create", initialValues);
+  const create = async (data) => {
+    await slidesService("create", data);
     console.log("Creado");
   };
 
@@ -74,10 +74,10 @@ const SlidesForm = () => {
   const handleSubmit = (e) => {
     if(id){
       setTitle("Editar");
-      edit(id);
+      edit(initialValues);
     } if(!id){
       setTitle("Crear");
-      create();
+      create(initialValues);
     }
   };
 
