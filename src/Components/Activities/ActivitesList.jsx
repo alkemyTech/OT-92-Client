@@ -18,11 +18,11 @@ const ActivitesList = () => {
         setLoading(true);
         const datosPrincipal = await axios.get(urlActivities),
           actividadesData = await datosPrincipal.data.data;
-        console.log(actividadesData);
         setActividades(actividadesData);
         setLoading(false);
             
       }  catch (err) {
+        console.log(err);
         errorAlert({title:"error", text:"Ocurrió un error en las actividades"}); //here we implement the "errorAlert"
       }};                                                                         //function to display an error If
     //the request fails
