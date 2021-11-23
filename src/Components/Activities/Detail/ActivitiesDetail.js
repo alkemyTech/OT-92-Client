@@ -26,26 +26,6 @@ const ActivitiesDetail = () => {
     
   }, [paramsId]);
 
-  const activities = [
-    {
-      id: "1",
-      title: "Recorrido por el comedor",
-      body: "<p>Se recorre el comedor del area central, se le pregunta a la gente que es lo que mas le gusta comer y comimos de postre unos alfajores donados por Havanna.</p>",
-    },
-    {
-      id: "2",
-      title: "Visitas clases de ingles",
-      body: "<p>Se visita a los alumnos de primaria en sus clases de ingles.</p>",
-    },
-    {
-      id: "3",
-      title: "Torneo de futbol 5 ",
-      body: "<p>Los chicos que cursan el nivel secundario organizaron un torneo de futbol 5 el dia domingo.</p>",
-    },
-  ];
-  const paramsActivity = activities.filter(
-    (activities) => activities.id === paramsId
-  );
   return (
     <>
       <div>
