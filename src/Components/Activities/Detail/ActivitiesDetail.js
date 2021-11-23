@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ActivitiesDetail.css";
 import { activitiesService } from "../../../Services/privateApiService";
 import ActivitiesDetailContent from "./ActivitiesDetailContent";
+import SpinnerCharge from "../../../Assets/SpinnerComponent/SpinnerCharge";
+import { errorAlert } from "../../../Assets/Alerts/alerts";
 
 const ActivitiesDetail = () => {
   let { id: paramsId } = useParams();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getData = async () => {
+      try{
+        setLoading(true);
+        //Servicio reutilizable para traer el item by ID con await
+        setLoading(false);
+      }
+      catch{
+        errorAlert({title:"Error", text:"No se obtuvieron datos."});
+      }
+    };
+
+    getData();
+    
+  }, [paramsId]);
 
   const activities = [
     {
