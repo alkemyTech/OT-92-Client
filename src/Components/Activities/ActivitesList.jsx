@@ -5,19 +5,22 @@ import { NavLink } from "react-router-dom";
 import { errorAlert } from "../../Assets/Alerts/alerts";
 import "./Activities.css";
 import ActivitiesListsComponents from "./ActivitiesListsComponents";
+import SpinnerCharge from "../../Assets/SpinnerComponent/SpinnerCharge";
 
 const ActivitesList = () => {
-
-  const [actividades, setActividades] = useState();
+  const [loading, setLoading] = useState(false);
+  const [actividades, setActividades] = useState([]);
   const urlActivities = "http://ongapi.alkemy.org/public/api/activities";
 
   useEffect(() => {
     const obtenerActividades = async () => {
       try {
-            
+        setLoading(true);
         const datosPrincipal = await axios.get(urlActivities),
           actividadesData = await datosPrincipal.data.data;
+        console.log(actividadesData);
         setActividades(actividadesData);
+        setLoading(false);
             
       }  catch (err) {
         errorAlert({title:"error", text:"Ocurrió un error en las actividades"}); //here we implement the "errorAlert"
