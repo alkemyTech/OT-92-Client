@@ -36,7 +36,7 @@ import NewsListBackOffice from "./Components/Backoffice/NewsListBackOffice";
 import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
 
-import "./animatedRouter.css";
+// import "./animatedRouter.css";
 import { AnimatedSwitch } from "react-router-transition";
 import { bounceTransition, mapStyles } from "./Assets/animatedRouter";
 
@@ -77,7 +77,6 @@ function App() {
             component={CategoriesListBackoffice}
           />
           <Route exact path='/backoffice/members' component={Members}/>
-          <Route exact path='/backoffice/memberslist' component={MembersList}/>
           <Route path='/backoffice/members/create' component={CreateMember} />
           <Route path='/backoffice/editmember/:id' component={EditMember} />
           <Route
