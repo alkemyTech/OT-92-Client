@@ -6,10 +6,12 @@ import ActivitiesDetailContent from "./ActivitiesDetailContent";
 import SpinnerCharge from "../../../Assets/SpinnerComponent/SpinnerCharge";
 import { errorAlert } from "../../../Assets/Alerts/alerts";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ActivitiesDetail = () => {
   let { id: paramsId } = useParams();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [activity, setActivity] = useState({
     id: null,
     name: "",
@@ -28,6 +30,7 @@ const ActivitiesDetail = () => {
       }
       catch{
         errorAlert({title:"Error", text:"No se obtuvieron datos."});
+        setError(true);
       }
     };
 
@@ -38,7 +41,13 @@ const ActivitiesDetail = () => {
   return (
     <>
       <div>
-        {loading ? <SpinnerCharge /> :
+        {loading ? 
+          <>
+            {error ? <Link to="/activities"><h5>Volver a sección Actividades</h5></Link>
+              : <SpinnerCharge />
+            }
+          </>
+          :
           (
             <div className="container d-flex flex-column justify-items-center mt-5">
               <h1 className=" h1 w-100 text-center Activities-title">{activity.name}</h1>
