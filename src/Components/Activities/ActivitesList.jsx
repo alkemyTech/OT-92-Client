@@ -48,17 +48,21 @@ const ActivitesList = () => {
             </tr>
           </thead>
           <tbody style={{ borderTop: "1px solid #dee2e6" }}>
-            {
-              actividades
-                ? actividades.map(el => {
-                  return <ActivitiesListsComponents
-                    el={el} key={el.id}
-                    actividades={actividades}
-                    setActividades={setActividades}
-                  />;
+            { loading ? <SpinnerCharge /> :
+              <>
+                {
+                  actividades
+                    ? actividades.map(el => {
+                      return <ActivitiesListsComponents
+                        activity={el} key={el.id}
+                        actividades={actividades}
+                        setActividades={setActividades}
+                      />;
+                    }
+                    )
+                    : <tr><td>Cargando</td></tr>
                 }
-                )
-                : <tr><td>Cargando</td></tr>
+              </>
             }
           </tbody>
         </Table>
