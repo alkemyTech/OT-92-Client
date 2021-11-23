@@ -70,16 +70,20 @@ function App() {
           <Route path="/backoffice/slides" component={SlidesListBo} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
 
-          <Route path="/backoffice/slides-form/:id" exact component={SlidesForm} />
+          <Route
+            path="/backoffice/slides-form/:id"
+            exact
+            component={SlidesForm}
+          />
           <Route path="/backoffice/slides-form/" exact component={SlidesForm} />
           <Route
             path="/backoffice/categories"
             component={CategoriesListBackoffice}
           />
-          <Route exact path='/backoffice/members' component={Members}/>
-          <Route exact path='/backoffice/memberslist' component={MembersList}/>
-          <Route path='/backoffice/members/create' component={CreateMember} />
-          <Route path='/backoffice/editmember/:id' component={EditMember} />
+          <Route exact path="/backoffice/members" component={Members} />
+          <Route exact path="/backoffice/memberslist" component={Members} />
+          <Route path="/backoffice/members/create" component={CreateMember} />
+          <Route path="/backoffice/editmember/:id" component={EditMember} />
           <Route
             path="/backoffice/members/edit/:id"
             component={MembersCreateEdit}

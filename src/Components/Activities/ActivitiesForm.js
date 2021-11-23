@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import EditorField from './EditorField';
-import axios from 'axios';
-import '../FormStyles.css';
+import React, { useState } from "react";
+import { Formik, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import EditorField from "./EditorField";
+import axios from "axios";
+import "../FormStyles.css";
 
 const ActivitiesForm = (activity) => {
   const [formValues, setValues] = useState({
@@ -60,7 +60,7 @@ const ActivitiesForm = (activity) => {
           <>
             {" "}
             <button
-              className='submit-btn'
+              className="submit-btn"
               onClick={() => {
                 console.log(formValues);
               }}
@@ -68,7 +68,7 @@ const ActivitiesForm = (activity) => {
               Crear
             </button>
             <button
-              className='submit-btn'
+              className="submit-btn"
               onClick={() => {
                 setValues(initialValues);
                 setImagenPreview(null);
@@ -82,7 +82,7 @@ const ActivitiesForm = (activity) => {
         return (
           <>
             <button
-              className='submit-btn'
+              className="submit-btn"
               onClick={() => {
                 console.log("PUTactivitie " + formValues);
               }}
@@ -90,7 +90,7 @@ const ActivitiesForm = (activity) => {
               Editar
             </button>
             <button
-              className='submit-btn'
+              className="submit-btn"
               onClick={() => {
                 setValues(initialValues);
               }}
@@ -104,17 +104,17 @@ const ActivitiesForm = (activity) => {
   };
 
   return (
-    <div className='container'>
-      <div className='row'>
-        <div className=''>
-          <h1 className=''>Card Preview</h1>
+    <div className="container">
+      <div className="row">
+        <div className="">
+          <h1 className="">Card Preview</h1>
           {imagenPreview === null ? null : (
             <img
               src={imagenPreview}
-              alt='imagen'
-              accept='image/jpg, image/png'
-              height='200'
-              width='300'
+              alt="imagen"
+              accept="image/jpg, image/png"
+              height="200"
+              width="300"
             />
           )}
           <h3> {formValues.name} </h3>
@@ -135,39 +135,39 @@ const ActivitiesForm = (activity) => {
         }}
       >
         {(formik) => (
-          <Form className='form-container'>
+          <Form className="form-container">
             <input
-              className='input-field'
-              autoComplete='off'
-              type='text'
-              name='name'
+              className="input-field"
+              autoComplete="off"
+              type="text"
+              name="name"
               onChange={formik.handleChange}
               value={formik.values.name}
               onBlur={formik.handleBlur}
-              placeholder='Activity Title'
+              placeholder="Activity Title"
             ></input>
             <ErrorMessage
-              name='name'
-              render={(msg) => <span className='error'> {msg} </span>}
+              name="name"
+              render={(msg) => <span className="error"> {msg} </span>}
             />
             <input
-              type='file'
-              name='image'
-              accept='image/png, image/jpeg'
+              type="file"
+              name="image"
+              accept="image/png, image/jpeg"
               onChange={(event) => {
                 formik.setFieldValue("image", event.target.files[0]);
               }}
               onBlur={formik.handleBlur}
             />
             <ErrorMessage
-              name='image'
-              render={(msg) => <span className='error'> {msg} </span>}
+              name="image"
+              render={(msg) => <span className="error"> {msg} </span>}
             />
             <EditorField
               formik={formik}
               initialValue={initialValues.description}
             />
-            <button className='submit-btn' type='submit'>
+            <button className="submit-btn" type="submit">
               Send
             </button>
           </Form>

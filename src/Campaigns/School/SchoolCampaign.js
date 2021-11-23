@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Slider from "./Slider";
-import Content from "./Content";
+import Content1 from "./Content1";
 import Footer from "./Footer";
 
 const SchoolCampaign = () => {
@@ -9,10 +9,10 @@ const SchoolCampaign = () => {
     <>
       <Header />
       <Slider />
-      <Content />
+      <Content1 />
       <Footer />
     </>
   );
 };
- 
+
 export default SchoolCampaign;
