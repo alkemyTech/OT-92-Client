@@ -43,7 +43,7 @@ function App() {
           <Route path="/" exact component={Home} />
 
           <Route path="/activities/:id" component={ActivitiesDetail} />
-          <Route path="/backoffice" exact component={ScreenDashboard} />
+          <Route exact path="/backoffice"  component={ScreenDashboard} />
           <Route exact path="/backoffice/activities" component={ActivitesList}/>
           <Route path="/backoffice/organization" component={Organization} />
           <Route path="/backoffice/organization/edit" component={UpdateDataForm} />

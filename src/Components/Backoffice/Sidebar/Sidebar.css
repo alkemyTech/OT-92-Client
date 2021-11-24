@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27');
+body{
+    height: 100%;
+    
+}
+.customize-sections{
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 1rem;
+    list-style-type: none;
+    position: relative;
+    bottom: 1px;
+    margin-left: 1rem;
+    cursor:pointer;
+    z-index: 2;
+    font-weight: bold;
+    background-color: #9AC9FB;
+    border-radius: 10px;
+    padding-right: 3rem;
+}
+.customize-sections::after{
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    right: 75%;
+    bottom: 0.5px;
+    width: 25%;
+    height: 5px;
+    border-radius: 5px;
+    background: black;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 250ms ease-in;
+  }
+  .customize-sections:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+    cursor: pointer;
+ }
+
+.customize-font{
+    background-color: #9AC9FB;
+    height: 31rem;
+}

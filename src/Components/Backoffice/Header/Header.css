@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27');
+*{
+    margin: 0;
+    padding: 0;
+    position: static;
+}
+.header-title{
+    font-family:  'Neucha', cursive;
+    color: #DB5752;
+    background-color: white;
+    border-radius: 5%;
+    padding: 1%;
+}
+.navbar-background{
+    background-color: #7398BF;
+    border-bottom: solid 3px gray;
+}
+ /* title:  'Neucha', cursive;
+body: 'Archivo Narrow', sans-serif;
+button-text: 'Shadows Into Light', cursive;
+first-color: #9AC9FB;
+second-color: #FAFA88;
+third-color: #DB5752;  */
+
+
