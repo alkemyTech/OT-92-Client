@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27');
 body{
-    height: 100%;
-    
+    height: 100%;  
 }
+
 .customize-sections{
     font-family: 'Archivo Narrow', sans-serif;
     font-size: 1rem;
@@ -41,3 +41,64 @@ body{
     background-color: #9AC9FB;
     height: 31rem;
 }
+
+.burguer {
+    display: none;
+   
+    left: 8rem;
+    z-index: 2;
+  }
+  .burguer div {
+    width: 5rem;
+    height: 0.5rem;
+    background-color: black ;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 200ms ease-in;
+  }
+  .line1b{
+    margin-left: 0rem;
+    transform: rotate(135deg) translateX(10%) translateY(-20%);
+    transition: all 200ms ease-in;
+  }
+  .line2b{
+    margin-top: -1rem;
+    transform: rotate(45deg) translateY(-30%) translateX(-10%);
+    transition: all 200ms ease-in;
+  }
+  .line3b{
+    display: none;
+    transition: all 200ms ease-in;
+}
+
+
+@media screen and (max-width: 1024px) {
+    body{
+      overflow-x: hidden;
+    }
+    .burguer{
+      display: block;
+      position: absolute;
+      position: fixed;
+      background-color: rgb(187, 189, 174) ;
+      top: 5rem;
+      left: 75%;
+      margin-top: 1rem ;
+    }
+     .bar-lateral{
+       display: block;
+       position: fixed;
+       transform: translateX(-400%);
+       transition: all 0.5s ease-in;
+       z-index: 4;
+   
+     }
+     .bar-active{
+       position: absolute;
+       transform: translateX(0%);
+       z-index: 1;
+       transition: all 0.5s ease-in;
+       display: block;
+       position: fixed;
+     }
+    }
