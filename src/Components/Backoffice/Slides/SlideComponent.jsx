@@ -1,6 +1,6 @@
 import React from "react";
 
-const SlideComponent = ({slide}) => {
+const SlideComponent = ({ slide }) => {
   return (
     <div
       key={slide.id}
@@ -8,6 +8,7 @@ const SlideComponent = ({slide}) => {
     >
       <div className='d-flex align-items-center px-2'>
         <img
+          height="100px"
           src={slide.image}
           className='rounded'
           alt={slide.name}
