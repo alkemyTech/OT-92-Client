@@ -1,16 +1,16 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const getActivities = createAsyncThunk(
-  'activity/getActivities',
+  "activity/getActivities",
   async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/activities');
+    const data = await axios.get("http://ongapi.alkemy.org/api/activities");
     return data.data;
   }
 );
 
 const activitySlice = createSlice({
-  name: 'activity',
+  name: "activity",
   initialState: {
     activities: [],
     activity: {},
