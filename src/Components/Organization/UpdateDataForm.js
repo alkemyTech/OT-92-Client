@@ -11,13 +11,13 @@ const UpdateDataForm = (props) => {
 
   //image preview
   useEffect(() => {
-    if (image) {
+    try {
       const reader = new FileReader();
       reader.onload = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(image);
-    } else {
+    } catch {
       setImagePreview(null);
     }
   }, [image]);
