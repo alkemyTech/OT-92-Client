@@ -42,7 +42,7 @@ const SlideListBackOffice = () => {
 
   return (
     <>
-      <div className="row justify-content-center">
+      <div style={{width:"100%"}} className="row justify-content-center">
         <div
           className="d-flex justify-content-around align-items-center"
           style={{ backgroundColor: "#9ac9fb" }}
