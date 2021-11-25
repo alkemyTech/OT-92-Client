@@ -85,9 +85,7 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const data = await axios.get(
-      `http://ongapi.alkemy.org/api/members/${id}`
-    );
+    const data = await axios.get(`http://ongapi.alkemy.org/api/members/${id}`);
     try {
       return data;
     } catch (error) {
@@ -128,15 +126,14 @@ export const membersService = {
     } catch (error) {
       console.log(error);
     }
-  }
+  },
 };
-
 
 // service for categories
 export const categoriesService = {
   //fetch all categories
   getCategories: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/categories');
+    const data = await axios.get("http://ongapi.alkemy.org/api/categories");
     try {
       return data;
     } catch (error) {
@@ -157,7 +154,7 @@ export const categoriesService = {
   //create category
   createCategory: async (category) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/categories`,
+      "http://ongapi.alkemy.org/api/categories",
       category
     );
     try {
@@ -188,9 +185,8 @@ export const categoriesService = {
     } catch (error) {
       console.log(error);
     }
-  }
-  };
-
+  },
+};
 
 export const queryPutData = async (section, queryObject) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`;
@@ -221,7 +217,6 @@ export const privateGet = async (url, id) => {
     console.log(error);
   }
 };
-
 
 // function that makes a post request to the api obtaining an authentication from the getAuthorization function
 
