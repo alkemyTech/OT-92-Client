@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Neucha&family=Shadows+Into+Light&display=swap%27');
+/* $title:  'Neucha', cursive;
+$body: 'Archivo Narrow', sans-serif;
+$button-text: 'Shadows Into Light', cursive;
+$first-color: #9AC9FB;
+$second-color: #FAFA88;
+$third-color: #DB5752; */
+
+body{
+    background-image: url("./toys campaing font.jpg") ;
+    background-size: cover;
+} 
+.paragraph-customize{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    font-family: 'Neucha', cursive;
+    background-color: white;
+    color: #DB5752;
+}
+.content-centered{
+    min-height: 100%;  
+  min-height: 100vh; 
+  display: flex;
+  align-items: center;
+}
+
+.tablet-view{
+    display: none;
+}
+.desktop-view{
+    display: none;
+}
+@media only screen and (min-width : 768px){
+    .tablet-view{
+        display: inline;
+    }
+}
+@media only screen and (min-width : 1224px){
+    .desktop-view{
+        display: inline;
+    }
+}
+@media only screen and (min-width : 1824px){
+    body{
+        background: linear-gradient(140deg, rgba(154,201,251,1) 0%, rgba(219,87,82,1) 100%);
+    }
+    body::after{
+        content: "";
+        background-image: url("./toys campaing font.jpg");
+        background-size: cover;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;   
+    }
+}
