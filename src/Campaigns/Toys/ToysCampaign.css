@@ -12,7 +12,7 @@ body{
 } 
 .paragraph-customize{
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 0 1rem;
     font-family: 'Neucha', cursive;
     background-color: white;
@@ -23,6 +23,7 @@ body{
   min-height: 100vh; 
   display: flex;
   align-items: center;
+  margin-left: 1rem;
 }
 
 .tablet-view{
@@ -35,11 +36,21 @@ body{
     .tablet-view{
         display: inline;
     }
+    .content-centered{
+        margin-left: 4rem;
+    }
 }
 @media only screen and (min-width : 1224px){
     .desktop-view{
         display: inline;
     }
+    .content-centered{
+        margin-left: 8rem;
+    }
+    .paragraph-customize{
+        font-size: 3rem;
+    }
+
 }
 @media only screen and (min-width : 1824px){
     body{
@@ -56,5 +67,11 @@ body{
         right: 0;
         position: absolute;
         z-index: -1;   
+    }
+    .content-centered{
+        margin-left: 14rem;
+    }
+    .paragraph-customize{
+        font-size: 3rem;
     }
 }
