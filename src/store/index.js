@@ -6,7 +6,6 @@ import activitiesReducer from "../../src/store/activity/activitySlice";
 import membersSlice from "./members/membersSlice";
 import newsSlice from "./news/newsSlice";
 
-
 export default configureStore({
   reducer: {
     counter: counterReducer,
@@ -14,6 +13,6 @@ export default configureStore({
     listSlice: sliceBackOffice,
     activities: activitiesReducer,
     members: membersSlice,
-    news: newsSlice
+    news: newsSlice,
   },
 });
