@@ -24,15 +24,6 @@ export const queryDeleteById = async (section, id) => {
 
 // service for activities
 export const activitiesService = {
-  //fetch all activities
-  getActivities: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/activities');
-    try {
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
   //fetch one activity
   getActivity: async (id) => {
     const data = await axios.get(
@@ -85,7 +76,8 @@ export const activitiesService = {
 export const membersService = {
   //fetch all members
   getMembers: async () => {
-    const data = await axios.get("http://ongapi.alkemy.org/api/members");
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS;
+    const data = await axios.get(url);
     try {
       return data;
     } catch (error) {
@@ -94,9 +86,8 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const data = await axios.get(
-      `http://ongapi.alkemy.org/api/members/${id}`
-    );
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + '/' + id;
+    const data = await axios.get(url);
     try {
       return data;
     } catch (error) {
@@ -137,10 +128,68 @@ export const membersService = {
     } catch (error) {
       console.log(error);
     }
-  }
+  },
 };
 
 
+// service for categories
+export const categoriesService = {
+  //fetch all categories
+  getCategories: async () => {
+    const data = await axios.get('http://ongapi.alkemy.org/api/categories');
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //fetch one category
+  getCategory: async (id) => {
+    const data = await axios.get(
+      `http://ongapi.alkemy.org/api/categories/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //create category
+  createCategory: async (category) => {
+    const data = await axios.post(
+      `http://ongapi.alkemy.org/api/categories`,
+      category
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //update category
+  updateCategory: async (category) => {
+    const data = await axios.put(
+      `http://ongapi.alkemy.org/api/categories/${category.id}`,
+      category
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //delete category
+  deleteCategory: async (id) => {
+    const data = await axios.delete(
+      `http://ongapi.alkemy.org/api/categories/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
 
 
 export const queryPutData = async (section, queryObject) => {
@@ -172,7 +221,6 @@ export const privateGet = async (url, id) => {
     console.log(error);
   }
 };
-
 
 // function that makes a post request to the api obtaining an authentication from the getAuthorization function
 
