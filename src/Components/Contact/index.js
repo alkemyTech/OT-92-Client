@@ -1,17 +1,17 @@
-import React from 'react';
-import ContactData from './ContactData';
-import Title from '../Title';
-import ContactMap from './ContactMap';
+import React from "react";
+import ContactData from "./ContactData";
+import Title from "../Title";
+import ContactMap from "./ContactMap";
 
-import './index.css';
+import "./index.css";
 
 export default function Contact() {
   return (
     <div className='container mt-5'>
-      <Title content={{ title: 'Contacto' }} />
+      <Title content={{ title: "Contacto" }} />
       <br />
       <img
-        src={'http://ongapi.alkemy.org/storage/4ZR8wsUwr9.png'}
+        src={"http://ongapi.alkemy.org/storage/4ZR8wsUwr9.png"}
         alt='somos mas logo'
       />
       <br />

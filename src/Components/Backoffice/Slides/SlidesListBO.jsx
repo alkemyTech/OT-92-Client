@@ -7,9 +7,8 @@ import { getSlicesApi } from '../../../store/backOffice/SlicesBackOffice';
 import SlideComponent from './SlideComponent';
 
 const SlideListBackOffice = () => {
-
   const dispatch = useDispatch();
-  const apiPostStatus = useSelector(state => state.listSlice.list[0]); // Estado de la store listSlice
+  const apiPostStatus = useSelector((state) => state.listSlice.list[0]); // Estado de la store listSlice
 
   useEffect(() => {
     dispatch(getSlicesApi()); // Esta funcion es async y obtiene los datos de una api
@@ -18,14 +17,19 @@ const SlideListBackOffice = () => {
   return (
     <>
       <div className="row justify-content-center">
-        <h1 className='mt-5'>Listado de Slides</h1> <Link to="/backoffice/create-slide" className="btn btn-primary col-2">Crear Slide</Link>
+        <h1 className="mt-5">Listado de Slides</h1>{" "}
+        <Link to="/backoffice/create-slide" className="btn btn-primary col-2">
+          Crear Slide
+        </Link>
       </div>
-      <div className='mt-5 container'>
-        {
-          apiPostStatus
-            ? apiPostStatus.data.map(slide => <SlideComponent slide={slide} key={slide.id} />)
-            : <h1 className='text-center'>Cargando</h1>
-        }
+      <div className="mt-5 container">
+        {apiPostStatus ? (
+          apiPostStatus.data.map((slide) => (
+            <SlideComponent slide={slide} key={slide.id} />
+          ))
+        ) : (
+          <h1 className="text-center">Cargando</h1>
+        )}
       </div>
     </>
   );
