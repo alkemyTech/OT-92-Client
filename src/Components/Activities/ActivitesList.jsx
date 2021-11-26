@@ -5,21 +5,24 @@ import { NavLink } from "react-router-dom";
 import { errorAlert } from "../../Assets/Alerts/alerts";
 import "./Activities.css";
 import ActivitiesListsComponents from "./ActivitiesListsComponents";
+import SpinnerCharge from "../../Assets/SpinnerComponent/SpinnerCharge";
 
 const ActivitesList = () => {
-
-  const [actividades, setActividades] = useState();
+  const [loading, setLoading] = useState(false);
+  const [actividades, setActividades] = useState([]);
   const urlActivities = "http://ongapi.alkemy.org/public/api/activities";
 
   useEffect(() => {
     const obtenerActividades = async () => {
       try {
-            
+        setLoading(true);
         const datosPrincipal = await axios.get(urlActivities),
           actividadesData = await datosPrincipal.data.data;
         setActividades(actividadesData);
+        setLoading(false);
             
       }  catch (err) {
+        console.log(err);
         errorAlert({title:"error", text:"Ocurrió un error en las actividades"}); //here we implement the "errorAlert"
       }};                                                                         //function to display an error If
     //the request fails
@@ -45,17 +48,21 @@ const ActivitesList = () => {
             </tr>
           </thead>
           <tbody style={{ borderTop: "1px solid #dee2e6" }}>
-            {
-              actividades
-                ? actividades.map(el => {
-                  return <ActivitiesListsComponents
-                    el={el} key={el.id}
-                    actividades={actividades}
-                    setActividades={setActividades}
-                  />;
+            { loading ? <SpinnerCharge /> :
+              <>
+                {
+                  actividades
+                    ? actividades.map(el => {
+                      return <ActivitiesListsComponents
+                        activity={el} key={el.id}
+                        actividades={actividades}
+                        setActividades={setActividades}
+                      />;
+                    }
+                    )
+                    : <tr><td>Cargando</td></tr>
                 }
-                )
-                : <tr><td>Cargando</td></tr>
+              </>
             }
           </tbody>
         </Table>
