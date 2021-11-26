@@ -8,7 +8,7 @@ import '../MembersList.css';
 const EditMember = () => {
   const { id } = useParams();
   const history = useHistory();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   useEffect(() => {
     membersService
       .getMember(id)
