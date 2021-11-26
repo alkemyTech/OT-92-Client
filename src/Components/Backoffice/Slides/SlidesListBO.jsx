@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getSlicesApi } from "../../../store/Slices/SlicesBackOffice";
-import SlideComponent from "./SlideComponent";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getSlicesApi } from '../../../store/backOffice/SlicesBackOffice';
+import SlideComponent from './SlideComponent';
 
 const SlideListBackOffice = () => {
   const dispatch = useDispatch();

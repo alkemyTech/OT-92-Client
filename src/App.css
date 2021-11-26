@@ -63,7 +63,7 @@ p {
 }
 
 #activitiesDetailContent {
-  background-color: #FAFA88;
+  background-color: #fafa88;
 }
 
 #activitiesDetailContent p {
@@ -92,7 +92,41 @@ p {
   }
 }
 
-#activitiesDetailContent h1, #activitiesDetailContent h2, #activitiesDetailContent h3, #activitiesDetailContent h4, #activitiesDetailContent h5, #activitiesDetailContent h6 {
+#activitiesDetailContent h1,
+#activitiesDetailContent h2,
+#activitiesDetailContent h3,
+#activitiesDetailContent h4,
+#activitiesDetailContent h5,
+#activitiesDetailContent h6 {
   font-family: "Neucha", cursive;
+}
+
+.video-Novedades {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.video-Novedades h2 {
+  font-size: "Neucha", cursive;
+  color: white;
+  padding-bottom: 5%;
+}
+
+.video-Novedades h3 {
+  font-family: 'Neucha', cursive;
+  color: white;
+}
+
+.video-Novedades p {
+  border-top: white 2px solid;
+  padding-top: 5%;
+}
+
+.video-Novedades section {
+  width: 40%;
 }
 /*# sourceMappingURL=App.css.map */
