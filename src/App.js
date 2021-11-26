@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
+
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
 import CategoriesListBackoffice from "./Components/Backoffice/CategoriesListBackoffice";
@@ -37,7 +38,7 @@ import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
 import MembersList from "./Components/About/MembersList";
 
-import "./animatedRouter.css";
+/* import "./animatedRouter.css"; */
 import { AnimatedSwitch } from "react-router-transition";
 import { bounceTransition, mapStyles } from "./Assets/animatedRouter";
 
