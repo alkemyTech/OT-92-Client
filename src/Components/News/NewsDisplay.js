@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getNews}  from "../../store/news/newsSlice";
-import Title from "../Title/Title";
 import NewsList from "./NewsList";
 import "./Detail/NewsFormat.css";
 
@@ -15,17 +14,9 @@ const NewsDisplay = () => {
 
   return (
     <>
-      <div className="my-3" />
-      <Title 
-        content={{
-          title: "Novedades",
-          image: null,
-        }}
-      />
-      <div class="container">
-        <NewsList newsData={news}/>
-      </div>
-          
+      <div className='container'>
+        <NewsList newsData={news} />
+      </div>  
     </>
   );
 };
