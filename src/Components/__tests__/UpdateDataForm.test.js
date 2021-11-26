@@ -46,11 +46,11 @@ test("rendering and submitting a form", async () => {
   const handleSubmit = jest.fn();
   render(<UpdateDataForm onSubmit={handleSubmit}/>);
 
-  userEvent.type(screen.getByLabelText(/nombre/i), "");
+  userEvent.type(screen.getByLabelText(/name/i), "");
   userEvent.type(screen.getByLabelText(/logo/i), "");
-  userEvent.type(screen.getByLabelText(/descripcion larga/i), "");
-  userEvent.type(screen.getByLabelText(/link de instagram/i), "");
-  userEvent.type(screen.getByLabelText(/link de facebook/i), "");
+  userEvent.type(screen.getByLabelText(/longDescription/i), "");
+  userEvent.type(screen.getByLabelText(/linkInstagram/i), "");
+  userEvent.type(screen.getByLabelText(/linkFacebook/i), "");
 
   userEvent.click(screen.getByRole("button", {name: /submit/i}));
 
