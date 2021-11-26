@@ -104,6 +104,17 @@ export const membersService = {
       console.log(error);
     }
   },
+  //search members
+  searchMembers: async (word) => {
+    const data = await axios.get(
+    `http://ongapi.alkemy.org/api/members?search=${word}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
   //create member
   createMember: async (member) => {
     const data = await axios.post(
