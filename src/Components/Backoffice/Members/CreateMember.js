@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./MembersList.css";
+import { useDispatch } from "react-redux";
+import { addMember, addMemberAsync } from "../../../store/members/membersSlice";
+import { formatRelative, subDays } from "date-fns";
 const CreateMember = () => {
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState("");
   const [values, setValues] = useState({
     name: "",
     image: "",
@@ -29,26 +34,57 @@ const CreateMember = () => {
         "Por favor ingresa un link valido!"
       ),
   });
-  console.log(values);
+
+  const showMessage = () => {
+    return (
+      <div className="bg-dark text-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
+        <p>{message}</p>
+      </div>
+    );
+  };
   return (
     <>
       <div>
         {" "}
         <p className="h1 my-3 customize-title"> Agrega al nuevo miembro </p>
+        {showMessage() && message}
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
-          onSubmit={(val) => {
+          onSubmit={async (val) => {
             const { name, image, description, facebookURL, linkedinURL } = val;
-            const created_at = new Date();
-            setValues({
+            const created_at = formatRelative(
+              subDays(new Date(), 3),
+              new Date()
+            );
+            await setValues({
               name,
               image,
               description,
               facebookURL,
               linkedinURL,
-              created_at,
             });
+            console.log(values);
+            console.log(
+              dispatch(
+                addMember({
+                  name,
+                  image,
+                  description,
+                  facebookURL,
+                  linkedinURL,
+                })
+              )
+            );
+            let newMember = { ...val, created_at };
+            try {
+              await dispatch(addMemberAsync(newMember));
+            } catch (error) {
+              setMessage(error);
+              setTimeout(() => {
+                setMessage(null);
+              }, 2000);
+            }
           }}
         >
           {(formik) => (

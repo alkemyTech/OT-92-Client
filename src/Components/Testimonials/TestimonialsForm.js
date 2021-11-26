@@ -9,17 +9,13 @@ import * as Yup from "yup";
 import "../../Components/FormStyles.css";
 
 
-
-
-
-
 export default function TestimonialsForm () {
   const initialValues = { name: "", image: null, description: "", complete: false, id: undefined }; 
   const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined }); 
     
   const { id } = useParams();
-  const editTestimonial = `http://ongapi.alkemy.org/api/testimonials/${id}`; // aquí establecemos los endpoints
-  const createTestimonial = "http://ongapi.alkemy.org/api/testimonials";    // de la API
+  const editTestimonial = `${process.env.REACT_APP_TESTIMONIALS}/${id}`; // aquí establecemos los endpoints
+  const createTestimonial = `${process.env.REACT_APP_TESTIMONIALS}`;   // de la API
     
   const handleSubmit = () => {
     if (!id) {
@@ -48,7 +44,6 @@ export default function TestimonialsForm () {
         alert(err);
       });
     }
-    
   };
 
   const validationSchema = Yup.object({   //aqu

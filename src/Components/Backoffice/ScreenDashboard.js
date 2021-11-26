@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react'
+import Navbar from './Navbar'
 
 export default function ScreenDashboard() {
-  return (
-    <div>
-      <p>Bienvenido al backoffice</p>
-    </div>
-  );
+    return (
+        <div>
+            <Navbar />
+            <p>Bienvenido al backoffice</p>
+        </div>
+    )
 }
