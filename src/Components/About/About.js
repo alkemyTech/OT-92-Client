@@ -18,7 +18,7 @@ const About = () => {
 
       <div className="d-flex mt-5 justify-content-center">
         <div
-          class="badge-base LI-profile-badge"
+          className="badge-base LI-profile-badge mt-3"
           data-locale="es_ES"
           data-size="medium"
           data-theme="light"
