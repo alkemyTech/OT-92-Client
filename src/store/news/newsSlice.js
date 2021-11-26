@@ -4,7 +4,8 @@ import axios from "axios";
 export const getNews = createAsyncThunk(
   "news/getNews",
   async (dispatch, getState) => {
-    return await axios.get('http://ongapi.alkemy.org/api/news')
+    return await axios
+      .get("http://ongapi.alkemy.org/api/news")
       .then((res) => res.data.data);
   }
 );
@@ -16,10 +17,10 @@ export const newsSlice = createSlice({
   },
   reducers: {
     getNews: (state, action) => {
-      state.news = [...state.news, action.payload];
+      state.news = [...action.payload];
     },
     addNews: (state, action) => {
-      state.news = [...state.news, action.payload] ;
+      state.news = [...state.news, action.payload];
     },
   },
   extraReducers: {
@@ -32,12 +33,12 @@ export const newsSlice = createSlice({
     },
     [getNews.rejected]: (state, action) => {
       state.status = "failed";
-    }
+    },
   },
 });
-export const { addNews} = newsSlice.actions;
+export const { addNews } = newsSlice.actions;
 export default newsSlice.reducer;
-export const addNewsAsync = newNews => dispatch => {
+export const addNewsAsync = (newNews) => (dispatch) => {
   setTimeout(() => {
     dispatch(addNews(newNews));
   }, 1000);
