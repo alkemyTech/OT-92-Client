@@ -1,38 +1,29 @@
-import axios from 'axios';
+import axios from "axios";
 
 const config = {
-    headers: {
-        Group: 92,
-        Authorization: null,
-    },
+  headers: {
+    Group: 92,
+    Authorization: null,
+  },
 };
 
 //Función que elimina un item mediante su sección y su Id
 export const queryDeleteById = async (section, id) => {
-    const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
-    const configuration = getAuthorization();
-    /* Este metodo getAuthorization() fue desarrollado en el ticket 69
+  const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
+  const configuration = getAuthorization();
+  /* Este metodo getAuthorization() fue desarrollado en el ticket 69
     por Facundo Delavalle */
-    let res = await axios.delete(url, configuration);
-    try {
-        console.log(`Deleted succesfully`);
-        console.log(res.status);
-    } catch (error) {
-        console.log("Something went wrong: " + error)
-    }
+  let res = await axios.delete(url, configuration);
+  try {
+    console.log("Deleted succesfully");
+    console.log(res.status);
+  } catch (error) {
+    console.log("Something went wrong: " + error);
+  }
 };
 
 // service for activities
 export const activitiesService = {
-  //fetch all activities
-  getActivities: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/activities');
-    try {
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
   //fetch one activity
   getActivity: async (id) => {
     const data = await axios.get(
@@ -47,7 +38,7 @@ export const activitiesService = {
   //create activity
   createActivity: async (activity) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/activities/create`,
+      "http://ongapi.alkemy.org/api/activities/create",
       activity
     );
     try {
@@ -79,14 +70,14 @@ export const activitiesService = {
       console.log(error);
     }
   },
+};
 
-    Authorization: null,
-  };
 // service for members
 export const membersService = {
   //fetch all members
   getMembers: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/members');
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS;
+    const data = await axios.get(url);
     try {
       return data;
     } catch (error) {
@@ -95,9 +86,8 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const data = await axios.get(
-      `http://ongapi.alkemy.org/api/members/${id}`
-    );
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + '/' + id;
+    const data = await axios.get(url);
     try {
       return data;
     } catch (error) {
@@ -107,7 +97,7 @@ export const membersService = {
   //create member
   createMember: async (member) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/members/create`,
+      "http://ongapi.alkemy.org/api/members/create",
       member
     );
     try {
@@ -138,27 +128,112 @@ export const membersService = {
     } catch (error) {
       console.log(error);
     }
-  }
-  };
+  },
+};
 
+
+// service for categories
+export const categoriesService = {
+  //fetch all categories
+  getCategories: async () => {
+    const data = await axios.get('http://ongapi.alkemy.org/api/categories');
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //fetch one category
+  getCategory: async (id) => {
+    const data = await axios.get(
+      `http://ongapi.alkemy.org/api/categories/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //create category
+  createCategory: async (category) => {
+    const data = await axios.post(
+      `http://ongapi.alkemy.org/api/categories`,
+      category
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //update category
+  updateCategory: async (category) => {
+    const data = await axios.put(
+      `http://ongapi.alkemy.org/api/categories/${category.id}`,
+      category
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //delete category
+  deleteCategory: async (id) => {
+    const data = await axios.delete(
+      `http://ongapi.alkemy.org/api/categories/${id}`
+    );
+    try {
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
 
 
 export const queryPutData = async (section, queryObject) => {
-    const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`
-    const axiosPut = await axios.put(url, queryObject, config)
-    console.log("asdss")
-    try {
-        console.log(axiosPut.data)
-    } catch (error) {
-        console.log(error)
-    }
-}
+  const url = `http://ongapi.alkemy.org/api/${section}/${queryObject.id}`;
+  const axiosPut = await axios.put(url, queryObject, config);
+  console.log("asdss");
+  try {
+    console.log(axiosPut.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //function that gets the token from local storage and returns a headers with authorization object
 export const getAuthorization = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+};
+
+export const privateGet = async (url, id) => {
+  try {
+    const endPointId = id ? `/${id}` : "";
+    const resp = await axios.get(url + endPointId, getAuthorization());
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// function that makes a post request to the api obtaining an authentication from the getAuthorization function
+
+export const ServicePostPrivate = async (section, id) => {
+  const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
+  const configuration = getAuthorization();
+  /* This getAuthorization () method was developed in ticket 69
+  by Facundo Delavalle */
+  let res = await axios.post(url, configuration);
+  try {
+    console.log("The request was successful");
+    console.log(res.status);
+  } catch (error) {
+    console.log("Something went wrong: " + error);
+  }
 };
