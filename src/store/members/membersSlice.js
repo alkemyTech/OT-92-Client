@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {membersService} from '../../Services/privateApiService';
+import {membersService} from "../../Services/privateApiService";
 
 export const getMembers = createAsyncThunk(
   "members/getMembers",
