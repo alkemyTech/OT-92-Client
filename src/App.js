@@ -38,7 +38,6 @@ import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
 import MembersList from "./Components/About/MembersList";
 
-/* import "./animatedRouter.css"; */
 import { AnimatedSwitch } from "react-router-transition";
 import { bounceTransition, mapStyles } from "./Assets/animatedRouter";
 
