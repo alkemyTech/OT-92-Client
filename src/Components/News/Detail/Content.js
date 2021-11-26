@@ -19,7 +19,7 @@ const Content = () => {
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempor urna magna, ac sagittis purus tempor quis. Mauris placerat ultricies tellus ut eleifend. Vestibulum lacus magna, dignissim nec massa gravida, molestie placerat leo. ",
       image: "https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudiantil.jpg"
     }
-  ]
+  ];
   
   const paramsNews = news.filter(  // utilizamos el array method 'filter' para filtrar los datos que queremos mostrar
     (news) => news.id === paramsId
@@ -30,25 +30,23 @@ const Content = () => {
       <div>
         {paramsNews[0] 
         
-            ? /* mostramos los datos a través de una ternaria */
+          ? /* mostramos los datos a través de una ternaria */
             
-            (
+          (
             <div>
-            {/* <h1>{paramsActivity[0].title}</h1> */}
-                <h3>{paramsNews[0].content}</h3>        
-                <img src={paramsNews[0].image} />
+              {/* <h1>{paramsActivity[0].title}</h1> */}
+              <h3>{paramsNews[0].content}</h3>        
+              <img src={paramsNews[0].image} />
             </div>
-            )
+          )
             
-            : {/* no mostramos los datos hasta que carguen, y en su lugar se muestra un spinner*/}
+          : {/* no mostramos los datos si no se encuentra el id, y mostramos en su lugar un mensaje de error*/}
             
-            (
-              <div class='d-flex justify-content-center mt-5'>
-                <div class='spinner-border'>
-                    <span class='visually-hidden'>Loading...</span>
-                </div>
-              </div>  
-            )
+          (
+            <div>
+              <h1>No hemos podido encontrar lo que estas buscando</h1> 
+            </div>
+          )
         }
       </div>
     </>

@@ -1,33 +1,31 @@
-import React from 'react';
-import '../CardListStyles.css';
+import React from "react";
+import "../CardListStyles.css";
 import NewsItem from "./NewsItem";
 
 const NewsList = ({ newsData }) => {
 
-    return (
+  return (
+    <>
+      {newsData.length > 0 ? (
         <>
-            {newsData.length > 0 ? (
-                <>
-                    <div className="row my-3">
-                        {newsData.map((article) => (
-                            <div className="col-sm-12 col-md-6 col-lg-4 justify-content-center">
-                                <NewsItem
-                                    key={article.id}
-                                    content={article}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </>
-            ) : (
-                <div class='d-flex justify-content-center mt-5'>
-                    <div class='spinner-border'>
-                        <span class='visually-hidden'>Loading...</span>
-                    </div>
-                </div>
-            )}
+          <div className="row my-3">
+            {newsData.map((article) => (
+              <div className="col-sm-12 col-md-6 col-lg-4 justify-content-center">
+                <NewsItem
+                  key={article.id}
+                  content={article}
+                />
+              </div>
+            ))}
+          </div>
         </>
-    );
-}
+      ) : (
+        <div className="h2 p-3 noNews m-5">
+          <p>No hay novedades por el momento</p>
+        </div>
+      )}
+    </>
+  );
+};
  
 export default NewsList;
