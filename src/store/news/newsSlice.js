@@ -17,7 +17,7 @@ export const newsSlice = createSlice({
   },
   reducers: {
     getNews: (state, action) => {
-      state.news = [...state.news, action.payload];
+      state.news = [...action.payload];
     },
     addNews: (state, action) => {
       state.news = [...state.news, action.payload];
