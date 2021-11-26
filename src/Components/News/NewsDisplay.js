@@ -8,6 +8,7 @@ import "./Detail/NewsFormat.css";
 const NewsDisplay = () => {
   const dispatch = useDispatch();
   const {news} = useSelector(state => state.news);
+
   useEffect(() => {
     dispatch(getNews());
   }, []);
