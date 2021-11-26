@@ -1,48 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Title from "../Title/Title";
-import "./Detail/NewsFormat.css";
+import React, { useEffect } from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {getNews}  from "../../store/news/newsSlice";
 import NewsList from "./NewsList";
+import "./Detail/NewsFormat.css";
 
 const NewsDisplay = () => {
-  const [news, setNews] = useState([]);
-  const mockedData = [
-    {
-      id: 1,
-      title: "Recorrido por comedor",
-      image:
-        "https://www.gob.mx/cms/uploads/article/main_image/26106/A16Z2709.JPG",
-    },
-    {
-      id: 2,
-      title: "Vueltas por la escuela san martin",
-      image:
-        "https://www.eldiariodecarlospaz.com.ar/u/fotografias/fotosnoticias/2016/4/28/30077.jpg",
-    },
-    {
-      id: 3,
-      title: "viaje fin de curso a formosa ",
-      image:
-        "https://radioformosa.com.ar/wp-content/uploads/2018/04/viaje-estudianti.jpg",
-    },
-  ]; //Reemplazar por servicio http que traiga la data de la API
+  const dispatch = useDispatch();
+  const {news} = useSelector(state => state.news);
 
   useEffect(() => {
-    setNews( mockedData );
+    dispatch(getNews());
   }, []);
 
   return (
     <>
-          <div className="my-3" />
-          <Title 
-            content={{
-              title: "Novedades",
-              image: null,
-            }}
-          />
-          <div class="container">
-            <NewsList newsData={news}/>
-          </div>
-          
+      <div className='container'>
+        <NewsList newsData={news} />
+      </div>  
     </>
   );
 };
