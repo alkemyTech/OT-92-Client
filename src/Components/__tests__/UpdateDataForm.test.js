@@ -1,5 +1,10 @@
-import {render, screen, cleanup, fireEvent} from "@testing-library/react";
+import {fireEvent, 
+  render, 
+  screen, 
+  waitFor 
+} from "@testing-library/react";
 import UpdateDataForm from "../Organization/UpdateDataForm";
+import userEvent from "@testing-library/user-event";
 
 
 test("should render nameError", () => {
@@ -37,3 +42,25 @@ test("should render facebookUrlError", () => {
   expect(input.value).toBe("");
 });
 
+test("rendering and submitting a form", async () => {
+  const handleSubmit = jest.fn();
+  render(<UpdateDataForm onSubmit={handleSubmit}/>);
+
+  userEvent.type(screen.getByLabelText(/nombre/i), "");
+  userEvent.type(screen.getByLabelText(/logo/i), "");
+  userEvent.type(screen.getByLabelText(/descripcion larga/i), "");
+  userEvent.type(screen.getByLabelText(/link de instagram/i), "");
+  userEvent.type(screen.getByLabelText(/link de facebook/i), "");
+
+  userEvent.click(screen.getByRole("button", {name: /submit/i}));
+
+  await waitFor(() =>
+    expect(handleSubmit).toHaveBeenCalledWith({
+      name: "",
+      logo: "",
+      longDescription: "",
+      linkInstagram: "",
+      linkFacebook: ""
+    }),
+  );
+});

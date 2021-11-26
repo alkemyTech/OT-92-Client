@@ -79,7 +79,7 @@ const UpdateDataForm = (props) => {
         onSubmit={formik.handleSubmit}
         className='form-container form-group mt-5'
       >
-        <label htmlFor='name' className=''>
+        <label htmlFor='name' className='' aria-labelledby="name">
           Nombre
         </label>
         <input
@@ -99,7 +99,7 @@ const UpdateDataForm = (props) => {
         {formik.errors.name && formik.touched.name ? (
           <div className='text-danger'>{formik.errors.name}</div>
         ) : null}
-        <label htmlFor='logo'>Logo</label>
+        <label htmlFor='logo' aria-labelledby="logo">Logo</label>
         <div className='d-flex justify-content-between'>
           <input
             data-testid="logoError"
@@ -149,7 +149,7 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.shortDescription}</div>
         ) : null} */}
 
-        <label htmlFor='longDescription'> Descripcion larga</label>
+        <label htmlFor='longDescription' aria-labelledby="description"> Descripcion larga</label>
         <input
           data-testid="longDescriptionError"
           type='text'
@@ -167,7 +167,7 @@ const UpdateDataForm = (props) => {
         {formik.errors.longDescription && formik.touched.longDescription ? (
           <div className='text-danger'>{formik.errors.longDescription}</div>
         ) : null}
-        <label htmlFor='linkInstragram'>Link de Instagram</label>
+        <label htmlFor='linkInstragram' aria-labelledby="instagram">Link de Instagram</label>
         <input
           data-testid="instagramUrlError"
           type='text'
@@ -186,7 +186,7 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.linkInstagram}</div>
         ) : null}
 
-        <label htmlFor='linkFacebook'>Link de Facebook</label>
+        <label htmlFor='linkFacebook' aria-labelledby="facebook">Link de Facebook</label>
         <input
           data-testid="facebookUrlError" 
           type='text'
@@ -205,6 +205,8 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.linkFacebook}</div>
         ) : null}
         <button
+          name="submit"
+          htmlFor="submit"
           type='submit'
           style={{ width: "10rem" }}
           className='btn btn-primary m-auto'
