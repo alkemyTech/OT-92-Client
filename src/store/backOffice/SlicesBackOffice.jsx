@@ -5,13 +5,16 @@ import axios from "axios";
 const menuInitial = {
   list: [],
   status: "idle",
-  error: null
+  error: null,
 };
 
-export const getSlicesApi = createAsyncThunk("slices/getSlicesApi", async () => {
-  const response = await axios.get("http://ongapi.alkemy.org/api/categories");
-  return response.data;
-});
+export const getSlicesApi = createAsyncThunk(
+  "slices/getSlicesApi",
+  async () => {
+    const response = await axios.get("http://ongapi.alkemy.org/api/categories");
+    return response.data;
+  }
+);
 
 export const sliceBackOffice = createSlice({
   name: "backOffice",
@@ -32,7 +35,7 @@ export const sliceBackOffice = createSlice({
         state.error = action.error.message;
         alert(state.error);
       });
-  }
+  },
 });
 
 export default sliceBackOffice.reducer;
