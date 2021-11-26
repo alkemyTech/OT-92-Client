@@ -11,13 +11,13 @@ const UpdateDataForm = (props) => {
 
   //image preview
   useEffect(() => {
-    try {
+    if (image) {
       const reader = new FileReader();
       reader.onload = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(image);
-    } catch {
+    } else {
       setImagePreview(null);
     }
   }, [image]);
@@ -73,7 +73,7 @@ const UpdateDataForm = (props) => {
   });
 
   return (
-    <div className='mt-5'>
+    <div className='mt-5' data-testid="div-1">
       <h1 className='text-center'>Editar datos de la organizacion</h1>
       <form
         onSubmit={formik.handleSubmit}
@@ -83,6 +83,7 @@ const UpdateDataForm = (props) => {
           Nombre
         </label>
         <input
+          data-testid="nameError"
           type='text'
           name='name'
           id='name'
@@ -101,6 +102,7 @@ const UpdateDataForm = (props) => {
         <label htmlFor='logo'>Logo</label>
         <div className='d-flex justify-content-between'>
           <input
+            data-testid="logoError"
             required
             style={image && { height: "2.4rem", width: "45rem" }}
             type='file'
@@ -136,7 +138,7 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.logo}</div>
         ) : null}
         <label>Descripcion corta</label>
-        <CKEditor
+        {/* <CKEditor
           name='shortDescription'
           id='shortDescription'
           editor={ClassicEditor}
@@ -145,10 +147,11 @@ const UpdateDataForm = (props) => {
         />
         {formik.errors.shortDescription && formik.touched.shortDescription ? (
           <div className='text-danger'>{formik.errors.shortDescription}</div>
-        ) : null}
+        ) : null} */}
 
         <label htmlFor='longDescription'> Descripcion larga</label>
         <input
+          data-testid="longDescriptionError"
           type='text'
           name='longDescription'
           id='longDescription'
@@ -166,6 +169,7 @@ const UpdateDataForm = (props) => {
         ) : null}
         <label htmlFor='linkInstragram'>Link de Instagram</label>
         <input
+          data-testid="instagramUrlError"
           type='text'
           name='linkInstagram'
           id='linkInstagram'
@@ -184,6 +188,7 @@ const UpdateDataForm = (props) => {
 
         <label htmlFor='linkFacebook'>Link de Facebook</label>
         <input
+          data-testid="facebookUrlError" 
           type='text'
           name='linkFacebook'
           id='linkFacebook'
