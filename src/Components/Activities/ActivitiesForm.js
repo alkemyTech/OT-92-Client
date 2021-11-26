@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { activitiesService } from '../../Services/privateApiService';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import EditorField from './EditorField';
@@ -8,22 +7,22 @@ import '../FormStyles.css';
 
 const ActivitiesForm = (activity) => {
   const [formValues, setValues] = useState({
-    name: activity.name || '',
+    name: activity.name || "",
     image: activity.image || null,
-    description: activity.description || '',
+    description: activity.description || "",
     id: activity.id || undefined,
   });
   const [imagenPreview, setImagenPreview] = useState(null);
   const initialValues = {
-    name: activity.name || '',
+    name: activity.name || "",
     image: activity.image || null,
-    description: activity.description || '',
+    description: activity.description || "",
     id: activity.id || undefined,
   };
 
   // parse file to base64 and return it to formState
   const setbase64 = async (file) => {
-    if (typeof file === 'object' && !!file) {
+    if (typeof file === "object" && !!file) {
       const metaData = `data:${formValues.image.type}; base64, `;
       const reader = new FileReader();
       reader.readAsBinaryString(file);
@@ -31,8 +30,8 @@ const ActivitiesForm = (activity) => {
         setValues({ ...formValues, image: metaData + btoa(reader.result) });
         setImagenPreview(metaData + btoa(reader.result));
       }; //
-    } else if (typeof file === 'string' && file.length < 150) {
-      const res = await axios.get(file, { responseType: 'blob' });
+    } else if (typeof file === "string" && file.length < 150) {
+      const res = await axios.get(file, { responseType: "blob" });
       try {
         setbase64(res.data);
       } catch (error) {
@@ -44,12 +43,12 @@ const ActivitiesForm = (activity) => {
 
   // validacion de YUP para formik
   const validate = Yup.object({
-    name: Yup.string().required('necesitas ingresar un titulo'),
+    name: Yup.string().required("necesitas ingresar un titulo"),
     description: Yup.string()
-      .min(20, 'El minimo es de 20 caracteres')
-      .max(500, 'el maximo es de 500 caracteres')
-      .required('Este campo es obligatorio'),
-    image: Yup.mixed().required('Necesitas subir una foto'),
+      .min(20, "El minimo es de 20 caracteres")
+      .max(500, "el maximo es de 500 caracteres")
+      .required("Este campo es obligatorio"),
+    image: Yup.mixed().required("Necesitas subir una foto"),
   });
 
   // funcion devolver botones
@@ -59,7 +58,7 @@ const ActivitiesForm = (activity) => {
       if (formValues.id === undefined) {
         return (
           <>
-            {' '}
+            {" "}
             <button
               className='submit-btn'
               onClick={() => {
@@ -76,7 +75,7 @@ const ActivitiesForm = (activity) => {
               }}
             >
               Deshacer Cambios
-            </button>{' '}
+            </button>{" "}
           </>
         );
       } else if (formValues.id !== undefined) {
@@ -85,7 +84,7 @@ const ActivitiesForm = (activity) => {
             <button
               className='submit-btn'
               onClick={() => {
-                console.log('PUTactivitie ' + formValues);
+                console.log("PUTactivitie " + formValues);
               }}
             >
               Editar
@@ -156,7 +155,7 @@ const ActivitiesForm = (activity) => {
               name='image'
               accept='image/png, image/jpeg'
               onChange={(event) => {
-                formik.setFieldValue('image', event.target.files[0]);
+                formik.setFieldValue("image", event.target.files[0]);
               }}
               onBlur={formik.handleBlur}
             />

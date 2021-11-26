@@ -1,7 +1,7 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import './ActivitiesDetail.css';
-import { activitiesService } from '../../../Services/privateApiService';
+import React from "react";
+import { useParams } from "react-router-dom";
+import "./ActivitiesDetail.css";
+import { activitiesService } from "../../../Services/privateApiService";
 import ActivitiesDetailContent from "./ActivitiesDetailContent";
 
 const ActivitiesDetail = () => {
@@ -33,7 +33,7 @@ const ActivitiesDetail = () => {
         {paramsActivity[0] ? (
           <div className="container d-flex flex-column justify-items-center mt-5">
             <h1 className=" h1 w-100 text-center Activities-title">{paramsActivity[0].title}</h1>
-           {/* Anterior contenido sin mi componente  <h1 className="h3 Activities-body text-justify">{paramsActivity[0].body}</h1> */}
+            {/* Anterior contenido sin mi componente  <h1 className="h3 Activities-body text-justify">{paramsActivity[0].body}</h1> */}
             <ActivitiesDetailContent 
               body={paramsActivity[0].body}
               paramsId={paramsId}
@@ -42,7 +42,7 @@ const ActivitiesDetail = () => {
         ) : (
           <div className='mt-5 container'>
             <h1 className='Activities-title '>
-              Oh Oh! hemos tenido problemas con esa actividad :({' '}
+              Oh Oh! hemos tenido problemas con esa actividad :({" "}
             </h1>
           </div>
         )}

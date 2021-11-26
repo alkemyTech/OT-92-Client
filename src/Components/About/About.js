@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Title from '../Title';
+import React, { useState } from "react";
+import Title from "../Title";
 
 const About = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   return (
     <div className='p-5'>
-      <Title content={{ title: 'Nosotros' }} />
+      <Title content={{ title: "Nosotros" }} />
       {!text ? (
         <div class='d-flex justify-content-center mt-5'>
           <div class='spinner-border'>
