@@ -157,12 +157,14 @@ width (number) / Any (pixels)
 
 ## "UpdateDataForm.js" component's testing documentation
 
-Tested a component that updates the ONG's data, through a form where the user submits the data that wants to be changed. For this task 'react-testing-library' was implemented.
+Tested a component that updates the ONG's data, through a form where the user submits the data that wants to be changed. For this task 'react-testing-library' and 'react-test-renderer' were implemented.
 
 Basically, five tests were implemented to test each one of the inputs on the form. Each test has a similar structure, where a function has two arguments: a string and a callback function.
 
 In this callback is where all the logic comes through, where we render the component we want to test, then we specify what we want to identify on the document to be tested by.
 
-Finally, we establish, by the 'expect' function what it would be expected from the exact element to do or be.
+Then, we establish, by the 'expect' function what it would be expected from the exact element to do or be.
 
-The sixth and last test was implemented to test If the form submits the info. successfully. Here the logic was very similar but with an async method, since Formik works asynchronically.
+The sixth test was implemented to test If the form submits the info. successfully. Here the logic was very similar but with an async method, since Formik works asynchronically.
+
+Finally, we render the snapshot through the seventh and final test, therefore being created automatically the "__snapshots__" folder, containing the snapshot of our tested component.
