@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextInput from "../../Newsletter/TextInput";
@@ -6,6 +7,40 @@ import TextInput from "../../Newsletter/TextInput";
 
 const ButtonMercadoPago = () => {
   
+  const handleSubmit = async (values) => {
+
+    const URL = "https://api.mercadopago.com/checkout/preferences";
+
+    const data = {
+      "items": [
+        {
+          "title": "Donación ONG 'Somos más'",
+          "quantity": 1,
+          "unit_price": parseInt(values.amount)
+        }
+      ],
+      "back_urls": {
+        "success": "http://localhost:3000/gracias"
+      },
+      "payment_methods": {
+        "excluded_payment_methods": [
+          {
+            "id": "atm"
+          }
+        ],
+        "excluded_payment_types": [
+          {
+            "id": "ticket"
+          }
+        ],
+      },
+    };
+
+    const headers = { 
+      "Authorization": "Bearer TEST-8134026600424593-112515-d86255dec607162e20d1cc7b84b7de84-209760829",
+      "Content-Type": "application/json"
+    };
+
   return (
     <Formik
       initialValues={{
