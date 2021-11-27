@@ -1,11 +1,16 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Header from "./Header/Header";
+import Sidebar from "./Sidebar/Sidebar";
 
 export default function ScreenDashboard() {
   return (
-    <div>
-      <Navbar />
-      <p>Bienvenido al backoffice</p>
-    </div>
+    <>
+      <div className="w-100 h-100">
+        <Header/>
+      </div>
+      <div className="w-25 h-100">
+        <Sidebar/>
+      </div>
+    </>
   );
 }

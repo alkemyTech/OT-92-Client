@@ -1,0 +1,37 @@
+.center {
+  margin-left: 28vw;
+  margin-right: 25vw;
+}
+
+/*mobile*/
+@media screen and (max-width: 576px) and (min-width: 0px) {
+  .center {
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+}
+
+/*tablet*/
+@media screen and (max-width: 768px) and (min-width: 576px) {
+  .center {
+    width: 600px;
+    margin-left: 10vw;
+  }
+}
+
+/*desktop*/
+@media screen and (min-width: 769px) {
+  .center {
+    background-image: url("../../Assets/school-campaign-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+/*smart tv*/
+@media screen and (min-width: 1400px) {
+  body {
+    background-color: #dbdcde !important;
+  }
+}
