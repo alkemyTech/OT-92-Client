@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="mt-5"
+  data-testid="div-1"
+>
+  <h1
+    className="text-center"
+  >
+    Editar datos de la organizacion
+  </h1>
+  <form
+    className="form-container form-group mt-5"
+    onSubmit={[Function]}
+  >
+    <label
+      aria-labelledby="name"
+      className=""
+      htmlFor="name"
+    >
+      Nombre
+    </label>
+    <input
+      className="mt-2 form-control"
+      data-testid="nameError"
+      id="name"
+      name="name"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <label
+      aria-labelledby="logo"
+      htmlFor="logo"
+    >
+      Logo
+    </label>
+    <div
+      className="d-flex justify-content-between"
+    >
+      <input
+        accept="image/png, image/jpeg"
+        className="form-control"
+        data-testid="logoError"
+        id="logo"
+        name="logo"
+        onBlur={[Function]}
+        onChange={[Function]}
+        required={true}
+        type="file"
+      />
+    </div>
+    <label>
+      Descripcion corta
+    </label>
+    <label
+      aria-labelledby="description"
+      htmlFor="longDescription"
+    >
+       Descripcion larga
+    </label>
+    <input
+      className="form-control"
+      data-testid="longDescriptionError"
+      id="longDescription"
+      name="longDescription"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <label
+      aria-labelledby="instagram"
+      htmlFor="linkInstragram"
+    >
+      Link de Instagram
+    </label>
+    <input
+      className="form-control"
+      data-testid="instagramUrlError"
+      id="linkInstagram"
+      name="linkInstagram"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <label
+      aria-labelledby="facebook"
+      htmlFor="linkFacebook"
+    >
+      Link de Facebook
+    </label>
+    <input
+      className="form-control"
+      data-testid="facebookUrlError"
+      id="linkFacebook"
+      name="linkFacebook"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button
+      className="btn btn-primary m-auto"
+      htmlFor="submit"
+      name="submit"
+      style={
+        Object {
+          "width": "10rem",
+        }
+      }
+      type="submit"
+    >
+      Cargar
+    </button>
+  </form>
+</div>
+`;

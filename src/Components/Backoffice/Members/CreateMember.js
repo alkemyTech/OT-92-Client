@@ -45,30 +45,26 @@ const CreateMember = () => {
   return (
     <>
       <div>
-        {" "}
         <p className="h1 my-3 customize-title"> Agrega al nuevo miembro </p>
         {showMessage() && message}
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
-          onSubmit={ async val => {
+          onSubmit={async (val) => {
             const { name, image, description, facebookURL, linkedinURL } = val;
-            const created_at = formatRelative(subDays(new Date(), 3), new Date());
+            const created_at = formatRelative(
+              subDays(new Date(), 3),
+              new Date()
+            );
             await setValues({
               name,
               image,
               description,
               facebookURL,
-              linkedinURL
+              linkedinURL,
             });
             console.log(values);
-            console.log(dispatch(addMember({name,
-              image,
-              description,
-              facebookURL,
-              linkedinURL
-            })));
-            let newMember = {...val, created_at};
+            let newMember = { ...val, created_at };
             try {
               await dispatch(addMemberAsync(newMember));
             } catch (error) {
@@ -76,7 +72,8 @@ const CreateMember = () => {
               setTimeout(() => {
                 setMessage(null);
               }, 2000);
-            }}}
+            }
+          }}
         >
           {(formik) => (
             <Form className="form-container d-flex flex-column ">

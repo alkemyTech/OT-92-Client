@@ -1,4 +1,4 @@
-import React,{lazy, Suspense} from "react";
+import React, { lazy, Suspense } from "react";
 import "./Donations.css";
 import ButtonMercadoPago from "./SDK-MercadoPago/ButtonMercadoPago";
 
