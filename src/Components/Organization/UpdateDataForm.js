@@ -73,16 +73,17 @@ const UpdateDataForm = (props) => {
   });
 
   return (
-    <div className='mt-5'>
+    <div className='mt-5' data-testid="div-1">
       <h1 className='text-center'>Editar datos de la organizacion</h1>
       <form
         onSubmit={formik.handleSubmit}
         className='form-container form-group mt-5'
       >
-        <label htmlFor='name' className=''>
+        <label htmlFor='name' className='' aria-labelledby="name">
           Nombre
         </label>
         <input
+          data-testid="nameError"
           type='text'
           name='name'
           id='name'
@@ -98,9 +99,10 @@ const UpdateDataForm = (props) => {
         {formik.errors.name && formik.touched.name ? (
           <div className='text-danger'>{formik.errors.name}</div>
         ) : null}
-        <label htmlFor='logo'>Logo</label>
+        <label htmlFor='logo' aria-labelledby="logo">Logo</label>
         <div className='d-flex justify-content-between'>
           <input
+            data-testid="logoError"
             required
             style={image && { height: "2.4rem", width: "45rem" }}
             type='file'
@@ -136,7 +138,7 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.logo}</div>
         ) : null}
         <label>Descripcion corta</label>
-        <CKEditor
+        {/* <CKEditor
           name='shortDescription'
           id='shortDescription'
           editor={ClassicEditor}
@@ -145,10 +147,11 @@ const UpdateDataForm = (props) => {
         />
         {formik.errors.shortDescription && formik.touched.shortDescription ? (
           <div className='text-danger'>{formik.errors.shortDescription}</div>
-        ) : null}
+        ) : null} */}
 
-        <label htmlFor='longDescription'> Descripcion larga</label>
+        <label htmlFor='longDescription' aria-labelledby="description"> Descripcion larga</label>
         <input
+          data-testid="longDescriptionError"
           type='text'
           name='longDescription'
           id='longDescription'
@@ -164,8 +167,9 @@ const UpdateDataForm = (props) => {
         {formik.errors.longDescription && formik.touched.longDescription ? (
           <div className='text-danger'>{formik.errors.longDescription}</div>
         ) : null}
-        <label htmlFor='linkInstragram'>Link de Instagram</label>
+        <label htmlFor='linkInstragram' aria-labelledby="instagram">Link de Instagram</label>
         <input
+          data-testid="instagramUrlError"
           type='text'
           name='linkInstagram'
           id='linkInstagram'
@@ -182,8 +186,9 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.linkInstagram}</div>
         ) : null}
 
-        <label htmlFor='linkFacebook'>Link de Facebook</label>
+        <label htmlFor='linkFacebook' aria-labelledby="facebook">Link de Facebook</label>
         <input
+          data-testid="facebookUrlError" 
           type='text'
           name='linkFacebook'
           id='linkFacebook'
@@ -200,6 +205,8 @@ const UpdateDataForm = (props) => {
           <div className='text-danger'>{formik.errors.linkFacebook}</div>
         ) : null}
         <button
+          name="submit"
+          htmlFor="submit"
           type='submit'
           style={{ width: "10rem" }}
           className='btn btn-primary m-auto'

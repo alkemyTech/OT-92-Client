@@ -17,7 +17,7 @@ import ScreenDashboard from "./Components/Backoffice/ScreenDashboard";
 import Content from "./Components/News/Detail/Content";
 import Organization from "./Components/Organization/Organization";
 import MembersCreateEdit from "./Components/Members/MembersCreateEdit";
-import UpdateDataForm from "./Components/Organization/UdpateDataForm";
+import UpdateDataForm from "./Components/Organization/UpdateDataForm";
 import ActivitiesDetail from "./Components/Activities/Detail/ActivitiesDetail";
 import HomeForm from "./Components/Home/HomeForm";
 import NewsDisplay from "./Components/News/NewsDisplay";
@@ -98,6 +98,9 @@ function App() {
           <Route path="/register" component={RegisterForm} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+
+          <Route path="/edit-data" component={UpdateDataForm} />
+
           <Route component={NotFound} />
         </AnimatedSwitch>
       </BrowserRouter>
