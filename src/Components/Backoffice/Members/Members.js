@@ -9,7 +9,7 @@ import { Form, FormControl, Navbar, Button } from "react-bootstrap";
 const initialState = {
   dataSlice: ""
 };
-  let timeBouncer;
+let timeBouncer;
 
 const Members = () => {
 
@@ -55,22 +55,22 @@ const Members = () => {
     history.push(`/backoffice/editmember/${id}`);
   };
 
- const form = (e) => {
+  const form = (e) => {
     setSearcher({
       ...searcher,
       [e.target.name]: e.target.value,
     });
-    searchButton()
+    searchButton();
   };
 
   const searchButton =  () => { 
-     (searcher.dataSlice.length > 1)
+    (searcher.dataSlice.length > 1)
       ? membersService.searchMembers(searcher.dataSlice).then(res => setMembersList(res.data.data))
-      .catch((err) => console.log(err))    
+        .catch((err) => console.log(err))    
       :  membersService.getMembers().then((res) => setMembersList(res.data.data)).catch((err) => console.log(err));
-  }
+  };
 
-const debounce = (callback, time) => {
+  const debounce = (callback, time) => {
     window.clearTimeout(timeBouncer);
     timeBouncer = window.setTimeout(callback, time);
   };
@@ -89,22 +89,22 @@ const debounce = (callback, time) => {
           Agregar nuevo Miembro{" "}
         </button>
 
- <Navbar className="py-5" style={{ justifyContent: "center", width: "50%" }} variant="dark">
-            <Form className="d-flex" style={{ width: "100%" }}>
-              <FormControl
-                autoComplete="off"
-                name="dataSlice"
-                onChange={form}
-                onInput={() => debounce(searchButton, 500)}
-                value={searcher.dataSlice}
-                type="search"
-                placeholder="Buscar miembro"
-                className="mr-2"
-                aria-label="Buscar Miembro"
-              />
-              <Button onClick={searchButton} variant="primary">Buscar</Button>
-            </Form>
-          </Navbar>
+        <Navbar className="py-5" style={{ justifyContent: "center", width: "50%" }} variant="dark">
+          <Form className="d-flex" style={{ width: "100%" }}>
+            <FormControl
+              autoComplete="off"
+              name="dataSlice"
+              onChange={form}
+              onInput={() => debounce(searchButton, 500)}
+              value={searcher.dataSlice}
+              type="search"
+              placeholder="Buscar miembro"
+              className="mr-2"
+              aria-label="Buscar Miembro"
+            />
+            <Button onClick={searchButton} variant="primary">Buscar</Button>
+          </Form>
+        </Navbar>
 
         <div className="row">
           <ul className="list-group">
