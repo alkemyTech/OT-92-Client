@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
-import { useParams, useHistory } from 'react-router-dom';
-import { membersService } from '../../../../Services/privateApiService';
-import * as Yup from 'yup';
-import '../MembersList.css';
+import React, { useState, useEffect } from "react";
+import { Formik, Form, ErrorMessage } from "formik";
+import { useParams, useHistory } from "react-router-dom";
+import { membersService } from "../../../../Services/privateApiService";
+import * as Yup from "yup";
+import "../MembersList.css";
 
 const EditMember = () => {
   const { id } = useParams();
@@ -12,25 +12,25 @@ const EditMember = () => {
   useEffect(() => {
     membersService
       .getMember(id)
-      .then((res) => setValues({ updated_at: '', ...res.data.data }))
+      .then((res) => setValues({ updated_at: "", ...res.data.data }))
       .catch((err) => console.log(err));
   }, [id]);
 
-  const [values, setValues] = useState('');
+  const [values, setValues] = useState("");
 
   const validationSchema = Yup.object({
     name: Yup.string().required(
-      'Es necesario agregar el nombre del nuevo miembro'
+      "Es necesario agregar el nombre del nuevo miembro"
     ),
-    image: Yup.string().required('La foto del nuevo miembro es esencial'),
+    image: Yup.string().required("La foto del nuevo miembro es esencial"),
     description: Yup.string(),
     facebookURL: Yup.string().matches(
       /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-      'Por favor ingresa un link valido!'
+      "Por favor ingresa un link valido!"
     ),
     linkedinURL: Yup.string().matches(
       /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-      'Por favor ingresa un link valido!'
+      "Por favor ingresa un link valido!"
     ),
   });
   const showMessage = () => {
@@ -41,11 +41,11 @@ const EditMember = () => {
     );
   };
   console.log(values);
-  if (values === '') return 'Loading...';
+  if (values === "") return "Loading...";
   return (
     <>
       <div>
-        {' '}
+        {" "}
         <p className='h1 my-3 customize-title'> Edita al miembro </p>
         {message && showMessage()}
         <Formik
@@ -67,7 +67,7 @@ const EditMember = () => {
             membersService
               .updateMember(values)
               .then((res) => console.log(res))
-              .then(history.push('/backoffice/members'))
+              .then(history.push("/backoffice/members"))
               .catch((err) => {
                 setMessage(err);
                 console.log(err);
