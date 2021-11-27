@@ -35,6 +35,7 @@ import Donations from "./Components/Donations/Donations.js";
 import NewsListBackOffice from "./Components/Backoffice/NewsListBackOffice";
 import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
+import MembersList from "./Components/About/MembersList";
 
 import "./animatedRouter.css";
 import { AnimatedSwitch } from "react-router-transition";

@@ -4,7 +4,7 @@ import axios from "axios";
 export const getNews = createAsyncThunk(
   "news/getNews",
   async (dispatch, getState) => {
-    return await axios.get('http://ongapi.alkemy.org/api/news')
+    return await axios.get("http://ongapi.alkemy.org/api/news")
       .then((res) => res.data.data);
   }
 );

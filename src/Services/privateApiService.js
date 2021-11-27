@@ -136,7 +136,7 @@ export const membersService = {
 export const categoriesService = {
   //fetch all categories
   getCategories: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/categories');
+    const data = await axios.get("http://ongapi.alkemy.org/api/categories");
     try {
       return data;
     } catch (error) {
@@ -157,7 +157,7 @@ export const categoriesService = {
   //create category
   createCategory: async (category) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/categories`,
+      "http://ongapi.alkemy.org/api/categories",
       category
     );
     try {
@@ -189,7 +189,7 @@ export const categoriesService = {
       console.log(error);
     }
   }
-  };
+};
 
 
 export const queryPutData = async (section, queryObject) => {
