@@ -6,12 +6,12 @@ import Footer from "./Footer";
 
 const SchoolCampaign = () => {
   return (
-    <>
+    <div style={{width:"100%"}}>
       <Header />
       <Slider />
       <Content1 />
       <Footer />
-    </>
+    </div>
   );
 };
 

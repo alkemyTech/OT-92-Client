@@ -4,27 +4,28 @@ import { useParams } from "react-router-dom";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import EditorField from "../Activities/EditorField";
+import { slidesService } from "../../Services/publicApiService";
 import axios from "axios";
 
 const SlidesForm = () => {
   const {id} = useParams();
   const [title, setTitle] = useState("Crear");
   const [initialValues, setInitialValues] = useState({
-    id: id || undefined,
+    id: id || null,
     name: "",
     order: "",
-    image: null,
+    image: "",
     description: "",
   });
     
   // Funciones para submitear:
-  const edit = (id) => {
-    axios.put(`http://ongapi.alkemy.org/api/slides/${id}`, initialValues);
+  const edit = async (data) => {
+    await slidesService("edit", data);
     console.log("Editado");
   };
 
-  const create = () => {
-    axios.post("http://ongapi.alkemy.org/api/slides/create", initialValues);
+  const create = async (data) => {
+    await slidesService("create", data);
     console.log("Creado");
   };
 
@@ -73,10 +74,10 @@ const SlidesForm = () => {
   const handleSubmit = (e) => {
     if(id){
       setTitle("Editar");
-      edit(id);
+      edit(initialValues);
     } if(!id){
       setTitle("Crear");
-      create();
+      create(initialValues);
     }
   };
 
@@ -133,7 +134,8 @@ const SlidesForm = () => {
             />
             <EditorField 
               formik={formik}
-              initialValue={initialValues.description}
+              initialValues={initialValues.description}
+              setInitialValues={setInitialValues}
             />
             <button className="submit-btn" type="submit" >Enviar</button>
           </Form>

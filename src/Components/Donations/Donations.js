@@ -10,42 +10,10 @@ const Donations = () => {
       <div className="container d-flex flex-column align-items-center">
         <h1 className="mt-5 Donations-title"> {donate} </h1>
         <div className="d-flex justify-content-around w-100 mt-4 flex-wrap">
-          <a href="https://mpago.la/1CCtqMi" target="_blank" rel="noreferrer">
-            {" "}
-            <button
-              type="button"
-              class="btn btn-primary p-3 button-text btn-lg "
-            >
-              $ 500
-            </button>{" "}
-          </a>
-          <a href="https://mpago.la/1haGpy4" target="_blank" rel="noreferrer">
-            {" "}
-            <button
-              type="button"
-              class="btn btn-primary p-3 button-text btn-lg"
-            >
-              $1000
-            </button>{" "}
-          </a>
-          <a href="https://mpago.la/1NB9QoG" target="_blank" rel="noreferrer">
-            {" "}
-            <button
-              type="button"
-              class="btn btn-primary p-3 button-text btn-lg"
-            >
-              $5000
-            </button>{" "}
-          </a>
-          <a href="https://mpago.la/1UVV6X6" target="_blank" rel="noreferrer">
-            {" "}
-            <button
-              type="button"
-              class="btn btn-primary p-3 button-text btn-lg"
-            >
-              $10000
-            </button>{" "}
-          </a>
+          <a href="https://mpago.la/1CCtqMi"  target="_blank" rel="noreferrer"> <button type="button" class="btn btn-primary p-3 button-text btn-lg ">$ 500</button> </a>
+          <a href="https://mpago.la/1haGpy4"  target="_blank" rel="noreferrer"> <button type="button" class="btn btn-primary p-3 button-text btn-lg">$1000</button> </a>
+          <a href="https://mpago.la/1NB9QoG"  target="_blank" rel="noreferrer"> <button type="button" class="btn btn-primary p-3 button-text btn-lg">$5000</button> </a>
+          <a href="https://mpago.la/1UVV6X6"  target="_blank" rel="noreferrer"> <button type="button" class="btn btn-primary p-3 button-text btn-lg">$10000</button> </a>
         </div>
       </div>
     </>
