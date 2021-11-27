@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./MembersList.css";
-import { useDispatch } from "react-redux";
-import { addMember, addMemberAsync } from "../../../store/members/membersSlice";
+import {useDispatch} from "react-redux";
+import {addMember, addMemberAsync} from "../../../store/members/membersSlice";
 import { formatRelative, subDays } from "date-fns";
 const CreateMember = () => {
   const dispatch = useDispatch();
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");;
   const [values, setValues] = useState({
     name: "",
     image: "",
@@ -45,7 +45,6 @@ const CreateMember = () => {
   return (
     <>
       <div>
-        {" "}
         <p className="h1 my-3 customize-title"> Agrega al nuevo miembro </p>
         {showMessage() && message}
         <Formik
@@ -65,17 +64,6 @@ const CreateMember = () => {
               linkedinURL,
             });
             console.log(values);
-            console.log(
-              dispatch(
-                addMember({
-                  name,
-                  image,
-                  description,
-                  facebookURL,
-                  linkedinURL,
-                })
-              )
-            );
             let newMember = { ...val, created_at };
             try {
               await dispatch(addMemberAsync(newMember));

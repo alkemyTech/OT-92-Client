@@ -13,7 +13,7 @@ const RegisterForm = () => {
     passwordConfirm: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     if (e.target.name === "name") {
       setInitialValues({ ...initialValues, name: e.target.value });
     }
