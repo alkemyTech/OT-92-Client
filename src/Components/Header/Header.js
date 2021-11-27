@@ -70,7 +70,7 @@ const Header = () => {
   ];
 
   return (
-    <div>
+    <div style={{width: "100vw"}}>
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <div className="d-flex justify-content-between container-fluid">
           <a className="navbar-brand" href="/">

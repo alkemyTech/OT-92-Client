@@ -1,22 +1,19 @@
 import React, { useEffect } from "react";
 import CarruselHome from "./components/CarruselHome";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column align-items-center">
       <Header />
-      {/* The upcoming div element is just a slider placeholder and will be replaced with the real one in the future */}
-      <div
-        className="d-flex bg-primary align-items-center"
-        style={{ height: "50vh" }}
-      >
-        <CarruselHome />
-      </div>
+      
+      <CarruselHome />
+    
 
       <h1 className="m-5">Texto de bienvenida</h1>
 
-      <div className="m-3">
+      <div className="d-flex flex-column align-items-center m-3">
         <h3>Últimas novedades</h3>
         <div className="d-flex flex-wrap justify-content-center">
           {/* The upcoming div element are just placeholders */}
@@ -52,6 +49,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

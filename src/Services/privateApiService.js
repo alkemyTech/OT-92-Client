@@ -23,7 +23,7 @@ export const queryDeleteById = async (section, id) => {
 };
 
 export const getOrganization = async () => {
-  const url = `http://ongapi.alkemy.org/api/organization`;
+  const url = "http://ongapi.alkemy.org/api/organization";
   let res = await axios.get(url, config);
   try {
     return res.data;
@@ -96,7 +96,7 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + '/' + id;
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + "/" + id;
     const data = await axios.get(url);
     
     try {
