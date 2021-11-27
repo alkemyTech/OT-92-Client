@@ -1,4 +1,4 @@
-import { spring } from 'react-router-transition';
+import { spring } from "react-router-transition";
 
 export function mapStyles(styles) {
   return {

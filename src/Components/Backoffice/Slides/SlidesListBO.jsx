@@ -13,7 +13,6 @@ const initialState = {
   dataSlice: ""
 };
 const SlideListBackOffice = () => {
-
   const dispatch = useDispatch();
   const [buscador, setbuscador] = useState(initialState);
   const apiPostStatus = useSelector(state => state.listSlice.list.list); // Estado de la store listSlice

@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+.footer-Padre-School {
+    width: 100%;
+    margin: auto;
+    background-color: rgb(88, 127, 169);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+    justify-content: space-evenly;
+}
+
+.ocultar-Mostrar-NavLink {
+    display: none;
+}
+
+.img-Footer-School {
+    width: 40px;
+}
+
+@media(max-width:1440px) {
+    .footer-Padre-School {
+        flex-direction: row;
+    }
+
+    .ocultar-Mostrar-NavLink {
+        display: block;
+    }
+
+    .img-Footer-School {
+        width: 30px;
+    }
+
+    .container-Redes-Redireccion {
+        width: 50%;
+        justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+    }
+
+    .containter-Redes-Logo {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .footer-Logos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-Logos a {
+        display: flex;
+        text-decoration: none;
+    }
+
+    .footer-Logos p {
+        margin: 0px;
+        color: white;
+        margin-left: 5%;
+    }
+
+    .footer-Texto-Logos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .navLink {
+        font-family: 'Shadows Into Light', cursive;
+        text-decoration: none;
+        color: white;
+        font-size: 2rem;
+    }
+
+    .navegador-Footer-Nav {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .column-Left-Navlinks,
+    .column-Right-Navlinks {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navLinks-Navegacion {
+        color: white;
+        text-decoration: none;
+        padding: .5rem;
+    }
+}
+
+@media(max-width:1024px) {
+    .container-Redes-Redireccion {
+        justify-content: space-between;
+    }
+    .navegador-Footer-Nav{
+        display: none;
+    }
+}
+
+
+@media(max-width:768px) {
+    .footer-Padre-School {
+        flex-direction: row;
+    }
+
+    .container-Redes-Redireccion {
+        display: flex;
+        width: 65%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .navLink {
+        font-family: 'Shadows Into Light', cursive;
+        text-decoration: none;
+        color: white;
+        font-size: 2rem;
+    }
+
+    .ocultar-Mostrar-NavLink {
+        display: block;
+    }
+}
+
+@media(max-width:425px) {
+    .footer-Padre-School {
+        flex-direction: row;
+    }
+
+    .container-Redes-Redireccion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 95px;
+        justify-content: center;
+        width: 40%;
+    }
+
+    .navLink {
+        font-family: 'Shadows Into Light', cursive;
+        text-decoration: none;
+        color: white;
+        display: block;
+        font-size: 2rem;
+    }
+
+    .ocultar-Mostrar-NavLink {
+        display: block;
+    }
+
+    .footer-Logos p {
+        font-size: .8rem;
+        display: none;
+    }
+
+    .footer-Logos {
+        flex-direction: row;
+    }
+}
+
+@media(max-width:375px) {
+    .ocultar-Mostrar-NavLink {
+        display: none;
+    }
+}

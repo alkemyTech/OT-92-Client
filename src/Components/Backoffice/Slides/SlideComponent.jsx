@@ -1,4 +1,6 @@
 import React from "react";
+import { slidesService } from "../../../Services/publicApiService";
+import { Link } from "react-router-dom";
 
 const SlideComponent = ({ slide }) => {
   return (
@@ -20,8 +22,12 @@ const SlideComponent = ({ slide }) => {
         </div>
       </div>
       <div className='p-1'>
-        <button className='btn btn-primary mr-3'>Editar</button>
-        <button className='btn btn-danger'>Eliminar</button>
+        <Link to={`/backoffice/slides-form/${slide.id}`}>
+          <button className='btn btn-primary mr-3'>
+            Editar
+          </button>
+        </Link>
+        <button className='btn btn-danger' onClick={() => slidesService("delete", slide)}>Eliminar</button>
       </div>
     </div>
   );

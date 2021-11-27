@@ -1,22 +1,29 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-
 import axios from "axios";
 import EditField from "./EditField";
 import { Formik, Form, ErrorMessage } from "formik";
 import { useParams } from "react-router";
 import * as Yup from "yup";
-
 import "../../Components/FormStyles.css";
+import { errorAlert } from "../../Assets/Alerts/alerts";
 
 
-export default function TestimonialsForm () {
-  const initialValues = { name: "", image: null, description: "", complete: false, id: undefined }; 
-  const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined }); 
-    
+export default function TestimonialsForm() {
+
+  const initialValues = {
+    name: "",
+    image: null,
+    description: "",
+    complete: false,
+    id: undefined
+  };
+
+  const [formValues, setValues] = useState({ name: "", image: null, description: "", complete: false, id: undefined });
   const { id } = useParams();
   const editTestimonial = `${process.env.REACT_APP_TESTIMONIALS}/${id}`; // aquí establecemos los endpoints
   const createTestimonial = `${process.env.REACT_APP_TESTIMONIALS}`;   // de la API
-    
+
   const handleSubmit = () => {
     if (!id) {
       axios.post(createTestimonial, {
@@ -28,7 +35,7 @@ export default function TestimonialsForm () {
           alert("El testimonio se creó correctamente");
         }
       }).catch(err => {
-        alert(err);
+        errorAlert({ title: "Error", text: `${err}` });
       });
     }
     if (id) {
@@ -41,7 +48,7 @@ export default function TestimonialsForm () {
           alert("El testimonio se actualizó correctamente");
         }
       }).catch(err => {
-        alert(err);
+        errorAlert({ title: "Error", text: `${err}` });
       });
     }
   };
@@ -83,26 +90,26 @@ export default function TestimonialsForm () {
             <ErrorMessage
               name="name"
               render={(msg) => (
-                <div style={{color:"red"}}> {msg} </div>
+                <div style={{ color: "red" }}> {msg} </div>
               )}
             />
-                
-            <h2 >Descripción</h2>
-            <EditField formik={formik}/>     {/*acá importamos el componente de editor de CKEditor */}
-              
 
-            <input type="file" 
-              name="image" 
-              accept="image/png, image/jpeg" 
+            <h2 >Descripción</h2>
+            <EditField formik={formik} />     {/*acá importamos el componente de editor de CKEditor */}
+
+
+            <input type="file"
+              name="image"
+              accept="image/png, image/jpeg"
               onChange={(event) => {
                 formik.setFieldValue("image", event.target.files[0]);
-              }} 
-              onBlur={formik.handleBlur} /> 
-                
+              }}
+              onBlur={formik.handleBlur} />
+
             <ErrorMessage
               name="image"
               render={(msg) => (
-                <div style={{color:"red"}}> {msg} </div>
+                <div style={{ color: "red" }}> {msg} </div>
               )}
             />
 
