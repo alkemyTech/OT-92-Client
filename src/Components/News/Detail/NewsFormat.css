@@ -1,20 +1,22 @@
 .card-image-top {
-   height: 225px;
+    height: 225px;
     width: 100%;
     height: 12rem;
-     display: block;
+    display: block;
 }
-.card-display{
+
+.card-display {
     gap: 5px;
-        display: inline-flex;
-        flex-wrap: wrap;
+    display: inline-flex;
+    flex-wrap: wrap;
 }
-.customize-card{
+
+.customize-card {
     border-radius: 30px;
     border-bottom: solid;
     border-color: #DB5752;
     border-width: 5px;
-    box-shadow: 1px 12px 3px -7px rgba(0,0,0,0.75);
+    box-shadow: 1px 12px 3px -7px rgba(0, 0, 0, 0.75);
     /* height: 25rem; */
     /* width: 18rem; */
     position: relative;
@@ -22,40 +24,46 @@
     transition: all 0.2s ease-out;
     color: black;
 }
-.customize-card:hover{
-    box-shadow: 1px 15px 16px 0px rgba(0,0,0,0.75);
+
+.customize-card:hover {
+    box-shadow: 1px 15px 16px 0px rgba(0, 0, 0, 0.75);
     transform: translateY(-0.5rem);
 }
 
-.card-title{
-    font-family:  'Neucha', cursive;
+.card-title {
+    font-family: 'Neucha', cursive;
     font-size: 1.7rem;
 }
-.noNews{
-    font-family: 'Neucha' , cursive;
+
+.noNews {
+    font-family: 'Neucha', cursive;
     color: black;
-    background-color:  #9AC9FB;
+    background-color: #9AC9FB;
 }
-.customize-image-border{
+
+.customize-image-border {
     border-bottom: #455980 solid 6px;
     border-radius: 5px;
 }
-.cursor-default{
+
+.cursor-default {
     cursor: default;
 }
-.bottom-text{
+
+.bottom-text {
     position: absolute;
     bottom: 1px;
     margin-left: 1rem;
     padding: 0.2rem;
-    cursor:pointer;
+    cursor: pointer;
     z-index: 2;
     color: white;
     background-color: #9AC9FB;
     border-radius: 10px;
     font-family: 'Shadows Into Light', cursive;
 }
-.bottom-text::after{
+
+.bottom-text::after {
     cursor: pointer;
     content: "";
     position: absolute;
@@ -68,23 +76,32 @@
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 250ms ease-in;
-  }
-  .bottom-text:hover::after{
+}
+
+.bottom-text:hover::after {
     transform: scaleX(1);
     transform-origin: left;
     cursor: pointer;
- }
+}
 
-
-.bottom-text:hover{
+.bottom-text:hover {
     background-color: #2462c7;
-
 }
 
-.link{
+.link {
     text-decoration: none;
 }
 
-.link:hover{
+.link:hover {
     text-decoration: none;
+}
+
+.video {
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    background-color: #9ac9fb;
+    box-shadow: inset 0px 0px 20px 0px rgb(0 0 0 / 75%);
 }

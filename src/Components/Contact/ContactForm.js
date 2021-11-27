@@ -2,8 +2,14 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextInput from "../Newsletter/TextInput";
+import axios from "axios";
+import successAlert from "../../Assets/Alerts";
+import errorAlert from "../../Assets/Alerts";
 
 const ContactForm = () => {
+
+  const contactUrl = "http://ongapi.alkemy.org/api/contacts";
+
   return (
     <>
       <Formik
@@ -27,33 +33,34 @@ const ContactForm = () => {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            console.log(JSON.stringify(values, null, 2));
-            //Aquí irá la función para enviar la información submiteada
+            axios.post(contactUrl, values)
+              .then(res => successAlert({title: "Petición con exito" }))
+              .catch(err => errorAlert({ title: "Error", text: `${err}` }));
             setSubmitting(false);
           }, 400);
         }}
       >
         <Form className="form-container">
           <h3>Contactanos</h3>
-          <TextInput 
+          <TextInput
             label="Nombre y Apellido"
             name="name"
             type="text"
             placeholder="Juan Perez"
           />
-          <TextInput 
+          <TextInput
             label="Email"
             name="email"
             type="email"
             placeholder="juanperez@gmail.com"
           />
-          <TextInput 
+          <TextInput
             label="Telefono"
             name="phone"
             type="number"
             placeholder="12345678"
           />
-          <TextInput 
+          <TextInput
             label="Mensaje"
             name="message"
             type="text"
