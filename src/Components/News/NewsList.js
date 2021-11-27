@@ -1,8 +1,8 @@
 
-import React from 'react';
-import '../CardListStyles.css';
-import NewsItem from './NewsItem';
-import Skeleton from '../Skeleton/Skeleton';
+import React from "react";
+import "../CardListStyles.css";
+import NewsItem from "./NewsItem";
+import Skeleton from "../Skeleton/Skeleton";
 
 const NewsList = ({ newsData }) => {
 

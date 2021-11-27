@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import categoriesReducer from "./category/categorySlice";
 import counterReducer from "../features/counter/counterSlice";
-import sliceBackOffice from "./Slices/SlicesBackOffice";
+import sliceBackOffice from "./backOffice/SlicesBackOffice";
 import activitiesReducer from "../../src/store/activity/activitySlice";
 import membersSlice from "./members/membersSlice";
 import newsSlice from "./news/newsSlice";

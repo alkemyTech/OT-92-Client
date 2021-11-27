@@ -22,6 +22,16 @@ export const queryDeleteById = async (section, id) => {
   }
 };
 
+export const getOrganization = async () => {
+  const url = "http://ongapi.alkemy.org/api/organization";
+  let res = await axios.get(url, config);
+  try {
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // service for activities
 export const activitiesService = {
   //fetch one activity
@@ -86,8 +96,9 @@ export const membersService = {
   },
   //fetch one member
   getMember: async (id) => {
-    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + '/' + id;
+    const url = process.env.REACT_APP_API_URL_GET_MEMBERS + "/" + id;
     const data = await axios.get(url);
+    
     try {
       return data;
     } catch (error) {
@@ -131,12 +142,11 @@ export const membersService = {
   },
 };
 
-
 // service for categories
 export const categoriesService = {
   //fetch all categories
   getCategories: async () => {
-    const data = await axios.get('http://ongapi.alkemy.org/api/categories');
+    const data = await axios.get("http://ongapi.alkemy.org/api/categories");
     try {
       return data;
     } catch (error) {
@@ -157,7 +167,7 @@ export const categoriesService = {
   //create category
   createCategory: async (category) => {
     const data = await axios.post(
-      `http://ongapi.alkemy.org/api/categories`,
+      "http://ongapi.alkemy.org/api/categories",
       category
     );
     try {
