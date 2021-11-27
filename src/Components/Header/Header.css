@@ -1,0 +1,34 @@
+.nav-link-Home:hover {
+    color: red;
+    text-decoration: none;
+    margin-bottom: .5%;
+}
+
+.nav-link-Home {
+    color: black;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.logo-Home-Header {
+    margin-left: 5%;
+    padding-bottom: 5%;
+}
+
+.info-News-Home {
+    position: absolute;
+    color: white;
+    background-color: #00000099;
+    width: 210px;
+    height: 240px;
+    border-radius: 10px;
+    display: none;
+}
+
+.info-Novedades-Home {
+    padding-top: 50%;
+}
+
+.div-Home-News:hover .info-News-Home {
+    display: block;
+}

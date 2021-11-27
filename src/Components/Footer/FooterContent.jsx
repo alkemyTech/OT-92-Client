@@ -4,12 +4,12 @@ import facebookIcono from "../../Assets/fb_icon-icons.com_65434.png";
 import instagramLogo from "../../Assets/instagramLogo.png";
 import twitterLogo from "../../Assets/twitterLogo.png";
 import linkedinLogo from "../../Assets/linkedinLogo.png";
-import "./footer.css";
+import "./FooterPrincipal.css";
 
 const FooterContent = ({ dataFooter }) => {
   return (
-    <section>
-      <div className="padre-Footer-Componente" style={{width: "100vw"}}>
+    <section style={{width:"100%"}}>
+      <div className="padre-Footer-Componente">
         <section className="contenedor-Columnas-Footer">
           <section className="nombre-Logo-Empresa">
             <img src={dataFooter.logo} alt={dataFooter.name} />
