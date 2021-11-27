@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import {membersService} from "../../Services/privateApiService";
+
 export const getMembers = createAsyncThunk(
   "members/getMembers",
   async (dispatch, getState) => {
-    return await membersService.getMembers()
-      .then((res) => res.data.data);
+    return await membersService.getMembers().then((res) => res.data.data);
   }
 );
 export const membersSlice = createSlice({
@@ -19,7 +19,7 @@ export const membersSlice = createSlice({
       state.members = [...state.members, action.payload];
     },
     addMember: (state, action) => {
-      state.members = [...state.members, action.payload] ;
+      state.members = [...state.members, action.payload];
     },
   },
   extraReducers: {
@@ -32,12 +32,12 @@ export const membersSlice = createSlice({
     },
     [getMembers.rejected]: (state, action) => {
       state.status = "failed";
-    }
+    },
   },
 });
-export const { addMember} = membersSlice.actions;
+export const { addMember } = membersSlice.actions;
 export default membersSlice.reducer;
-export const addMemberAsync = newMember => dispatch => {
+export const addMemberAsync = (newMember) => (dispatch) => {
   setTimeout(() => {
     dispatch(addMember(newMember));
   }, 1000);

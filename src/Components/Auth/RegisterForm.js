@@ -31,7 +31,7 @@ const RegisterForm = () => {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     // e.preventDefault();
     try {
       console.log(initialValues);

@@ -7,6 +7,17 @@ const config = {
   },
 };
 
+export const queryGetAll = async (section) => {
+  const url = `http://ongapi.alkemy.org/api/${section}`;
+  let res = await axios.get(url, config);
+  try {
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const queryGetData = async (section, id) => {
   const url = `http://ongapi.alkemy.org/api/${section}/${id}`;
   let res = await axios.get(url, config);
@@ -89,17 +100,38 @@ const newsGet = (body) => {
   return resp;
 };
 
-export const getHomeData = async (url) => {        //creamos un método GET para llevar a cabo
-  try {                                         //las peticiones de los componenentes del Home
+export const getHomeData = async (url) => {
+  //creamos un método GET para llevar a cabo
+  try {
+    //las peticiones de los componenentes del Home
     const response = await axios({
       method: "GET",
       url: url,
-          
     });
     console.log(response);
     return response;
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const slidesService = async (type, queryObject) => {
+  switch (type) {
+  case "getAll":
+    queryGetAll("slides");
+    break;
+  case "create":
+    queryPostCreateData("slides", queryObject);
+    break;
+  case "edit":
+    httpClient.put(`/slides/${queryObject.id}`, queryObject);
+    break;
+  case "delete":
+    httpClient.delete(`/slides/${queryObject.id}`);
+    break;
+  default:
+    queryGetData("slides", null);
+    break;
   }
 };
 
