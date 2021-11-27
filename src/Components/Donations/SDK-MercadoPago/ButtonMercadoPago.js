@@ -41,6 +41,13 @@ const ButtonMercadoPago = () => {
       "Content-Type": "application/json"
     };
 
+    axios.post(URL, data, { headers })
+      .then(response => {
+        console.log(response.data.sandbox_init_point);
+        window.location.href = response.data.sandbox_init_point;
+      });
+  };
+
   return (
     <Formik
       initialValues={{
