@@ -81,10 +81,6 @@ function App() {
             path="/backoffice/members/edit/:id"
             component={MembersCreateEdit}
           />
-          <Route
-            path="/backoffice/members/edit"
-            component={MembersCreateEdit}
-          />
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news/" component={NewsListBackOffice} />
           <Route path="/backoffice/organization" component={Organization} />
