@@ -4,7 +4,11 @@ import React, { useEffect, useState } from "react";
 import { Form, FormControl, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { getSlicesApi } from "../../../store/backOffice/SlicesBackOffice";
+
 import { getSlicesApi } from "../../../store/Slices/SlicesBackOffice";
+
 import SlideComponent from "./SlideComponent";
 import Button from "react-bootstrap/Button";
 
