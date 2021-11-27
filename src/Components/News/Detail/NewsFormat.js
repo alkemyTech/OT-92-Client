@@ -7,13 +7,9 @@ const NewsFormat = ({ content }) => {
         <img
           className="customize-image-border card-image-top  w-100"
           src={image || "nourl"}
-          //  onError={(e) => {
-          //   e.target.onerror = null;
-          //   e.target.src = "/error image somos mas.jpg";
-          // }}
           onError={event => {
-          event.target.src = "/error image somos mas.jpg"
-          event.onerror = null}}
+          event.target.src = "/error image somos mas.jpg";
+          event.onerror = null;}}
           loading="lazy"
         />
         <h1 className="h3 pl-4 pt-2 w-100 cursor-default card-title pr-2">

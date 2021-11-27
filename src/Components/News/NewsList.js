@@ -1,32 +1,40 @@
-import React from 'react';
-import '../CardListStyles.css';
 
-const NewsList = () => {
-    const newsMock = [
-        {id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
-        {id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
-        {id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba'}
-    ];
+import React from "react";
+import "../CardListStyles.css";
+import NewsItem from "./NewsItem";
+import Skeleton from "../Skeleton/Skeleton";
 
-    return (
-        <div>
-            <h1>Listado de Novedades</h1>
-            <ul className="list-container">
-                {newsMock.length > 0 ? 
-                    newsMock.map((element) => {
-                        return(
-                            <li className="card-info" key={element.id}>
-                                <h3>{element.name}</h3>
-                                <p>{element.description}</p>
-                            </li>
-                        )
-                    })
-                :
-                    <p>No hay novedades</p>
-                }
-            </ul>
+const NewsList = ({ newsData }) => {
+
+  return (
+    <>
+      {newsData.length > 0 ? (
+        <>
+
+          <div className='row my-3'>
+            {newsData.map((article) => (
+              <div className='col-sm-12 col-md-6 col-lg-4 justify-content-center'>
+                <NewsItem key={article.id} content={article} />
+
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+
+        <div className='row my-3 ml-5 pl-5'>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <div className='col-sm-12 col-md-6 col-lg-4 justify-content-center'>
+              <Skeleton type='rectangular' width='250' height='300' />
+            </div>
+          ))}
+
         </div>
-    );
-}
- 
+      )}
+    </>
+  );
+};
+
+
 export default NewsList;
+
