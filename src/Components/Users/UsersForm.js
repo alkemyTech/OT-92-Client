@@ -197,7 +197,7 @@ const UserForm = user => {
               <div className="text-danger">{errors.profilePhoto}</div>
             ) : null}
          
-            <button type="button" className="btn btn-primary"  disabled={!isValid} type="submit" data-toggle="modal" data-target="#registrationModal">
+            <button className="btn btn-primary"  disabled={!isValid} type="submit" data-toggle="modal" data-target="#registrationModal">
             Registrarse
             </button>
 
