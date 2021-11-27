@@ -55,7 +55,7 @@ const ButtonMercadoPago = () => {
       }}
       validationSchema={Yup.object({
         amount: Yup.number()
-          .min(2, <span className="validations ">Debe tener más de 1 cifra</span>)
+          .min(2, <span className="validations ">Debe ser mayor a $1</span>)
           .required(<span className="validations ">Requerido</span>),
       })}
       onSubmit={(values, { setSubmitting }) => {
