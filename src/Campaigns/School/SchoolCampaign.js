@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Slider from "./Slider";
-import Content1 from "./Content1";
+import Content from "./Content";
 import Footer from "./Footer";
 
 const SchoolCampaign = () => {
@@ -9,7 +9,7 @@ const SchoolCampaign = () => {
     <div style={{width:"100%"}}>
       <Header />
       <Slider />
-      <Content1 />
+      <Content />
       <Footer />
     </div>
   );
