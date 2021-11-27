@@ -2,7 +2,7 @@ import React from "react";
 import { slidesService } from "../../../Services/publicApiService";
 import { Link } from "react-router-dom";
 
-const SlideComponent = ({slide}) => {
+const SlideComponent = ({ slide }) => {
   return (
     <div
       key={slide.id}
@@ -10,6 +10,7 @@ const SlideComponent = ({slide}) => {
     >
       <div className='d-flex align-items-center px-2'>
         <img
+          height="100px"
           src={slide.image}
           className='rounded'
           alt={slide.name}

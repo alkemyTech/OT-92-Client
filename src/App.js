@@ -69,8 +69,10 @@ function App() {
           <Route exact path="/backoffice/memberslist" component={MembersList} />
           <Route path="/backoffice/members/create" component={CreateMember} />
           <Route path="/backoffice/editmember/:id" component={EditMember} />
-          <Route path="/backoffice/members/edit/:id" component={MembersCreateEdit}/>
-          <Route path="/backoffice/members/edit" component={MembersCreateEdit}/>
+          <Route
+            path="/backoffice/members/edit/:id"
+            component={MembersCreateEdit}
+          />
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news/" component={NewsListBackOffice} />
           <Route path="/backoffice/organization" component={Organization} />
