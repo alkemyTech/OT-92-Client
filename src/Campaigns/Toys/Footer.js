@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./footer.css";
 
@@ -7,13 +6,9 @@ import {TiSocialInstagram} from "react-icons/ti";
 import {TiSocialTwitter} from "react-icons/ti";
 import {TiSocialLinkedin} from "react-icons/ti";
 
-
-
-
 const Footer = () => {
   return (
     <div>
-
       <footer className="bg-light text-center text-white">
           
         <div className="container" class="sections">
@@ -96,8 +91,7 @@ const Footer = () => {
             
         </div>
           
-        
-        
+       
         <div className="text-center p-3 text-black" >
             © 2021 by Alkemy {" "}
           <a className="text-black" href="https://alkemy.org">All rights reserved.</a>
@@ -105,8 +99,7 @@ const Footer = () => {
       </footer>
       
     </div>
-  
   );
 };
- 
+
 export default Footer;
