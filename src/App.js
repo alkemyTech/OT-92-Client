@@ -36,10 +36,10 @@ import Donations from "./Components/Donations/Donations.js";
 import NewsListBackOffice from "./Components/Backoffice/NewsListBackOffice";
 import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
+import Gracias from "./Components/Donations/Gracias";
 import MembersList from "./Components/About/MembersList";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
-
 
 
 import { AnimatedSwitch } from "react-router-transition";
@@ -99,6 +99,7 @@ function App() {
           <Route path="/register" component={RegisterForm} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/gracias" component={Gracias} />
 
           <Route path="/edit-data" component={UpdateDataForm} />
 
