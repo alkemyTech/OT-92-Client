@@ -7,7 +7,7 @@ import {addMember, addMemberAsync} from "../../../store/members/membersSlice";
 import { formatRelative, subDays } from "date-fns";
 const CreateMember = () => {
   const dispatch = useDispatch();
-  const [message, setMessage] = useState("");;
+  const [message, setMessage] = useState("");
   const [values, setValues] = useState({
     name: "",
     image: "",
