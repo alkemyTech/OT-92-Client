@@ -38,8 +38,8 @@ import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
 import Gracias from "./Components/Donations/Gracias";
 import MembersList from "./Components/About/MembersList";
-
-import "./animatedRouter.css";
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 
 import { AnimatedSwitch } from "react-router-transition";
@@ -49,6 +49,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Header />
         <AnimatedSwitch
           atEnter={bounceTransition.atEnter}
           atLeave={bounceTransition.atLeave}
@@ -104,6 +105,7 @@ function App() {
 
           <Route component={NotFound} />
         </AnimatedSwitch>
+        <Footer />
       </BrowserRouter>
     </>
   );

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import { getSlicesApi } from "../../../store/backOffice/SlicesBackOffice";
 
+
 import SlideComponent from "./SlideComponent";
 import Button from "react-bootstrap/Button";
 

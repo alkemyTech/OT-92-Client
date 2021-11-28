@@ -28,7 +28,7 @@ export const membersSlice = createSlice({
     },
     [getMembers.fulfilled]: (state, action) => {
       state.status = "success";
-      state.members = state.members.concat(action.payload);
+      state.members = action.payload;
     },
     [getMembers.rejected]: (state, action) => {
       state.status = "failed";
