@@ -21,7 +21,6 @@ const FooterContent = ({ dataFooter }) => {
             </div>
             <div className="column-Right-Navlinks">
               <NavLink className="navLinks-Navegacion" to="/school-campaign">Campaña Escolar</NavLink>
-              <NavLink className="navLinks-Navegacion" to="/activities">Actividades</NavLink>
               <NavLink className="navLinks-Navegacion" to="/contacto">Contacto</NavLink>
             </div>
           </section>

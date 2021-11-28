@@ -6,17 +6,19 @@ $first-color: #9AC9FB;
 $second-color: #FAFA88;
 $third-color: #DB5752; */
 
-body{
+.body{
     background-image: url("./toys campaing font.jpg") ;
     background-size: cover;
 } 
+
 .paragraph-customize{
     font-weight: bold;
     font-size: 2rem;
     padding: 0 1rem;
     font-family: 'Neucha', cursive;
-    background-color: white;
-    color: #DB5752;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    /* color: #DB5752; */
 }
 .content-centered{
     min-height: 100%;  

@@ -1,5 +1,5 @@
 import React from "react";
-import "./footer.css";
+// import "./footer.css";
 
 import {TiSocialFacebook} from "react-icons/ti";
 import {TiSocialInstagram} from "react-icons/ti";

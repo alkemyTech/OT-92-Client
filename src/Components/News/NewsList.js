@@ -1,23 +1,15 @@
-
 import React from "react";
 import "../CardListStyles.css";
-import NewsItem from "./NewsItem";
 import Skeleton from "../Skeleton/Skeleton";
-
+import Card from "../Card";
 const NewsList = ({ newsData }) => {
-
   return (
     <>
       {newsData.length > 0 ? (
         <>
 
-          <div className='row my-3'>
-            {newsData.map((article) => (
-              <div className='col-sm-12 col-md-6 col-lg-4 justify-content-center'>
-                <NewsItem key={article.id} content={article} />
-
-              </div>
-            ))}
+          <div className="d-flex justify-content-center flex-wrap">
+            {newsData.map(article => <Card key={article.id} img={article.image} description={article.content} title={article.name} />)}
           </div>
         </>
       ) : (

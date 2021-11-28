@@ -86,7 +86,7 @@ export const activitiesService = {
 export const membersService = {
   //fetch all members
   getMembers: async () => {
-    const url = process.env.REACT_APP_API_URL_GET_MEMBERS;
+    const url = "http://ongapi.alkemy.org/api/members";
     const data = await axios.get(url);
     try {
       return data;
@@ -108,7 +108,7 @@ export const membersService = {
   //search members
   searchMembers: async (word) => {
     const data = await axios.get(
-    `http://ongapi.alkemy.org/api/members?search=${word}`
+      `http://ongapi.alkemy.org/api/members?search=${word}`
     );
     try {
       return data;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
@@ -7,6 +7,10 @@ const Header = () => {
   console.log("location", location);
 
   const links = [
+    {
+      name: "Inicio",
+      path: "/",
+    },
     {
       name: "Novedades",
       path: "/news"
@@ -36,8 +40,8 @@ const Header = () => {
           <a className="navbar-brand" href="/">
             <img
               src="http://ongapi.alkemy.org/storage/4ZR8wsUwr9.png"
-              width="150px"
-              height="80px"
+              // width="10px"
+              // height="200px"
               className="logo-Home-Header d-inline-block align-top"
               alt=""
             />
@@ -45,13 +49,21 @@ const Header = () => {
           <div style={{width:"60%"}} className="d-flex justify-content-between align-items-center">
             {links.map((link, index) => {
               return (
-                <a
+                <Link
                   key={index}
-                  href={link.path}
+                  to={link.path}
                   className="nav-link-Home"
+                  style={{
+                    color: location.pathname === link.path ? "red" : "black",
+                    fontWeight: location.pathname === link.path ? "bold" : "normal",
+                    borderBottom:
+                      location.pathname === link.path
+                        ? "2px solid red"
+                        : "2px solid transparent",
+                  }}
                 >
                   {link.name}
-                </a>
+                </Link>
               );
             })}
           </div>
