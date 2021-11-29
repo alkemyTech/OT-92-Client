@@ -7,3 +7,8 @@
     font-family: 'Archivo Narrow', sans-serif;
     font-size: 50px;
 }
+
+.error_message_input{
+    margin-left: 10px;
+    padding: 5px 0;
+}

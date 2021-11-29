@@ -13,7 +13,7 @@ const Content = () => {
   return (
 
 
-    <div className="row h-100 container w-100 body">
+    <div className="row h-100 container w-100 body mt-5">
       <div className=" d-flex flex-column content-centered align-items-center justify-content-center my-auto w-100 ">
         <div className="d-flex flex-row align-items-center w-100 justify-content-center">
           <Suspense

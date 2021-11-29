@@ -17,8 +17,9 @@ const NewsDisplay = () => {
   return (
     <>
       <div className='container'>
-        <NewsList newsData={news} />
         <NewsLastVideo/>
+        <h2 className="my-4 container text-center">Novedades</h2>
+        <NewsList newsData={news} />
       </div>  
     </>
   );

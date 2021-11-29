@@ -6,8 +6,10 @@ const Donations = () => {
   return ( 
     <>
       <div className="container d-flex flex-column align-items-center">
-        <h3>Colaborá con nosotros</h3>
-        <ButtonMercadoPago />
+        <div className="border rounded p-4 my-5">
+          <h3 className="my-3 text-center">Colaborá con nosotros</h3>
+          <ButtonMercadoPago />
+        </div>
       </div>
     </>
   );

@@ -43,31 +43,31 @@ const Content = () => {
   });
 
   return (
-    <div className="center">
+    <div className="center mb-5">
       <div className="container mt-5  mx-auto rounded">
         <div className="row">
           <div className="col-sm-12 mt-5">
-            <h1 className="display-3 mt-5 text-center text-succes">
+            <h1 className="display-3 mt-5 text-center paragraph-customize rounded">
               Campaña Escolar {year + 1}
             </h1>
-            <div className="jumbotron mt-5">
+            <div className="jumbotron mt-5 paragraph-customize">
               <h2 className="display-6">
-                Fecha: <span className="text-muted">01/01/2022</span>
+                Fecha: <span>01/01/2022</span>
               </h2>
               <h2 className="display-6">
-                Hora: <span className="text-muted">17 hs</span>
+                Hora: <span>17 hs</span>
               </h2>
               <h2 className="display-6">
-                Lugar: <span className="text-muted">Edificio de SomosMas</span>
+                Lugar: <span>Edificio de SomosMas</span>
               </h2>
               <p className="lead">
-                <span className="text-muted"></span>
-                <span className="text-muted"></span>
+                <span className=""></span>
+                <span className=""></span>
               </p>
               <div className="d-none d-sm-block">
                 <h2 className="display-6">
                   Cuenta regresiva:{" "}
-                  <span className="text-muted">{timerComponents}</span>
+                  <span>{timerComponents}</span>
                 </h2>
               </div>
             </div>

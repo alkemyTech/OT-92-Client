@@ -18,7 +18,7 @@ export default function datasList() {
         return (
           <div className="container">
             <div>
-              <div className="card-body">
+              <div className="card-body border rounded mb-3 mx-5 p-4">
                 <p>Desde 1997 en Somos Más trabajamos con los chicos y chicas, mamás y 
                                 papás, abuelos y vecinos del barrio La Cava generando procesos de crecimiento y de 
                                 inserción social. Uniendo las manos de todas las familias, las que viven en el barrio
@@ -28,11 +28,6 @@ export default function datasList() {
                                 comunidad y agrandando y mejorando nuestra capacidad de trabajo. Hoy somos un centro
                                 comunitario que acompaña a más de 700 personas a través de las áreas de: Educación,
                                 deportes, primera infancia, salud, alimentación y trabajo social.</p>
-                <h6>Celular: {data.cellphone}</h6>
-                <h6>Facebook: <a href="www.facebook.com/Somos_Más">{data.facebook_url}</a></h6>
-                <h6>LinkedIn: <a href="www.linkedin.com/company/somosmas">{data.linkedin_url}</a></h6>
-                <h6>Instagram: <a href="www.instagram.com/SomosMás" >{data.instagram_url}</a></h6>
-                <h6>Twitter: <a href="www.twitter.com/somosmas" >{data.twitter_url}</a></h6>
               </div>
             </div>
           </div>    
