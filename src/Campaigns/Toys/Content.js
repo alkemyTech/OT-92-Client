@@ -10,6 +10,7 @@ const Content = () => {
     start: new Date(),
     end: new Date(2021, 12, 21, 19, 0, 0),
   });
+
   return (
 
 
@@ -56,8 +57,7 @@ const Content = () => {
           </Suspense>
         </div>
         <p className="paragraph-customize tablet-view">
-          Falta {duration.months} mes, {duration.days} dias, {duration.hours}{" "}
-          horas, {duration.minutes} minutos, {duration.seconds} segundos{" "}
+          Falta {duration.months} mes, {duration.days} días y {duration.hours} horas.
         </p>
       </div>
     </div>
