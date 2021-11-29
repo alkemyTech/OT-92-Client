@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="form-group"
+>
+  <h1
+    className="h1 text-center mt-5"
+  >
+     Ingresar 
+  </h1>
+  <form
+    className="form-container"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="form-label"
+        htmlFor="email "
+      >
+        Email
+      </label>
+      <input
+        className="w-100 form-control"
+        data-testid="emailError"
+        id="email"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Ingrese email"
+        required={true}
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="mt-4"
+    >
+      <label
+        className="form-label"
+        htmlFor="password"
+      >
+        Contraseña
+      </label>
+      <input
+        className="w-100 form-control"
+        data-testid="passwordError"
+        id="password"
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Ingrese contraseña"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="btn btn-primary mt-5 m-auto"
+      disabled={false}
+      style={
+        Object {
+          "width": "10rem",
+        }
+      }
+      type="submit"
+    >
+      Ingresar
+    </button>
+  </form>
+</div>
+`;

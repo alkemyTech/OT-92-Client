@@ -51,6 +51,7 @@ const LoginForm = () => {
             onBlur={formik.handleBlur}
             placeholder='Ingrese email'
             required
+            data-testid="emailError"
           ></input>
           {formik.touched.email && formik.errors.email ? (
             <div className='text-danger position-absolute mt-1'>
@@ -77,6 +78,7 @@ const LoginForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             placeholder='Ingrese contraseña'
+            data-testid="passwordError"
           ></input>
           {formik.touched.password && formik.errors.password ? (
             <div className='text-danger position-absolute w-75'>
@@ -88,6 +90,7 @@ const LoginForm = () => {
           className='btn btn-primary mt-5 m-auto'
           type='submit'
           style={{ width: "10rem" }}
+          disabled={!formik.isValid}
         >
           Ingresar
         </button>
