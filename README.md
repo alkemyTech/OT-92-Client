@@ -168,3 +168,13 @@ Then, we establish, by the 'expect' function what it would be expected from the 
 The sixth test was implemented to test If the form submits the info. successfully. Here the logic was very similar but with an async method, since Formik works asynchronically.
 
 Finally, we render the snapshot through the seventh and final test, therefore being created automatically the "__snapshots__" folder, containing the snapshot of our tested component.
+
+
+
+# LoginForm.js testing:
+
+El archivo LoginForm.test.js contiene los test del formulario de ingreso. Se usaron las librerías react-testing-library y react-test-renderer.
+
+Se crearon test para cada uno de los dos campos de texto del formulario. Cada test recibe dos parámetros: el nombre del test y el callback donde se expresa la lógica del test.
+
+En ambos test se busca probar que los campos sean validados y que el componente muestre los mensajes de error correctamente. También se creó el correspondiente archivo en la carpeta __snapshots__.
