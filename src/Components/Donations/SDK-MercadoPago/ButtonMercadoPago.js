@@ -65,16 +65,17 @@ const ButtonMercadoPago = () => {
         }, 400);
       }}
     >
-      <Form id="form-container">
-        <div className="my-2 inputs_login">
+      <Form className="my-3" id="form-container">
+        <p>Ingresa un monto:</p>
+        <div className="my-2 inputs_login d-flex">
           <TextInput 
-            label="Ingresa un monto"
+            label=""
             name="amount"
             type="number"
             placeholder="$100"
           />
+          <button className="btn btn-success mx-3" type="submit">Donar</button>
         </div>
-        <button className="btn btn-success" type="submit">Donar</button>
       </Form>
     </Formik>
   );

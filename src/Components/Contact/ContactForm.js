@@ -3,15 +3,15 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextInput from "../Newsletter/TextInput";
 import axios from "axios";
-import successAlert from "../../Assets/Alerts";
-import errorAlert from "../../Assets/Alerts";
+import { successAlert } from "../../Assets/Alerts/alerts";
+import { errorAlert } from "../../Assets/Alerts/alerts";
 
 const ContactForm = () => {
 
   const contactUrl = "http://ongapi.alkemy.org/api/contacts";
 
   return (
-    <>
+    <div className="mb-5 border rounded mx-5">
       <Formik
         initialValues={{
           name: "",
@@ -33,8 +33,14 @@ const ContactForm = () => {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            axios.post(contactUrl, values)
-              .then(res => successAlert({title: "Petición con exito" }))
+            console.log(values);
+            axios.post(contactUrl, {
+              name: values.name,
+              email: values.email,
+              phone: (values.phone).toString(),
+              message: values.message
+            })
+              .then(res => successAlert({title: "Petición con exito", time: "2000" }))
               .catch(err => errorAlert({ title: "Error", text: `${err}` }));
             setSubmitting(false);
           }, 400);
@@ -69,7 +75,7 @@ const ContactForm = () => {
           <button className="btn-submit-Crear-Editar-Members btn btn-success" type="submit">Enviar</button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };
 

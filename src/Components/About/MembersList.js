@@ -65,7 +65,7 @@ export default function MembersList() {
         {membersMocked &&
         membersMocked.map((member, i) => {
           return (
-            <a href={member.linkedinUrl} target="_blank" rel="noreferrer">
+            <a href={member.linkedinUrl} target="_blank" rel="noreferrer" style={{textDecoration: "none"}}>
 
               <Card key={i} img={member.image} title={member.name} description={member.description}/>
             </a>

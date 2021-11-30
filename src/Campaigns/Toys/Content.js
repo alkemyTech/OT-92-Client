@@ -10,10 +10,11 @@ const Content = () => {
     start: new Date(),
     end: new Date(2021, 12, 21, 19, 0, 0),
   });
+
   return (
 
 
-    <div className="row h-100 container w-100 body">
+    <div className="row h-100 container w-100 body mt-5">
       <div className=" d-flex flex-column content-centered align-items-center justify-content-center my-auto w-100 ">
         <div className="d-flex flex-row align-items-center w-100 justify-content-center">
           <Suspense
@@ -56,8 +57,7 @@ const Content = () => {
           </Suspense>
         </div>
         <p className="paragraph-customize tablet-view">
-          Falta {duration.months} mes, {duration.days} dias, {duration.hours}{" "}
-          horas, {duration.minutes} minutos, {duration.seconds} segundos{" "}
+          Falta {duration.months} mes, {duration.days} días y {duration.hours} horas.
         </p>
       </div>
     </div>
